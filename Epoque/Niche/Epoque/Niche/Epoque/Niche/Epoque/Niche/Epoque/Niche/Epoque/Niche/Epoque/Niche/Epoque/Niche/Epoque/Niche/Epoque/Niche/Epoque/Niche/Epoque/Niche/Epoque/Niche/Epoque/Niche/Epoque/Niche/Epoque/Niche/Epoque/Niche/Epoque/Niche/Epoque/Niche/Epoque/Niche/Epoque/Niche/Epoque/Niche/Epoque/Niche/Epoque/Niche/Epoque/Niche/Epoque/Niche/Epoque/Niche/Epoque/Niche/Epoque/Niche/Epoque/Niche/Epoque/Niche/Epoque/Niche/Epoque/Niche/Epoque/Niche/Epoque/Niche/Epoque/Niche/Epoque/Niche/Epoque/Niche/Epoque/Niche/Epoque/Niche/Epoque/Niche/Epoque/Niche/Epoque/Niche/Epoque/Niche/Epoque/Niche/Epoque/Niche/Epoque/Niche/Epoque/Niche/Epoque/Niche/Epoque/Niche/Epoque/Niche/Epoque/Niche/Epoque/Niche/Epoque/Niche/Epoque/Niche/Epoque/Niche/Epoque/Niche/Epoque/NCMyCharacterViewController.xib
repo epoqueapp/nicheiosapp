@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Trocchi.otf">
+            <string>Trocchi</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCMyCharacterViewController">
+            <connections>
+                <outlet property="tableView" destination="Moi-Du-DHY" id="Mlf-Sr-Dwm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Moi-Du-DHY">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="539"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Obscurity randomizes your location. 0 doesn't randomize. The higher the number randomizes your location more." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPO-Th-7Gp">
+                    <rect key="frame" x="8" y="557" width="584" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="EWr-uv-5AX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="10"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="kPO-Th-7Gp" secondAttribute="bottom" constant="8" id="5ip-Xn-Zbc"/>
+                <constraint firstItem="Moi-Du-DHY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9Ok-ZJ-PqA"/>
+                <constraint firstItem="kPO-Th-7Gp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="A4K-kT-CiW"/>
+                <constraint firstAttribute="bottom" secondItem="Moi-Du-DHY" secondAttribute="bottom" constant="61" id="NmV-PB-qlZ"/>
+                <constraint firstAttribute="trailing" secondItem="kPO-Th-7Gp" secondAttribute="trailing" constant="8" id="WEU-6P-uN9"/>
+                <constraint firstAttribute="trailing" secondItem="Moi-Du-DHY" secondAttribute="trailing" id="XVf-N8-eBc"/>
+                <constraint firstItem="Moi-Du-DHY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wkB-Et-F8d"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

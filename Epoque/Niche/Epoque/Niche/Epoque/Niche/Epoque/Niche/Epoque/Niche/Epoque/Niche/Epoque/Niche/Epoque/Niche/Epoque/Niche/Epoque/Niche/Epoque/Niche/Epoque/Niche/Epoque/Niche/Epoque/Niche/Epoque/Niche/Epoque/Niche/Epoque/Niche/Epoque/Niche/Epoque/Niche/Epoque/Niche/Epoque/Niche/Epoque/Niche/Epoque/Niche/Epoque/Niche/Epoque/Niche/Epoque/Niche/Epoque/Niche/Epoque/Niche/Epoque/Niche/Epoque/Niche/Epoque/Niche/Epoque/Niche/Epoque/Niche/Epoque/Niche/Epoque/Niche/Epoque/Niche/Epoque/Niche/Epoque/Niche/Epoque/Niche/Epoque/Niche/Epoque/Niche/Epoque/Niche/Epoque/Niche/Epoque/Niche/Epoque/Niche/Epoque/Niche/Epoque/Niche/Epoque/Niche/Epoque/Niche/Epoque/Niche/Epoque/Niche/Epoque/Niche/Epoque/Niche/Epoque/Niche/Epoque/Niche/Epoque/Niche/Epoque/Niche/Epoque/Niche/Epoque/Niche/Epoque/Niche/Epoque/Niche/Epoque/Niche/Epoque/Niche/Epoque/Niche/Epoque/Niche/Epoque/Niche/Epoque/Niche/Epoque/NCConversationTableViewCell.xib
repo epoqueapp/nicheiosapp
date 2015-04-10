@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Trocchi-Bold.otf">
+            <string>Trocchi-Bold</string>
+        </mutableArray>
+        <mutableArray key="Trocchi.otf">
+            <string>Trocchi</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="NCConversationTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="chj-4E-uZQ">
+                        <rect key="frame" x="8" y="8" width="36" height="54"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="0lv-yB-jXm"/>
+                            <constraint firstAttribute="height" constant="54" id="fTo-td-ewS"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbn-jO-b71">
+                        <rect key="frame" x="52" y="8" width="187" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="bmc-pf-9SZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGI-5K-UDO">
+                        <rect key="frame" x="247" y="8" width="65" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="W4p-l8-A4G"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czM-zu-rGk">
+                        <rect key="frame" x="52" y="27" width="260" height="35"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="chj-4E-uZQ" secondAttribute="centerY" id="5fR-OO-HwO"/>
+                    <constraint firstItem="WGI-5K-UDO" firstAttribute="leading" secondItem="Pbn-jO-b71" secondAttribute="trailing" constant="8" id="7Bv-nj-C9b"/>
+                    <constraint firstItem="WGI-5K-UDO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Djm-Ys-KPI"/>
+                    <constraint firstItem="czM-zu-rGk" firstAttribute="top" secondItem="Pbn-jO-b71" secondAttribute="bottom" constant="-2" id="MNB-1u-82e"/>
+                    <constraint firstItem="Pbn-jO-b71" firstAttribute="leading" secondItem="chj-4E-uZQ" secondAttribute="trailing" constant="8" id="d7L-SN-3TE"/>
+                    <constraint firstItem="chj-4E-uZQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="e7m-nd-D9o"/>
+                    <constraint firstItem="Pbn-jO-b71" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="g2D-zB-3xb"/>
+                    <constraint firstItem="WGI-5K-UDO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="239" id="gkG-Yo-BKu"/>
+                    <constraint firstItem="WGI-5K-UDO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="taT-rZ-igT"/>
+                    <constraint firstItem="czM-zu-rGk" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="uZd-4x-hPR"/>
+                    <constraint firstItem="czM-zu-rGk" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="vGA-xy-ijU"/>
+                    <constraint firstItem="czM-zu-rGk" firstAttribute="leading" secondItem="chj-4E-uZQ" secondAttribute="trailing" constant="8" id="vzh-iI-xVh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="Pbn-jO-b71" id="wRH-tY-iWr"/>
+                <outlet property="spriteImageView" destination="chj-4E-uZQ" id="bAa-WS-WqV"/>
+                <outlet property="summaryTextView" destination="czM-zu-rGk" id="iaA-sE-pnk"/>
+                <outlet property="timeLabel" destination="WGI-5K-UDO" id="OLf-zA-NZd"/>
+            </connections>
+            <point key="canvasLocation" x="318" y="240"/>
+        </tableViewCell>
+    </objects>
+</document>

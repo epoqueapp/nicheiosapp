@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Trocchi-Bold.otf">
+            <string>Trocchi-Bold</string>
+        </mutableArray>
+        <mutableArray key="Trocchi.otf">
+            <string>Trocchi</string>
+            <string>Trocchi</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="10" id="wIH-RI-HYS" customClass="NCMessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wIH-RI-HYS" id="LKo-4m-z6T">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mrd-oz-YrT">
+                        <rect key="frame" x="8" y="10" width="24" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="37" id="p1X-GW-L3j"/>
+                            <constraint firstAttribute="width" constant="24" id="yUO-La-DIg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBC-ur-guj">
+                        <rect key="frame" x="48" y="8" width="204" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="204" id="hdB-pM-u6I"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-EF-LPw">
+                        <rect key="frame" x="282" y="7" width="30" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="9tX-Eo-XV2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KD-Qu-6lj" customClass="TTTAttributedLabel">
+                        <rect key="frame" x="48" y="35" width="264" height="46"/>
+                        <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4KD-Qu-6lj" firstAttribute="trailing" secondItem="LKo-4m-z6T" secondAttribute="trailingMargin" id="1gF-y8-2ms"/>
+                    <constraint firstItem="4KD-Qu-6lj" firstAttribute="leading" secondItem="Mrd-oz-YrT" secondAttribute="trailing" constant="16" id="8hT-q9-HV2"/>
+                    <constraint firstItem="KBC-ur-guj" firstAttribute="centerY" secondItem="vHj-EF-LPw" secondAttribute="centerY" id="JSg-ms-6I0"/>
+                    <constraint firstItem="4KD-Qu-6lj" firstAttribute="trailing" secondItem="vHj-EF-LPw" secondAttribute="trailing" id="Kyf-yy-UKi"/>
+                    <constraint firstItem="Mrd-oz-YrT" firstAttribute="top" secondItem="LKo-4m-z6T" secondAttribute="topMargin" constant="2" id="OiY-Lv-AaW"/>
+                    <constraint firstItem="KBC-ur-guj" firstAttribute="leading" secondItem="Mrd-oz-YrT" secondAttribute="trailing" constant="16" id="Tjz-b9-aq7"/>
+                    <constraint firstItem="Mrd-oz-YrT" firstAttribute="leading" secondItem="LKo-4m-z6T" secondAttribute="leadingMargin" id="UcQ-l4-VA4"/>
+                    <constraint firstItem="KBC-ur-guj" firstAttribute="top" secondItem="LKo-4m-z6T" secondAttribute="topMargin" id="Uha-il-zKj"/>
+                    <constraint firstItem="vHj-EF-LPw" firstAttribute="trailing" secondItem="LKo-4m-z6T" secondAttribute="trailingMargin" id="efh-Kz-7T3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="4KD-Qu-6lj" secondAttribute="bottom" constant="0.5" id="ijN-6f-oeB"/>
+                    <constraint firstItem="KBC-ur-guj" firstAttribute="firstBaseline" secondItem="vHj-EF-LPw" secondAttribute="firstBaseline" id="oDW-jP-kiT"/>
+                    <constraint firstItem="4KD-Qu-6lj" firstAttribute="top" secondItem="LKo-4m-z6T" secondAttribute="topMargin" constant="27" id="s7b-s1-p5b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="spriteImageView" destination="Mrd-oz-YrT" id="NWf-IS-ssN"/>
+                <outlet property="textMessageLabel" destination="4KD-Qu-6lj" id="nZ5-eb-OPs"/>
+                <outlet property="timeLabel" destination="vHj-EF-LPw" id="2Sm-LZ-o8O"/>
+                <outlet property="userNameLabel" destination="KBC-ur-guj" id="R2i-jD-Sdp"/>
+            </connections>
+            <point key="canvasLocation" x="401" y="512"/>
+        </tableViewCell>
+    </objects>
+</document>

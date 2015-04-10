@@ -1,0 +1,42 @@
+//
+//  NCPrefixHeader.pch
+//  Niche
+//
+//  Created by Maximilian Alexander on 3/18/15.
+//  Copyright (c) 2015 Epoque. All rights reserved.
+//
+
+#ifndef Niche_NCPrefixHeader_pch
+#define Niche_NCPrefixHeader_pch
+
+#define kTrocchiFontName @"Trocchi"
+#define kTrocchiBoldFontName @"Trocchi-Bold"
+#define ARC4RANDOM_MAX      0x100000000
+
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Firebase/Firebase.h>
+#import <Mixpanel.h>
+#import "NSUserDefaults+AuthInformation.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
+#import <CSNotificationView/CSNotificationView.h>
+#import "UIViewController+BarButtons.h"
+#import "NSDate+JavaScriptTimestamp.h"
+#import "UIView+RotateAnimation.h"
+#import "NCLoadingView.h"
+#import <HexColor.h>
+#import "UIColor+HexString.h"
+#import "NSString+StringAdditions.h"
+#import "CLLocation+GeoJson.h"
+#import "MKMapView+Utilities.h"
+#import "UINavigationController+PushPop.h"
+#import "NCNumberHelper.h"
+#import "NCSoundEffect.h"
+#endif
+
+#ifdef DEBUG
+#define kNCAPSEnvironment @"development"
+#else
+#define kNCAPSEnvironment @"production"
+#endif

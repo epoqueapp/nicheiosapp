@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Trocchi-Bold.otf">
+            <string>Trocchi-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ze9-gF-yuC" customClass="NCFormColorCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ze9-gF-yuC" id="yCx-Rb-2Dv">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-6E-Jk6">
+                        <rect key="frame" x="15" y="11" width="213" height="21"/>
+                        <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m29-W1-Z0K">
+                        <rect key="frame" x="280" y="6" width="32" height="32"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="QiA-OA-tDd"/>
+                            <constraint firstAttribute="height" constant="32" id="axU-JF-gfg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="m29-W1-Z0K" secondAttribute="centerY" id="D8X-FP-mJS"/>
+                    <constraint firstItem="m29-W1-Z0K" firstAttribute="trailing" secondItem="yCx-Rb-2Dv" secondAttribute="trailingMargin" id="HTi-QZ-oti"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="colorView" destination="m29-W1-Z0K" id="fNW-j2-6E0"/>
+                <outlet property="formFieldTextLabel" destination="6xF-6E-Jk6" id="xM6-cR-Tf0"/>
+            </connections>
+            <point key="canvasLocation" x="364" y="441"/>
+        </tableViewCell>
+    </objects>
+</document>
