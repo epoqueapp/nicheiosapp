@@ -45,13 +45,14 @@
 
 -(RACSignal *)updateWorld:(WorldModel *)worldModel{
     NSString *worldId = worldModel.worldId;
-    NSString *putUrl = [[apiRootUrl stringByAppendingString:@"/worlds/"]stringByAppendingString:worldId];
+    NSString *putUrl = [[apiRootUrl stringByAppendingString:@"/worlds/"] stringByAppendingString:worldId];
     
     NSDictionary *payload = @{
                               @"name": worldModel.name,
                               @"detail": worldModel.detail,
                               @"isPrivate": @(worldModel.isPrivate),
-                              @"tags": worldModel.tags,
+                              @"isDefault": @(worldModel.isDefault),
+                              @"tags": @[],
                               @"imageUrl": worldModel.imageUrl
                               };
     

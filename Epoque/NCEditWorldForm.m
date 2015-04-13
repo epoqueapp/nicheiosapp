@@ -1,18 +1,16 @@
 //
-//  NCCreateWorldForm.m
-//  Niche
+//  NCEditWorldForm.m
+//  Epoque
 //
-//  Created by Maximilian Alexander on 3/19/15.
+//  Created by Maximilian Alexander on 4/11/15.
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 
-#import "NCCreateWorldForm.h"
+#import "NCEditWorldForm.h"
 #import "NCFormImageCell.h"
 #import "NCFormSubmitButtonCell.h"
 #import "NCFormColorCell.h"
-@implementation NCCreateWorldForm
-
-
+@implementation NCEditWorldForm
 
 -(NSDictionary *)emblemImageField{
     return @{
@@ -57,7 +55,7 @@
 -(NSArray *)extraFields{
     return @[
              @{
-                 FXFormFieldTitle: @"Create World",
+                 FXFormFieldTitle: @"Save World",
                  FXFormFieldCell: [NCFormSubmitButtonCell class],
                  FXFormFieldAction: @"submitButtonDidTap"
                  }];
@@ -76,7 +74,8 @@
     BOOL hasImage = self.emblemImage != nil;
     BOOL hasName = self.name != nil;
     BOOL hasDescription = self.worldDescription != nil;
-    return !hasDescription || !hasImage || !hasName;
+    return hasDescription || hasImage || hasName;
 }
+
 
 @end

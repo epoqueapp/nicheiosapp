@@ -11,5 +11,6 @@
 @interface NCConversationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *conversations;
 
 @end

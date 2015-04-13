@@ -12,4 +12,6 @@
 
 -(void)setUpMenuButton;
 -(void)setUpBackButton;
+-(void)setUpBackButtonWithWorldsDefault;
+-(void)setUpBackButtonWithConversationsDefault;
 @end

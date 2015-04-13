@@ -7,6 +7,7 @@
 //
 
 #import "NCWorldsViewController.h"
+#import "NCEditWorldViewController.h"
 #import "NCNavigationController.h"
 #import "NCWorldDetailViewController.h"
 #import "NCInviteUsersViewController.h"
@@ -28,6 +29,7 @@ static NSString* const kRequestToJoinTitle = @"Request to Join";
 static NSString* const kJoinWorldTitle = @"Join this World";
 static NSString* const kEnterWorldTitle = @"Enter World";
 static NSString* const kDeleteWorldTitle = @"Delete World";
+static NSString* const kEditWorldTitle = @"Edit World";
 static NSString* const kLeaveWorldTitle = @"Leave World";
 static NSString* const kViewMembers = @"View Members";
 static NSString* const kTurnOnPush = @"Turn On Notifications";
@@ -170,11 +172,12 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
     if (self.worldModel == nil) {
         return;
     }
-    if ([self.worldModel.moderatorUserIds containsObject:userModel.userId]) {
-        [actionSheet addButtonWithTitle:@"Delete World"];
+    if ([self.worldModel.moderatorUserIds containsObject:userModel.userId] || [userModel.role isEqualToString:@"admin"]) {
+        [actionSheet addButtonWithTitle:kEditWorldTitle];
+        [actionSheet addButtonWithTitle:kDeleteWorldTitle];
     }
     if ([self.worldModel.moderatorUserIds containsObject:userModel.userId] || [self.worldModel.memberUserIds containsObject:userModel.userId]) {
-        [actionSheet addButtonWithTitle:@"Leave World"];
+        [actionSheet addButtonWithTitle:kLeaveWorldTitle];
     }
     [actionSheet addButtonWithTitle:@"Cancel"];
     actionSheet.delegate = self;
@@ -192,23 +195,24 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Are you sure you want to delete this world?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:kDeleteWorldTitle, nil];
         [alertView show];
     }
+    
+    if ([title isEqualToString:kEditWorldTitle]) {
+        [self goToWorldEdit];
+    }
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:kDeleteWorldTitle]) {
-        @weakify(self);
         [[worldService deleteWorldWithId:self.worldId] subscribeNext:^(id x) {
-            @strongify(self);
-            [self.navigationController goToWorldsController];
+            
         }];
+        [self.navigationController goToWorldsController];
     }
     if ([title isEqualToString:kLeaveWorldTitle]) {
-        @weakify(self);
         [[worldService unjoinWorldById:self.worldId] subscribeNext:^(id x) {
-            @strongify(self);
-            [self.navigationController goToWorldsController];
         }];
+        [self.navigationController goToWorldsController];
     }
 }
 
@@ -257,7 +261,10 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 }
 
 -(void)goToWorldEdit{
-    
+    UserModel *myUserModel = [NSUserDefaults standardUserDefaults].userModel;
+    NCEditWorldViewController *editWorldViewController = [[NCEditWorldViewController alloc]init];
+    editWorldViewController.worldModel = self.worldModel;
+    [self.navigationController pushRetroViewController:editWorldViewController];
 }
 
 @end

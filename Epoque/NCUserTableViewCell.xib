@@ -36,7 +36,7 @@
                             <constraint firstAttribute="height" constant="21" id="shb-IM-Sj2"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diB-vU-8mh">
@@ -45,7 +45,7 @@
                             <constraint firstAttribute="height" constant="21" id="3Ma-rN-PrU"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moderator" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtz-Jy-Dhz">
@@ -55,7 +55,7 @@
                             <constraint firstAttribute="height" constant="21" id="UT1-sp-tqd"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

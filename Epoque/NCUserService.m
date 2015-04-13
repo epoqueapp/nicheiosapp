@@ -96,7 +96,7 @@
         UserModel *updatedUserModel = [[UserModel alloc]initWithDictionary:value error:nil];
         return updatedUserModel;
     }] doNext:^(UserModel *updatedUserModel) {
-        [[NSUserDefaults standardUserDefaults] setUserModel:updatedUserModel];
+        [[NSUserDefaults standardUserDefaults] setUserModel:updatedUserModel]; 
     }];
 }
 
@@ -116,9 +116,31 @@
     }];
 }
 
--(RACSignal *)getInviteAbleUsersForWorldId:(NSString *)worldId{
-    NSString *url = [NSString stringWithFormat:@"%@/world/%@/inviteableusers", apiRootUrl, worldId];
-    return [[AFHTTPRequestOperationManager epoqueManager] rac_GET:url parameters:nil];
+-(RACSignal *)getInviteAbleUsersForWorldId:(NSString *)worldId searchTerm:(NSString *)searchTerm{
+    NSDictionary *parameters = @{@"searchTerm": searchTerm};
+    NSString *url = [NSString stringWithFormat:@"%@/worlds/%@/inviteableusers", apiRootUrl, worldId];
+    return [[[AFHTTPRequestOperationManager epoqueManager] rac_GET:url parameters:parameters] map:^id(id value) {
+        return [UserModel arrayOfModelsFromDictionaries:value];
+    }];
+}
+
+-(RACSignal *)removeUserFromWorld:(NSString *)worldId userId:(NSString *)userId{
+    NSString *url = [NSString stringWithFormat:@"%@/worlds/%@/users/%@", apiRootUrl, worldId, userId];
+    return [[[AFHTTPRequestOperationManager epoqueManager] rac_DELETE:url parameters:nil] map:^id(id value) {
+        return [[WorldModel alloc] initWithDictionary:value error:nil];
+    }];
+}
+
+-(RACSignal *)addUserToWorldId:(NSString *)worldId userId:(NSString *)userId isModerator:(BOOL)isModerator{
+    NSString *url;
+    if (isModerator) {
+        url= [NSString stringWithFormat:@"%@/worlds/%@/members", apiRootUrl, worldId];
+    }else{
+        url= [NSString stringWithFormat:@"%@/worlds/%@/moderators", apiRootUrl, worldId];
+    }
+    return [[[AFHTTPRequestOperationManager epoqueManager] rac_PUT:url parameters:@{@"userId": userId}] map:^id(id value) {
+        return [[WorldModel alloc] initWithDictionary:value error:nil];
+    }];
 }
 
 @end

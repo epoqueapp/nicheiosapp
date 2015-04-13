@@ -86,7 +86,7 @@
         [successSoundEffect play];
         [NCLoadingView hideAllFromView:self.view];
         [mixpanel track:@"Update Me"];
-        [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Save your information successfully! Thank you" duration:2.0];
+        [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Saved your information successfully! Thank you" duration:2.0];
     }error:^(NSError *error) {
         @strongify(self);
         [errorSoundEffect play];

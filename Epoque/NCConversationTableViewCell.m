@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.spriteImageView.layer.magnificationFilter = kCAFilterNearest;
+    self.summaryTextView.font = [UIFont fontWithName:kTrocchiFontName size:12.0];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

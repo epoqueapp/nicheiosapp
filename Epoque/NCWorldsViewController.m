@@ -52,12 +52,28 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
     UITextField *textField = [self.searchBar valueForKey:@"_searchField"];
     textField.clearButtonMode = UITextFieldViewModeNever;
      [self fetchMyWorlds:nil];
+    
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh:)
+                  forControlEvents:UIControlEventValueChanged];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
    
+}
+
+-(void)refresh:(id)sender{
+    if (self.searchBar.text.length > 0) {
+        [self searchWorlds:sender];
+    }else{
+        [self fetchMyWorlds:sender];
+    }
 }
 
 -(void)fetchMyWorlds:(id)sender{
@@ -80,19 +96,13 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+-(void)searchWorlds:(id)sender{
     @weakify(self);
-    [searchBar resignFirstResponder];
     [NCLoadingView showInView:self.view withTitleText:@"Searching..."];
     [mixpanel timeEvent:@"Search Worlds"];
-    [[worldService searchWorlds:searchBar.text] subscribeNext:^(id x) {
+    [[worldService searchWorlds:self.searchBar.text] subscribeNext:^(id x) {
         @strongify(self);
-        [mixpanel track:@"Search World" properties:@{@"Search Term": searchBar.text}];
+        [mixpanel track:@"Search World" properties:@{@"Search Term": self.searchBar.text}];
         self.title = @"FOUND WORLDS";
         NSArray *fetchedWorlds = [WorldModel arrayOfModelsFromDictionaries:[x objectForKey:@"worlds"]];
         worlds = [NSMutableArray arrayWithArray:fetchedWorlds];
@@ -101,6 +111,16 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
     } error:^(NSError *error) {
         [NCLoadingView hideAllFromView:self.view];
     }];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    [self searchWorlds:searchBar];
 }
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{

@@ -32,6 +32,9 @@
                         <constraint firstAttribute="height" constant="300" id="pkI-sd-M68"/>
                     </constraints>
                 </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="lense_flare_08.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEn-Of-j2O">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.25" contentMode="scaleAspectFit" image="ornate_minute_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEX-AR-abt">
                     <rect key="frame" x="-100" y="200" width="200" height="200"/>
                     <constraints>
@@ -46,9 +49,6 @@
                         <constraint firstAttribute="height" constant="300" id="orl-c2-ToV"/>
                     </constraints>
                 </tableView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="lense_flare_08.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEn-Of-j2O">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

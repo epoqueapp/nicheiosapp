@@ -13,7 +13,11 @@
 @property (nonatomic, copy) NSString *regardingUserId;
 @property (nonatomic, copy) NSString *regardUserName;
 @property (nonatomic, copy) NSString *regardingUserSpriteUrl;
-@property (nonatomic, copy) NSString *summaryText;
+@property (nonatomic, copy) NSString *messageText;
+@property (nonatomic, copy) NSString *messageImageUrl;
 @property (nonatomic, copy) NSDate *timestamp;
+
+-(id)initWithSnapshot:(FDataSnapshot *)snapshot;
+-(id)initWithSubvalue:(NSString *)key dictionary:(NSDictionary *)dict;
 
 @end

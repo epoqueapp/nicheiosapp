@@ -13,6 +13,8 @@
 #import "NCWelcomeViewController.h"
 #import "NCNavigationController.h"
 #import "NCLeftMenuViewController.h"
+#import "NCWorldChatViewController.h"
+#import "NCPrivateChatViewController.h"
 #import <RESideMenu/RESideMenu.h>
 @interface AppDelegate ()
 
@@ -26,8 +28,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.mapView = [[MKMapView alloc]init];
     
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    self.mapView = [[MKMapView alloc]init];
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
@@ -52,6 +56,7 @@
     RESideMenu *sideMenuViewController = [[RESideMenu alloc]initWithContentViewController:navigationController leftMenuViewController:leftMenuViewController rightMenuViewController:nil];
     self.window.rootViewController = sideMenuViewController;
     [self.window makeKeyAndVisible];
+    application.applicationIconBadgeNumber = 0;
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
@@ -95,6 +100,34 @@
     [[Mixpanel sharedInstance] track:@"Failed To Register For Remote Notification" properties:@{@"localizedError": error.localizedDescription}];
 }
 
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    if ( application.applicationState == UIApplicationStateActive ){
+        //app was already in the foreground
+    }else{
+        //app was brought from the background to the foreground
+        NSString *pushType = userInfo[@"pushType"];
+        if ([pushType isEqualToString:@"world"]) {
+            NSString *worldId = userInfo[@"worldId"];
+            NCWorldChatViewController *worldChatViewController = [[NCWorldChatViewController alloc]init];
+            worldChatViewController.worldId = worldId;
+            NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:worldChatViewController];
+            [((RESideMenu *)self.window.rootViewController) setContentViewController:navigationController];
+        }
+        
+        if ([pushType isEqualToString:@"privateMessage"]) {
+            NSString *senderUserId = userInfo[@"senderUserId"];
+            NSString *senderUserName = userInfo[@"senderUserName"];
+            NSString *senderSpriteUrl = userInfo[@"senderSpriteUrl"];
+            NCPrivateChatViewController *privateChatViewController = [[NCPrivateChatViewController alloc]init];
+            privateChatViewController.regardingUserId = senderUserId;
+            privateChatViewController.regardingUserName = senderUserName;
+            privateChatViewController.regardingUserSpriteUrl = senderSpriteUrl;
+            NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:privateChatViewController];
+            [((RESideMenu *)self.window.rootViewController) setContentViewController:navigationController];
+        }
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -107,6 +140,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

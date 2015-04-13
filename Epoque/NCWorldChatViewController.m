@@ -21,6 +21,7 @@
 #import "UserAnnotationView.h"
 #import "AppDelegate.h"
 #import "NCUserDetailViewController.h"
+#import "NCPrivateChatViewController.h"
 @interface NCWorldChatViewController ()
 
 @end
@@ -32,6 +33,7 @@
     NCSoundEffect *shoutSound;
     NCSoundEffect *tableShoutSound;
     NCSoundEffect *proudSound;
+    NCSoundEffect *sentSound;
     NSMutableDictionary *userAnnotations;
     UIBarButtonItem *mapToggleBarButton;
     UIBarButtonItem *worldDetailBarButton;
@@ -101,6 +103,7 @@ static NSString *GalleryTitle = @"Gallery";
     shoutSound = [[NCSoundEffect alloc]initWithSoundNamed:@"shout.wav"];
     tableShoutSound = [[NCSoundEffect alloc]initWithSoundNamed:@"table_shout.wav"];
     proudSound = [[NCSoundEffect alloc]initWithSoundNamed:@"proud.wav"];
+    sentSound =  [[NCSoundEffect alloc]initWithSoundNamed:@"sent.wav"];
     initialAdds = YES;
     userAnnotations = [NSMutableDictionary dictionary];
     @weakify(self);
@@ -167,6 +170,7 @@ static NSString *GalleryTitle = @"Gallery";
     }
     worldPushBusRef = [fireService worldPushBusRef:self.worldId];
     worldPushBusHandle = [worldPushBusRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"%@", snapshot.value);
         if ([NSUserDefaults standardUserDefaults].worldMapEnabled) {
             [shoutSound play];
             
@@ -201,10 +205,11 @@ static NSString *GalleryTitle = @"Gallery";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpBackButton];
+    [self setUpBackButtonWithWorldsDefault];
     self.mapView = ((AppDelegate *)[UIApplication sharedApplication].delegate).mapView;
     [self.mapView removeAnnotations:self.mapView.annotations];
     self.mapView.frame = self.view.bounds;
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view insertSubview:self.mapView belowSubview:self.tableView];
     UITapGestureRecognizer *mapTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mapViewDidTap:)];
     [self.mapView addGestureRecognizer:mapTapGesture];
@@ -213,6 +218,12 @@ static NSString *GalleryTitle = @"Gallery";
     
     UIColor *backgroundColor = [UIColor colorWithRed:44.0/255.0 green:57.0/255 blue:76.0/255.0 alpha:1.0];
     self.tableView.backgroundColor = backgroundColor;
+    
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_stars_background.jpg"]];
+    tempImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [tempImageView setFrame:self.tableView.frame];
+    
+    self.tableView.backgroundView = tempImageView;
     self.view.backgroundColor = backgroundColor;
     
     fireService = [NCFireService sharedInstance];
@@ -326,11 +337,17 @@ static NSString *GalleryTitle = @"Gallery";
     cell.timeLabel.text = messageModel.timestamp.tableViewCellTimeString;
     [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.userSpriteUrl]];
     
-    cell.messageImageView.alpha = 0;
+    
     [cell.messageImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.messageImageUrl] placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [UIView animateWithDuration:0.10 animations:^{
-            cell.messageImageView.alpha = 1;
-        }];
+        cell.messageImageView.alpha = 1;
+        
+        if (cacheType == SDImageCacheTypeNone) {
+            cell.messageImageView.alpha = 0;
+            [UIView animateWithDuration:0.10 animations:^{
+                cell.messageImageView.alpha = 1;
+            }];
+        }
+        
     }];
     cell.transform = self.tableView.transform;
     return cell;
@@ -433,7 +450,10 @@ static NSString *GalleryTitle = @"Gallery";
 
 
 -(void)mapButtonDidClick:(id)sender{
-    self.tableView.hidden = !self.tableView.hidden;
+    BOOL tableIsHidden = self.tableView.hidden;
+    self.tableView.hidden = !tableIsHidden;
+    
+    [self.textView becomeFirstResponder];
 }
 
 -(void)mapViewDidTap:(id)sender{
@@ -484,17 +504,12 @@ static NSString *GalleryTitle = @"Gallery";
         [proudSound play];
         return;
     }
-    NCUserDetailViewController *userDetailViewController = [[NCUserDetailViewController alloc]init];
-    
-    userDetailViewController.userId = userId;
-    userDetailViewController.userName = userName;
-    userDetailViewController.spriteImageUrl = spriteUrl;
-    userDetailViewController.timestamp = timestamp;
-    userDetailViewController.messageImageUrl  = messageImageUrl;
-    userDetailViewController.messageText = messageText;
-
-    
-    [self.navigationController pushViewController:userDetailViewController animated:YES];
+    [mixpanel track:@"Go To Private Chat" properties:@{@"userName": userName, @"userId": userId, @"worldName": worldModel.name, @"worldId": self.worldId}];
+    NCPrivateChatViewController *privateChatViewController = [[NCPrivateChatViewController alloc]init];
+    privateChatViewController.regardingUserId = userId;
+    privateChatViewController.regardingUserName = userName,
+    privateChatViewController.regardingUserSpriteUrl = spriteUrl;
+    [self.navigationController pushRetroViewController:privateChatViewController];
 }
 
 @end

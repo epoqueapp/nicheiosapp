@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WorldModel.h"
+
 
 @interface NCUserService : NSObject
 
@@ -21,6 +23,8 @@
 
 -(RACSignal *)getMembersByWorldId:(NSString *)worldId;
 
--(RACSignal *)getInviteAbleUsersForWorldId:(NSString *)worldId;
+-(RACSignal *)getInviteAbleUsersForWorldId:(NSString *)worldId searchTerm:(NSString *)searchTerm;
 
+-(RACSignal *)removeUserFromWorld:(NSString *)worldId userId:(NSString *)userId;
+-(RACSignal *)addUserToWorldId:(NSString *)worldId userId:(NSString *)userId isModerator:(BOOL)isModerator;
 @end

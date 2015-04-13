@@ -55,12 +55,11 @@ static NSString *libraryTitle = @"Library";
 -(void)submitButtonDidTap{
     [mixpanel track:@"Create New World Button Did Click"];
     NCCreateWorldForm *form = (NCCreateWorldForm*)self.formController.form;
-    if (form.isValid) {
+    if (!form.isValid) {
         [[[UIAlertView alloc]initWithTitle:@"Uh Oh" message:@"Give this world some information! Give it a name and description" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil]show];
         return;
     }
     [NCLoadingView showInView:self.view];
-    
     @weakify(self);
     [mixpanel timeEvent:@"Create New World"];
     [[[uploadService uploadImage:form.emblemImage] flattenMap:^RACStream *(NSString *imageUrl) {
@@ -130,7 +129,7 @@ static NSString *libraryTitle = @"Library";
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     [picker dismissViewControllerAnimated:YES completion:^{}];
     UIImage *selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    NCCreateWorldForm *form = self.formController.form;
+    NCCreateWorldForm *form = (NCCreateWorldForm *)self.formController.form;
     form.emblemImage = selectedImage;
     [self.tableView reloadData];
 }

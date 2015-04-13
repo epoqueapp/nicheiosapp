@@ -8,11 +8,13 @@
 
 #import "SLKTextViewController.h"
 
-@interface NCPrivateChatViewController : SLKTextViewController<TTTAttributedLabelDelegate>
+@interface NCPrivateChatViewController : SLKTextViewController<TTTAttributedLabelDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, copy) NSString *regardingUserId;
 @property (nonatomic, copy) NSString *regardingUserName;
-
+@property (nonatomic, copy) NSString *regardingUserSpriteUrl;
 @property (nonatomic, strong) NSMutableArray *messages;
+
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
 
 @end

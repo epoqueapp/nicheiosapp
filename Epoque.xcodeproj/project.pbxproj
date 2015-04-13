@@ -24,7 +24,7 @@
 		E30A15B41AD46C7500463931 /* NCUserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B21AD46C7500463931 /* NCUserDetailViewController.xib */; };
 		E30A15C41AD4A60700463931 /* Menu and Interface Sound 14.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B61AD4A60700463931 /* Menu and Interface Sound 14.wav */; };
 		E30A15C51AD4A60700463931 /* Menu and Interface Sound 13.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B71AD4A60700463931 /* Menu and Interface Sound 13.wav */; };
-		E30A15C61AD4A60800463931 /* Menu and Interface Sound 12.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B81AD4A60700463931 /* Menu and Interface Sound 12.wav */; };
+		E30A15C61AD4A60800463931 /* sent.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B81AD4A60700463931 /* sent.wav */; };
 		E30A15C71AD4A60800463931 /* table_shout.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B91AD4A60700463931 /* table_shout.wav */; };
 		E30A15C81AD4A60800463931 /* failure.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15BA1AD4A60700463931 /* failure.wav */; };
 		E30A15C91AD4A60800463931 /* Menu and Interface Sound 9.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15BB1AD4A60700463931 /* Menu and Interface Sound 9.wav */; };
@@ -162,6 +162,12 @@
 		E3B63A5F1ACB165D0045369B /* NCUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B63A5D1ACB165D0045369B /* NCUsersViewController.xib */; };
 		E3B63A671ACB195F0045369B /* NCUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B63A651ACB195F0045369B /* NCUserTableViewCell.m */; };
 		E3B63A681ACB195F0045369B /* NCUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B63A661ACB195F0045369B /* NCUserTableViewCell.xib */; };
+		E3FAB1E61AD8F8130018BC07 /* auto_update_location_button_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */; };
+		E3FAB1E71AD8F8130018BC07 /* auto_update_location_button_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */; };
+		E3FAB1EC1AD922730018BC07 /* NCEditWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1EA1AD922730018BC07 /* NCEditWorldViewController.m */; };
+		E3FAB1ED1AD922730018BC07 /* NCEditWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1EB1AD922730018BC07 /* NCEditWorldViewController.xib */; };
+		E3FAB1F01AD92A0D0018BC07 /* NCEditWorldForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1EF1AD92A0D0018BC07 /* NCEditWorldForm.m */; };
+		E3FAB1F31ADB31B50018BC07 /* PrivateMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1F21ADB31B50018BC07 /* PrivateMessageModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,7 +207,7 @@
 		E30A15B21AD46C7500463931 /* NCUserDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCUserDetailViewController.xib; sourceTree = "<group>"; };
 		E30A15B61AD4A60700463931 /* Menu and Interface Sound 14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu and Interface Sound 14.wav"; sourceTree = "<group>"; };
 		E30A15B71AD4A60700463931 /* Menu and Interface Sound 13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu and Interface Sound 13.wav"; sourceTree = "<group>"; };
-		E30A15B81AD4A60700463931 /* Menu and Interface Sound 12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu and Interface Sound 12.wav"; sourceTree = "<group>"; };
+		E30A15B81AD4A60700463931 /* sent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sent.wav; sourceTree = "<group>"; };
 		E30A15B91AD4A60700463931 /* table_shout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = table_shout.wav; sourceTree = "<group>"; };
 		E30A15BA1AD4A60700463931 /* failure.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = failure.wav; sourceTree = "<group>"; };
 		E30A15BB1AD4A60700463931 /* Menu and Interface Sound 9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu and Interface Sound 9.wav"; sourceTree = "<group>"; };
@@ -405,6 +411,15 @@
 		E3B63A641ACB195F0045369B /* NCUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCUserTableViewCell.h; sourceTree = "<group>"; };
 		E3B63A651ACB195F0045369B /* NCUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCUserTableViewCell.m; sourceTree = "<group>"; };
 		E3B63A661ACB195F0045369B /* NCUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCUserTableViewCell.xib; sourceTree = "<group>"; };
+		E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auto_update_location_button_off@3x.png"; sourceTree = "<group>"; };
+		E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auto_update_location_button_on@3x.png"; sourceTree = "<group>"; };
+		E3FAB1E91AD922730018BC07 /* NCEditWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEditWorldViewController.h; sourceTree = "<group>"; };
+		E3FAB1EA1AD922730018BC07 /* NCEditWorldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEditWorldViewController.m; sourceTree = "<group>"; };
+		E3FAB1EB1AD922730018BC07 /* NCEditWorldViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCEditWorldViewController.xib; sourceTree = "<group>"; };
+		E3FAB1EE1AD92A0D0018BC07 /* NCEditWorldForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEditWorldForm.h; sourceTree = "<group>"; };
+		E3FAB1EF1AD92A0D0018BC07 /* NCEditWorldForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEditWorldForm.m; sourceTree = "<group>"; };
+		E3FAB1F11ADB31B50018BC07 /* PrivateMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageModel.h; sourceTree = "<group>"; };
+		E3FAB1F21ADB31B50018BC07 /* PrivateMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,7 +499,7 @@
 				E30A15D21AD4A61700463931 /* proud.wav */,
 				E30A15B61AD4A60700463931 /* Menu and Interface Sound 14.wav */,
 				E30A15B71AD4A60700463931 /* Menu and Interface Sound 13.wav */,
-				E30A15B81AD4A60700463931 /* Menu and Interface Sound 12.wav */,
+				E30A15B81AD4A60700463931 /* sent.wav */,
 				E30A15B91AD4A60700463931 /* table_shout.wav */,
 				E30A15BA1AD4A60700463931 /* failure.wav */,
 				E30A15BB1AD4A60700463931 /* Menu and Interface Sound 9.wav */,
@@ -607,6 +622,7 @@
 		E3B638A61ABAA88E0045369B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */,
 				E34360ED1AD4F96300203D7D /* PrivateChatViewController */,
 				E30A15D41AD4CAEB00463931 /* InviteUsersViewController */,
 				E30A15AF1AD46C6A00463931 /* UserDetail */,
@@ -668,6 +684,8 @@
 				E38176581ACC3BFC00278DDE /* ConversationModel.m */,
 				E30A159E1AD3A40700463931 /* NCSoundEffect.h */,
 				E30A159F1AD3A40700463931 /* NCSoundEffect.m */,
+				E3FAB1F11ADB31B50018BC07 /* PrivateMessageModel.h */,
+				E3FAB1F21ADB31B50018BC07 /* PrivateMessageModel.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -766,6 +784,8 @@
 		E3B638CB1ABAB9D60045369B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */,
+				E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */,
 				E34361031AD878DD00203D7D /* purple_stars_background.jpg */,
 				E34360F91AD59EC500203D7D /* pencil_icon@3x.png */,
 				E34360F71AD520F000203D7D /* key_icon@3x.png */,
@@ -823,6 +843,8 @@
 				E3B6390A1ABBF4940045369B /* NCCreateWorldForm.m */,
 				E3B639461ABD71890045369B /* NCMyCharacterForm.h */,
 				E3B639471ABD71890045369B /* NCMyCharacterForm.m */,
+				E3FAB1EE1AD92A0D0018BC07 /* NCEditWorldForm.h */,
+				E3FAB1EF1AD92A0D0018BC07 /* NCEditWorldForm.m */,
 			);
 			name = Forms;
 			sourceTree = "<group>";
@@ -1135,6 +1157,16 @@
 			name = UserTableViewCell;
 			sourceTree = "<group>";
 		};
+		E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E3FAB1E91AD922730018BC07 /* NCEditWorldViewController.h */,
+				E3FAB1EA1AD922730018BC07 /* NCEditWorldViewController.m */,
+				E3FAB1EB1AD922730018BC07 /* NCEditWorldViewController.xib */,
+			);
+			name = EditWorldViewController;
+			sourceTree = "<group>";
+		};
 		FFCB85E41DBCA94C9B2B7CB8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1237,7 +1269,7 @@
 			files = (
 				E3B63A591ACB01E60045369B /* NCFeedbackViewController.xib in Resources */,
 				E30A15D91AD4CB0D00463931 /* NCInviteUsersViewController.xib in Resources */,
-				E30A15C61AD4A60800463931 /* Menu and Interface Sound 12.wav in Resources */,
+				E30A15C61AD4A60800463931 /* sent.wav in Resources */,
 				E30A15A21AD3A67A00463931 /* placeholder.jpg in Resources */,
 				E30A15C91AD4A60800463931 /* Menu and Interface Sound 9.wav in Resources */,
 				E30A159D1AD3A3F800463931 /* shout.wav in Resources */,
@@ -1276,6 +1308,7 @@
 				E30A15CC1AD4A60800463931 /* Menu and Interface Sound 6.wav in Resources */,
 				E3B638F01ABBB6F00045369B /* NCWorldTableViewCell.xib in Resources */,
 				E3B6393F1ABC54DA0045369B /* NCFormSubmitButtonCell.xib in Resources */,
+				E3FAB1ED1AD922730018BC07 /* NCEditWorldViewController.xib in Resources */,
 				E3B639161ABC00B80045369B /* back_icon@3x.png in Resources */,
 				E3B6394E1ABD73E40045369B /* NCFormSpriteCell.xib in Resources */,
 				E34360F41AD51E6500203D7D /* flare_bg.jpg in Resources */,
@@ -1291,6 +1324,7 @@
 				E30A15D01AD4A60800463931 /* Menu and Interface Sound 2.wav in Resources */,
 				E3B639861AC16FAC0045369B /* NCLoadingView.xib in Resources */,
 				E3B63A531ACAEAB90045369B /* media_bubble@3x.png in Resources */,
+				E3FAB1E61AD8F8130018BC07 /* auto_update_location_button_off@3x.png in Resources */,
 				E3B63A5F1ACB165D0045369B /* NCUsersViewController.xib in Resources */,
 				E3B639391ABC51960045369B /* image_placeholder@2x.png in Resources */,
 				E3B638FB1ABBC0E00045369B /* plus_icon@3x.png in Resources */,
@@ -1303,6 +1337,7 @@
 				E3B6398B1AC171420045369B /* ornate_hour_hand_v2_white@2x.png in Resources */,
 				E30A15CA1AD4A60800463931 /* Menu and Interface Sound 8.wav in Resources */,
 				E3B6392E1ABC3AF70045369B /* ornate_minute_hand@2x.png in Resources */,
+				E3FAB1E71AD8F8130018BC07 /* auto_update_location_button_on@3x.png in Resources */,
 				E3B639B31AC9CC2C0045369B /* star_icon@3x.png in Resources */,
 				E30A15CB1AD4A60800463931 /* Menu and Interface Sound 7.wav in Resources */,
 				E3B639B91ACA077F0045369B /* chat_icon@3x.png in Resources */,
@@ -1399,11 +1434,13 @@
 				E3B638A91ABAA8A40045369B /* NCNavigationController.m in Sources */,
 				E3B639481ABD71890045369B /* NCMyCharacterForm.m in Sources */,
 				E3B639741ABDD07F0045369B /* UIView+RotateAnimation.m in Sources */,
+				E3FAB1EC1AD922730018BC07 /* NCEditWorldViewController.m in Sources */,
 				E3B639591ABD88170045369B /* NCWorldChatViewController.m in Sources */,
 				E3B639AE1AC9AC480045369B /* NCUserService.m in Sources */,
 				E3B6396B1ABDA3AC0045369B /* UserModel.m in Sources */,
 				E3B639061ABBDE6C0045369B /* NCLeftMenuViewController.m in Sources */,
 				E30A15A01AD3A40700463931 /* NCSoundEffect.m in Sources */,
+				E3FAB1F01AD92A0D0018BC07 /* NCEditWorldForm.m in Sources */,
 				E3B638D61ABABC490045369B /* NCCreateUserViewController.m in Sources */,
 				E30A15861AD1CB0000463931 /* JSONValueTransformer+Color.m in Sources */,
 				E3B639911AC17DCA0045369B /* NCWorldDetailViewController.m in Sources */,
@@ -1430,6 +1467,7 @@
 				E3B6395F1ABD88830045369B /* NCMessageTableViewCell.m in Sources */,
 				E3B638EA1ABACFC20045369B /* NCLoginForm.m in Sources */,
 				E3B638C21ABAB6810045369B /* NCSpriteCollectionViewCell.m in Sources */,
+				E3FAB1F31ADB31B50018BC07 /* PrivateMessageModel.m in Sources */,
 				E3B638E61ABACEDB0045369B /* NCLoginViewController.m in Sources */,
 				E30A15DF1AD4DF8D00463931 /* SubmitPrivateMessageModel.m in Sources */,
 				E3B638811ABAA7D30045369B /* main.m in Sources */,

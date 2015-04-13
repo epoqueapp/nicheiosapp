@@ -52,11 +52,11 @@
 }
 
 - (void)goToWorldsController{
-    NSArray *viewControllers = [[self navigationController] viewControllers];
+    NSArray *viewControllers = [self viewControllers];
     for (int i = 0; i < [viewControllers count]; i++){
         id obj = [viewControllers objectAtIndex:i];
         if ([obj isKindOfClass:[NCWorldsViewController class]]){
-            [[self navigationController] popToViewController:obj animated:YES];
+            [self popToViewController:obj animated:YES];
             return;
         }
     }

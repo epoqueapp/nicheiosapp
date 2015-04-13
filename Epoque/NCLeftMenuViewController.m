@@ -137,7 +137,7 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
         [self.sideMenuViewController hideMenuViewController];
     }
     
-    if ([menuTitle isEqualToString:@"c"]) {
+    if ([menuTitle isEqualToString:@"FEEDBACK"]) {
         [mixpanel track:@"Feedback Menu Item Did Click"];
         NCFeedbackViewController *feedbackViewController = [[NCFeedbackViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:feedbackViewController];
