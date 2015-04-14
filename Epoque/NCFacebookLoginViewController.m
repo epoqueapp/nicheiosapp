@@ -39,6 +39,8 @@ static NSString *kLoginWithEmailAndPasswordTitle = @"Login With Email";
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(spriteImageViewDidTap:)];
     [self.spriteImageView addGestureRecognizer:tapGesture];
     self.spriteImageView.userInteractionEnabled = YES;
+    
+    [self.traditionalLoginButton addTarget:self action:@selector(traditionLoginButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)spriteImageViewDidTap:(id)sender{

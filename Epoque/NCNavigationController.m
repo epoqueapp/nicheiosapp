@@ -7,12 +7,13 @@
 //
 
 #import "NCNavigationController.h"
-
+#import "NCFireService.h"
 @interface NCNavigationController ()
 
 @end
 
-@implementation NCNavigationController
+@implementation NCNavigationController{
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,15 +21,14 @@
     self.navigationBar.translucent = NO;
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationBar.barTintColor = [UIColor blackColor];
-  
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary: [[UINavigationBar appearance] titleTextAttributes]];
     [titleBarAttributes setValue:[UIFont fontWithName:kTrocchiBoldFontName size:16] forKey:NSFontAttributeName];
     [titleBarAttributes setValue:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
-
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -51,7 +51,7 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
     
     UITextField *textField = [self.searchBar valueForKey:@"_searchField"];
     textField.clearButtonMode = UITextFieldViewModeNever;
-     [self fetchMyWorlds:nil];
+    
     
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -65,7 +65,12 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
-   
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.searchBar.text = @"";
+    [self fetchMyWorlds:nil];
 }
 
 -(void)refresh:(id)sender{

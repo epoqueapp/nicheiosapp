@@ -117,21 +117,23 @@ static NSString *GalleryTitle = @"Gallery";
         worldModel = [[WorldModel alloc] initWithSnapshot:snapshot];
         self.title = worldModel.name;
     }];
-    
     if (messageAddedQuery) {
         [messageAddedQuery removeObserverWithHandle:messageAddedHandle];
     }
-    messageAddedQuery = [[[fireService worldMessagesRef:self.worldId] queryOrderedByChild:@"timestamp"] queryLimitedToLast:300];
+    messageAddedQuery = [[[fireService worldMessagesRef:self.worldId] queryOrderedByChild:@"timestamp"] queryLimitedToLast:200];
     messageAddedHandle = [messageAddedQuery observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         MessageModel *messageModel = [[MessageModel alloc]initWithSnapshot:snapshot];
+        if ([[NSUserDefaults standardUserDefaults] isUserBlocked:messageModel.userId]) {
+            return;
+        }
         [self.messages insertObject:messageModel atIndex:0];
         [self.tableView reloadData];
     }];
-    
-
-    [[[fireService worldMessagesRef:self.worldId] queryLimitedToLast:1] observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    [[fireService worldMessagesRef:self.worldId]observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         [self.tableView reloadData];
         initialAdds = NO;
+        NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+        [[[[[fireService.rootRef childByAppendingPath:@"user-notification-badges"] childByAppendingPath:myUserId] childByAppendingPath:@"world-messages"] childByAppendingPath:self.worldId] setValue:@(0)];
     }];
     
     if (worldShoutsRef) {
@@ -170,7 +172,6 @@ static NSString *GalleryTitle = @"Gallery";
     }
     worldPushBusRef = [fireService worldPushBusRef:self.worldId];
     worldPushBusHandle = [worldPushBusRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"%@", snapshot.value);
         if ([NSUserDefaults standardUserDefaults].worldMapEnabled) {
             [shoutSound play];
             
@@ -417,11 +418,11 @@ static NSString *GalleryTitle = @"Gallery";
     self.imagePicker.delegate = self;
     self.imagePicker.allowsEditing = YES;
     if ([title isEqualToString:CameraTitle]) {
-        [mixpanel track:@"Camera Button Did Click"];
+        [mixpanel track:@"World Chat Camera Button Did Click" properties:@{@"worldId": self.worldId}];
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     if ([title isEqualToString:GalleryTitle]) {
-        [mixpanel track:@"Gallery Button Did Click"];
+        [mixpanel track:@"World Chat Gallery Button Did Click" properties:@{@"worldId": self.worldId}];
         self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [self presentViewController:self.imagePicker animated:YES completion:NULL];
@@ -434,7 +435,7 @@ static NSString *GalleryTitle = @"Gallery";
     [mixpanel timeEvent:@"Upload Image"];
     [[[uploadService uploadImage:chosenImage] flattenMap:^RACStream *(id value) {
         @strongify(self);
-        [mixpanel track:@"Upload Image"];
+        [mixpanel track:@"Upload Image" properties:@{@"worldId": self.worldId}];
         UserModel *userModel = [NSUserDefaults standardUserDefaults].userModel;
         return [fireService submitWorldMessage:self.worldId myUserId:userModel.userId mySpriteUrl:userModel.spriteUrl myName:userModel.name myUserImageUrl:userModel.imageUrl text:@"" imageUrl:value];
     }] subscribeNext:^(id x) {
@@ -451,8 +452,12 @@ static NSString *GalleryTitle = @"Gallery";
 
 -(void)mapButtonDidClick:(id)sender{
     BOOL tableIsHidden = self.tableView.hidden;
+    if (tableIsHidden) {
+        [mixpanel track:@"Map Button Did Click" properties:@{@"worldId": self.worldId}];
+    }else{
+        [mixpanel track:@"Chat Table Button Did Click" properties:@{@"worldId": self.worldId}];
+    }
     self.tableView.hidden = !tableIsHidden;
-    
     [self.textView becomeFirstResponder];
 }
 
@@ -461,6 +466,7 @@ static NSString *GalleryTitle = @"Gallery";
 }
 
 -(void)worldDetailDidClick:(id)sender{
+    [mixpanel track:@"World Detail Button Did Click" properties:@{@"worldId": self.worldId}];
     NCWorldDetailViewController *detailViewController = [[NCWorldDetailViewController alloc]init];
     detailViewController.worldId = self.worldId;
     [self.navigationController pushRetroViewController:detailViewController];
@@ -484,6 +490,7 @@ static NSString *GalleryTitle = @"Gallery";
     [mapView deselectAnnotation:view.annotation animated:YES];
     if ([view isKindOfClass:[UserAnnotationView class]]) {
         UserAnnotation *userAnnotation = ((UserAnnotationView *)view).userAnnotation;
+        [mixpanel track:@"User Annotation Cell Did Click" properties:@{@"worldId": self.worldId, @"userId": userAnnotation.userId}];
         [self goToIndividualChatMessage:userAnnotation.userId userName:userAnnotation.userName spriteUrl:userAnnotation.userSpriteUrl messageText:userAnnotation.messageText messageImageUrl:userAnnotation.messageImageUrl timestamp:userAnnotation.timestamp];
     }
 }
@@ -491,6 +498,7 @@ static NSString *GalleryTitle = @"Gallery";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MessageModel *messageModel = [self.messages objectAtIndex:indexPath.row];
+    [mixpanel track:@"Chat Table Cell Did Click" properties:@{@"worldId": self.worldId, @"userId": messageModel.userId}];
     if (messageModel) {
         [self goToIndividualChatMessage:messageModel.userId userName:messageModel.userName spriteUrl:messageModel.userSpriteUrl messageText:messageModel.messageText messageImageUrl:messageModel.messageImageUrl timestamp:messageModel.timestamp];
     }

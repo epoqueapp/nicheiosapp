@@ -33,6 +33,9 @@ static NSString *libraryTitle = @"Library";
     // Do any additional setup after loading the view from its nib.
     [self setUpBackButton];
     self.title = @"EDIT WORLD";
+    
+    mixpanel = [Mixpanel sharedInstance];
+    
     uploadService = [NCUploadService sharedInstance];
     fireService = [NCFireService sharedInstance];
     worldService = [NCWorldService sharedInstance];

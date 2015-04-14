@@ -27,4 +27,6 @@
 
 -(RACSignal *)removeUserFromWorld:(NSString *)worldId userId:(NSString *)userId;
 -(RACSignal *)addUserToWorldId:(NSString *)worldId userId:(NSString *)userId isModerator:(BOOL)isModerator;
+
+-(RACSignal *)sendReport:(NSString *)userId content:(NSString *)content;
 @end

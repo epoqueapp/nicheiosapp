@@ -23,6 +23,7 @@
 @implementation NCWorldDetailViewController{
     NCFireService *fireService;
     NCWorldService *worldService;
+    Mixpanel *mixpanel;
 }
 
 static NSString* const kRequestToJoinTitle = @"Request to Join";
@@ -39,6 +40,7 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
     [self setUpBackButton];
     fireService = [NCFireService sharedInstance];
     worldService = [NCWorldService sharedInstance];
+    mixpanel = [Mixpanel sharedInstance];
     
     UIBarButtonItem *optionBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"options_button"] style:UIBarButtonItemStylePlain target:self action:@selector(optionsButtonDidClick:)];
     self.navigationItem.rightBarButtonItem = optionBarButtonItem;
@@ -158,9 +160,11 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 -(void)toggleNotificationButtonDidClick:(id)sender{
     NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
     if (self.isPushOn) {
+        [mixpanel track:@"Turned Off World Notifications" properties:@{@"worldId": self.worldId}];
         [CSNotificationView showInViewController:self tintColor:[UIColor darkGrayColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Turned OFF world notifications" duration:2.0];
         [[fireService worldPushSettings:self.worldId userId:myUserId] setValue:@(NO)];
     }else{
+        [mixpanel track:@"Turned On World Notifications" properties:@{@"worldId": self.worldId}];
          [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Turned ON world notifications" duration:2.0];
         [[fireService worldPushSettings:self.worldId userId:myUserId] setValue:@(YES)];
     }
@@ -187,16 +191,19 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:kLeaveWorldTitle]) {
+        [mixpanel track:@"Leave World Button Did Click" properties:@{@"worldId": self.worldId}];
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Are you sure you want to leave this world?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:kLeaveWorldTitle, nil];
         [alertView show];
     }
     
     if ([title isEqualToString:kDeleteWorldTitle]) {
+        [mixpanel track:@"Delete World Button Did Click" properties:@{@"worldId": self.worldId}];
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Are you sure?" message:@"Are you sure you want to delete this world?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:kDeleteWorldTitle, nil];
         [alertView show];
     }
     
     if ([title isEqualToString:kEditWorldTitle]) {
+        [mixpanel track:@"Edit World Button Did Click" properties:@{@"worldId": self.worldId}];
         [self goToWorldEdit];
     }
 }
@@ -204,12 +211,14 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:kDeleteWorldTitle]) {
+        [mixpanel track:@"Confirm Delete World Button Did Click" properties:@{@"worldId": self.worldId}];
         [[worldService deleteWorldWithId:self.worldId] subscribeNext:^(id x) {
             
         }];
         [self.navigationController goToWorldsController];
     }
     if ([title isEqualToString:kLeaveWorldTitle]) {
+        [mixpanel track:@"Confirm Leave World Button Did Click" properties:@{@"worldId": self.worldId}];
         [[worldService unjoinWorldById:self.worldId] subscribeNext:^(id x) {
         }];
         [self.navigationController goToWorldsController];
@@ -217,6 +226,7 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 }
 
 -(void)inviteUsersButtonDidClick:(id)sender{
+    [mixpanel track:@"Invite Users Button Did Click" properties:@{@"worldId": self.worldId}];
     NCInviteUsersViewController *inviteUsers = [[NCInviteUsersViewController alloc]init];
     inviteUsers.worldId = [self.worldId copy];
     NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:inviteUsers];
@@ -225,7 +235,8 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 
 
 -(void)mainButtonDidClick:(id)sender{
-    if ([self.requestToJoinButton.titleLabel.text  isEqualToString:kJoinWorldTitle]) {
+    if ([self.requestToJoinButton.titleLabel.text isEqualToString:kJoinWorldTitle]) {
+        [mixpanel track:@"Join World Button Did Click" properties:@{@"worldId": self.worldId}];
         [NCLoadingView showInView:self.view];
         @weakify(self);
         [[worldService joinWorldById:self.worldId] subscribeNext:^(WorldModel *worldModel) {
@@ -241,9 +252,11 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
         }];
     }
     if ([self.requestToJoinButton.titleLabel.text  isEqualToString:kEnterWorldTitle]) {
+        [mixpanel track:@"Enter World Button Did Click" properties:@{@"worldId": self.worldId}];
         [self goToChat];
     }
     if ([self.requestToJoinButton.titleLabel.text isEqualToString:kViewMembers]) {
+        [mixpanel track:@"View World Members Button Did Click" properties:@{@"worldId": self.worldId}];
         [self goToMembers];
     }
 }
@@ -262,6 +275,7 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 
 -(void)goToWorldEdit{
     UserModel *myUserModel = [NSUserDefaults standardUserDefaults].userModel;
+    [mixpanel track:@"Edit World Button Did Click" properties:@{@"worldId": self.worldId}];
     NCEditWorldViewController *editWorldViewController = [[NCEditWorldViewController alloc]init];
     editWorldViewController.worldModel = self.worldModel;
     [self.navigationController pushRetroViewController:editWorldViewController];

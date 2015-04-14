@@ -7,6 +7,7 @@
 //
 
 #import "NCPrivateChatViewController.h"
+#import "NCReportViewController.h"
 #import "NCFireService.h"
 #import "NCUploadService.h"
 #import "NCMessageTableViewCell.h"
@@ -20,6 +21,7 @@
     Mixpanel *mixpanel;
     NCUploadService *uploadService;
     NCSoundEffect *shoutSound;
+    NCSoundEffect *proudSound;
     NCSoundEffect *tableShoutSound;
     NCFireService *fireService;
     BOOL initialAdds;
@@ -29,6 +31,9 @@ static NSString *MessengerCellIdentifier = @"MessengerCell";
 static NSString *ImageMessageCellIdentifier = @"ImageMessageCell";
 static NSString *CameraTitle = @"Camera";
 static NSString *GalleryTitle = @"Gallery";
+static NSString *kBlockUserTitle = @"Block User";
+static NSString *kReportUserTitle = @"Report User";
+static NSString *kUnblockUserTitle = @"Unblock User";
 
 - (id)init
 {
@@ -54,6 +59,7 @@ static NSString *GalleryTitle = @"Gallery";
     uploadService = [NCUploadService sharedInstance];
     shoutSound = [[NCSoundEffect alloc]initWithSoundNamed:@"shout.wav"];
     tableShoutSound = [[NCSoundEffect alloc]initWithSoundNamed:@"table_shout.wav"];
+    proudSound = [[NCSoundEffect alloc]initWithSoundNamed:@"proud.wav"];
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.view.backgroundColor = [UIColor colorWithRed:22.0/255.0 green:37.0/255 blue:56.0/255.0 alpha:1.0];
@@ -88,11 +94,17 @@ static NSString *GalleryTitle = @"Gallery";
     
     [messagesRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         initialAdds = NO;
+        @strongify(self);
+        NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+        [[[[[fireService.rootRef childByAppendingPath:@"user-notification-badges"] childByAppendingPath:myUserId] childByAppendingPath:@"private-messages"] childByAppendingPath:self.regardingUserId] setValue:@(0)];
     }];
     
     [messagesRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
         PrivateMessageModel *privateMessageModel = [[PrivateMessageModel alloc]initWithSnapshot:snapshot];
+        if ([[NSUserDefaults standardUserDefaults] isUserBlocked:privateMessageModel.senderUserId]) {
+            return;
+        }
         [self.messages insertObject:privateMessageModel atIndex:0];
         [self.tableView reloadData];
     }];
@@ -109,13 +121,24 @@ static NSString *GalleryTitle = @"Gallery";
             }
         }
     }];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user_options"] style:UIBarButtonItemStylePlain target:self action:@selector(userOptionsButtonDidClick:)];
 }
 
-- (void)didCommitTextEditing:(id)sender
-{
-    // Notifies the view controller when tapped on the right "Accept" button for commiting the edited text
-    [self.tableView reloadData];
-    [super didCommitTextEditing:sender];
+-(void)userOptionsButtonDidClick:(id)sender{
+    [mixpanel track:@"Private Chat User Options Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+    BOOL userIdBlocked = [[NSUserDefaults standardUserDefaults] isUserBlocked:self.regardingUserId];
+    UIActionSheet *actionSheet;
+    if (userIdBlocked) {
+        actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:kReportUserTitle, kUnblockUserTitle, nil];
+    }else{
+        actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:kBlockUserTitle otherButtonTitles:kReportUserTitle, nil];
+    }
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [actionSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    }else{
+        [actionSheet showInView:self.view];
+    }
 }
 
 - (void)didCancelTextEditing:(id)sender
@@ -126,6 +149,7 @@ static NSString *GalleryTitle = @"Gallery";
 #pragma Send Private Message
 
 -(void)didPressRightButton:(id)sender{
+    [proudSound play];
     if (self.tableView.hidden) {
         [self.textView resignFirstResponder];
     }else{
@@ -156,18 +180,38 @@ static NSString *GalleryTitle = @"Gallery";
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-    self.imagePicker = [[UIImagePickerController alloc]init];
-    self.imagePicker.delegate = self;
-    self.imagePicker.allowsEditing = YES;
-    if ([title isEqualToString:CameraTitle]) {
-        [mixpanel track:@"Camera Button Did Click"];
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([title isEqualToString:CameraTitle] || [title isEqualToString:GalleryTitle]) {
+        
+        self.imagePicker = [[UIImagePickerController alloc]init];
+        self.imagePicker.delegate = self;
+        self.imagePicker.allowsEditing = YES;
+        if ([title isEqualToString:CameraTitle]) {
+            [mixpanel track:@"Private Chat Camera Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        if ([title isEqualToString:GalleryTitle]) {
+            [mixpanel track:@"Private Chat Gallery Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+    }else{
+        if ([title isEqualToString:kBlockUserTitle]) {
+            [mixpanel track:@"User Block Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            [[NSUserDefaults standardUserDefaults] blockUserWithId:self.regardingUserId];
+        }
+        if ([title isEqualToString:kUnblockUserTitle]) {
+            [mixpanel track:@"User Unblock Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            [[NSUserDefaults standardUserDefaults] unblockUserId:self.regardingUserId];
+        }
+        if ([title isEqualToString:kReportUserTitle]){
+            [mixpanel track:@"User Report Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            NCReportViewController *reportViewController = [[NCReportViewController alloc]init];
+            reportViewController.regardingUserId = self.regardingUserId;
+            reportViewController.regardingUserName = self.regardingUserName;
+            reportViewController.regardingUserSpriteUrl = self.regardingUserSpriteUrl;
+            [self.navigationController pushRetroViewController:reportViewController];
+        }
     }
-    if ([title isEqualToString:GalleryTitle]) {
-        [mixpanel track:@"Gallery Button Did Click"];
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    [self presentViewController:self.imagePicker animated:YES completion:NULL];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
@@ -191,7 +235,7 @@ static NSString *GalleryTitle = @"Gallery";
 
 -(void)sendMessageWithText:(NSString *)messageText messageImageUrl:(NSString *)messageImageUrl{
     UserModel *myUserModel = [NSUserDefaults standardUserDefaults].userModel;
-    [mixpanel track:@"Send Private Message Did Click" properties:@{@"messageText": messageText}];
+    [mixpanel track:@"Send Private Message Button Did Click" properties:@{@"messageText": messageText, @"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
     
     NSString *myUserId = myUserModel.userId;
     NSString *otherUserId = self.regardingUserId;
@@ -309,7 +353,10 @@ static NSString *GalleryTitle = @"Gallery";
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         PrivateMessageModel *privateMessage = [self.messages objectAtIndex:indexPath.row];
+        [mixpanel track:@"Deleted Private Chat Message" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName, @"privateMessageId": privateMessage.privateMessageId, @"messageText": privateMessage.messageText, @"messageImageUrl": privateMessage.messageImageUrl}];
+        
         NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
         Firebase *messagesRef = [[[[fireService.rootRef childByAppendingPath:@"user-private-messages"] childByAppendingPath:myUserId] childByAppendingPath:@"inbox"] childByAppendingPath:self.regardingUserId];
         [[messagesRef childByAppendingPath:privateMessage.privateMessageId] removeValue];

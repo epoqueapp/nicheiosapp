@@ -18,6 +18,7 @@
     NSArray *users;
     NCUserService *userService;
     NSString *selectedUserId;
+    Mixpanel *mixpanel;
 }
 
 static NSString *UserCellIdentifier = @"UserCellIdentifier";
@@ -30,6 +31,8 @@ static NSString *kCancel = @"Cancel";
     [self setUpBackButton];
     users = [NSArray array];
     userService = [NCUserService sharedInstance];
+    mixpanel = [Mixpanel sharedInstance];
+    
     @weakify(self);
     [[[[NCFireService sharedInstance] worldsRef] childByAppendingPath:self.worldId] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
@@ -45,7 +48,7 @@ static NSString *kCancel = @"Cancel";
     
      self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"close_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissButtonDidClick:)];
     
-    
+    [mixpanel timeEvent:@"Search for Inviteable Users"];
     [[[[[[self rac_signalForSelector:@selector(searchBar:textDidChange:) fromProtocol:@protocol(UISearchBarDelegate)] map:^id(RACTuple *tuple) {
         NSString *searchText = tuple.second;
         return searchText;
@@ -56,6 +59,7 @@ static NSString *kCancel = @"Cancel";
         return [userService getInviteAbleUsersForWorldId:self.worldId searchTerm:searchTerm];
     }] subscribeNext:^(NSArray *retrievedUsers) {
         @strongify(self);
+        [mixpanel track:@"Search for Inviteable Users"];
         [NCLoadingView hideAllFromView:self.view];
         users = retrievedUsers;
         [self.tableView reloadData];

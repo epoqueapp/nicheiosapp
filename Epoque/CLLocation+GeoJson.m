@@ -16,8 +16,8 @@
 
 -(NSArray *)toGeoJsonWthObscurity:(float)obscurity{
     
-    float randomLatDiv = [self randomFloat:-obscurity maxValue:obscurity] / 100;
-    float randomLongDiv = [self randomFloat:-obscurity maxValue:obscurity] / 100;
+    float randomLatDiv = [self randomFloat:-obscurity maxValue:obscurity] / 500;
+    float randomLongDiv = [self randomFloat:-obscurity maxValue:obscurity] / 500;
     
     return @[@(self.coordinate.longitude + randomLongDiv), @(self.coordinate.latitude + randomLatDiv)];
 }

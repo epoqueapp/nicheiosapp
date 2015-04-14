@@ -14,6 +14,7 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *spriteImageView;
 @property (nonatomic, weak) IBOutlet FBSDKLoginButton *facebookLoginButton;
+@property (nonatomic, weak) IBOutlet UIButton *traditionalLoginButton;
 @property (nonatomic, copy) NSString *spriteUrl;
 
 @end

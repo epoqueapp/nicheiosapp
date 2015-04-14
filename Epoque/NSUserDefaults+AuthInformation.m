@@ -79,4 +79,33 @@
     return [[self objectForKey:kNCObscurity] floatValue];
 }
 
+-(void)blockUserWithId:(NSString *)userId{
+    NSMutableArray *blockedUserIds = [self.blockedUserIds mutableCopy];
+    if (![blockedUserIds containsObject:userId]) {
+        [blockedUserIds addObject:userId];
+    }
+    [self setValue:blockedUserIds forKey:kNCBlockedUserIds];
+
+}
+
+-(void)unblockUserId:(NSString *)userId{
+    NSMutableArray *blockedUserIds = [self.blockedUserIds mutableCopy];
+    if ([blockedUserIds containsObject:userId]) {
+        [blockedUserIds removeObject:userId];
+    }
+    [self setValue:blockedUserIds forKey:kNCBlockedUserIds];
+}
+
+-(NSArray *)blockedUserIds{
+    NSArray *blockedUserIds = [self objectForKey: kNCBlockedUserIds];
+    if (blockedUserIds == nil) {
+        [self setObject:[NSArray array] forKey:kNCBlockedUserIds];
+    }
+    return [self objectForKey: kNCBlockedUserIds];
+}
+
+-(BOOL)isUserBlocked:(NSString *)userId{
+    return [self.blockedUserIds containsObject:userId];
+}
+
 @end

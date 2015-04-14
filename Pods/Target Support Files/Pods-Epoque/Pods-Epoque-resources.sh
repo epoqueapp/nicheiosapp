@@ -51,6 +51,10 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "AWSCore/AWSCore/CognitoIdentity/Resources/cognito-identity-2014-06-30.json"
+  install_resource "AWSCore/AWSCore/MobileAnalyticsERS/Resources/mobileanalytics-2014-06-30.json"
+  install_resource "AWSCore/AWSCore/STS/Resources/sts-2011-06-15.json"
+  install_resource "AWSS3/AWSS3/Resources/s3-2006-03-01.json"
   install_resource "Mixpanel/Mixpanel/Media.xcassets/MPArrowLeft.imageset/MPArrowLeft.png"
   install_resource "Mixpanel/Mixpanel/Media.xcassets/MPArrowLeft.imageset/MPArrowLeft@2x.png"
   install_resource "Mixpanel/Mixpanel/Media.xcassets/MPArrowRight.imageset/MPArrowRight.png"
@@ -85,6 +89,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${BUILT_PRODUCTS_DIR}/CSNotificationView.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "AWSCore/AWSCore/CognitoIdentity/Resources/cognito-identity-2014-06-30.json"
+  install_resource "AWSCore/AWSCore/MobileAnalyticsERS/Resources/mobileanalytics-2014-06-30.json"
+  install_resource "AWSCore/AWSCore/STS/Resources/sts-2011-06-15.json"
+  install_resource "AWSS3/AWSS3/Resources/s3-2006-03-01.json"
   install_resource "Mixpanel/Mixpanel/Media.xcassets/MPArrowLeft.imageset/MPArrowLeft.png"
   install_resource "Mixpanel/Mixpanel/Media.xcassets/MPArrowLeft.imageset/MPArrowLeft@2x.png"
   install_resource "Mixpanel/Mixpanel/Media.xcassets/MPArrowRight.imageset/MPArrowRight.png"

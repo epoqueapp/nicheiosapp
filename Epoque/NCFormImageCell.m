@@ -18,6 +18,7 @@
 -(void)setUp{
     [super setUp];
     [self setEmblemImageViewWithImage:self.field.value];
+    self.emblemImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 -(void)setEmblemImageViewWithImage:(UIImage *)image{

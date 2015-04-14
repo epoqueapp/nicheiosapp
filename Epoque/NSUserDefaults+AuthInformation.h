@@ -14,6 +14,7 @@
 #define kNCWorldMapEnabled @"kNCWorldMapEnabled"
 #define kNCDeviceToken @"kNCDeviceToken"
 #define kNCObscurity @"kNCObscurity"
+#define kNCBlockedUserIds @"kNCBlockedUserIds"
 
 @interface NSUserDefaults (AuthInformation)
 
@@ -37,4 +38,8 @@
 -(void)setObscurity:(float)obscurity;
 -(float)obscurity;
 
+-(void)blockUserWithId:(NSString *)userId;
+-(void)unblockUserId:(NSString *)userId;
+-(NSArray *)blockedUserIds;
+-(BOOL)isUserBlocked:(NSString *)userId;
 @end

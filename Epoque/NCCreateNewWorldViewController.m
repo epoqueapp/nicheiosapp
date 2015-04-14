@@ -59,11 +59,10 @@ static NSString *libraryTitle = @"Library";
         [[[UIAlertView alloc]initWithTitle:@"Uh Oh" message:@"Give this world some information! Give it a name and description" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil]show];
         return;
     }
-    [NCLoadingView showInView:self.view];
+    [NCLoadingView showInView:self.view withTitleText:@"Creating World..."];
     @weakify(self);
     [mixpanel timeEvent:@"Create New World"];
     [[[uploadService uploadImage:form.emblemImage] flattenMap:^RACStream *(NSString *imageUrl) {
-        
         WorldModel *worldModel = [[WorldModel alloc]init];
         worldModel.name = form.name;
         worldModel.detail = form.worldDescription;

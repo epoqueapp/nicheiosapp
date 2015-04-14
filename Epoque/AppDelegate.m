@@ -22,27 +22,27 @@
 
 @implementation AppDelegate{
     NCFireService *fireService;
+    NCSoundEffect *privateMessageSoundEffect;
 }
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    fireService = [NCFireService sharedInstance];
+    privateMessageSoundEffect = [[NCSoundEffect alloc]initWithSoundNamed:@"table_shout.wav"];
     
+
     
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    
     self.mapView = [[MKMapView alloc]init];
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
     [self submitDeviceToken];
-
     NSString *mixpanelToken = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"MixpanelToken"];
     [Mixpanel sharedInstanceWithToken:mixpanelToken];
     
-    fireService = [NCFireService sharedInstance];
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    
     NCWelcomeViewController *welcomeViewController = [[NCWelcomeViewController alloc]init];
     NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
     NCNavigationController  *navigationController;
@@ -104,11 +104,14 @@
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     if ( application.applicationState == UIApplicationStateActive ){
         //app was already in the foreground
+        [privateMessageSoundEffect play];
     }else{
         //app was brought from the background to the foreground
         NSString *pushType = userInfo[@"pushType"];
         if ([pushType isEqualToString:@"world"]) {
+
             NSString *worldId = userInfo[@"worldId"];
+            [[Mixpanel sharedInstance] track:@"Reacted To Push Notification" properties:@{@"pushType":pushType, @"worldId": worldId}];
             NCWorldChatViewController *worldChatViewController = [[NCWorldChatViewController alloc]init];
             worldChatViewController.worldId = worldId;
             NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:worldChatViewController];
@@ -119,6 +122,7 @@
             NSString *senderUserId = userInfo[@"senderUserId"];
             NSString *senderUserName = userInfo[@"senderUserName"];
             NSString *senderSpriteUrl = userInfo[@"senderSpriteUrl"];
+            [[Mixpanel sharedInstance] track:@"Reacted To Push Notification" properties:@{@"pushType":pushType, @"senderUserId": senderUserId}];
             NCPrivateChatViewController *privateChatViewController = [[NCPrivateChatViewController alloc]init];
             privateChatViewController.regardingUserId = senderUserId;
             privateChatViewController.regardingUserName = senderUserName;

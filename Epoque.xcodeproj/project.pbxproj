@@ -168,6 +168,9 @@
 		E3FAB1ED1AD922730018BC07 /* NCEditWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1EB1AD922730018BC07 /* NCEditWorldViewController.xib */; };
 		E3FAB1F01AD92A0D0018BC07 /* NCEditWorldForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1EF1AD92A0D0018BC07 /* NCEditWorldForm.m */; };
 		E3FAB1F31ADB31B50018BC07 /* PrivateMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1F21ADB31B50018BC07 /* PrivateMessageModel.m */; };
+		E3FAB1F51ADC7DB70018BC07 /* user_options@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1F41ADC7DB70018BC07 /* user_options@3x.png */; };
+		E3FAB1FA1ADCA7EF0018BC07 /* NCReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1F81ADCA7EF0018BC07 /* NCReportViewController.m */; };
+		E3FAB1FB1ADCA7EF0018BC07 /* NCReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1F91ADCA7EF0018BC07 /* NCReportViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -420,6 +423,10 @@
 		E3FAB1EF1AD92A0D0018BC07 /* NCEditWorldForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEditWorldForm.m; sourceTree = "<group>"; };
 		E3FAB1F11ADB31B50018BC07 /* PrivateMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageModel.h; sourceTree = "<group>"; };
 		E3FAB1F21ADB31B50018BC07 /* PrivateMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageModel.m; sourceTree = "<group>"; };
+		E3FAB1F41ADC7DB70018BC07 /* user_options@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_options@3x.png"; sourceTree = "<group>"; };
+		E3FAB1F71ADCA7EF0018BC07 /* NCReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCReportViewController.h; sourceTree = "<group>"; };
+		E3FAB1F81ADCA7EF0018BC07 /* NCReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCReportViewController.m; sourceTree = "<group>"; };
+		E3FAB1F91ADCA7EF0018BC07 /* NCReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCReportViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +629,7 @@
 		E3B638A61ABAA88E0045369B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3FAB1F61ADCA7DE0018BC07 /* ReportUserViewController */,
 				E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */,
 				E34360ED1AD4F96300203D7D /* PrivateChatViewController */,
 				E30A15D41AD4CAEB00463931 /* InviteUsersViewController */,
@@ -784,6 +792,7 @@
 		E3B638CB1ABAB9D60045369B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E3FAB1F41ADC7DB70018BC07 /* user_options@3x.png */,
 				E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */,
 				E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */,
 				E34361031AD878DD00203D7D /* purple_stars_background.jpg */,
@@ -1167,6 +1176,16 @@
 			name = EditWorldViewController;
 			sourceTree = "<group>";
 		};
+		E3FAB1F61ADCA7DE0018BC07 /* ReportUserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E3FAB1F71ADCA7EF0018BC07 /* NCReportViewController.h */,
+				E3FAB1F81ADCA7EF0018BC07 /* NCReportViewController.m */,
+				E3FAB1F91ADCA7EF0018BC07 /* NCReportViewController.xib */,
+			);
+			name = ReportUserViewController;
+			sourceTree = "<group>";
+		};
 		FFCB85E41DBCA94C9B2B7CB8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1302,6 +1321,7 @@
 				E3B6398C1AC171420045369B /* ornate_minute_hand_v2_white@2x.png in Resources */,
 				E30A157C1AD05F2100463931 /* NCFacebookLoginViewController.xib in Resources */,
 				E3B638D71ABABC490045369B /* NCCreateUserViewController.xib in Resources */,
+				E3FAB1F51ADC7DB70018BC07 /* user_options@3x.png in Resources */,
 				E3B639E01ACA80120045369B /* saturn_icon@3x.png in Resources */,
 				E3B639B71AC9E44E0045369B /* options_button@3x.png in Resources */,
 				E3B638CD1ABAB9EF0045369B /* welcome_logo@3x.png in Resources */,
@@ -1311,6 +1331,7 @@
 				E3FAB1ED1AD922730018BC07 /* NCEditWorldViewController.xib in Resources */,
 				E3B639161ABC00B80045369B /* back_icon@3x.png in Resources */,
 				E3B6394E1ABD73E40045369B /* NCFormSpriteCell.xib in Resources */,
+				E3FAB1FB1ADCA7EF0018BC07 /* NCReportViewController.xib in Resources */,
 				E34360F41AD51E6500203D7D /* flare_bg.jpg in Resources */,
 				E3B639A21AC5CD550045369B /* flare_grey@3x.png in Resources */,
 				E3B639071ABBDE6C0045369B /* NCLeftMenuViewController.xib in Resources */,
@@ -1412,6 +1433,7 @@
 				E3B639D21ACA59A70045369B /* MKMapView+Utilities.m in Sources */,
 				E3B638C71ABAB86F0045369B /* NSUserDefaults+AuthInformation.m in Sources */,
 				E3B639351ABC45D00045369B /* NCFormImageCell.m in Sources */,
+				E3FAB1FA1ADCA7EF0018BC07 /* NCReportViewController.m in Sources */,
 				E3B639C51ACA0E1A0045369B /* NSString+StringAdditions.m in Sources */,
 				E3B639001ABBC12F0045369B /* NCCreateNewWorldViewController.m in Sources */,
 				E3B639221ABC2D680045369B /* NCLeftMenuTableViewCell.m in Sources */,

@@ -23,6 +23,18 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AWSCore (2.1.1):
+    - Bolts (~> 1.1.0)
+    - GZIP (~> 1.0.3)
+    - Mantle (~> 1.4)
+    - Reachability (~> 3.1)
+    - UICKeyChainStore (~> 2.0)
+    - XMLDictionary (~> 1.4.0)
+  - AWSS3 (2.1.1):
+    - AWSCore (= 2.1.1)
+    - Bolts (~> 1.1.0)
+    - Mantle (~> 1.4)
+    - TMCache (~> 1.2.1)
   - Bolts (1.1.4)
   - ColorPopover (0.0.1):
     - WEPopover (~> 0.0.1)
@@ -47,12 +59,17 @@ PODS:
   - FXForms (1.2.12)
   - GeoFire (1.1.0):
     - Firebase (~> 2.1)
+  - GZIP (1.0.3)
   - HexColors (2.2.1)
   - JSONModel (1.0.2)
+  - Mantle (1.5.4):
+    - Mantle/extobjc (= 1.5.4)
+  - Mantle/extobjc (1.5.4)
   - MarqueeLabel (2.2.1)
   - Mixpanel (2.7.3):
     - Mixpanel/MPCategoryHelpers (= 2.7.3)
   - Mixpanel/MPCategoryHelpers (2.7.3)
+  - Reachability (3.2)
   - ReactiveCocoa (2.4.7):
     - ReactiveCocoa/UI (= 2.4.7)
   - ReactiveCocoa/Core (2.4.7):
@@ -68,12 +85,16 @@ PODS:
     - SlackTextViewController/Additions (= 1.5)
   - SlackTextViewController/Additions (1.5)
   - THLabel (1.4.6)
+  - TMCache (1.2.4)
   - TTTAttributedLabel (1.13.3)
+  - UICKeyChainStore (2.0.4)
   - WEPopover (0.0.1)
+  - XMLDictionary (1.4)
 
 DEPENDENCIES:
   - AFNetworking
   - AFNetworking-RACExtensions
+  - AWSS3
   - ColorPopover
   - CSNotificationView
   - Facebook-iOS-SDK
@@ -94,6 +115,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   AFNetworking-RACExtensions: 501ab1564f5be65e01fe3017cda7bba25764c20d
+  AWSCore: 0e82eabc27a96d765b1e2ad4d30b96c1cd298300
+  AWSS3: 891d269735be0f3c63eab5a2d1ee9d788f2c64ee
   Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
   ColorPopover: 2281090e666a120ba96c2d732b30463d2bb649a6
   CSNotificationView: 0792f5220163c2befaf1a9716aa3d5a7d6bd4fb1
@@ -101,16 +124,22 @@ SPEC CHECKSUMS:
   Firebase: e5f9cf72c72a9fdaf7e136012b6c52a263a23ca7
   FXForms: b6a78bac9f6b597ce704e34ac7c1ce9ff628b1d5
   GeoFire: 1a6f2cbcd66507b9756b86d99ecb035d99497c89
+  GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
+  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   MarqueeLabel: c024bab67a1558e8e127132be3b6d66a702405fe
   Mixpanel: 1d387d76800e07e953958c62c97fea27f13632dd
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SlackTextViewController: 4a1797ac2f3616dbd37435fc62da655e61399cdd
   THLabel: 27890d10123514ffe74b6e023b57b2ece55304af
+  TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
+  UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
   WEPopover: beca88ef86b633b34d78fc5b6e2c2fe90e651d7a
+  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
 COCOAPODS: 0.36.3

@@ -76,7 +76,7 @@
     BOOL hasImage = self.emblemImage != nil;
     BOOL hasName = self.name != nil;
     BOOL hasDescription = self.worldDescription != nil;
-    return !hasDescription || !hasImage || !hasName;
+    return hasDescription || hasImage || hasName;
 }
 
 @end

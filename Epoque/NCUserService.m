@@ -143,4 +143,12 @@
     }];
 }
 
+-(RACSignal *)sendReport:(NSString *)userId content:(NSString *)content{
+    NSString *url= [NSString stringWithFormat:@"%@/reports", apiRootUrl];
+
+    return [[[AFHTTPRequestOperationManager epoqueManager] rac_PUT:url parameters:@{@"reporteeUserId": userId, @"content": content}] map:^id(id value) {
+        return [[WorldModel alloc] initWithDictionary:value error:nil];
+    }];
+}
+
 @end
