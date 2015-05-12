@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCWorldsViewController">
             <connections>
-                <outlet property="searchBar" destination="R3f-lZ-7Id" id="2EM-0I-05t"/>
                 <outlet property="tableView" destination="OU4-xk-Z9s" id="ShL-1B-uX7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,15 +18,8 @@
                 <imageView userInteractionEnabled="NO" alpha="0.5499999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LG5-Fo-vma">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                 </imageView>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="R3f-lZ-7Id">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="lgA-kQ-WRO"/>
-                    </connections>
-                </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OU4-xk-Z9s">
-                    <rect key="frame" x="0.0" y="44" width="600" height="492"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="6Ob-UI-Vw9"/>
@@ -37,13 +29,10 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="R3f-lZ-7Id" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5fB-WH-pMy"/>
                 <constraint firstItem="OU4-xk-Z9s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FjX-lT-pyL"/>
-                <constraint firstAttribute="trailing" secondItem="R3f-lZ-7Id" secondAttribute="trailing" id="GIm-ce-Fy2"/>
                 <constraint firstItem="LG5-Fo-vma" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HpD-gN-UyW"/>
                 <constraint firstAttribute="bottom" secondItem="LG5-Fo-vma" secondAttribute="bottom" id="QVG-cw-vV6"/>
-                <constraint firstItem="R3f-lZ-7Id" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SGE-QQ-fmO"/>
-                <constraint firstItem="OU4-xk-Z9s" firstAttribute="top" secondItem="R3f-lZ-7Id" secondAttribute="bottom" id="VPF-yf-avu"/>
+                <constraint firstItem="OU4-xk-Z9s" firstAttribute="top" secondItem="LG5-Fo-vma" secondAttribute="top" id="c8B-Ww-jhP"/>
                 <constraint firstAttribute="bottom" secondItem="OU4-xk-Z9s" secondAttribute="bottom" id="gaj-jC-Ntr"/>
                 <constraint firstAttribute="trailing" secondItem="LG5-Fo-vma" secondAttribute="trailing" id="oFn-sO-v0N"/>
                 <constraint firstAttribute="trailing" secondItem="OU4-xk-Z9s" secondAttribute="trailing" id="vke-It-8dx"/>

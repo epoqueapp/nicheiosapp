@@ -14,6 +14,4 @@
 
 -(RACSignal *)uploadImage:(UIImage *)image;
 
--(RACSignal *)uploadImageToAmazon:(UIImage *)image;
-
 @end

@@ -9,7 +9,6 @@
 #import "NCUsersViewController.h"
 #import "NCPrivateChatViewController.h"
 #import "NCUserService.h"
-#import "NCWorldService.h"
 #import "NCUserTableViewCell.h"
 @interface NCUsersViewController ()
 
@@ -18,14 +17,12 @@
 @implementation NCUsersViewController{
     NSMutableArray *users;
     NCUserService *userService;
-    NCWorldService *worldService;
 }
 static NSString *CellIdentifier = @"CellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpBackButton];
     userService = [NCUserService sharedInstance];
-    worldService = [NCWorldService sharedInstance];
     self.title = @"Users";
     users = [NSMutableArray array];
     [self.tableView registerNib:[UINib nibWithNibName:@"NCUserTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CellIdentifier];

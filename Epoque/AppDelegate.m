@@ -16,6 +16,7 @@
 #import "NCWorldChatViewController.h"
 #import "NCPrivateChatViewController.h"
 #import <RESideMenu/RESideMenu.h>
+#import <AWSCore/AWSCore.h>
 @interface AppDelegate ()
 
 @end
@@ -28,26 +29,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Crittercism enableWithAppID: @"552cb5038172e25e679068ce"];
+    [Amplitude initializeApiKey:@"fc2d3b020cdd10d12d3ee14c1d7c7a59"];
     fireService = [NCFireService sharedInstance];
     privateMessageSoundEffect = [[NCSoundEffect alloc]initWithSoundNamed:@"table_shout.wav"];
-    
-
-    
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     self.mapView = [[MKMapView alloc]init];
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
-    
     [self submitDeviceToken];
-    NSString *mixpanelToken = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"MixpanelToken"];
-    [Mixpanel sharedInstanceWithToken:mixpanelToken];
-    
+    [self observeUserChange];
+   
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     NCWelcomeViewController *welcomeViewController = [[NCWelcomeViewController alloc]init];
     NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
     NCNavigationController  *navigationController;
-    NSString *accessToken = [NSUserDefaults standardUserDefaults].accessToken;
-    if (accessToken != nil) {
+    NSString *userId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    if (userId != nil) {
         navigationController = [[NCNavigationController alloc]initWithRootViewController:worldsViewController];
     }else{
         navigationController = [[NCNavigationController alloc]initWithRootViewController:welcomeViewController];
@@ -81,6 +79,20 @@
     }];;
 }
 
+-(void)observeUserChange{
+    [fireService.usersRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+        NSString *changedUserId = snapshot.key;
+        UserModel *userModel = [NSUserDefaults standardUserDefaults].userModel;
+        if (userModel == nil) {
+            return;
+        }
+        if ([changedUserId isEqualToString:userModel.userId]) {
+            UserModel *newUserModel = [[UserModel alloc]initWithSnapshot:snapshot];
+            [[NSUserDefaults standardUserDefaults] setUserModel:newUserModel];
+        }
+    }];
+}
+
 -(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
     [application registerForRemoteNotifications];
@@ -97,37 +109,23 @@
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"Failed To Register Remote Notification With Error:%@",error);
-    [[Mixpanel sharedInstance] track:@"Failed To Register For Remote Notification" properties:@{@"localizedError": error.localizedDescription}];
+    [Amplitude logEvent:@"Failed To Register For Remote Notification" withEventProperties:@{@"localizedError": error.localizedDescription}];
 }
 
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     if ( application.applicationState == UIApplicationStateActive ){
-        //app was already in the foreground
-        [privateMessageSoundEffect play];
     }else{
         //app was brought from the background to the foreground
         NSString *pushType = userInfo[@"pushType"];
         if ([pushType isEqualToString:@"world"]) {
-
             NSString *worldId = userInfo[@"worldId"];
-            [[Mixpanel sharedInstance] track:@"Reacted To Push Notification" properties:@{@"pushType":pushType, @"worldId": worldId}];
-            NCWorldChatViewController *worldChatViewController = [[NCWorldChatViewController alloc]init];
+            [Amplitude logEvent:@"Reacted To Push Notification" withEventProperties:@{@"pushType":pushType, @"worldId": worldId}];
+            NCWorldChatViewController *worldChatViewController = [NCWorldChatViewController sharedInstance];
             worldChatViewController.worldId = worldId;
-            NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:worldChatViewController];
-            [((RESideMenu *)self.window.rootViewController) setContentViewController:navigationController];
-        }
-        
-        if ([pushType isEqualToString:@"privateMessage"]) {
-            NSString *senderUserId = userInfo[@"senderUserId"];
-            NSString *senderUserName = userInfo[@"senderUserName"];
-            NSString *senderSpriteUrl = userInfo[@"senderSpriteUrl"];
-            [[Mixpanel sharedInstance] track:@"Reacted To Push Notification" properties:@{@"pushType":pushType, @"senderUserId": senderUserId}];
-            NCPrivateChatViewController *privateChatViewController = [[NCPrivateChatViewController alloc]init];
-            privateChatViewController.regardingUserId = senderUserId;
-            privateChatViewController.regardingUserName = senderUserName;
-            privateChatViewController.regardingUserSpriteUrl = senderSpriteUrl;
-            NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:privateChatViewController];
+            NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
+            NCNavigationController *navigationController = [[NCNavigationController alloc]init];
+            [navigationController setViewControllers:@[worldsViewController, worldChatViewController]];
             [((RESideMenu *)self.window.rootViewController) setContentViewController:navigationController];
         }
     }

@@ -14,9 +14,6 @@
 
 +(id)sharedInstance;
 
--(RACSignal *)loginWithEmail:(NSString *)email password:(NSString *)password;
--(RACSignal *)loginWithFacebookAccessToken:(NSString *)facebookAccessToken spriteUrl:(NSString *)spriteUrl;
--(RACSignal *)signupWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name about:(NSString *)about spriteUrl:(NSString *)spriteUrl imageUrl:(NSString *)imageUrl;
 
 -(RACSignal *)updateMe:(UserModel *)userModel;
 -(RACSignal *)sendFeedbackWithContent:(NSString *)content;

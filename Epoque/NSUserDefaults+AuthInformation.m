@@ -24,9 +24,8 @@
     }
     NSDictionary *userDictionary = [userModel toDictionary];
     [self setObject:userDictionary forKey:kNCUserModel];
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    [mixpanel identify:userModel.userId];
-    [mixpanel.people set:userDictionary];
+    [Amplitude setUserId:userModel.userId];
+    [Amplitude setUserProperties:userDictionary];
 }
 
 -(UserModel *)userModel{
@@ -38,14 +37,6 @@
     return model;
 }
 
--(void)setAccessToken:(NSString *)accessToken{
-    [self setObject:accessToken forKey:kNCAccessToken];
-}
-
--(NSString *)accessToken{
-    return [self objectForKey:kNCAccessToken];
-}
-
 -(void)setWorldMapEnabled:(BOOL)isWorldMapEnabled{
     [self setObject:@(isWorldMapEnabled) forKey:kNCWorldMapEnabled];
 }
@@ -55,7 +46,6 @@
 }
 
 -(void)clearAuthInformation{
-    [self setObject:nil forKey:kNCAccessToken];
     [self setObject:nil forKey:kNCWelcomeSpriteUrl];
     [self setObject:nil forKey:kNCUserModel];
     [self setObject:nil forKey:kNCDeviceToken];
@@ -106,6 +96,22 @@
 
 -(BOOL)isUserBlocked:(NSString *)userId{
     return [self.blockedUserIds containsObject:userId];
+}
+
+-(BOOL)isObscuring{
+    return [[self objectForKey:kNCIsObscuring] boolValue];
+}
+
+-(void)setIsObscuring:(BOOL)isObscuring{
+    [self setObject:@(isObscuring) forKey:kNCIsObscuring];
+}
+
+-(BOOL)isFavoriteMode{
+    return [[self objectForKey:kNCIsFavoriteMode] boolValue];
+}
+
+-(void)setIsFavoriteMode:(BOOL)isFavoriteMode{
+    [self setObject:@(isFavoriteMode) forKey:kNCIsFavoriteMode];
 }
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Trocchi-Bold.otf">
@@ -14,6 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCAboutViewController">
             <connections>
+                <outlet property="backgroundImageView" destination="hxW-xH-l6Z" id="yjO-fJ-eAm"/>
                 <outlet property="privacyPolicyButton" destination="a4u-Ct-qam" id="qpa-Ct-lyI"/>
                 <outlet property="termsOfServiceButton" destination="xaC-G2-eP8" id="dKl-c7-3t7"/>
                 <outlet property="versionAndBuildLabel" destination="tVP-Wf-aOO" id="3eE-ur-zTu"/>
@@ -26,7 +27,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" alpha="0.19999999999999968" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flare_bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hxW-xH-l6Z">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hxW-xH-l6Z">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4u-Ct-qam">
@@ -34,30 +35,19 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="aCn-dh-EMz"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="16"/>
+                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="23"/>
                     <state key="normal" title="Privacy Policy">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZs-3Q-QWi">
-                    <rect key="frame" x="8" y="231" width="584" height="30"/>
+                    <rect key="frame" x="8" y="186" width="584" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="DOQ-10-9Ld"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="16"/>
+                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="23"/>
                     <state key="normal" title="Visit Website">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaC-G2-eP8">
-                    <rect key="frame" x="8" y="338" width="584" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="l2R-NG-OtB"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="16"/>
-                    <state key="normal" title="Terms of Service">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -71,11 +61,31 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaC-G2-eP8">
+                    <rect key="frame" x="8" y="383" width="584" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="l2R-NG-OtB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="23"/>
+                    <state key="normal" title="Terms of Service">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="outline_logo@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="nyT-b4-0WK">
+                    <rect key="frame" x="167" y="30" width="266" height="62"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="266" id="Cdp-v0-DcT"/>
+                        <constraint firstAttribute="height" constant="62" id="gMS-6q-YtO"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.17254901960784313" green="0.2196078431372549" blue="0.29803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="nyT-b4-0WK" secondAttribute="centerX" id="26C-5v-NON"/>
                 <constraint firstAttribute="trailing" secondItem="kZs-3Q-QWi" secondAttribute="trailing" constant="8" id="311-pm-bcI"/>
-                <constraint firstItem="a4u-Ct-qam" firstAttribute="top" secondItem="kZs-3Q-QWi" secondAttribute="bottom" constant="24" id="4m9-Df-4t9"/>
+                <constraint firstItem="a4u-Ct-qam" firstAttribute="top" secondItem="kZs-3Q-QWi" secondAttribute="bottom" constant="69" id="4m9-Df-4t9"/>
+                <constraint firstItem="nyT-b4-0WK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Cq0-rL-wqm"/>
                 <constraint firstAttribute="trailing" secondItem="a4u-Ct-qam" secondAttribute="trailing" constant="8" id="IFZ-zt-yyf"/>
                 <constraint firstAttribute="trailing" secondItem="tVP-Wf-aOO" secondAttribute="trailing" constant="8" id="M0n-BT-hW8"/>
                 <constraint firstAttribute="bottom" secondItem="hxW-xH-l6Z" secondAttribute="bottom" id="QoE-ru-NRn"/>
@@ -83,7 +93,7 @@
                 <constraint firstItem="xaC-G2-eP8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Uoq-Jg-hlc"/>
                 <constraint firstAttribute="bottom" secondItem="tVP-Wf-aOO" secondAttribute="bottom" constant="8" id="WoM-D0-r07"/>
                 <constraint firstAttribute="trailing" secondItem="hxW-xH-l6Z" secondAttribute="trailing" id="Zm7-sx-rR1"/>
-                <constraint firstItem="xaC-G2-eP8" firstAttribute="top" secondItem="a4u-Ct-qam" secondAttribute="bottom" constant="23" id="coW-5M-mqI"/>
+                <constraint firstItem="xaC-G2-eP8" firstAttribute="top" secondItem="a4u-Ct-qam" secondAttribute="bottom" constant="68" id="coW-5M-mqI"/>
                 <constraint firstItem="tVP-Wf-aOO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="cqB-qe-gM6"/>
                 <constraint firstItem="a4u-Ct-qam" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="gFD-Dt-NPb"/>
                 <constraint firstAttribute="trailing" secondItem="xaC-G2-eP8" secondAttribute="trailing" constant="8" id="liu-Ag-uZz"/>
@@ -94,6 +104,7 @@
         </view>
     </objects>
     <resources>
-        <image name="flare_bg.jpg" width="1920" height="1080"/>
+        <image name="outline_logo@3x.png" width="1312" height="319"/>
+        <image name="stars.jpg" width="1920" height="1200"/>
     </resources>
 </document>

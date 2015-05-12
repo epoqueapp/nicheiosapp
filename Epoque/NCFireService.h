@@ -10,6 +10,7 @@
 #import <Firebase/Firebase.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MessageModel.h"
+#import "WorldModel.h"
 #import "SubmitPrivateMessageModel.h"
 @interface NCFireService : NSObject <CLLocationManagerDelegate>
 
@@ -22,9 +23,11 @@
 -(RACSignal *)loginWithEmail:(NSString *)email password:(NSString *)password;
 -(RACSignal *)logout;
 
--(RACSignal *)createWorldWithName:(NSString *)name detail:(NSString *)detail imageUrl:(NSString *)imageUrl isPrivate:(BOOL)isPrivate isUnlisted:(BOOL)isUnlisted foregroundColor:(UIColor *)foregroundColor backgroundColor:(UIColor *)backgroundColor;
+-(RACSignal *)createWorld:(WorldModel *)worldModel;
+-(RACSignal *)updateWorld:(WorldModel *)worldModel;
+-(RACSignal *)deleteWorld:(NSString *)worldId;
 
--(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl;
+-(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring;
 
 -(RACSignal *)submitPrivateMessage:(SubmitPrivateMessageModel *)submitPrivateMessageModel;
 

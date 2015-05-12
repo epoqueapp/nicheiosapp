@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Trocchi-Bold.otf">
-            <string>Trocchi-Bold</string>
-            <string>Trocchi-Bold</string>
-            <string>Trocchi-Bold</string>
-            <string>Trocchi-Bold</string>
             <string>Trocchi-Bold</string>
         </mutableArray>
         <mutableArray key="Trocchi.otf">
@@ -20,13 +16,11 @@
             <connections>
                 <outlet property="detailTextView" destination="2Pv-yA-Z0L" id="ft4-Wr-pVq"/>
                 <outlet property="emblemImageView" destination="N0Q-zy-2WX" id="ddp-0G-AIx"/>
-                <outlet property="inviteUsersButton" destination="0vr-al-QyR" id="GPE-I5-TdO"/>
+                <outlet property="favoriteButton" destination="Js3-Id-Chl" id="6NL-fs-BTm"/>
                 <outlet property="nameLabel" destination="US8-Nz-6cG" id="lWD-wa-T3o"/>
-                <outlet property="requestToJoinButton" destination="kCb-JN-oRC" id="utl-qp-FaL"/>
-                <outlet property="toggleNotificationButton" destination="MHF-Tp-czL" id="V4O-By-WvR"/>
+                <outlet property="notificationButton" destination="zC3-Uf-hxQ" id="TuS-bN-LPC"/>
+                <outlet property="shareButton" destination="kpq-4J-PFu" id="JGV-pd-TR3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="worldTypeImageView" destination="YwW-fo-hHZ" id="Lui-zB-IWG"/>
-                <outlet property="worldTypeLabel" destination="iaU-a8-2L9" id="eJY-7A-VEO"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,18 +28,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCb-JN-oRC">
-                    <rect key="frame" x="8" y="552" width="584" height="40"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="cIf-Rb-kuV"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="15"/>
-                    <state key="normal" title="Request to Join">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N0Q-zy-2WX">
                     <rect key="frame" x="250" y="23" width="100" height="100"/>
                     <constraints>
@@ -58,7 +40,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="NBP-gF-PUB"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="19"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -69,75 +51,74 @@
                     </constraints>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="18"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vr-al-QyR">
-                    <rect key="frame" x="8" y="504" width="584" height="40"/>
-                    <color key="backgroundColor" red="0.17254901959999999" green="0.21960784310000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zC3-Uf-hxQ" userLabel="PushNotificationButton">
+                    <rect key="frame" x="268" y="514" width="66" height="66"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="PWz-yg-4CA"/>
+                        <constraint firstAttribute="width" constant="66" id="94E-DU-GMe"/>
+                        <constraint firstAttribute="height" constant="66" id="fZQ-xX-bSu"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="15"/>
-                    <state key="normal" title="Invite People">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                    <state key="normal" image="bell_no_ring@3x.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHF-Tp-czL">
-                    <rect key="frame" x="8" y="456" width="584" height="40"/>
-                    <color key="backgroundColor" red="0.9529411792755127" green="0.3490196168422699" blue="0.34509804844856262" alpha="1" colorSpace="calibratedRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Js3-Id-Chl" userLabel="FavoriteButton">
+                    <rect key="frame" x="354" y="514" width="66" height="66"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="9Sq-SQ-YhV"/>
+                        <constraint firstAttribute="height" constant="66" id="c4Y-99-hZr"/>
+                        <constraint firstAttribute="width" constant="66" id="lmu-IF-CJA"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="15"/>
-                    <state key="normal" title="Turn On Notifications">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                    <state key="normal" image="star_icon_hollow_large@3x.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public Default World" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaU-a8-2L9">
-                    <rect key="frame" x="213" y="426" width="175" height="21"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpq-4J-PFu" userLabel="ShareButton">
+                    <rect key="frame" x="182" y="514" width="66" height="66"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="175" id="ECU-um-fXg"/>
-                        <constraint firstAttribute="height" constant="21" id="ohV-sg-1A2"/>
+                        <constraint firstAttribute="height" constant="66" id="2Sx-Jv-eet"/>
+                        <constraint firstAttribute="width" constant="66" id="fJP-wI-7si"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="13"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YwW-fo-hHZ">
-                    <rect key="frame" x="183" y="426" width="22" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="L5t-3w-Bj4"/>
-                        <constraint firstAttribute="width" constant="22" id="jDI-Cy-9oX"/>
-                    </constraints>
+                    <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                    <state key="normal" image="share_icon@3x.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" alpha="0.19999999999999968" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_planet.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9qU-Q6-cv7">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="US8-Nz-6cG" firstAttribute="top" secondItem="N0Q-zy-2WX" secondAttribute="bottom" constant="8" id="0ZD-EF-heT"/>
                 <constraint firstItem="2Pv-yA-Z0L" firstAttribute="top" secondItem="US8-Nz-6cG" secondAttribute="bottom" constant="8" id="0st-Pt-eUX"/>
-                <constraint firstItem="0vr-al-QyR" firstAttribute="top" secondItem="MHF-Tp-czL" secondAttribute="bottom" constant="8" id="5Bm-75-5oq"/>
-                <constraint firstItem="kCb-JN-oRC" firstAttribute="top" secondItem="0vr-al-QyR" secondAttribute="bottom" constant="8" id="Ee5-IZ-9b0"/>
-                <constraint firstItem="iaU-a8-2L9" firstAttribute="centerY" secondItem="YwW-fo-hHZ" secondAttribute="centerY" constant="-0.5" id="IZt-ZU-ePr"/>
-                <constraint firstItem="0vr-al-QyR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="SIj-o4-LL9"/>
-                <constraint firstItem="kCb-JN-oRC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="XjD-MS-OAL"/>
+                <constraint firstItem="Js3-Id-Chl" firstAttribute="top" secondItem="9qU-Q6-cv7" secondAttribute="bottom" constant="-86" id="7wt-nu-DMX"/>
+                <constraint firstAttribute="centerX" secondItem="zC3-Uf-hxQ" secondAttribute="centerX" constant="-1" id="8tk-fv-cIp"/>
+                <constraint firstItem="9qU-Q6-cv7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="C5n-ey-OWg"/>
+                <constraint firstItem="zC3-Uf-hxQ" firstAttribute="leading" secondItem="kpq-4J-PFu" secondAttribute="trailing" constant="20" id="KEN-dV-vMc"/>
+                <constraint firstAttribute="bottom" secondItem="9qU-Q6-cv7" secondAttribute="bottom" id="KLD-Sj-XAd"/>
+                <constraint firstItem="kpq-4J-PFu" firstAttribute="top" secondItem="9qU-Q6-cv7" secondAttribute="bottom" constant="-86" id="OHb-we-wp9"/>
+                <constraint firstItem="zC3-Uf-hxQ" firstAttribute="top" secondItem="9qU-Q6-cv7" secondAttribute="bottom" constant="-86" id="V66-7R-7oO"/>
+                <constraint firstItem="Js3-Id-Chl" firstAttribute="leading" secondItem="zC3-Uf-hxQ" secondAttribute="trailing" constant="20" id="Wuv-sO-yQN"/>
                 <constraint firstAttribute="centerX" secondItem="N0Q-zy-2WX" secondAttribute="centerX" id="Ymg-WB-vCr"/>
                 <constraint firstAttribute="trailing" secondItem="2Pv-yA-Z0L" secondAttribute="trailing" constant="8" id="b67-o9-9RH"/>
-                <constraint firstAttribute="bottom" secondItem="kCb-JN-oRC" secondAttribute="bottom" constant="8" id="dtt-RS-KF6"/>
-                <constraint firstItem="MHF-Tp-czL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="eot-90-30Q"/>
                 <constraint firstItem="US8-Nz-6cG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="feE-QV-rlt"/>
-                <constraint firstAttribute="centerX" secondItem="iaU-a8-2L9" secondAttribute="centerX" constant="-0.5" id="hiC-LH-7fg"/>
                 <constraint firstItem="2Pv-yA-Z0L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="11" id="isn-KF-N6R"/>
-                <constraint firstAttribute="trailing" secondItem="kCb-JN-oRC" secondAttribute="trailing" constant="8" id="iuV-tB-lVV"/>
-                <constraint firstItem="MHF-Tp-czL" firstAttribute="top" secondItem="iaU-a8-2L9" secondAttribute="bottom" constant="9" id="mRR-hc-tlJ"/>
-                <constraint firstAttribute="trailing" secondItem="0vr-al-QyR" secondAttribute="trailing" constant="8" id="nL6-ui-X2N"/>
+                <constraint firstItem="9qU-Q6-cv7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="moc-dC-kYp"/>
                 <constraint firstAttribute="trailing" secondItem="US8-Nz-6cG" secondAttribute="trailing" constant="8" id="pql-3r-acS"/>
-                <constraint firstAttribute="trailing" secondItem="MHF-Tp-czL" secondAttribute="trailing" constant="8" id="q2b-Ch-KY2"/>
-                <constraint firstItem="iaU-a8-2L9" firstAttribute="leading" secondItem="YwW-fo-hHZ" secondAttribute="trailing" constant="8" id="vTN-cG-LSG"/>
+                <constraint firstAttribute="trailing" secondItem="9qU-Q6-cv7" secondAttribute="trailing" id="q39-zh-Qnh"/>
                 <constraint firstItem="N0Q-zy-2WX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="w8i-EB-n6a"/>
             </constraints>
+            <point key="canvasLocation" x="322" y="332"/>
         </view>
     </objects>
+    <resources>
+        <image name="bell_no_ring@3x.png" width="256" height="256"/>
+        <image name="blue_planet.jpg" width="2560" height="1440"/>
+        <image name="share_icon@3x.png" width="256" height="256"/>
+        <image name="star_icon_hollow_large@3x.png" width="256" height="256"/>
+    </resources>
 </document>

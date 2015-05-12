@@ -15,7 +15,6 @@
 
 @implementation NCFeedbackViewController{
     NCUserService *userService;
-    Mixpanel *mixpanel;
 }
 
 - (void)viewDidLoad {
@@ -30,11 +29,10 @@
 -(void)sendFeedback:(id)sender{
     @weakify(self);
     [self.textView resignFirstResponder];
-    [mixpanel timeEvent:@"Send Feedback"];
+    [Amplitude logEvent:@"Send Feedback Button Did Click"];
     [NCLoadingView showInView:self.view withTitleText:@"sending"];
     [[userService sendFeedbackWithContent:self.textView.text] subscribeNext:^(id x) {
         @strongify(self);
-        [mixpanel track:@"Send Feedback" properties:@{@"content": self.textView.text}];
         [NCLoadingView hideAllFromView:self.view];
         [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Your feedback was sent! Thank you" duration:2.0];
     } error:^(NSError *error) {

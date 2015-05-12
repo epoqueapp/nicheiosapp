@@ -21,6 +21,9 @@
     self.detailLabel.userInteractionEnabled = NO;
     self.emblemImageView.userInteractionEnabled = NO;
     self.backgroundColor = [UIColor clearColor];
+    
+    self.memberCountLabel.strokeColor = [UIColor blackColor];
+    self.memberCountLabel.strokeSize = 0.25;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

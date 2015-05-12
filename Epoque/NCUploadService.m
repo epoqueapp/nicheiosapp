@@ -22,7 +22,7 @@
 
 
 -(RACSignal *)uploadImage:(UIImage *)image{
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.3);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSString *postUrl = @"https://forwardme.herokuapp.com/api/images/upload";
@@ -38,48 +38,6 @@
         return [RACDisposable disposableWithBlock:^{
             [operation cancel];
         }];
-    }];
-}
-
--(RACSignal *)uploadImageToAmazon:(NSURL *)imageLocalUrl{
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
-        
-        AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-        uploadRequest.bucket = @"epoque-uploads";
-        
-        NSString *fileName = [[[NSUUID UUID] UUIDString] stringByAppendingString:@".jpg"];
-        
-        uploadRequest.key = fileName;
-        uploadRequest.body = imageLocalUrl;
-        
-        [[transferManager upload:uploadRequest] continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
-            if (task.error) {
-                if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
-                    switch (task.error.code) {
-                        case AWSS3TransferManagerErrorCancelled:
-                        case AWSS3TransferManagerErrorPaused:
-                            break;
-                            
-                        default:
-                            NSLog(@"Error: %@", task.error);
-                            break;
-                    }
-                } else {
-                    // Unknown error.
-                    NSLog(@"Error: %@", task.error);
-                }
-                [subscriber sendError:task.error];
-            }
-            
-            if (task.result) {
-                AWSS3TransferManagerUploadOutput *uploadOutput = task.result;
-                [subscriber sendNext:uploadOutput];
-                [subscriber sendCompleted];
-            }
-            return nil;
-        }];
-        return nil;
     }];
 }
 

@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "NCCreateNewWorldViewController.h"
 
-@interface NCWorldsViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UISearchControllerDelegate, NCRefreshDelegate>
+@interface NCWorldsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NCRefreshDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
-
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
 @end

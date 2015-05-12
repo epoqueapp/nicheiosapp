@@ -13,13 +13,12 @@
 @property (nonatomic, weak) IBOutlet UIImageView *emblemImageView;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UITextView *detailTextView;
-@property (nonatomic, weak) IBOutlet UIButton *requestToJoinButton;
-@property (nonatomic, weak) IBOutlet UIButton *inviteUsersButton;
-@property (nonatomic, weak) IBOutlet UIButton *toggleNotificationButton;
 
-@property (nonatomic, weak) IBOutlet UILabel *worldTypeLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *worldTypeImageView;
+@property (nonatomic, weak) IBOutlet UIButton *shareButton;
+@property (nonatomic, weak) IBOutlet UIButton *notificationButton;
+@property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
 
+@property (nonatomic, assign) BOOL isFavorite;
 @property (nonatomic, assign) BOOL isPushOn;
 
 @property (nonatomic, copy) NSString *worldId;

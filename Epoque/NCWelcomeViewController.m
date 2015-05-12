@@ -16,8 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
     @weakify(self);
     self.beginButton.rac_command = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
@@ -25,13 +23,11 @@
         [self.navigationController pushViewController:spritesViewController animated:YES];
         return [RACSignal empty];
     }];
-    
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:MPMoviePlayerPlaybackDidFinishNotification object:nil] takeUntil:[self rac_signalForSelector:@selector(viewWillDisappear:)]] subscribeNext:^(id x) {
         @strongify(self);
         NCSpritesViewController *spritesViewController = [[NCSpritesViewController alloc]init];
         [self.navigationController pushFadeViewController:spritesViewController];
     }];
-    
     self.view.backgroundColor = [UIColor blackColor];
     NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"welcome" ofType:@"mp4"];
     NSURL *url = [NSURL fileURLWithPath:stringPath];

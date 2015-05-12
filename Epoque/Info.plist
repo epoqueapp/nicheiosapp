@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.5</string>
+	<string>4.6</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>4.3</string>
+	<string>8.3</string>
 	<key>FacebookAppID</key>
 	<string>643381245766504</string>
 	<key>FacebookDisplayName</key>
@@ -38,7 +38,7 @@
 	<key>MixpanelToken</key>
 	<string>9434b143364cfdbc40151eac45d8d39b</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Epoque would like to use your location for real time shouts.</string>
+	<string>Epoque would like to use your location for real time shouts. Your location is always slightly moved from being accurate. You can change this setting in the character update section</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string></string>

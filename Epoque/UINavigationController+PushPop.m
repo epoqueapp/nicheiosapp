@@ -30,6 +30,15 @@
     [self popViewControllerAnimated:NO];
 }
 
+-(void)popFadeViewController:(UIViewController *)viewController{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.type = kCATransitionFade;
+    //transition.subtype = kCATransitionFromTop;
+    [self.view.layer addAnimation:transition forKey:kCATransition];
+    [self popToViewController:viewController animated:NO];
+}
+
 - (void)pushRetroViewController:(UIViewController *)viewController {
     CATransition *transition = [CATransition animation];
     transition.duration = 0.25;
@@ -38,7 +47,11 @@
     transition.subtype = kCATransitionFromRight;
     [self.view.layer addAnimation:transition forKey:nil];
     
-    [self pushViewController:viewController animated:NO];
+    if ([self.viewControllers containsObject:viewController]) {
+        [self popToViewController:viewController animated:NO];
+    }else{
+        [self pushViewController:viewController animated:YES];
+    }
 }
 
 - (void)popRetroViewController {

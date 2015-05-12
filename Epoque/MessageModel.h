@@ -20,8 +20,10 @@
 @property (nonatomic, copy) NSString *userSpriteUrl;
 @property (nonatomic, copy) NSString *messageText;
 @property (nonatomic, copy) NSString *messageImageUrl;
+@property (nonatomic, strong) NSArray *likedUserIds;
 @property (nonatomic, assign) CLLocationCoordinate2D geo;
 @property (nonatomic, copy) NSDate *timestamp;
+@property (nonatomic, assign) BOOL isObscuring;
 
 -(id)initWithSnapshot:(FDataSnapshot *)dataSnapShot;
 

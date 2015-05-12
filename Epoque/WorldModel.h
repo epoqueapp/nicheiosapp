@@ -20,14 +20,15 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *detail;
 @property (nonatomic, copy) NSString *imageUrl;
-@property (nonatomic, assign) BOOL isPrivate;
+@property (nonatomic, copy) NSString *passcode;
 @property (nonatomic, assign) BOOL isDefault;
-@property (nonatomic, copy) NSArray *tags;
-@property (nonatomic, copy) NSArray *memberUserIds;
-@property (nonatomic, copy) NSArray *moderatorUserIds;
-
+@property (nonatomic, strong) NSArray *memberUserIds;
+@property (nonatomic, strong) NSArray *moderatorUserIds;
+@property (nonatomic, strong) NSArray *favoritedUserIds;
 
 -(id)initWithSnapshot:(FDataSnapshot *)snapshot;
+-(id)initWithHit:(NSDictionary *)hit;
 -(BOOL)belongsToWorld:(NSString *)userId;
+-(BOOL)canEnterWorld:(NSString *)userId;
 
 @end

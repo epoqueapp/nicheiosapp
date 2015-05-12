@@ -10,7 +10,7 @@
 #import <RESideMenu/RESideMenu.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface NCLeftMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, RESideMenuDelegate>
+@interface NCLeftMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RESideMenuDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 

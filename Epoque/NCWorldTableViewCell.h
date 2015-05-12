@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <THLabel.h>
 @interface NCWorldTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIImageView *emblemImageView;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *detailLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *privateImageView;
-
+@property (nonatomic, weak) IBOutlet THLabel *memberCountLabel;
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,22 +13,33 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Epoque. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
                     <rect key="frame" x="20" y="439" width="441" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="lense_flare_15.png" translatesAutoresizingMaskIntoConstraints="NO" id="JGs-Ao-ScV">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="outline_logo@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="G3t-P4-2C9">
+                    <rect key="frame" x="98" y="164" width="284" height="151"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="151" id="2a2-zs-0JG"/>
+                        <constraint firstAttribute="width" constant="284" id="7BU-eu-9gt"/>
+                    </constraints>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="splash_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="JGs-Ao-ScV">
+                    <rect key="frame" x="66" y="66" width="348" height="348"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="348" id="Ufj-XO-upD"/>
+                        <constraint firstAttribute="height" constant="348" id="ifo-Pa-7fU"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="JGs-Ao-ScV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4jE-vn-AJt"/>
+                <constraint firstAttribute="centerY" secondItem="G3t-P4-2C9" secondAttribute="centerY" id="CgS-If-z7n"/>
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
-                <constraint firstAttribute="trailing" secondItem="JGs-Ao-ScV" secondAttribute="trailing" id="Np8-JS-Zp8"/>
+                <constraint firstAttribute="centerX" secondItem="JGs-Ao-ScV" secondAttribute="centerX" id="Se7-Qp-h6A"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint firstAttribute="bottom" secondItem="JGs-Ao-ScV" secondAttribute="bottom" id="lXs-dE-Gbf"/>
-                <constraint firstItem="JGs-Ao-ScV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="z12-wQ-Ib9"/>
+                <constraint firstAttribute="centerX" secondItem="G3t-P4-2C9" secondAttribute="centerX" id="uAX-hG-x5b"/>
+                <constraint firstAttribute="centerY" secondItem="JGs-Ao-ScV" secondAttribute="centerY" id="vTz-hC-120"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -36,6 +47,7 @@
         </view>
     </objects>
     <resources>
-        <image name="lense_flare_15.png" width="1000" height="667"/>
+        <image name="outline_logo@3x.png" width="1312" height="319"/>
+        <image name="splash_screen.png" width="1200" height="1200"/>
     </resources>
 </document>

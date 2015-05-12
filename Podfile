@@ -18,9 +18,11 @@ pod "JSONModel"
 pod "HexColors"
 pod "MarqueeLabel"
 pod "Facebook-iOS-SDK"
-pod "Mixpanel"
+pod "Amplitude-iOS", "~> 2.4"
 pod "CSNotificationView"
 pod 'TTTAttributedLabel'
 pod 'AWSS3'
+pod 'CrittercismSDK'
+pod 'MBFaker'
 end
 

@@ -26,12 +26,14 @@
         
             if ([userAnnotation.userId isEqualToString:[NSUserDefaults standardUserDefaults].userModel.userId]) {
                 self.plateImageView.hidden = NO;
+                self.shoutBubbleImageView.image = [UIImage imageNamed:@"shout_bubble_blue_gradient"];
             }else{
                 self.plateImageView.hidden = YES;
+                self.shoutBubbleImageView.image = [UIImage imageNamed:@"shout_bubble_dark_gradient"];
             }
             
             NSString *messageText = userAnnotation.messageText;
-            if (![NSString isStringEmpty:messageText]) {
+            if (![NSString isStringEmpty:messageText] && ![self isOld:userAnnotation.timestamp]) {
                 NSString *formattedMessageText = [userAnnotation.messageText stringByAppendingString:@" "];
                 [self.shoutLabel setText:formattedMessageText];
                 self.shoutLabel.hidden = NO;
@@ -48,9 +50,51 @@
                 self.mediaBubbleImageView.hidden = YES;
             }
             
+            if ([self isStale:userAnnotation.timestamp]) {
+                self.layer.opacity = 0.5;
+            }
+            /*if([self isAncient:userAnnotation.timestamp]){
+                self.layer.opacity = 0;
+            }*/
+            if ([self isFresh:userAnnotation.timestamp]) {
+                self.layer.opacity = 1;
+            }
         }];
     }
     return self;
+}
+
+-(BOOL)isFresh:(NSDate *)date{
+    NSInteger hours = [self hoursBetween:date and:[NSDate date]];
+    return hours < 3;
+}
+
+
+-(BOOL)isOld:(NSDate *)date{
+    NSInteger hours = [self hoursBetween:date and:[NSDate date]];
+    return hours > 3;
+}
+
+-(BOOL)isStale:(NSDate *)date{
+    NSInteger hours = [self hoursBetween:date and:[NSDate date]];
+    return hours > 6;
+}
+
+-(BOOL)isAncient:(NSDate *)date{
+    NSInteger hours = [self hoursBetween:date and:[NSDate date]];
+    return hours > 36;
+}
+
+- (NSInteger)hoursBetween:(NSDate *)firstDate and:(NSDate *)secondDate {
+    NSUInteger unitFlags = NSCalendarUnitHour;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    if (firstDate == nil) {
+        firstDate = [NSDate date];
+    }
+    
+    NSDateComponents *components = [calendar components:unitFlags fromDate:firstDate toDate:secondDate options:0];
+    return [components hour]+1;
 }
 
 -(void)setupPlateImageView{

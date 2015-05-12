@@ -26,14 +26,12 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
     NSMutableArray *mutableArray;
     NCFireService *fireService;
     CGRect flareOriginalFrame;
-    Mixpanel *mixpanel;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     flareOriginalFrame = self.flareImageView.frame;
-    mixpanel = [Mixpanel sharedInstance];
     
     mutableArray = [NSMutableArray array];
     self.tableView.delegate = self;
@@ -68,7 +66,7 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
 }
 
 -(void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController{
-    mutableArray = [NSMutableArray arrayWithObjects:@"WORLDS", @"MESSAGES", @"MY CHARACTER", @"ABOUT", @"FEEDBACK", @"LOGOUT", nil];
+    mutableArray = [NSMutableArray arrayWithObjects:@"WORLDS",  @"MY CHARACTER", @"ABOUT", @"FEEDBACK", nil];
     [self.tableView reloadData];
 }
 
@@ -109,28 +107,28 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *menuTitle = [mutableArray objectAtIndex:indexPath.row];
     if ([menuTitle isEqualToString:@"WORLDS"]) {
-        [mixpanel track:@"Worlds Menu Item Did Click"];
+        [Amplitude logEvent:@"Worlds Menu Item Did Click"];
         NCWorldsViewController *worldViewController = [[NCWorldsViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:worldViewController];
         [self.sideMenuViewController setContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
     if ([menuTitle isEqualToString:@"MESSAGES"]) {
-        [mixpanel track:@"Messages Menu Item Did Click"];
+        [Amplitude logEvent:@"Messages Menu Item Did Click"];
         NCConversationsViewController *conversationsViewController = [[NCConversationsViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:conversationsViewController];
         [self.sideMenuViewController setContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
     if ([menuTitle isEqualToString:@"MY CHARACTER"]) {
-        [mixpanel track:@"My Character Menu Item Did Click"];
+        [Amplitude logEvent:@"My Character Menu Item Did Click"];
         NCMyCharacterViewController *myCharacterViewController = [[NCMyCharacterViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:myCharacterViewController];
         [self.sideMenuViewController setContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
     if ([menuTitle isEqualToString:@"ABOUT"]) {
-        [mixpanel track:@"About Menu Item Did Click"];
+        [Amplitude logEvent:@"About Menu Item Did Click"];
         NCAboutViewController *aboutViewController = [[NCAboutViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:aboutViewController];
         [self.sideMenuViewController setContentViewController:navController];
@@ -138,33 +136,13 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
     }
     
     if ([menuTitle isEqualToString:@"FEEDBACK"]) {
-        [mixpanel track:@"Feedback Menu Item Did Click"];
+        [Amplitude logEvent:@"Feedback Menu Item Did Click"];
         NCFeedbackViewController *feedbackViewController = [[NCFeedbackViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:feedbackViewController];
         [self.sideMenuViewController setContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
-    if ([menuTitle isEqualToString:@"LOGOUT"]) {
-        [mixpanel track:@"Logout Menu Item Did Click"];
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"Are you sure you want to logout" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-        [alertView show];
-    }
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if ([title isEqualToString:@"Yes"]) {
-        [mixpanel track:@"Confirm Logout Button Did Click"];
-        [[NSUserDefaults standardUserDefaults]clearAuthInformation];
-        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-        [login logOut];
-        NCWelcomeViewController *welcomeViewController = [[NCWelcomeViewController alloc]init];
-        NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:welcomeViewController];
-        [self.sideMenuViewController setContentViewController:navController];
-        [self.sideMenuViewController hideMenuViewController];
-    }else{
-        [mixpanel track:@"Canceled Logout Button Did Click"];
-    }
-}
 
 @end

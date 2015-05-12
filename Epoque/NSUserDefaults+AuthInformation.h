@@ -10,11 +10,12 @@
 #import "UserModel.h"
 #define kNCWelcomeSpriteUrl @"kNCWelcomeSpriteUrl"
 #define kNCUserModel @"kNCUserModel"
-#define kNCAccessToken @"kNCAccessToken"
 #define kNCWorldMapEnabled @"kNCWorldMapEnabled"
 #define kNCDeviceToken @"kNCDeviceToken"
 #define kNCObscurity @"kNCObscurity"
 #define kNCBlockedUserIds @"kNCBlockedUserIds"
+#define kNCIsObscuring @"kNCIsObscuring"
+#define kNCIsFavoriteMode @"kNCIsFavoriteMode"
 
 @interface NSUserDefaults (AuthInformation)
 
@@ -23,9 +24,6 @@
 
 -(void)setUserModel:(UserModel *)userModel;
 -(UserModel *)userModel;
-
--(void)setAccessToken:(NSString *)accessToken;
--(NSString *)accessToken;
 
 -(void)setWorldMapEnabled:(BOOL)isWorldMapEnabled;
 -(BOOL)worldMapEnabled;
@@ -42,4 +40,10 @@
 -(void)unblockUserId:(NSString *)userId;
 -(NSArray *)blockedUserIds;
 -(BOOL)isUserBlocked:(NSString *)userId;
+
+-(BOOL)isObscuring;
+-(void)setIsObscuring:(BOOL)isObscuring;
+
+-(BOOL)isFavoriteMode;
+-(void)setIsFavoriteMode:(BOOL)isFavoriteMode;
 @end

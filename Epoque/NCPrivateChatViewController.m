@@ -18,7 +18,6 @@
 @end
 
 @implementation NCPrivateChatViewController{
-    Mixpanel *mixpanel;
     NCUploadService *uploadService;
     NCSoundEffect *shoutSound;
     NCSoundEffect *proudSound;
@@ -54,7 +53,6 @@ static NSString *kUnblockUserTitle = @"Unblock User";
     self.title = self.regardingUserName;
     [self setUpBackButtonWithConversationsDefault];
     initialAdds = YES;
-    mixpanel = [Mixpanel sharedInstance];
     fireService = [NCFireService sharedInstance];
     uploadService = [NCUploadService sharedInstance];
     shoutSound = [[NCSoundEffect alloc]initWithSoundNamed:@"shout.wav"];
@@ -126,7 +124,7 @@ static NSString *kUnblockUserTitle = @"Unblock User";
 }
 
 -(void)userOptionsButtonDidClick:(id)sender{
-    [mixpanel track:@"Private Chat User Options Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+    [Amplitude logEvent:@"Private Chat User Options Button Did Click" withEventProperties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
     BOOL userIdBlocked = [[NSUserDefaults standardUserDefaults] isUserBlocked:self.regardingUserId];
     UIActionSheet *actionSheet;
     if (userIdBlocked) {
@@ -172,7 +170,7 @@ static NSString *kUnblockUserTitle = @"Unblock User";
 }
 
 -(void)didPressLeftButton:(id)sender{
-    [mixpanel track:@"Private Chat Image Button Did Click"];
+    [Amplitude logEvent:@"Private Chat Image Button Did Click"];
     UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:CameraTitle, GalleryTitle , nil];
     [actionSheet showInView:self.view];
     [super didPressLeftButton:sender];
@@ -186,25 +184,25 @@ static NSString *kUnblockUserTitle = @"Unblock User";
         self.imagePicker.delegate = self;
         self.imagePicker.allowsEditing = YES;
         if ([title isEqualToString:CameraTitle]) {
-            [mixpanel track:@"Private Chat Camera Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            [Amplitude logEvent:@"Private Chat Camera Button Did Click" withEventProperties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
             self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
         if ([title isEqualToString:GalleryTitle]) {
-            [mixpanel track:@"Private Chat Gallery Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            [Amplitude logEvent:@"Private Chat Gallery Button Did Click" withEventProperties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
             self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
         [self presentViewController:self.imagePicker animated:YES completion:NULL];
     }else{
         if ([title isEqualToString:kBlockUserTitle]) {
-            [mixpanel track:@"User Block Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            [Amplitude logEvent:@"User Block Button Did Click" withEventProperties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
             [[NSUserDefaults standardUserDefaults] blockUserWithId:self.regardingUserId];
         }
         if ([title isEqualToString:kUnblockUserTitle]) {
-            [mixpanel track:@"User Unblock Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            [Amplitude logEvent:@"User Unblock Button Did Click" withEventProperties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
             [[NSUserDefaults standardUserDefaults] unblockUserId:self.regardingUserId];
         }
         if ([title isEqualToString:kReportUserTitle]){
-            [mixpanel track:@"User Report Button Did Click" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+            [Amplitude logEvent:@"User Report Button Did Click" withEventProperties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
             NCReportViewController *reportViewController = [[NCReportViewController alloc]init];
             reportViewController.regardingUserId = self.regardingUserId;
             reportViewController.regardingUserName = self.regardingUserName;
@@ -218,7 +216,7 @@ static NSString *kUnblockUserTitle = @"Unblock User";
     @weakify(self);
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     [NCLoadingView showInView:self.view withTitleText:@"Uploading Image..."];
-    [mixpanel timeEvent:@"Upload Image"];
+    [Amplitude logEvent:@"Upload Image"];
     [[[uploadService uploadImage:chosenImage] doNext:^(NSString *imageUrl) {
         @strongify(self);
         [self sendMessageWithText:@"" messageImageUrl:imageUrl];
@@ -235,7 +233,7 @@ static NSString *kUnblockUserTitle = @"Unblock User";
 
 -(void)sendMessageWithText:(NSString *)messageText messageImageUrl:(NSString *)messageImageUrl{
     UserModel *myUserModel = [NSUserDefaults standardUserDefaults].userModel;
-    [mixpanel track:@"Send Private Message Button Did Click" properties:@{@"messageText": messageText, @"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
+    [Amplitude logEvent:@"Send Private Message Button Did Click" withEventProperties:@{@"messageText": messageText, @"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName}];
     
     NSString *myUserId = myUserModel.userId;
     NSString *otherUserId = self.regardingUserId;
@@ -355,7 +353,7 @@ static NSString *kUnblockUserTitle = @"Unblock User";
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         PrivateMessageModel *privateMessage = [self.messages objectAtIndex:indexPath.row];
-        [mixpanel track:@"Deleted Private Chat Message" properties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName, @"privateMessageId": privateMessage.privateMessageId, @"messageText": privateMessage.messageText, @"messageImageUrl": privateMessage.messageImageUrl}];
+        [Amplitude logEvent:@"Deleted Private Chat Message" withEventProperties:@{@"chattingWithUserId": self.regardingUserId, @"chattingWithUserName": self.regardingUserName, @"privateMessageId": privateMessage.privateMessageId, @"messageText": privateMessage.messageText, @"messageImageUrl": privateMessage.messageImageUrl}];
         
         NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
         Firebase *messagesRef = [[[[fireService.rootRef childByAppendingPath:@"user-private-messages"] childByAppendingPath:myUserId] childByAppendingPath:@"inbox"] childByAppendingPath:self.regardingUserId];

@@ -13,10 +13,10 @@
 #define kTrocchiBoldFontName @"Trocchi-Bold"
 #define ARC4RANDOM_MAX      0x100000000
 
-
+#import <Crittercism.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Firebase/Firebase.h>
-#import <Mixpanel.h>
+#import <Amplitude.h>
 #import "NSUserDefaults+AuthInformation.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
@@ -33,6 +33,11 @@
 #import "UINavigationController+PushPop.h"
 #import "NCNumberHelper.h"
 #import "NCSoundEffect.h"
+#import "UITableView+RowAnimations.h"
+#import "UIColor+LovelyColors.h"
+
+#define kBonsaiRoot @"https://xf7292wg:zca4p3lc3f3pzx49@redwood-4376297.us-east-1.bonsai.io/"
+
 #endif
 
 #ifdef DEBUG

@@ -13,7 +13,6 @@
 @end
 
 @implementation NCAboutViewController{
-    Mixpanel *mixpanel;
 }
 
 - (void)viewDidLoad {
@@ -21,22 +20,21 @@
     // Do any additional setup after loading the view from its nib.
     [self setUpMenuButton];
     self.title = @"ABOUT";
-    mixpanel = [Mixpanel sharedInstance];
     
     self.privacyPolicyButton.rac_command = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
-        [mixpanel track:@"Privacy Policy Button Did Click"];
+        [Amplitude logEvent:@"Privacy Policy Button Did Click"];
          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://epoqueapp.com/privacy-policy"]];
         return [RACSignal empty];
     }];
     
     self.visitWebsiteButton.rac_command = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
-        [mixpanel track:@"Website Button Did Click"];
+        [Amplitude logEvent:@"Website Button Did Click"];
          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://epoqueapp.com/"]];
         return [RACSignal empty];
     }];
     
     self.termsOfServiceButton.rac_command = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
-         [mixpanel track:@"Terms of Service Button Did Click"];
+         [Amplitude logEvent:@"Terms of Service Button Did Click"];
          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://epoqueapp.com/terms-of-service"]];
         return [RACSignal empty];
     }];
@@ -45,6 +43,25 @@
     NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
     
     self.versionAndBuildLabel.text = [NSString stringWithFormat:@"Version: %@ Build :%@", version, build];
+    self.backgroundImageView.alpha = 0;
+    [self addShadows];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [UIView animateWithDuration:2.0 animations:^{
+        self.backgroundImageView.alpha = 1;
+    }];
+}
+
+-(void)addShadows{
+    for (UIView *subview in self.view.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)subview;
+            button.titleLabel.shadowColor = [UIColor blackColor];
+            button.titleLabel.shadowOffset = CGSizeMake(1.25, 1.25);
+        }
+    }
 }
 
 

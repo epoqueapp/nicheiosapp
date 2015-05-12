@@ -18,9 +18,11 @@
 @property (nonatomic, strong) NSString *userSpriteUrl;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *userImageUrl;
+@property (nonatomic, strong) NSString *messageId;
 @property (nonatomic, strong) NSString *messageText;
 @property (nonatomic, strong) NSString *messageImageUrl;
 @property (nonatomic, strong) NSDate *timestamp;
+@property (nonatomic, assign) BOOL isObscuring;
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 

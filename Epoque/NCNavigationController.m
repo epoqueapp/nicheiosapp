@@ -27,6 +27,7 @@
     [titleBarAttributes setValue:[UIFont fontWithName:kTrocchiBoldFontName size:16] forKey:NSFontAttributeName];
     [titleBarAttributes setValue:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
+
 }
 
 

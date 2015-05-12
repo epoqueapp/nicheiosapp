@@ -30,12 +30,12 @@
 
 -(void)menuButtonDidClick:(id)sender{
     [self.sideMenuViewController presentLeftMenuViewController];
-    [[Mixpanel sharedInstance] track:@"Back Button Did Click"];
+    [Amplitude logEvent:@"Back Button Did Click"];
 }
 
 -(void)backButtonDidClick:(id)sender{
     [self.navigationController popRetroViewController];
-    [[Mixpanel sharedInstance] track:@"Back Button Did Click"];
+    [Amplitude logEvent:@"Back Button Did Click"];
 }
 
 -(void)backButtonDidClickWithWorldsDefault:(id)sender{
@@ -44,7 +44,7 @@
         NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc] init];
         [self.navigationController pushFadeViewController:worldsViewController];
     }else{
-        [[Mixpanel sharedInstance] track:@"Back Button Did Click"];
+        [Amplitude logEvent:@"Back Button Did Click"];
         [self.navigationController popRetroViewController];
     }
 }
@@ -55,7 +55,7 @@
         NCConversationsViewController *conversationsViewController = [[NCConversationsViewController alloc] init];
         [self.navigationController pushFadeViewController:conversationsViewController];
     }else{
-        [[Mixpanel sharedInstance] track:@"Back Button Did Click"];
+        [Amplitude logEvent:@"Back Button Did Click"];
         [self.navigationController popRetroViewController];
     }
 }

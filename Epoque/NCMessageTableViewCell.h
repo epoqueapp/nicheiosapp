@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SOLabel.h"
-#define kAvatarSize 30.0
-#define kMinimumHeight 70.0
+#import "NCHeartDelegate.h"
+#import "NCTableSpriteDelegate.h"
+#import "NCMessageNameLabelDelegate.h"
 
 @interface NCMessageTableViewCell : UITableViewCell <TTTAttributedLabelDelegate>
 
@@ -18,6 +19,11 @@
 @property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
 @property (nonatomic, weak) IBOutlet TTTAttributedLabel *textMessageLabel;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *likeCountLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *heartImageView;
 
+@property (nonatomic, assign) id<NCHeartDelegate> heartDelegate;
+@property (nonatomic, assign) id<NCTableSpriteDelegate> tableSpriteDelegate;
+@property (nonatomic, assign) id<NCMessageNameLabelDelegate> messageNameLabelDelegate;
 
 @end

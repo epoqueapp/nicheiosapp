@@ -21,4 +21,8 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, assign) id<NCSpritesViewControllerDelegate> delegate;
 
+@property (nonatomic, weak) IBOutlet UIImageView *clockImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *minuteImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *hourImageView;
+
 @end

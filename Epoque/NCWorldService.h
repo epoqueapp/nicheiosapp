@@ -1,26 +1,19 @@
 //
 //  NCWorldService.h
-//  Niche
+//  Epoque
 //
-//  Created by Maximilian Alexander on 3/29/15.
+//  Created by Maximilian Alexander on 5/3/15.
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "WorldModel.h"
+
 @interface NCWorldService : NSObject
 
-+(id)sharedInstance;
-
--(RACSignal *)createWorld:(WorldModel *)worldModel;
--(RACSignal *)updateWorld:(WorldModel *)worldModel;
--(RACSignal *)deleteWorldWithId:(NSString *)worldId;
--(RACSignal *)getWorldById:(NSString *)worldId;
-
--(RACSignal *)joinWorldById:(NSString *)worldId;
--(RACSignal *)unjoinWorldById:(NSString *)worldId;
-
 -(RACSignal *)searchWorlds:(NSString *)searchTerm;
--(RACSignal *)getMyWorlds;
+-(RACSignal *)getFavoritedWorlds;
+-(RACSignal *)getDefaultWorlds;
+
++(id)sharedInstance;
 
 @end

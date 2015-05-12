@@ -9,7 +9,6 @@
 #import "NCCreateNewWorldViewController.h"
 #import "NCUploadService.h"
 #import "NCFireService.h"
-#import "NCWorldService.h"
 #import "NCFormColorCell.h"
 #import <WEPopover/WEPopoverController.h>
 @interface NCCreateNewWorldViewController ()
@@ -18,9 +17,7 @@
 
 @implementation NCCreateNewWorldViewController{
     NCUploadService *uploadService;
-    NCWorldService *worldService;
     NCFireService *fireService;
-    Mixpanel *mixpanel;
 }
 
 static NSString *yesStopTitle = @"Yes, I want to stop";
@@ -30,12 +27,10 @@ static NSString *libraryTitle = @"Library";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    mixpanel = [Mixpanel sharedInstance];
     self.colorElementType = kBackground;
     
     uploadService = [NCUploadService sharedInstance];
     fireService = [NCFireService sharedInstance];
-    worldService = [NCWorldService sharedInstance];
     
     NCCreateWorldForm *form = [[NCCreateWorldForm alloc]init];
     
@@ -46,6 +41,9 @@ static NSString *libraryTitle = @"Library";
     self.tableView.separatorColor = [UIColor clearColor];
     self.title = @"CREATE A NEW WORLD";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"close_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissButtonDidClick:)];
+    
+    self.view.backgroundColor = [UIColor blackColor];
+    self.tableView.backgroundColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +51,8 @@ static NSString *libraryTitle = @"Library";
 }
 
 -(void)submitButtonDidTap{
-    [mixpanel track:@"Create New World Button Did Click"];
+    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    [Amplitude logEvent:@"Create New World Button Did Click"];
     NCCreateWorldForm *form = (NCCreateWorldForm*)self.formController.form;
     if (!form.isValid) {
         [[[UIAlertView alloc]initWithTitle:@"Uh Oh" message:@"Give this world some information! Give it a name and description" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil]show];
@@ -61,23 +60,41 @@ static NSString *libraryTitle = @"Library";
     }
     [NCLoadingView showInView:self.view withTitleText:@"Creating World..."];
     @weakify(self);
-    [mixpanel timeEvent:@"Create New World"];
+    [Amplitude logEvent:@"Create New World"];
     [[[uploadService uploadImage:form.emblemImage] flattenMap:^RACStream *(NSString *imageUrl) {
+        @strongify(self);
         WorldModel *worldModel = [[WorldModel alloc]init];
         worldModel.name = form.name;
         worldModel.detail = form.worldDescription;
         worldModel.imageUrl = imageUrl;
-        worldModel.tags = @[];
-        worldModel.isPrivate = form.isPrivate;
-        return [worldService createWorld:worldModel];
+        worldModel.passcode = @"";
+        worldModel.favoritedUserIds = @[myUserId];
+        worldModel.moderatorUserIds = @[myUserId];
+        worldModel.memberUserIds = @[myUserId];
+        return [self createWorld:worldModel];
     }] subscribeNext:^(id x) {
         @strongify(self);
-        [mixpanel track:@"Create New World" properties:x];
+        [Amplitude logEvent:@"Create New World" withEventProperties:x];
         [NCLoadingView hideAllFromView:self.view];
         [self commitDismiss];
     } error:^(NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Uh oh" message:@"We encountered an error creating your world." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [alertView show];
+    }];
+}
+
+-(RACSignal *)createWorld:(WorldModel *)worldModel{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [fireService.worldsRef.childByAutoId setValue:[worldModel toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
+            if(error){
+                [subscriber sendError:error];
+            }else{
+                worldModel.worldId = ref.key;
+                [subscriber sendNext:worldModel];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
     }];
 }
 

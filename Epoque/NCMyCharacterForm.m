@@ -40,20 +40,11 @@
              };
 }
 
--(NSDictionary *)obscurityField{
-    
-    NSMutableArray *arrayOfOptions = [NSMutableArray array];
-    for (int i = 0; i < 26; i++) {
-        [arrayOfOptions addObject:@(i)];
-    }
-    
+-(NSDictionary *)isObscuringField{
     return @{
+             FXFormFieldTitle: @"Obscure My Location?",
              @"textLabel.font": [UIFont fontWithName:kTrocchiBoldFontName size:18.0],
              @"textLabel.textColor": [UIColor lightGrayColor],
-             FXFormFieldType: FXFormFieldTypeUnsigned,
-             FXFormFieldTitle: @"Obscurity *",
-             @"textField.textColor": [UIColor whiteColor],
-             @"textField.font": [UIFont fontWithName:kTrocchiFontName size:16.0],
              @"backgroundColor": [UIColor clearColor]
              };
 }

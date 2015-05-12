@@ -7,25 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageModel.h"
 
 @interface NCUserDetailViewController : UIViewController
 
-@property (nonatomic, copy) NSString *userId;
-@property (nonatomic, copy) NSString *userName;
-@property (nonatomic, copy) NSString *userAbout;
-@property (nonatomic, copy) NSString *spriteImageUrl;
-@property (nonatomic, copy) NSString *messageText;
-@property (nonatomic, copy) NSString *messageImageUrl;
-@property (nonatomic, copy) NSDate *timestamp;
-
-
 @property (nonatomic, weak) IBOutlet UIImageView *spriteImageView;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UITextView *aboutTextView;
 @property (nonatomic, weak) IBOutlet UITextView *messageTextView;
-@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *messageImageView;
-@property (nonatomic, weak) IBOutlet UIButton *privateMessageButton;
 
+
+@property (nonatomic, strong) MessageModel *messageModel;
 
 @end

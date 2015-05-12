@@ -10,17 +10,15 @@
 #import "NCEditWorldForm.h"
 #import "NCUploadService.h"
 #import "NCFireService.h"
-#import "NCWorldService.h"
 #import "NCFormColorCell.h"
 @interface NCEditWorldViewController ()
 
 @end
 
 @implementation NCEditWorldViewController{
-    Mixpanel *mixpanel;
     NCUploadService *uploadService;
-    NCWorldService *worldService;
     NCFireService *fireService;
+    BOOL shouldUpload;
 }
 
 static NSString *yesStopTitle = @"Yes, I want to stop";
@@ -33,18 +31,15 @@ static NSString *libraryTitle = @"Library";
     // Do any additional setup after loading the view from its nib.
     [self setUpBackButton];
     self.title = @"EDIT WORLD";
-    
-    mixpanel = [Mixpanel sharedInstance];
+    shouldUpload = NO;
     
     uploadService = [NCUploadService sharedInstance];
     fireService = [NCFireService sharedInstance];
-    worldService = [NCWorldService sharedInstance];
     
     NCEditWorldForm *form = [[NCEditWorldForm alloc]init];
     
     form.name = self.worldModel.name;
     form.worldDescription = self.worldModel.detail;
-    form.isPrivate = self.worldModel.isPrivate;
     
     @weakify(self);
     [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.worldModel.imageUrl] options:9 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
@@ -56,11 +51,12 @@ static NSString *libraryTitle = @"Library";
         }
         [self.tableView reloadData];
     }];
-    
     self.formController = [[FXFormController alloc]init];
     self.formController.tableView = self.tableView;
     self.formController.form = form;
     self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 
@@ -99,6 +95,7 @@ static NSString *libraryTitle = @"Library";
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    shouldUpload = YES;
     [picker dismissViewControllerAnimated:YES completion:^{}];
     UIImage *selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     NCEditWorldForm *form = (NCEditWorldForm *)self.formController.form;
@@ -117,25 +114,32 @@ static NSString *libraryTitle = @"Library";
 }
 
 -(void)submitButtonDidTap{
-    [mixpanel track:@"Edit World Button Did Click"];
+    [Amplitude logEvent:@"Edit World Button Did Click"];
     NCEditWorldForm *form = (NCEditWorldForm *)self.formController.form;
     if (!form.isValid) {
         [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Hey! Fill in all the information or else we can't update your world!" duration:2.0];
         return;
     }
     @weakify(self);
-    [NCLoadingView showInView:self.view];
-    [[[uploadService uploadImage:form.emblemImage] flattenMap:^RACStream *(NSString *value) {
+    [NCLoadingView showInView:self.view withTitleText:@"Uploading your image..."];
+    RACSignal *imageSignal;
+    if (shouldUpload) {
+        imageSignal = [uploadService uploadImage:form.emblemImage];
+    }else{
+        imageSignal = [RACSignal return:self.worldModel.imageUrl];
+    }
+    
+    [[imageSignal flattenMap:^RACStream *(NSString *value) {
         @strongify(self);
         WorldModel *worldModelToUpdate = [[WorldModel alloc]init];
         worldModelToUpdate.worldId = [self.worldModel.worldId copy];
         worldModelToUpdate.name = form.name;
         worldModelToUpdate.imageUrl = [value copy];
         worldModelToUpdate.detail = form.worldDescription;
-        worldModelToUpdate.isPrivate = form.isPrivate;
+        worldModelToUpdate.passcode = @"";
         worldModelToUpdate.isDefault = self.worldModel.isDefault;
         
-        return [worldService updateWorld:worldModelToUpdate];
+        return [self updateWorld:worldModelToUpdate];
     }] subscribeNext:^(id x) {
         @strongify(self);
         [NCLoadingView hideAllFromView:self.view];
@@ -145,6 +149,20 @@ static NSString *libraryTitle = @"Library";
         @strongify(self);
         [NCLoadingView hideAllFromView:self.view];
         [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Yuck. We ran into an issue updating your world's information." duration:2.0];
+    }];
+}
+
+-(RACSignal *)updateWorld:(WorldModel *)worldModel{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[fireService.worldsRef childByAppendingPath:worldModel.worldId] updateChildValues:[worldModel toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
+            if (error) {
+                [subscriber sendError:error];
+            }else{
+                [subscriber sendNext:worldModel];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
     }];
 }
 

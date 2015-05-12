@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCSpritesViewController">
             <connections>
+                <outlet property="clockImageView" destination="LoP-nd-VHu" id="hhS-Gj-FFq"/>
                 <outlet property="collectionView" destination="coB-GS-Bmm" id="Eaz-Ne-YwD"/>
+                <outlet property="hourImageView" destination="Ups-bk-DK2" id="te1-tN-A4Y"/>
+                <outlet property="minuteImageView" destination="cKr-Ki-tQh" id="PUA-6J-aDc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,6 +18,27 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ornate-clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="LoP-nd-VHu">
+                    <rect key="frame" x="150" y="150" width="300" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="oUM-9O-Gw8"/>
+                        <constraint firstAttribute="height" constant="300" id="qtU-J2-mXT"/>
+                    </constraints>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="ornate_minute_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="cKr-Ki-tQh">
+                    <rect key="frame" x="208" y="208" width="184" height="184"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="184" id="U6N-ng-unZ"/>
+                        <constraint firstAttribute="height" constant="184" id="pC2-hB-ZEE"/>
+                    </constraints>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="ornate_hour_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ups-bk-DK2">
+                    <rect key="frame" x="175" y="174" width="251" height="251"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="251" id="FCU-mk-7E7"/>
+                        <constraint firstAttribute="height" constant="251" id="zJM-c5-WfW"/>
+                    </constraints>
+                </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="coB-GS-Bmm">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="15" id="hlm-AS-C76">
@@ -31,11 +55,22 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="LoP-nd-VHu" secondAttribute="centerX" id="2th-Yt-R6H"/>
                 <constraint firstAttribute="bottom" secondItem="coB-GS-Bmm" secondAttribute="bottom" id="7S0-wt-DPh"/>
+                <constraint firstAttribute="centerY" secondItem="Ups-bk-DK2" secondAttribute="centerY" constant="0.5" id="BpM-Z3-aDm"/>
+                <constraint firstAttribute="centerX" secondItem="Ups-bk-DK2" secondAttribute="centerX" constant="-0.5" id="Cfy-hD-H5U"/>
                 <constraint firstItem="coB-GS-Bmm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pu4-6o-W74"/>
+                <constraint firstAttribute="centerX" secondItem="cKr-Ki-tQh" secondAttribute="centerX" id="SkP-YH-igc"/>
                 <constraint firstAttribute="trailing" secondItem="coB-GS-Bmm" secondAttribute="trailing" id="ZDa-wY-Z84"/>
                 <constraint firstItem="coB-GS-Bmm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="a6z-UD-LnZ"/>
+                <constraint firstAttribute="centerY" secondItem="cKr-Ki-tQh" secondAttribute="centerY" id="bjC-wo-kGC"/>
+                <constraint firstAttribute="centerY" secondItem="LoP-nd-VHu" secondAttribute="centerY" id="dbS-qb-qg9"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="ornate-clock.png" width="300" height="300"/>
+        <image name="ornate_hour_hand.png" width="300" height="300"/>
+        <image name="ornate_minute_hand.png" width="250" height="250"/>
+    </resources>
 </document>

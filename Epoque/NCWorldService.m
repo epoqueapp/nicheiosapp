@@ -1,14 +1,14 @@
 //
 //  NCWorldService.m
-//  Niche
+//  Epoque
 //
-//  Created by Maximilian Alexander on 3/29/15.
+//  Created by Maximilian Alexander on 5/3/15.
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 
 #import "NCWorldService.h"
+#import "WorldModel.h"
 #import <AFNetworking-RACExtensions/AFHTTPRequestOperationManager+RACSupport.h>
-#import "AFHTTPRequestOperationManager+EpoqueManager.h"
 @implementation NCWorldService{
     NSString *apiRootUrl;
 }
@@ -23,79 +23,108 @@
 }
 
 -(id)init{
-    self = [super init] ;
+    self = [super init];
     if (self) {
         apiRootUrl = @"https://prod.epoquecore.com";
     }
     return self;
 }
 
-
--(RACSignal *)createWorld:(WorldModel *)worldModel{
-    NSDictionary *payload = @{
-                              @"name": worldModel.name,
-                              @"detail": worldModel.detail,
-                              @"isPrivate": @(worldModel.isPrivate),
-                              @"tags": worldModel.tags,
-                              @"imageUrl": worldModel.imageUrl
-                              };
-    NSString *postUrl = [apiRootUrl stringByAppendingString:@"/worlds"];
-    return [[AFHTTPRequestOperationManager epoqueManager] rac_POST:postUrl parameters:payload];
-}
-
--(RACSignal *)updateWorld:(WorldModel *)worldModel{
-    NSString *worldId = worldModel.worldId;
-    NSString *putUrl = [[apiRootUrl stringByAppendingString:@"/worlds/"] stringByAppendingString:worldId];
+-(RACSignal *)getFavoritedWorlds {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@epoque/world/_search", kBonsaiRoot];
+    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    NSDictionary *parameters = @{
+                                 @"query": @{
+                                         @"filtered": @{
+                                             @"filter": @{
+                                                     @"term": @{
+                                                             @"favoritedUserIds": myUserId}
+                                             }
+                                        }
+                                    }
+                                 };
     
-    NSDictionary *payload = @{
-                              @"name": worldModel.name,
-                              @"detail": worldModel.detail,
-                              @"isPrivate": @(worldModel.isPrivate),
-                              @"isDefault": @(worldModel.isDefault),
-                              @"tags": @[],
-                              @"imageUrl": worldModel.imageUrl
-                              };
     
-    return [[AFHTTPRequestOperationManager epoqueManager] rac_PUT:putUrl parameters:payload];
-}
-
--(RACSignal *)getMyWorlds{
-    NSString *getMyWorldsUrl = [apiRootUrl stringByAppendingString:@"/users/me/worlds"];
-    return [[[AFHTTPRequestOperationManager epoqueManager] rac_GET:getMyWorldsUrl parameters:nil] map:^id(id value) {
-        NSArray *worldModels = [WorldModel arrayOfModelsFromDictionaries:value];
-        return worldModels;
+    return [[manager rac_POST:url parameters:parameters] map:^id(id value) {
+        NSArray *hits = value[@"hits"][@"hits"];
+        NSMutableArray *worlds = [NSMutableArray array];
+        for (NSDictionary *dic in hits) {
+            WorldModel *worldModel = [[WorldModel alloc]initWithHit:dic];
+            [worlds addObject:worldModel];
+        }
+        return worlds;
     }];
 }
 
--(RACSignal *)deleteWorldWithId:(NSString *)worldId{
-    NSString *deleteUrl = [[apiRootUrl stringByAppendingString:@"/worlds/"] stringByAppendingString:worldId];
-    return [[AFHTTPRequestOperationManager epoqueManager] rac_DELETE:deleteUrl parameters:nil];
-}
-
--(RACSignal *)getWorldById:(NSString *)worldId{
-    NSString *url = [[apiRootUrl stringByAppendingString:@"/worlds/"] stringByAppendingString:worldId];
-    return [[[AFHTTPRequestOperationManager epoqueManager] rac_GET:url parameters:nil] map:^id(id value) {
-        return [[WorldModel alloc]initWithDictionary:value error:nil];
-    }];
-}
-
--(RACSignal *)joinWorldById:(NSString *)worldId{
-    NSString *url = [NSString stringWithFormat:@"%@/worlds/%@/join", apiRootUrl, worldId];
-    return [[[AFHTTPRequestOperationManager epoqueManager] rac_PUT:url parameters:nil] map:^id(id value) {
-        return [[WorldModel alloc]initWithDictionary:value error:nil];
-    }];
-}
-
--(RACSignal *)unjoinWorldById:(NSString *)worldId{
-    NSString *url = [NSString stringWithFormat:@"%@/worlds/%@/unjoin", apiRootUrl, worldId];
-    return [[[AFHTTPRequestOperationManager epoqueManager] rac_PUT:url parameters:nil] map:^id(id value) {
-        return [[WorldModel alloc]initWithDictionary:value error:nil];
+-(RACSignal *)getDefaultWorlds {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@epoque/world/_search", kBonsaiRoot];
+    NSDictionary *parameters = @{
+                                 @"query": @{
+                                         @"filtered": @{
+                                                 @"filter": @{
+                                                         @"term": @{
+                                                                 @"isDefault": @"true"}
+                                                         }
+                                                 }
+                                         }
+                                 };
+    
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        AFHTTPRequestOperation *operation = [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSArray *hits = responseObject[@"hits"][@"hits"];
+            NSMutableArray *worlds = [NSMutableArray array];
+            for (NSDictionary *dic in hits) {
+                WorldModel *worldModel = [[WorldModel alloc]initWithHit:dic];
+                [worlds addObject:worldModel];
+            }
+            [subscriber sendNext:worlds];
+            [subscriber sendCompleted];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [subscriber sendError:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [operation cancel];
+        }];
     }];
 }
 
 -(RACSignal *)searchWorlds:(NSString *)searchTerm{
-    NSString *getUrl = [apiRootUrl stringByAppendingString:@"/worlds"];
-    return [[AFHTTPRequestOperationManager epoqueManager] rac_GET:getUrl parameters:@{@"searchTerm": searchTerm}];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@epoque/world/_search", kBonsaiRoot];
+    NSDictionary *parameters = @{
+                                 @"query": @{
+                                         @"fuzzy_like_this": @{
+                                                 @"fields": @[@"name", @"detail"],
+                                                 @"like_text": searchTerm,
+                                                 @"max_query_terms": @(24),
+                                                 @"fuzziness": @(2)
+                                         }
+                                         }
+                                 };
+    
+    
+                                 return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                                     AFHTTPRequestOperation *operation = [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                         NSArray *hits = responseObject[@"hits"][@"hits"];
+                                         NSMutableArray *worlds = [NSMutableArray array];
+                                         for (NSDictionary *dic in hits) {
+                                             WorldModel *worldModel = [[WorldModel alloc]initWithHit:dic];
+                                             [worlds addObject:worldModel];
+                                         }
+                                         [subscriber sendNext:worlds];
+                                         [subscriber sendCompleted];
+                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                         [subscriber sendError:error];
+                                     }];
+                                     return [RACDisposable disposableWithBlock:^{
+                                         [operation cancel];
+                                     }];
+                                 }]; 
 }
 
 @end
