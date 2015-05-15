@@ -14,7 +14,6 @@
 #import "NCNavigationController.h"
 #import "NCLeftMenuViewController.h"
 #import "NCWorldChatViewController.h"
-#import "NCPrivateChatViewController.h"
 #import <RESideMenu/RESideMenu.h>
 #import <AWSCore/AWSCore.h>
 @interface AppDelegate ()
@@ -39,17 +38,8 @@
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     [self submitDeviceToken];
     [self observeUserChange];
-   
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    NCWelcomeViewController *welcomeViewController = [[NCWelcomeViewController alloc]init];
-    NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
-    NCNavigationController  *navigationController;
-    NSString *userId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    if (userId != nil) {
-        navigationController = [[NCNavigationController alloc]initWithRootViewController:worldsViewController];
-    }else{
-        navigationController = [[NCNavigationController alloc]initWithRootViewController:welcomeViewController];
-    }
+    NCNavigationController  *navigationController = [self navigationControllerFromPush:userInfo];
     NCLeftMenuViewController *leftMenuViewController = [[NCLeftMenuViewController alloc] init];
     RESideMenu *sideMenuViewController = [[RESideMenu alloc]initWithContentViewController:navigationController leftMenuViewController:leftMenuViewController rightMenuViewController:nil];
     self.window.rootViewController = sideMenuViewController;
@@ -112,6 +102,27 @@
     [Amplitude logEvent:@"Failed To Register For Remote Notification" withEventProperties:@{@"localizedError": error.localizedDescription}];
 }
 
+-(NCNavigationController *)navigationControllerFromPush:(NSDictionary *)userInfo{
+    if ([NSUserDefaults standardUserDefaults].userModel == nil) {
+        return [[NCNavigationController alloc]initWithRootViewController:[[NCWelcomeViewController alloc] init]];
+    }
+    NSString *pushType = userInfo[@"pushType"];
+    if ([pushType isEqualToString:@"world"]) {
+        NSString *worldId = userInfo[@"worldId"];
+        [Amplitude logEvent:@"Reacted To Push Notification" withEventProperties:@{@"pushType":pushType, @"worldId": worldId}];
+        NCWorldChatViewController *worldChatViewController = [NCWorldChatViewController sharedInstance];
+        worldChatViewController.worldId = worldId;
+        NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
+        NCNavigationController *navigationController = [[NCNavigationController alloc]init];
+        [navigationController setViewControllers:@[worldsViewController, worldChatViewController]];
+        return navigationController;
+    }else{
+        NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
+        NCNavigationController *navigationController = [[NCNavigationController alloc]init];
+        [navigationController setViewControllers:@[worldsViewController]];
+        return navigationController;
+    }
+}
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     if ( application.applicationState == UIApplicationStateActive ){

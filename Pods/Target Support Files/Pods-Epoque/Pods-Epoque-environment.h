@@ -96,6 +96,12 @@
 #define COCOAPODS_VERSION_MINOR_CSNotificationView 5
 #define COCOAPODS_VERSION_PATCH_CSNotificationView 4
 
+// Cloudinary
+#define COCOAPODS_POD_AVAILABLE_Cloudinary
+#define COCOAPODS_VERSION_MAJOR_Cloudinary 1
+#define COCOAPODS_VERSION_MINOR_Cloudinary 0
+#define COCOAPODS_VERSION_PATCH_Cloudinary 13
+
 // ColorPopover
 #define COCOAPODS_POD_AVAILABLE_ColorPopover
 #define COCOAPODS_VERSION_MAJOR_ColorPopover 0
@@ -269,6 +275,12 @@
 #define COCOAPODS_VERSION_MAJOR_TMCache 1
 #define COCOAPODS_VERSION_MINOR_TMCache 2
 #define COCOAPODS_VERSION_PATCH_TMCache 4
+
+// TPKeyboardAvoiding
+#define COCOAPODS_POD_AVAILABLE_TPKeyboardAvoiding
+#define COCOAPODS_VERSION_MAJOR_TPKeyboardAvoiding 1
+#define COCOAPODS_VERSION_MINOR_TPKeyboardAvoiding 2
+#define COCOAPODS_VERSION_PATCH_TPKeyboardAvoiding 6
 
 // TTTAttributedLabel
 #define COCOAPODS_POD_AVAILABLE_TTTAttributedLabel

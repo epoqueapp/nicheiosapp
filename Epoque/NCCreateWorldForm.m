@@ -45,14 +45,12 @@
 }
 
 
--(NSDictionary *)passcodeField{
+-(NSDictionary *)isPrivateField{
     return @{
+             FXFormFieldTitle: @"Private?",
              @"textLabel.font": [UIFont fontWithName:kTrocchiBoldFontName size:18.0],
              @"textLabel.textColor": [UIColor lightGrayColor],
-             @"textField.textColor": [UIColor whiteColor],
-             @"textField.font": [UIFont fontWithName:kTrocchiFontName size:16.0],
-             @"backgroundColor": [UIColor clearColor],
-             FXFormFieldPlaceholder: @"Leave Blank For Public Worlds"
+             @"backgroundColor": [UIColor clearColor]
              };
 }
 

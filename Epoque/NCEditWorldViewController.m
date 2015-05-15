@@ -40,6 +40,7 @@ static NSString *libraryTitle = @"Library";
     
     form.name = self.worldModel.name;
     form.worldDescription = self.worldModel.detail;
+    form.isPrivate = self.worldModel.isPrivate;
     
     @weakify(self);
     [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.worldModel.imageUrl] options:9 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
@@ -136,7 +137,7 @@ static NSString *libraryTitle = @"Library";
         worldModelToUpdate.name = form.name;
         worldModelToUpdate.imageUrl = [value copy];
         worldModelToUpdate.detail = form.worldDescription;
-        worldModelToUpdate.passcode = @"";
+        worldModelToUpdate.isPrivate = form.isPrivate;
         worldModelToUpdate.isDefault = self.worldModel.isDefault;
         
         return [self updateWorld:worldModelToUpdate];

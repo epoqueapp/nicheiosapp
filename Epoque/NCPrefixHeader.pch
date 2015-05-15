@@ -21,6 +21,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
 #import <CSNotificationView/CSNotificationView.h>
+#import <Cloudinary/Cloudinary.h>
 #import "UIViewController+BarButtons.h"
 #import "NSDate+JavaScriptTimestamp.h"
 #import "UIView+RotateAnimation.h"
@@ -35,9 +36,9 @@
 #import "NCSoundEffect.h"
 #import "UITableView+RowAnimations.h"
 #import "UIColor+LovelyColors.h"
-
+#import "NSDate+Recency.h"
 #define kBonsaiRoot @"https://xf7292wg:zca4p3lc3f3pzx49@redwood-4376297.us-east-1.bonsai.io/"
-
+#define kFirebaseRoot @"https://niche.firebaseio.com"
 #endif
 
 #ifdef DEBUG

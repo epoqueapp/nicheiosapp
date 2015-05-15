@@ -18,8 +18,6 @@
 		E30A159D1AD3A3F800463931 /* shout.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A159C1AD3A3F800463931 /* shout.wav */; };
 		E30A15A01AD3A40700463931 /* NCSoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = E30A159F1AD3A40700463931 /* NCSoundEffect.m */; };
 		E30A15A21AD3A67A00463931 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E30A15A11AD3A67A00463931 /* placeholder.jpg */; };
-		E30A15B31AD46C7500463931 /* NCUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E30A15B11AD46C7500463931 /* NCUserDetailViewController.m */; };
-		E30A15B41AD46C7500463931 /* NCUserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B21AD46C7500463931 /* NCUserDetailViewController.xib */; };
 		E30A15C41AD4A60700463931 /* Menu and Interface Sound 14.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B61AD4A60700463931 /* Menu and Interface Sound 14.wav */; };
 		E30A15C51AD4A60700463931 /* Menu and Interface Sound 13.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B71AD4A60700463931 /* Menu and Interface Sound 13.wav */; };
 		E30A15C61AD4A60800463931 /* sent.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15B81AD4A60700463931 /* sent.wav */; };
@@ -35,19 +33,14 @@
 		E30A15D01AD4A60800463931 /* Menu and Interface Sound 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15C21AD4A60700463931 /* Menu and Interface Sound 2.wav */; };
 		E30A15D11AD4A60800463931 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15C31AD4A60700463931 /* success.wav */; };
 		E30A15D31AD4A61700463931 /* proud.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15D21AD4A61700463931 /* proud.wav */; };
-		E30A15D81AD4CB0D00463931 /* NCInviteUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E30A15D61AD4CB0D00463931 /* NCInviteUsersViewController.m */; };
-		E30A15D91AD4CB0D00463931 /* NCInviteUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30A15D71AD4CB0D00463931 /* NCInviteUsersViewController.xib */; };
 		E30A15DF1AD4DF8D00463931 /* SubmitPrivateMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E30A15DE1AD4DF8D00463931 /* SubmitPrivateMessageModel.m */; };
 		E30DC0581B0172BD000D6A30 /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = E30DC0571B0172BD000D6A30 /* splash_screen.png */; };
-		E34360F11AD4F98100203D7D /* NCPrivateChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E34360EF1AD4F98100203D7D /* NCPrivateChatViewController.m */; };
 		E34360F41AD51E6500203D7D /* flare_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E34360F31AD51E6500203D7D /* flare_bg.jpg */; };
 		E34360F61AD51F7700203D7D /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E34360F51AD51F7700203D7D /* stars.jpg */; };
 		E34360F81AD520F000203D7D /* key_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34360F71AD520F000203D7D /* key_icon@3x.png */; };
 		E34360FA1AD59EC500203D7D /* pencil_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34360F91AD59EC500203D7D /* pencil_icon@3x.png */; };
 		E34360FC1AD7B88100203D7D /* table_shout.caf in Resources */ = {isa = PBXBuildFile; fileRef = E34360FB1AD7B88100203D7D /* table_shout.caf */; };
 		E34361041AD878DD00203D7D /* purple_stars_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E34361031AD878DD00203D7D /* purple_stars_background.jpg */; };
-		E381764F1ACC373100278DDE /* NCConversationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E381764D1ACC373100278DDE /* NCConversationsViewController.m */; };
-		E38176501ACC373100278DDE /* NCConversationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E381764E1ACC373100278DDE /* NCConversationsViewController.xib */; };
 		E38176551ACC380000278DDE /* NCConversationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E38176531ACC380000278DDE /* NCConversationTableViewCell.m */; };
 		E38176561ACC380000278DDE /* NCConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E38176541ACC380000278DDE /* NCConversationTableViewCell.xib */; };
 		E38176591ACC3BFC00278DDE /* ConversationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E38176581ACC3BFC00278DDE /* ConversationModel.m */; };
@@ -170,19 +163,21 @@
 		E3B63A531ACAEAB90045369B /* media_bubble@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B63A521ACAEAB90045369B /* media_bubble@3x.png */; };
 		E3B63A581ACB01E60045369B /* NCFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B63A561ACB01E60045369B /* NCFeedbackViewController.m */; };
 		E3B63A591ACB01E60045369B /* NCFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B63A571ACB01E60045369B /* NCFeedbackViewController.xib */; };
-		E3B63A5E1ACB165D0045369B /* NCUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B63A5C1ACB165D0045369B /* NCUsersViewController.m */; };
-		E3B63A5F1ACB165D0045369B /* NCUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B63A5D1ACB165D0045369B /* NCUsersViewController.xib */; };
 		E3B63A671ACB195F0045369B /* NCUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B63A651ACB195F0045369B /* NCUserTableViewCell.m */; };
 		E3B63A681ACB195F0045369B /* NCUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B63A661ACB195F0045369B /* NCUserTableViewCell.xib */; };
 		E3BFCAE61ADE6919002CE6F9 /* blue_planet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3BFCAE51ADE6919002CE6F9 /* blue_planet.jpg */; };
 		E3BFCAE91AE09CF9002CE6F9 /* UITableView+RowAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */; };
 		E3BFCAEC1AE09E4C002CE6F9 /* UIColor+LovelyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */; };
-		E3E9A0E11AF9BBD700B0B6B8 /* NCMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E9A0DF1AF9BBD700B0B6B8 /* NCMessageDetailViewController.m */; };
-		E3E9A0E21AF9BBD700B0B6B8 /* NCMessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E01AF9BBD700B0B6B8 /* NCMessageDetailViewController.xib */; };
 		E3E9A0E41AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */; };
 		E3E9A0E61AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */; };
 		E3E9A0E91AFDBC3A00B0B6B8 /* heart_sprite_color.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */; };
 		E3E9A0EA1AFDBC3A00B0B6B8 /* heart_sprite_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E81AFDBC3A00B0B6B8 /* heart_sprite_grey.png */; };
+		E3F7D7291B047D1500432938 /* guitar_jingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7281B047D1500432938 /* guitar_jingle.mp3 */; };
+		E3F7D72C1B047FD600432938 /* NSDate+Recency.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D72B1B047FD600432938 /* NSDate+Recency.m */; };
+		E3F7D7311B04848A00432938 /* NCNameChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D72F1B04848A00432938 /* NCNameChoiceViewController.m */; };
+		E3F7D7321B04848A00432938 /* NCNameChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7301B04848A00432938 /* NCNameChoiceViewController.xib */; };
+		E3F7D7371B05D2F300432938 /* NCWorldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D7351B05D2F300432938 /* NCWorldCollectionViewCell.m */; };
+		E3F7D7381B05D2F300432938 /* NCWorldCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7361B05D2F300432938 /* NCWorldCollectionViewCell.xib */; };
 		E3FAB1E61AD8F8130018BC07 /* auto_update_location_button_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */; };
 		E3FAB1E71AD8F8130018BC07 /* auto_update_location_button_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */; };
 		E3FAB1EC1AD922730018BC07 /* NCEditWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1EA1AD922730018BC07 /* NCEditWorldViewController.m */; };
@@ -190,8 +185,6 @@
 		E3FAB1F01AD92A0D0018BC07 /* NCEditWorldForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1EF1AD92A0D0018BC07 /* NCEditWorldForm.m */; };
 		E3FAB1F31ADB31B50018BC07 /* PrivateMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1F21ADB31B50018BC07 /* PrivateMessageModel.m */; };
 		E3FAB1F51ADC7DB70018BC07 /* user_options@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1F41ADC7DB70018BC07 /* user_options@3x.png */; };
-		E3FAB1FA1ADCA7EF0018BC07 /* NCReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1F81ADCA7EF0018BC07 /* NCReportViewController.m */; };
-		E3FAB1FB1ADCA7EF0018BC07 /* NCReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1F91ADCA7EF0018BC07 /* NCReportViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,9 +216,6 @@
 		E30A159E1AD3A40700463931 /* NCSoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCSoundEffect.h; sourceTree = "<group>"; };
 		E30A159F1AD3A40700463931 /* NCSoundEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCSoundEffect.m; sourceTree = "<group>"; };
 		E30A15A11AD3A67A00463931 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
-		E30A15B01AD46C7500463931 /* NCUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCUserDetailViewController.h; sourceTree = "<group>"; };
-		E30A15B11AD46C7500463931 /* NCUserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCUserDetailViewController.m; sourceTree = "<group>"; };
-		E30A15B21AD46C7500463931 /* NCUserDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCUserDetailViewController.xib; sourceTree = "<group>"; };
 		E30A15B61AD4A60700463931 /* Menu and Interface Sound 14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu and Interface Sound 14.wav"; sourceTree = "<group>"; };
 		E30A15B71AD4A60700463931 /* Menu and Interface Sound 13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu and Interface Sound 13.wav"; sourceTree = "<group>"; };
 		E30A15B81AD4A60700463931 /* sent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sent.wav; sourceTree = "<group>"; };
@@ -241,25 +231,17 @@
 		E30A15C21AD4A60700463931 /* Menu and Interface Sound 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu and Interface Sound 2.wav"; sourceTree = "<group>"; };
 		E30A15C31AD4A60700463931 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
 		E30A15D21AD4A61700463931 /* proud.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = proud.wav; sourceTree = "<group>"; };
-		E30A15D51AD4CB0D00463931 /* NCInviteUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCInviteUsersViewController.h; sourceTree = "<group>"; };
-		E30A15D61AD4CB0D00463931 /* NCInviteUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCInviteUsersViewController.m; sourceTree = "<group>"; };
-		E30A15D71AD4CB0D00463931 /* NCInviteUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCInviteUsersViewController.xib; sourceTree = "<group>"; };
 		E30A15DD1AD4DF8D00463931 /* SubmitPrivateMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitPrivateMessageModel.h; sourceTree = "<group>"; };
 		E30A15DE1AD4DF8D00463931 /* SubmitPrivateMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitPrivateMessageModel.m; sourceTree = "<group>"; };
 		E30DC0571B0172BD000D6A30 /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
 		E30DC0591B01AC7C000D6A30 /* NCHeartDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCHeartDelegate.h; sourceTree = "<group>"; };
 		E30DC05A1B01C7A3000D6A30 /* NCTableSpriteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCTableSpriteDelegate.h; sourceTree = "<group>"; };
-		E34360EE1AD4F98100203D7D /* NCPrivateChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCPrivateChatViewController.h; sourceTree = "<group>"; };
-		E34360EF1AD4F98100203D7D /* NCPrivateChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCPrivateChatViewController.m; sourceTree = "<group>"; };
 		E34360F31AD51E6500203D7D /* flare_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flare_bg.jpg; sourceTree = "<group>"; };
 		E34360F51AD51F7700203D7D /* stars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stars.jpg; sourceTree = "<group>"; };
 		E34360F71AD520F000203D7D /* key_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon@3x.png"; sourceTree = "<group>"; };
 		E34360F91AD59EC500203D7D /* pencil_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil_icon@3x.png"; sourceTree = "<group>"; };
 		E34360FB1AD7B88100203D7D /* table_shout.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = table_shout.caf; sourceTree = "<group>"; };
 		E34361031AD878DD00203D7D /* purple_stars_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purple_stars_background.jpg; sourceTree = "<group>"; };
-		E381764C1ACC373100278DDE /* NCConversationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConversationsViewController.h; sourceTree = "<group>"; };
-		E381764D1ACC373100278DDE /* NCConversationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConversationsViewController.m; sourceTree = "<group>"; };
-		E381764E1ACC373100278DDE /* NCConversationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCConversationsViewController.xib; sourceTree = "<group>"; };
 		E38176521ACC380000278DDE /* NCConversationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConversationTableViewCell.h; sourceTree = "<group>"; };
 		E38176531ACC380000278DDE /* NCConversationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConversationTableViewCell.m; sourceTree = "<group>"; };
 		E38176541ACC380000278DDE /* NCConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCConversationTableViewCell.xib; sourceTree = "<group>"; };
@@ -441,9 +423,6 @@
 		E3B63A551ACB01E60045369B /* NCFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCFeedbackViewController.h; sourceTree = "<group>"; };
 		E3B63A561ACB01E60045369B /* NCFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCFeedbackViewController.m; sourceTree = "<group>"; };
 		E3B63A571ACB01E60045369B /* NCFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCFeedbackViewController.xib; sourceTree = "<group>"; };
-		E3B63A5B1ACB165D0045369B /* NCUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCUsersViewController.h; sourceTree = "<group>"; };
-		E3B63A5C1ACB165D0045369B /* NCUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCUsersViewController.m; sourceTree = "<group>"; };
-		E3B63A5D1ACB165D0045369B /* NCUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCUsersViewController.xib; sourceTree = "<group>"; };
 		E3B63A641ACB195F0045369B /* NCUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCUserTableViewCell.h; sourceTree = "<group>"; };
 		E3B63A651ACB195F0045369B /* NCUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCUserTableViewCell.m; sourceTree = "<group>"; };
 		E3B63A661ACB195F0045369B /* NCUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCUserTableViewCell.xib; sourceTree = "<group>"; };
@@ -452,14 +431,20 @@
 		E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RowAnimations.m"; sourceTree = "<group>"; };
 		E3BFCAEA1AE09E4C002CE6F9 /* UIColor+LovelyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LovelyColors.h"; sourceTree = "<group>"; };
 		E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LovelyColors.m"; sourceTree = "<group>"; };
-		E3E9A0DE1AF9BBD700B0B6B8 /* NCMessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMessageDetailViewController.h; sourceTree = "<group>"; };
-		E3E9A0DF1AF9BBD700B0B6B8 /* NCMessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCMessageDetailViewController.m; sourceTree = "<group>"; };
-		E3E9A0E01AF9BBD700B0B6B8 /* NCMessageDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCMessageDetailViewController.xib; sourceTree = "<group>"; };
 		E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dark_grunge_texture@3x.jpg"; sourceTree = "<group>"; };
 		E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shout_bubble_blue_gradient@2x.png"; sourceTree = "<group>"; };
 		E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_sprite_color.png; sourceTree = "<group>"; };
 		E3E9A0E81AFDBC3A00B0B6B8 /* heart_sprite_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_sprite_grey.png; sourceTree = "<group>"; };
 		E3F7D7271B01E6D900432938 /* NCMessageNameLabelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMessageNameLabelDelegate.h; sourceTree = "<group>"; };
+		E3F7D7281B047D1500432938 /* guitar_jingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = guitar_jingle.mp3; sourceTree = "<group>"; };
+		E3F7D72A1B047FD600432938 /* NSDate+Recency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Recency.h"; sourceTree = "<group>"; };
+		E3F7D72B1B047FD600432938 /* NSDate+Recency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Recency.m"; sourceTree = "<group>"; };
+		E3F7D72E1B04848A00432938 /* NCNameChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCNameChoiceViewController.h; sourceTree = "<group>"; };
+		E3F7D72F1B04848A00432938 /* NCNameChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCNameChoiceViewController.m; sourceTree = "<group>"; };
+		E3F7D7301B04848A00432938 /* NCNameChoiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCNameChoiceViewController.xib; sourceTree = "<group>"; };
+		E3F7D7341B05D2F300432938 /* NCWorldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldCollectionViewCell.h; sourceTree = "<group>"; };
+		E3F7D7351B05D2F300432938 /* NCWorldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldCollectionViewCell.m; sourceTree = "<group>"; };
+		E3F7D7361B05D2F300432938 /* NCWorldCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldCollectionViewCell.xib; sourceTree = "<group>"; };
 		E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auto_update_location_button_off@3x.png"; sourceTree = "<group>"; };
 		E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auto_update_location_button_on@3x.png"; sourceTree = "<group>"; };
 		E3FAB1E91AD922730018BC07 /* NCEditWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEditWorldViewController.h; sourceTree = "<group>"; };
@@ -470,9 +455,6 @@
 		E3FAB1F11ADB31B50018BC07 /* PrivateMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageModel.h; sourceTree = "<group>"; };
 		E3FAB1F21ADB31B50018BC07 /* PrivateMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageModel.m; sourceTree = "<group>"; };
 		E3FAB1F41ADC7DB70018BC07 /* user_options@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_options@3x.png"; sourceTree = "<group>"; };
-		E3FAB1F71ADCA7EF0018BC07 /* NCReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCReportViewController.h; sourceTree = "<group>"; };
-		E3FAB1F81ADCA7EF0018BC07 /* NCReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCReportViewController.m; sourceTree = "<group>"; };
-		E3FAB1F91ADCA7EF0018BC07 /* NCReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCReportViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,19 +507,10 @@
 			name = AboutViewController;
 			sourceTree = "<group>";
 		};
-		E30A15AF1AD46C6A00463931 /* UserDetailViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E30A15B01AD46C7500463931 /* NCUserDetailViewController.h */,
-				E30A15B11AD46C7500463931 /* NCUserDetailViewController.m */,
-				E30A15B21AD46C7500463931 /* NCUserDetailViewController.xib */,
-			);
-			name = UserDetailViewController;
-			sourceTree = "<group>";
-		};
 		E30A15B51AD4A5D300463931 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				E3F7D7281B047D1500432938 /* guitar_jingle.mp3 */,
 				E34360FB1AD7B88100203D7D /* table_shout.caf */,
 				E30A15D21AD4A61700463931 /* proud.wav */,
 				E30A15B61AD4A60700463931 /* Menu and Interface Sound 14.wav */,
@@ -557,35 +530,6 @@
 				E30A159C1AD3A3F800463931 /* shout.wav */,
 			);
 			name = Sounds;
-			sourceTree = "<group>";
-		};
-		E30A15D41AD4CAEB00463931 /* InviteUsersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E30A15D51AD4CB0D00463931 /* NCInviteUsersViewController.h */,
-				E30A15D61AD4CB0D00463931 /* NCInviteUsersViewController.m */,
-				E30A15D71AD4CB0D00463931 /* NCInviteUsersViewController.xib */,
-			);
-			name = InviteUsersViewController;
-			sourceTree = "<group>";
-		};
-		E34360ED1AD4F96300203D7D /* PrivateChatViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E34360EE1AD4F98100203D7D /* NCPrivateChatViewController.h */,
-				E34360EF1AD4F98100203D7D /* NCPrivateChatViewController.m */,
-			);
-			name = PrivateChatViewController;
-			sourceTree = "<group>";
-		};
-		E381764B1ACC371800278DDE /* ConversationsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E381764C1ACC373100278DDE /* NCConversationsViewController.h */,
-				E381764D1ACC373100278DDE /* NCConversationsViewController.m */,
-				E381764E1ACC373100278DDE /* NCConversationsViewController.xib */,
-			);
-			name = ConversationsViewController;
 			sourceTree = "<group>";
 		};
 		E38176511ACC37EC00278DDE /* ConversationTableViewCell */ = {
@@ -665,15 +609,9 @@
 		E3B638A61ABAA88E0045369B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E3E9A0DD1AF9BBBE00B0B6B8 /* NCMessageDetailViewController */,
-				E3FAB1F61ADCA7DE0018BC07 /* ReportUserViewController */,
+				E3F7D72D1B04847900432938 /* NameChoiceViewController */,
 				E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */,
-				E34360ED1AD4F96300203D7D /* PrivateChatViewController */,
-				E30A15D41AD4CAEB00463931 /* InviteUsersViewController */,
-				E30A15AF1AD46C6A00463931 /* UserDetailViewController */,
 				E30A158F1AD309A400463931 /* AboutViewController */,
-				E381764B1ACC371800278DDE /* ConversationsViewController */,
-				E3B63A5A1ACB16490045369B /* UsersViewController */,
 				E3B63A541ACB01D40045369B /* FeedbackViewController */,
 				E3B639D51ACA608D0045369B /* UserDetail */,
 				E3B639B41AC9D78D0045369B /* Protocols */,
@@ -746,6 +684,7 @@
 		E3B638BE1ABAB66E0045369B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E3F7D7331B05D2D700432938 /* WorldCollectionViewCell */,
 				E38176511ACC37EC00278DDE /* ConversationTableViewCell */,
 				E3B63A601ACB193F0045369B /* UserTableViewCell */,
 				E3B639C91ACA18CC0045369B /* UserAnnotation */,
@@ -796,6 +735,8 @@
 				E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */,
 				E3BFCAEA1AE09E4C002CE6F9 /* UIColor+LovelyColors.h */,
 				E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */,
+				E3F7D72A1B047FD600432938 /* NSDate+Recency.h */,
+				E3F7D72B1B047FD600432938 /* NSDate+Recency.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1175,16 +1116,6 @@
 			name = FeedbackViewController;
 			sourceTree = "<group>";
 		};
-		E3B63A5A1ACB16490045369B /* UsersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E3B63A5B1ACB165D0045369B /* NCUsersViewController.h */,
-				E3B63A5C1ACB165D0045369B /* NCUsersViewController.m */,
-				E3B63A5D1ACB165D0045369B /* NCUsersViewController.xib */,
-			);
-			name = UsersViewController;
-			sourceTree = "<group>";
-		};
 		E3B63A601ACB193F0045369B /* UserTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1195,14 +1126,24 @@
 			name = UserTableViewCell;
 			sourceTree = "<group>";
 		};
-		E3E9A0DD1AF9BBBE00B0B6B8 /* NCMessageDetailViewController */ = {
+		E3F7D72D1B04847900432938 /* NameChoiceViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E3E9A0DE1AF9BBD700B0B6B8 /* NCMessageDetailViewController.h */,
-				E3E9A0DF1AF9BBD700B0B6B8 /* NCMessageDetailViewController.m */,
-				E3E9A0E01AF9BBD700B0B6B8 /* NCMessageDetailViewController.xib */,
+				E3F7D72E1B04848A00432938 /* NCNameChoiceViewController.h */,
+				E3F7D72F1B04848A00432938 /* NCNameChoiceViewController.m */,
+				E3F7D7301B04848A00432938 /* NCNameChoiceViewController.xib */,
 			);
-			name = NCMessageDetailViewController;
+			name = NameChoiceViewController;
+			sourceTree = "<group>";
+		};
+		E3F7D7331B05D2D700432938 /* WorldCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3F7D7341B05D2F300432938 /* NCWorldCollectionViewCell.h */,
+				E3F7D7351B05D2F300432938 /* NCWorldCollectionViewCell.m */,
+				E3F7D7361B05D2F300432938 /* NCWorldCollectionViewCell.xib */,
+			);
+			name = WorldCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */ = {
@@ -1213,16 +1154,6 @@
 				E3FAB1EB1AD922730018BC07 /* NCEditWorldViewController.xib */,
 			);
 			name = EditWorldViewController;
-			sourceTree = "<group>";
-		};
-		E3FAB1F61ADCA7DE0018BC07 /* ReportUserViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E3FAB1F71ADCA7EF0018BC07 /* NCReportViewController.h */,
-				E3FAB1F81ADCA7EF0018BC07 /* NCReportViewController.m */,
-				E3FAB1F91ADCA7EF0018BC07 /* NCReportViewController.xib */,
-			);
-			name = ReportUserViewController;
 			sourceTree = "<group>";
 		};
 		FFCB85E41DBCA94C9B2B7CB8 /* Pods */ = {
@@ -1327,12 +1258,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3B63A591ACB01E60045369B /* NCFeedbackViewController.xib in Resources */,
-				E30A15D91AD4CB0D00463931 /* NCInviteUsersViewController.xib in Resources */,
 				E30A15C61AD4A60800463931 /* sent.wav in Resources */,
 				E30A15A21AD3A67A00463931 /* placeholder.jpg in Resources */,
 				E30A15C91AD4A60800463931 /* Menu and Interface Sound 9.wav in Resources */,
 				E30A159D1AD3A3F800463931 /* shout.wav in Resources */,
-				E3E9A0E21AF9BBD700B0B6B8 /* NCMessageDetailViewController.xib in Resources */,
 				E38AB2211ADE29CC0003BA23 /* starry_outside.jpg in Resources */,
 				E30A15C81AD4A60800463931 /* failure.wav in Resources */,
 				E3B639801ABF36100045369B /* welcome.mp4 in Resources */,
@@ -1355,7 +1284,6 @@
 				E3B638AE1ABAA8B40045369B /* NCWelcomeViewController.xib in Resources */,
 				E3B6388F1ABAA7D30045369B /* LaunchScreen.xib in Resources */,
 				E3B639371ABC45EF0045369B /* NCFormImageCell.xib in Resources */,
-				E30A15B41AD46C7500463931 /* NCUserDetailViewController.xib in Resources */,
 				E3B639641ABD8CAD0045369B /* lense_flare_15.png in Resources */,
 				E34360F81AD520F000203D7D /* key_icon@3x.png in Resources */,
 				E34361041AD878DD00203D7D /* purple_stars_background.jpg in Resources */,
@@ -1365,11 +1293,13 @@
 				E3E9A0E41AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg in Resources */,
 				E38AB2251ADE33D10003BA23 /* white_logo_stroke@3x.png in Resources */,
 				E30A15C51AD4A60700463931 /* Menu and Interface Sound 13.wav in Resources */,
+				E3F7D7291B047D1500432938 /* guitar_jingle.mp3 in Resources */,
 				E3A6146C1AF2B5CA00579DAA /* share_icon@3x.png in Resources */,
 				E3A6146D1AF2B5CA00579DAA /* bell_no_ring_icon@3x.png in Resources */,
 				E3B6398C1AC171420045369B /* ornate_minute_hand_v2_white@2x.png in Resources */,
 				E3FAB1F51ADC7DB70018BC07 /* user_options@3x.png in Resources */,
 				E3B639E01ACA80120045369B /* saturn_icon@3x.png in Resources */,
+				E3F7D7381B05D2F300432938 /* NCWorldCollectionViewCell.xib in Resources */,
 				E3B639B71AC9E44E0045369B /* options_button@3x.png in Resources */,
 				E3B638CD1ABAB9EF0045369B /* welcome_logo@3x.png in Resources */,
 				E30A15CC1AD4A60800463931 /* Menu and Interface Sound 6.wav in Resources */,
@@ -1379,7 +1309,6 @@
 				E3B639161ABC00B80045369B /* back_icon@3x.png in Resources */,
 				E3A6146E1AF2B5CA00579DAA /* bell_ring_icon@3x.png in Resources */,
 				E3B6394E1ABD73E40045369B /* NCFormSpriteCell.xib in Resources */,
-				E3FAB1FB1ADCA7EF0018BC07 /* NCReportViewController.xib in Resources */,
 				E34360F41AD51E6500203D7D /* flare_bg.jpg in Resources */,
 				E3B639A21AC5CD550045369B /* flare_grey@3x.png in Resources */,
 				E3B639071ABBDE6C0045369B /* NCLeftMenuViewController.xib in Resources */,
@@ -1396,7 +1325,6 @@
 				E3B639861AC16FAC0045369B /* NCLoadingView.xib in Resources */,
 				E3B63A531ACAEAB90045369B /* media_bubble@3x.png in Resources */,
 				E3FAB1E61AD8F8130018BC07 /* auto_update_location_button_off@3x.png in Resources */,
-				E3B63A5F1ACB165D0045369B /* NCUsersViewController.xib in Resources */,
 				E3A614651AF29C3600579DAA /* locate_me_button@2x.png in Resources */,
 				E3B639391ABC51960045369B /* image_placeholder@2x.png in Resources */,
 				E3B638FB1ABBC0E00045369B /* plus_icon@3x.png in Resources */,
@@ -1431,8 +1359,8 @@
 				E30A15CE1AD4A60800463931 /* Menu and Interface Sound 4.wav in Resources */,
 				E38AB2231ADE2BA50003BA23 /* logo_white.png in Resources */,
 				E30A15C41AD4A60700463931 /* Menu and Interface Sound 14.wav in Resources */,
-				E38176501ACC373100278DDE /* NCConversationsViewController.xib in Resources */,
 				E3B6399D1AC193130045369B /* NCFormColorCell.xib in Resources */,
+				E3F7D7321B04848A00432938 /* NCNameChoiceViewController.xib in Resources */,
 				E34360F61AD51F7700203D7D /* stars.jpg in Resources */,
 				E3B6388C1ABAA7D30045369B /* Images.xcassets in Resources */,
 				E3E9A0EA1AFDBC3A00B0B6B8 /* heart_sprite_grey.png in Resources */,
@@ -1493,13 +1421,10 @@
 				E3B639D21ACA59A70045369B /* MKMapView+Utilities.m in Sources */,
 				E3B638C71ABAB86F0045369B /* NSUserDefaults+AuthInformation.m in Sources */,
 				E3B639351ABC45D00045369B /* NCFormImageCell.m in Sources */,
-				E3FAB1FA1ADCA7EF0018BC07 /* NCReportViewController.m in Sources */,
 				E3B639C51ACA0E1A0045369B /* NSString+StringAdditions.m in Sources */,
 				E3B639001ABBC12F0045369B /* NCCreateNewWorldViewController.m in Sources */,
 				E3B639221ABC2D680045369B /* NCLeftMenuTableViewCell.m in Sources */,
-				E3B63A5E1ACB165D0045369B /* NCUsersViewController.m in Sources */,
 				E3B639121ABBFE770045369B /* UIViewController+BarButtons.m in Sources */,
-				E30A15B31AD46C7500463931 /* NCUserDetailViewController.m in Sources */,
 				E3B638AD1ABAA8B40045369B /* NCWelcomeViewController.m in Sources */,
 				E3B639C01ACA0B9C0045369B /* NCImageMessageTableViewCell.m in Sources */,
 				E30A15801AD11A8300463931 /* UINavigationController+PushPop.m in Sources */,
@@ -1526,21 +1451,19 @@
 				E30A15861AD1CB0000463931 /* JSONValueTransformer+Color.m in Sources */,
 				E3A614841AF7EC7800579DAA /* NCWorldChatViewController+TableSetup.m in Sources */,
 				E3B639911AC17DCA0045369B /* NCWorldDetailViewController.m in Sources */,
-				E34360F11AD4F98100203D7D /* NCPrivateChatViewController.m in Sources */,
+				E3F7D72C1B047FD600432938 /* NSDate+Recency.m in Sources */,
 				E3B638E01ABAC62C0045369B /* NCWorldsViewController.m in Sources */,
 				E3B638841ABAA7D30045369B /* AppDelegate.m in Sources */,
 				E3B63A581ACB01E60045369B /* NCFeedbackViewController.m in Sources */,
 				E3B638B41ABAA8E20045369B /* EPSpriteService.m in Sources */,
 				E38176591ACC3BFC00278DDE /* ConversationModel.m in Sources */,
 				E3BFCAE91AE09CF9002CE6F9 /* UITableView+RowAnimations.m in Sources */,
-				E3E9A0E11AF9BBD700B0B6B8 /* NCMessageDetailViewController.m in Sources */,
 				E3A614611AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.m in Sources */,
+				E3F7D7371B05D2F300432938 /* NCWorldCollectionViewCell.m in Sources */,
 				E3B6390B1ABBF4940045369B /* NCCreateWorldForm.m in Sources */,
 				E3B638EF1ABBB6F00045369B /* NCWorldTableViewCell.m in Sources */,
 				E3B639CC1ACA18DD0045369B /* UserAnnotation.m in Sources */,
-				E30A15D81AD4CB0D00463931 /* NCInviteUsersViewController.m in Sources */,
 				E3B6393D1ABC54CB0045369B /* NCFormSubmitButtonCell.m in Sources */,
-				E381764F1ACC373100278DDE /* NCConversationsViewController.m in Sources */,
 				E3B639C81ACA17F20045369B /* CLLocation+GeoJson.m in Sources */,
 				E3B639311ABC3FF40045369B /* NCUploadService.m in Sources */,
 				E30A15831AD1B33000463931 /* NCNumberHelper.m in Sources */,
@@ -1554,6 +1477,7 @@
 				E3B638C21ABAB6810045369B /* NCSpriteCollectionViewCell.m in Sources */,
 				E3FAB1F31ADB31B50018BC07 /* PrivateMessageModel.m in Sources */,
 				E30A15DF1AD4DF8D00463931 /* SubmitPrivateMessageModel.m in Sources */,
+				E3F7D7311B04848A00432938 /* NCNameChoiceViewController.m in Sources */,
 				E3B638811ABAA7D30045369B /* main.m in Sources */,
 				E3B6391C1ABC21D00045369B /* NCMyCharacterViewController.m in Sources */,
 				E3B6396E1ABDA4690045369B /* MessageModel.m in Sources */,

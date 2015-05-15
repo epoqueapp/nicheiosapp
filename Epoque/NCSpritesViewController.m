@@ -11,6 +11,7 @@
 #import "NCSpriteCollectionViewCell.h"
 #import "NCWorldsViewController.h"
 #import "NCFireService.h"
+#import "NCNameChoiceViewController.h"
 @interface NCSpritesViewController ()
 
 @end
@@ -123,27 +124,14 @@ static NSString* const CellIdentifier = @"Cell";
         spriteUrl = [femaleSprites objectAtIndex:indexPath.row];
     }
     [Amplitude logEvent:@"Selected Sprite" withEventProperties:@{@"spriteUrl": spriteUrl}];
-    [[NSUserDefaults standardUserDefaults]setWelcomeSpriteUrl:spriteUrl];
+    [[NSUserDefaults standardUserDefaults] setWelcomeSpriteUrl:spriteUrl];
     if ([self.delegate respondsToSelector:@selector(didSelectSpriteFromModal:)]) {
         [self.delegate didSelectSpriteFromModal:spriteUrl];
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
-        //We should create a user
-        UserModel *newUserModel = [[UserModel alloc]init];
-        newUserModel.name = [MBFakerName name];
-        newUserModel.email = @"";
-        newUserModel.imageUrl = @"";
-        newUserModel.spriteUrl = spriteUrl;
-        newUserModel.role = @"normal";
-        newUserModel.about = @"";
-        [[NSUserDefaults standardUserDefaults] setIsObscuring:YES];
-        [[fireService.usersRef childByAutoId] setValue:[newUserModel toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
-            NSString *userId = ref.key;
-            newUserModel.userId = userId;
-            [[NSUserDefaults standardUserDefaults] setUserModel:newUserModel];
-            NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
-            [self.navigationController pushFadeViewController:worldsViewController];
-        }];
+        NCNameChoiceViewController *nameChoice = [[NCNameChoiceViewController alloc]init];
+        nameChoice.spriteUrl = [spriteUrl copy];
+        [self.navigationController pushFadeViewController:nameChoice];
     }
 }
 

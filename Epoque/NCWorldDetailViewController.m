@@ -10,10 +10,8 @@
 #import "NCEditWorldViewController.h"
 #import "NCNavigationController.h"
 #import "NCWorldDetailViewController.h"
-#import "NCInviteUsersViewController.h"
 #import "NCWorldChatViewController.h"
 #import "NCFireService.h"
-#import "NCUsersViewController.h"
 #import "WorldModel.h"
 @interface NCWorldDetailViewController ()
 
@@ -208,24 +206,10 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
     }
 }
 
--(void)inviteUsersButtonDidClick:(id)sender{
-    [Amplitude logEvent:@"Invite Users Button Did Click" withEventProperties:@{@"worldId": self.worldId}];
-    NCInviteUsersViewController *inviteUsers = [[NCInviteUsersViewController alloc]init];
-    inviteUsers.worldId = [self.worldId copy];
-    NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:inviteUsers];
-    [self presentViewController:navController animated:YES completion:nil];
-}
-
 -(void)goToChat{
     NCWorldChatViewController *chatViewController = [[NCWorldChatViewController alloc]init];
     chatViewController.worldId = [self.worldId copy];
     [self.navigationController pushViewController:chatViewController animated:YES];
-}
-
--(void)goToMembers{
-    NCUsersViewController *usersViewController = [[NCUsersViewController alloc]init];
-    usersViewController.worldModel = self.worldModel;
-    [self.navigationController pushViewController:usersViewController animated:YES];
 }
 
 -(void)goToWorldEdit{

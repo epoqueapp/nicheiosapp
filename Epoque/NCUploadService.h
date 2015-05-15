@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NCUploadService : NSObject
+@interface NCUploadService : NSObject <CLUploaderDelegate>
 
 +(id)sharedInstance;
 

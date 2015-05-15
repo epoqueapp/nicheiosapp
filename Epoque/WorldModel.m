@@ -18,7 +18,7 @@
         self.name = [dict objectForKey:@"name"];
         self.detail = [dict objectForKey:@"detail"];
         self.imageUrl = [dict objectForKey:@"imageUrl"];
-        self.passcode = [dict objectForKey:@"passcode"];
+        self.isPrivate = [[dict objectForKey:@"isPrivate"] boolValue];
         self.isDefault = [[dict objectForKey:@"isDefault"] boolValue];
         self.moderatorUserIds = [dict objectForKey:@"moderatorUserIds"];
         if ([self.moderatorUserIds isKindOfClass:[NSNull class]]) {
@@ -50,7 +50,7 @@
         self.name = [dict objectForKey:@"name"];
         self.detail = [dict objectForKey:@"detail"];
         self.imageUrl = [dict objectForKey:@"imageUrl"];
-        self.passcode = [dict objectForKey:@"passcode"];
+        self.isPrivate = [[dict objectForKey:@"isPrivate"] boolValue];
         self.isDefault = [[dict objectForKey:@"isDefault"] boolValue];
         self.moderatorUserIds = [dict objectForKey:@"moderatorUserIds"];
         if ([self.moderatorUserIds isKindOfClass:[NSNull class]] || self.moderatorUserIds == nil) {
@@ -78,7 +78,7 @@
         self.detail = source[@"detail"];
         self.imageUrl = source[@"imageUrl"];
         self.isDefault = [source[@"isDefault"] boolValue];
-        self.passcode = source[@"passcode"];
+        self.isPrivate = [source[@"isPrivate"] boolValue];
         self.memberUserIds = source[@"memberUserIds"];
         if ([self.memberUserIds isKindOfClass:[NSNull class]] || self.memberUserIds == nil) {
             self.memberUserIds = @[];
@@ -102,15 +102,11 @@
 }
 
 -(BOOL)canEnterWorld:(NSString *)userId{
-    if ([self hasPasscode]) {
+    if ([self isPrivate]) {
         return [self belongsToWorld:userId];
     }else{
         return YES;
     }
-}
-
--(BOOL)hasPasscode{
-    return ![NSString isStringEmpty:self.passcode];
 }
 
 

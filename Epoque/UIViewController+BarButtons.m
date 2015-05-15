@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 #import "NCWorldsViewController.h"
-#import "NCConversationsViewController.h"
 #import "UIViewController+BarButtons.h"
 #import <RESideMenu/RESideMenu.h>
 @implementation UIViewController (BarButtons)
@@ -45,19 +44,9 @@
         [self.navigationController pushFadeViewController:worldsViewController];
     }else{
         [Amplitude logEvent:@"Back Button Did Click"];
-        [self.navigationController popRetroViewController];
+        [self.navigationController popFadeViewController];
     }
 }
 
--(void)backButtonDidClickWithConversationsDefault:(id)sender{
-    NSArray *viewControllers = self.navigationController.viewControllers;
-    if (viewControllers.count == 1) {
-        NCConversationsViewController *conversationsViewController = [[NCConversationsViewController alloc] init];
-        [self.navigationController pushFadeViewController:conversationsViewController];
-    }else{
-        [Amplitude logEvent:@"Back Button Did Click"];
-        [self.navigationController popRetroViewController];
-    }
-}
 
 @end

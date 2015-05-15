@@ -42,6 +42,7 @@ PODS:
   - Bolts/AppLinks (1.1.5):
     - Bolts/Tasks
   - Bolts/Tasks (1.1.5)
+  - Cloudinary (1.0.13)
   - ColorPopover (0.0.1):
     - WEPopover (~> 0.0.1)
   - CrittercismSDK (5.2.0)
@@ -91,6 +92,7 @@ PODS:
   - SlackTextViewController/Additions (1.5)
   - THLabel (1.4.6)
   - TMCache (1.2.4)
+  - TPKeyboardAvoiding (1.2.6)
   - TTTAttributedLabel (1.13.3)
   - UICKeyChainStore (2.0.4)
   - WEPopover (0.0.1)
@@ -101,6 +103,7 @@ DEPENDENCIES:
   - AFNetworking-RACExtensions
   - Amplitude-iOS (~> 2.4)
   - AWSS3
+  - Cloudinary
   - ColorPopover
   - CrittercismSDK
   - CSNotificationView
@@ -117,6 +120,7 @@ DEPENDENCIES:
   - SDWebImage
   - SlackTextViewController
   - THLabel
+  - TPKeyboardAvoiding
   - TTTAttributedLabel
 
 SPEC CHECKSUMS:
@@ -126,6 +130,7 @@ SPEC CHECKSUMS:
   AWSCore: 0e82eabc27a96d765b1e2ad4d30b96c1cd298300
   AWSS3: 891d269735be0f3c63eab5a2d1ee9d788f2c64ee
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
+  Cloudinary: cd8a4af5a9ac72fc7c3e3a19b9393a35f9e900e6
   ColorPopover: 2281090e666a120ba96c2d732b30463d2bb649a6
   CrittercismSDK: a8f09d8f1d9fea3bc0714a954a079062c5c9d914
   CSNotificationView: 0792f5220163c2befaf1a9716aa3d5a7d6bd4fb1
@@ -146,6 +151,7 @@ SPEC CHECKSUMS:
   SlackTextViewController: 4a1797ac2f3616dbd37435fc62da655e61399cdd
   THLabel: 27890d10123514ffe74b6e023b57b2ece55304af
   TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
+  TPKeyboardAvoiding: ee4dd35e3bb7bb64bfbda47e7cc9ba872ff10f77
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
   UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
   WEPopover: beca88ef86b633b34d78fc5b6e2c2fe90e651d7a

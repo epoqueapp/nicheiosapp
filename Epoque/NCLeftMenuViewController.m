@@ -7,7 +7,6 @@
 //
 
 #import "NCLeftMenuViewController.h"
-#import "NCConversationsViewController.h"
 #import "NCWorldsViewController.h"
 #import "NCWelcomeViewController.h"
 #import "NCFeedbackViewController.h"
@@ -110,13 +109,6 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
         [Amplitude logEvent:@"Worlds Menu Item Did Click"];
         NCWorldsViewController *worldViewController = [[NCWorldsViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:worldViewController];
-        [self.sideMenuViewController setContentViewController:navController];
-        [self.sideMenuViewController hideMenuViewController];
-    }
-    if ([menuTitle isEqualToString:@"MESSAGES"]) {
-        [Amplitude logEvent:@"Messages Menu Item Did Click"];
-        NCConversationsViewController *conversationsViewController = [[NCConversationsViewController alloc]init];
-        NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:conversationsViewController];
         [self.sideMenuViewController setContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }

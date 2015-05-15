@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIImage *emblemImage;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *worldDescription;
+@property (nonatomic, assign) BOOL isPrivate;
 
 -(BOOL)isDirty;
 -(BOOL)isValid;

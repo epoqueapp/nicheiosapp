@@ -16,6 +16,7 @@
 #import "NCUserService.h"
 #import "NCWorldService.h"
 #import "WorldModel.h"
+#import "NCWorldCollectionViewCell.h"
 @interface NCWorldsViewController ()
 
 @end
@@ -39,54 +40,60 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
     worlds = [NSMutableArray array];
     [self setUpMenuButton];
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    [self.tableView registerNib:[UINib nibWithNibName:@"NCWorldTableViewCell" bundle:nil] forCellReuseIdentifier:WorldCellIdentifier];
-    [self.tableView setRowHeight:90.0];
-    self.tableView.separatorColor = [UIColor clearColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"NCWorldCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:WorldCellIdentifier];
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    
+    
     self.view.backgroundColor = [UIColor blackColor];
     self.title = @"WORLDS";
-    
     createWorldBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(createNewWorld:)];
-    
     self.navigationItem.rightBarButtonItems = @[createWorldBarButton];
+    self.edgesForExtendedLayout = UIRectEdgeLeft | UIRectEdgeBottom | UIRectEdgeRight;
     
-    
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{
+                                                                                                 NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                                                                 NSFontAttributeName: [UIFont fontWithName:kTrocchiBoldFontName size:16],
+                                                                                                 }];
     @weakify(self);
-    isInitialAdds = YES;
-    FQuery *query = [fireService.worldsRef queryOrderedByChild:@"isDefault"];
-    
-    [query observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+    Firebase *worldsRef = [[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"worlds"];
+    [worldsRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
         WorldModel *worldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
-        [worlds insertObject:worldModel atIndex:0];
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [worlds addObject:worldModel];
+        [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:worlds.count -1 inSection:0]]];
+    }];
+    [self animateClock:self];
+    [worldsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        @strongify(self);
+        [self fadeOutClock:self];
     }];
     
-    [query observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+    [worldsRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
-        WorldModel *worldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
-        for (int i = 0 ; i < worlds.count; i ++) {
-            WorldModel *foundWorld = [worlds objectAtIndex:i];
-            if ([foundWorld.worldId isEqualToString:worldModel.worldId]) {
-                [worlds removeObjectAtIndex:i];
-                [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:i inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        WorldModel *changedWorldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
+        [worlds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            WorldModel *currentWorld = [worlds objectAtIndex:idx];
+            if ([changedWorldModel.worldId isEqualToString:currentWorld.worldId]) {
+                [worlds replaceObjectAtIndex:idx withObject:changedWorldModel];
+                [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]]];
+                *stop = YES;
             }
-        }
+        }];
     }];
     
-    [query observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
+    [worldsRef observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
-        WorldModel *worldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
-        for (int i = 0 ; i < worlds.count; i ++) {
-            WorldModel *foundWorld = [worlds objectAtIndex:i];
-            if ([foundWorld.worldId isEqualToString:worldModel.worldId]) {
-                [worlds replaceObjectAtIndex:i withObject:worldModel];
-                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:i inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        WorldModel *changedWorldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
+        [worlds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            WorldModel *currentWorld = [worlds objectAtIndex:idx];
+            if ([changedWorldModel.worldId isEqualToString:currentWorld.worldId]) {
+                [worlds removeObjectAtIndex:idx];
+                [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]]];
+                *stop = YES;
             }
-        }
+        }];
     }];
 }
-
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -102,64 +109,22 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    WorldModel *selectedWorldModel = [worlds objectAtIndex:indexPath.row];
-    NSDictionary *worldDictionary = [selectedWorldModel toDictionary];
-    [Amplitude logEvent:@"World Did Click" withEventProperties:worldDictionary];
-    @try {
-        NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
-        NSMutableArray *mutableMembers = [selectedWorldModel.memberUserIds mutableCopy];
-        if (![mutableMembers containsObject:myUserId]) {
-            [mutableMembers addObject:myUserId];
-            [[[fireService.worldsRef childByAppendingPath:selectedWorldModel.worldId] childByAppendingPath:@"memberUserIds"] setValue:mutableMembers];
-            [[[[fireService.rootRef childByAppendingPath:@"worlds-user-push-settings"] childByAppendingPath:selectedWorldModel.worldId] childByAppendingPath:myUserId] setValue:@(YES)];
-        }
-        NCWorldChatViewController *worldChatViewController = [NCWorldChatViewController sharedInstance];
-        worldChatViewController.worldId = [selectedWorldModel.worldId copy];
-        [self.navigationController pushRetroViewController:worldChatViewController];
-    } @catch (NSException * e) {
-        NSLog(@"Exception: %@", e);
-    } @finally {
-        //NSLog(@"finally");
-    }
+-(void)animateClock:(id)sender{
+    self.minuteImageView.alpha = 1;
+    self.hourImageView.alpha = 1;
+    self.clockImageView.alpha = 1;
+    [self.hourImageView runSpinAnimationWithDuration:2.0 isClockwise:YES];
+    [self.minuteImageView runSpinAnimationWithDuration:3.0 isClockwise:NO];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return worlds.count;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NCWorldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WorldCellIdentifier];
-    cell.backgroundColor = [UIColor clearColor];
-    WorldModel *world = [worlds objectAtIndex:indexPath.row];
-    cell.nameLabel.text = world.name;
-    cell.detailLabel.text = world.detail;
-    cell.detailLabel.textColor = [UIColor whiteColor];
-    cell.detailLabel.font = [UIFont fontWithName:kTrocchiFontName size:12.0];
-    NSString *imageUrl = world.imageUrl;
-    [cell.emblemImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        if (cacheType == SDImageCacheTypeNone) {
-            cell.emblemImageView.alpha = 0;
-            [UIView animateWithDuration:0.1 animations:^{
-                cell.emblemImageView.alpha = 1;
-            }];
-        }else{
-            cell.emblemImageView.alpha = 1;
-        }
+-(void)fadeOutClock:(id)sender{
+    @weakify(self);
+    [UIView animateWithDuration:1.0 animations:^{
+        @strongify(self);
+        self.minuteImageView.alpha = 0;
+        self.hourImageView.alpha = 0;
+        self.clockImageView.alpha = 0;
     }];
-    cell.alpha = 0;
-    cell.memberCountLabel.text = [NSString stringWithFormat:@"%lu", world.memberUserIds.count];
-    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    BOOL isAFavoriteWorld = [world.favoritedUserIds containsObject: myUserId];
-    if(isAFavoriteWorld){
-        cell.privateImageView.hidden = NO;
-        cell.privateImageView.image = [UIImage imageNamed:@"star_icon"];
-    }
-    else{
-        cell.privateImageView.hidden = YES;
-    }
-    return cell;
 }
 
 -(void)createNewWorld:(id)sender{
@@ -168,6 +133,65 @@ static NSString *WorldCellIdentifier = @"WorldCellIdentifier";
     NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:createWorldViewController];
     createWorldViewController.delegate = self;
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+-(void)attemptToEnterWorld:(WorldModel *)worldModel{
+    NSDictionary *worldDictionary = [worldModel toDictionary];
+    [Amplitude logEvent:@"World Did Click" withEventProperties:worldDictionary];
+    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    NSMutableArray *mutableMembers = [worldModel.memberUserIds mutableCopy];
+    if (![mutableMembers containsObject:myUserId]) {
+        [mutableMembers addObject:myUserId];
+        [[[fireService.worldsRef childByAppendingPath:worldModel.worldId] childByAppendingPath:@"memberUserIds"] setValue:mutableMembers];
+        [[[[fireService.rootRef childByAppendingPath:@"worlds-user-push-settings"] childByAppendingPath:worldModel.worldId] childByAppendingPath:myUserId] setValue:@(YES)];
+    }
+    NCWorldChatViewController *worldChatViewController = [NCWorldChatViewController sharedInstance];
+    worldChatViewController.worldId = [worldModel.worldId copy];
+    [self.navigationController pushFadeViewController:worldChatViewController];
+}
+
+#pragma UICollectionView
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return worlds.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    NCWorldCollectionViewCell *cell = (NCWorldCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:WorldCellIdentifier forIndexPath:indexPath];
+    
+    WorldModel *worldModel = [worlds objectAtIndex:indexPath.row];
+    [cell.worldImageView sd_setImageWithURL:[NSURL URLWithString:worldModel.imageUrl]];
+    cell.worldNameLabel.text = worldModel.name;
+    cell.keyImageView.hidden = ![self isLocked:worldModel];
+    cell.starImageView.hidden = ![self isFavorite:worldModel];
+    cell.alpha = 0;
+    cell.transform = CGAffineTransformScale(cell.transform, 0.25, 0.25);
+    [UIView animateWithDuration:0.25 animations:^{
+        cell.alpha = 1;
+        cell.transform = CGAffineTransformIdentity;
+    }];
+    return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    WorldModel *worldModel = [worlds objectAtIndex:indexPath.row];
+    [self attemptToEnterWorld:worldModel];
+}
+
+#pragma Cell Logic
+
+-(BOOL)isLocked:(WorldModel *)worldModel{
+    NSString *userId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    if (worldModel.isPrivate) {
+        return ![worldModel.memberUserIds containsObject:userId];
+    }
+    return NO;
+}
+
+-(BOOL)isFavorite:(WorldModel *)worldModel {
+    NSString *userId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    return [worldModel.favoritedUserIds containsObject:userId];
 }
 
 @end

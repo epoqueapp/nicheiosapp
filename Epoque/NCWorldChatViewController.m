@@ -18,9 +18,6 @@
 #import "NCMapViewController.h"
 #import "UserAnnotation.h"
 #import "UserAnnotationView.h"
-#import "AppDelegate.h"
-#import "NCUserDetailViewController.h"
-#import "NCPrivateChatViewController.h"
 @interface NCWorldChatViewController ()
 
 @end
@@ -168,6 +165,10 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     worldShoutsRef = [fireService worldShoutsRef:self.worldId];
     shoutsAddedHandle = [worldShoutsRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
+        NSDate *timestamp = [NSDate dateFromJavascriptTimestamp:[snapshot.value objectForKey:@"timestamp"]];
+        if ([timestamp isAncient]) {
+            return;
+        }
         UserAnnotation *userAnno = [[UserAnnotation alloc]initWithSnapshot:snapshot];
         userAnnotations[snapshot.key] = userAnno;
         [self.mapView addAnnotation:userAnno];
@@ -190,9 +191,15 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
                 [userAnnoView animateRings];
             }
         }
-        
+        else{
+            userAnno = [[UserAnnotation alloc]initWithSnapshot:snapshot];
+            userAnnotations[snapshot.key] = userAnno;
+            [self.mapView addAnnotation:userAnno];
+            if ([userAnno.userId isEqualToString:[NSUserDefaults standardUserDefaults].userModel.userId]) {
+                [self.mapView zoomToLocation:userAnno.coordinate withSpan:0.05];
+            }
+        }
     }];
-    
     if (worldPushBusRef) {
         [worldPushBusRef removeObserverWithHandle:worldPushBusHandle];
     }
@@ -223,11 +230,9 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     [self setUpBackButtonWithWorldsDefault];
-    self.mapView = ((AppDelegate *)[UIApplication sharedApplication].delegate).mapView;
+    self.mapView = [[MKMapView alloc]initWithFrame:self.view.bounds];
     [self.mapView removeAnnotations:self.mapView.annotations];
-    self.mapView.frame = self.view.bounds;
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view insertSubview:self.mapView belowSubview:self.tableView];
     UITapGestureRecognizer *mapTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mapViewDidTap:)];
@@ -267,24 +272,18 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     mapToggleBarButton = [[UIBarButtonItem alloc]initWithImage:mapIconImage style:UIBarButtonItemStylePlain target:self action:@selector(mapButtonDidClick:)];
     worldDetailBarButton = [[UIBarButtonItem alloc]initWithImage:worldDetailIconImage style:UIBarButtonItemStylePlain target:self action:@selector(worldDetailDidClick:)];
     self.navigationItem.rightBarButtonItems = @[mapToggleBarButton, worldDetailBarButton];
-    
     self.bounces = YES;
     self.keyboardPanningEnabled = YES;
     self.inverted = NO;
-    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"NCMessageTableViewCell" bundle:nil] forCellReuseIdentifier:MessengerCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"NCImageMessageTableViewCell" bundle:nil] forCellReuseIdentifier:ImageMessageCellIdentifier];
-    
     self.tableView.estimatedRowHeight = 90.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
     self.tableView.allowsSelection = NO;
-
     [self.textInputbar.editorTitle setTextColor:[UIColor darkGrayColor]];
     [self.textInputbar.editortLeftButton setTintColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
     [self.textInputbar.editortRightButton setTintColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1.0]];
-    
     self.textInputbar.autoHideRightButton = YES;
     self.textInputbar.counterStyle = SLKCounterStyleNone;
     self.textInputbar.rightButton.titleLabel.font = [UIFont fontWithName:kTrocchiBoldFontName size:18.0];
@@ -294,12 +293,13 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     self.textInputbar.textView.keyboardAppearance = UIKeyboardAppearanceDark;
     self.textInputbar.textView.layer.borderColor = [UIColor darkGrayColor].CGColor;
     self.textInputbar.backgroundColor = [UIColor blackColor];
-    
     [self.rightButton setTitle:NSLocalizedString(@"SHOUT", nil) forState:UIControlStateNormal];
     [self.leftButton setImage:[UIImage imageNamed:@"camera_icon"] forState:UIControlStateNormal];
     self.tableView.hidden = [NSUserDefaults standardUserDefaults].worldMapEnabled;
     
+    @weakify(self);
     [RACObserve(self.tableView, hidden) subscribeNext:^(id x) {
+        @strongify(self);
         BOOL isHidden = [x boolValue];
         [[NSUserDefaults standardUserDefaults] setWorldMapEnabled:isHidden];
         if (isHidden) {
@@ -348,6 +348,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
         cell.textMessageLabel.textColor = [UIColor whiteColor];
         
         if (isMyMessage) {
+            cell.userNameLabel.textColor = [UIColor colorWithHexString:@"#51A3F2" alpha:1.0];
             cell.textMessageLabel.backgroundColor = [UIColor lovelyBlueWithAlpha:0.1];
         }else{
             cell.textMessageLabel.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:0.5];
@@ -380,7 +381,13 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     cell.indexPath = indexPath;
     cell.nameLabel.text = messageModel.userName;
     cell.backgroundColor = [UIColor clearColor];
-    cell.nameLabel.textColor = [UIColor lightGrayColor];
+    
+    if (isMyMessage) {
+        cell.nameLabel.textColor = [UIColor colorWithHexString:@"#51A3F2" alpha:1.0];
+    }else{
+        cell.nameLabel.textColor = [UIColor lightGrayColor];
+    }
+    
     cell.timeLabel.textColor = [UIColor lightGrayColor];
     cell.timeLabel.text = messageModel.timestamp.tableViewCellTimeString;
     [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.userSpriteUrl]];
@@ -405,7 +412,6 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
                 cell.messageImageView.alpha = 1;
             }];
         }
-        
     }];
     return cell;
 }
@@ -534,7 +540,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     [NCLoadingView showInView:self.view withTitleText:@"Uploading Image..."];
     BOOL isObscuring = [[NSUserDefaults standardUserDefaults] isObscuring];
-    [[[uploadService uploadImage:chosenImage] flattenMap:^RACStream *(id value) {
+    [[[[uploadService uploadImage:chosenImage] deliverOnMainThread] flattenMap:^RACStream *(id value) {
         @strongify(self);
         [Amplitude logEvent:@"Upload Image" withEventProperties:@{@"worldId": self.worldId}];
         UserModel *userModel = [NSUserDefaults standardUserDefaults].userModel;
@@ -553,11 +559,6 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
 -(void)mapButtonDidClick:(id)sender{
     BOOL tableIsHidden = self.tableView.hidden;
     if (tableIsHidden) {
-        if (self.mapView == nil) {
-            self.mapView = ((AppDelegate *)[UIApplication sharedApplication].delegate).mapView;
-        }
-        self.mapView.frame = self.view.bounds;
-        [self.mapView setNeedsDisplay];
         self.mapView.hidden = NO;
         [Amplitude logEvent:@"Map Button Did Click" withEventProperties:@{@"worldId": self.worldId}];
     }else{
@@ -640,6 +641,9 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
 -(void)jiggleRandomUserAnnotation:(id)sender{
     @try {
         NSArray *array = [userAnnotations allKeys];
+        if(array.count == 0){
+            return;
+        }
         int random = arc4random()%[array count];
         NSString *key = [array objectAtIndex:random];
         

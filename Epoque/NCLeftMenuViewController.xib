@@ -18,14 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.25" contentMode="center" image="ornate-clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="QCd-G9-0g9">
+                <imageView opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="center" image="ornate-clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="QCd-G9-0g9">
                     <rect key="frame" x="-150" y="150" width="300" height="300"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="AVq-Zg-eOK"/>
                         <constraint firstAttribute="height" constant="300" id="IBY-Kt-amV"/>
                     </constraints>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.25" contentMode="center" image="ornate_hour_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZL4-XJ-iMc">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" image="ornate_hour_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZL4-XJ-iMc">
                     <rect key="frame" x="-150" y="150" width="300" height="300"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="JED-fk-8To"/>
@@ -35,7 +35,7 @@
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="lense_flare_08.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEn-Of-j2O">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.25" contentMode="scaleAspectFit" image="ornate_minute_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEX-AR-abt">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleAspectFit" image="ornate_minute_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEX-AR-abt">
                     <rect key="frame" x="-100" y="200" width="200" height="200"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="bPL-VI-wRv"/>

@@ -12,4 +12,6 @@
 
 + (BOOL)isStringEmpty:(NSString *)string;
 
++(NSString *)generateRandomPIN:(NSInteger)places;
+
 @end

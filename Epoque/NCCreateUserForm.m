@@ -32,5 +32,14 @@
              };
 }
 
+-(NSDictionary *)isPrivateField{
+    return @{
+             FXFormFieldTitle: @"Private?",
+             @"textLabel.font": [UIFont fontWithName:kTrocchiBoldFontName size:18.0],
+             @"textLabel.textColor": [UIColor lightGrayColor],
+             @"backgroundColor": [UIColor clearColor]
+             };
+}
+
 
 @end

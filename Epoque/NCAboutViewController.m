@@ -7,12 +7,13 @@
 //
 
 #import "NCAboutViewController.h"
-
+#import "NCSoundEffect.h"
 @interface NCAboutViewController ()
 
 @end
 
 @implementation NCAboutViewController{
+    NCSoundEffect *soundEffect;
 }
 
 - (void)viewDidLoad {
@@ -20,6 +21,7 @@
     // Do any additional setup after loading the view from its nib.
     [self setUpMenuButton];
     self.title = @"ABOUT";
+    soundEffect = [[NCSoundEffect alloc]initWithSoundNamed:@"guitar_jingle.mp3"];
     
     self.privacyPolicyButton.rac_command = [[RACCommand alloc]initWithSignalBlock:^RACSignal *(id input) {
         [Amplitude logEvent:@"Privacy Policy Button Did Click"];
@@ -52,6 +54,8 @@
     [UIView animateWithDuration:2.0 animations:^{
         self.backgroundImageView.alpha = 1;
     }];
+    [soundEffect play];
+    NSLog(@"%@", [NSString generateRandomPIN:4]);
 }
 
 -(void)addShadows{

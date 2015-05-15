@@ -24,5 +24,7 @@ pod 'TTTAttributedLabel'
 pod 'AWSS3'
 pod 'CrittercismSDK'
 pod 'MBFaker'
+pod 'TPKeyboardAvoiding'
+pod 'Cloudinary'
 end
 

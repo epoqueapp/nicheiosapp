@@ -6,7 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCWorldsViewController">
             <connections>
-                <outlet property="tableView" destination="OU4-xk-Z9s" id="ShL-1B-uX7"/>
+                <outlet property="clockImageView" destination="Caa-Qj-s4D" id="5MJ-k5-nIS"/>
+                <outlet property="collectionView" destination="tol-jg-Ox8" id="l4i-re-9Mi"/>
+                <outlet property="hourImageView" destination="f0o-zM-Bxv" id="bIF-tw-veZ"/>
+                <outlet property="minuteImageView" destination="fxp-Kd-mx9" id="P9Q-wq-o2b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,33 +18,68 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ornate-clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="Caa-Qj-s4D">
+                    <rect key="frame" x="150" y="118" width="300" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="Jk6-OI-0mG"/>
+                        <constraint firstAttribute="width" constant="300" id="ood-n4-92Z"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ornate_hour_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="f0o-zM-Bxv">
+                    <rect key="frame" x="185" y="153" width="230" height="230"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="PpM-mm-oUa"/>
+                        <constraint firstAttribute="height" constant="230" id="cKh-sE-SOq"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ornate_minute_hand.png" translatesAutoresizingMaskIntoConstraints="NO" id="fxp-Kd-mx9">
+                    <rect key="frame" x="200" y="168" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="JXA-zI-ixh"/>
+                        <constraint firstAttribute="width" constant="200" id="wbx-ts-oou"/>
+                    </constraints>
+                </imageView>
                 <imageView userInteractionEnabled="NO" alpha="0.5499999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LG5-Fo-vma">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OU4-xk-Z9s">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tol-jg-Ox8">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="5" id="J6J-Va-9ZI">
+                        <size key="itemSize" width="150" height="150"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
+                    </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="6Ob-UI-Vw9"/>
-                        <outlet property="delegate" destination="-1" id="Yqb-Bz-WGh"/>
+                        <outlet property="dataSource" destination="-1" id="TKQ-Bf-fzd"/>
+                        <outlet property="delegate" destination="-1" id="4KD-5p-KTU"/>
                     </connections>
-                </tableView>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="OU4-xk-Z9s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FjX-lT-pyL"/>
+                <constraint firstAttribute="centerX" secondItem="f0o-zM-Bxv" secondAttribute="centerX" id="Gpt-v4-DPu"/>
                 <constraint firstItem="LG5-Fo-vma" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HpD-gN-UyW"/>
+                <constraint firstAttribute="centerY" secondItem="Caa-Qj-s4D" secondAttribute="centerY" id="IoJ-4j-TTj"/>
+                <constraint firstAttribute="centerX" secondItem="fxp-Kd-mx9" secondAttribute="centerX" id="Pm4-Ep-l8n"/>
                 <constraint firstAttribute="bottom" secondItem="LG5-Fo-vma" secondAttribute="bottom" id="QVG-cw-vV6"/>
-                <constraint firstItem="OU4-xk-Z9s" firstAttribute="top" secondItem="LG5-Fo-vma" secondAttribute="top" id="c8B-Ww-jhP"/>
-                <constraint firstAttribute="bottom" secondItem="OU4-xk-Z9s" secondAttribute="bottom" id="gaj-jC-Ntr"/>
+                <constraint firstAttribute="centerX" secondItem="Caa-Qj-s4D" secondAttribute="centerX" id="QgV-7C-Dmf"/>
+                <constraint firstItem="tol-jg-Ox8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="T56-zK-Dgf"/>
+                <constraint firstItem="tol-jg-Ox8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dsq-6c-8dS"/>
+                <constraint firstAttribute="bottom" secondItem="tol-jg-Ox8" secondAttribute="bottom" id="lIa-Lc-6Nn"/>
+                <constraint firstAttribute="trailing" secondItem="tol-jg-Ox8" secondAttribute="trailing" id="n1O-wW-5UE"/>
+                <constraint firstAttribute="centerY" secondItem="f0o-zM-Bxv" secondAttribute="centerY" id="nv8-4P-3Pk"/>
                 <constraint firstAttribute="trailing" secondItem="LG5-Fo-vma" secondAttribute="trailing" id="oFn-sO-v0N"/>
-                <constraint firstAttribute="trailing" secondItem="OU4-xk-Z9s" secondAttribute="trailing" id="vke-It-8dx"/>
+                <constraint firstAttribute="centerY" secondItem="fxp-Kd-mx9" secondAttribute="centerY" id="sKQ-db-1no"/>
                 <constraint firstItem="LG5-Fo-vma" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vr5-hL-RmT"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
         </view>
     </objects>
     <resources>
+        <image name="ornate-clock.png" width="300" height="300"/>
+        <image name="ornate_hour_hand.png" width="300" height="300"/>
+        <image name="ornate_minute_hand.png" width="250" height="250"/>
         <image name="stars.jpg" width="1920" height="1200"/>
     </resources>
 </document>
