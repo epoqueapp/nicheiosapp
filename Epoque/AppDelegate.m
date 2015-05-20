@@ -79,6 +79,8 @@
         if ([changedUserId isEqualToString:userModel.userId]) {
             UserModel *newUserModel = [[UserModel alloc]initWithSnapshot:snapshot];
             [[NSUserDefaults standardUserDefaults] setUserModel:newUserModel];
+            [Amplitude setUserId:newUserModel.userId];
+            [Amplitude setUserProperties:[newUserModel toDictionary]];
         }
     }];
 }

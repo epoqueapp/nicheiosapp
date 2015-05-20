@@ -49,6 +49,14 @@ static NSString* const CellIdentifier = @"Cell";
         @strongify(self);
         [self.collectionView reloadData];
     }];
+    
+    self.backgroundImageView.alpha = 0;
+    [self.backgroundImageView sd_setImageWithURL:[NSURL URLWithString:@"https://s3.amazonaws.com/epoque-wallpapers/dark-wood.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        @strongify(self);
+        [UIView animateWithDuration:1.0 animations:^{
+            self.backgroundImageView.alpha = 1;
+        }];
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

@@ -87,10 +87,14 @@
     newUserModel.role = @"normal";
     newUserModel.about = @"";
     [[NSUserDefaults standardUserDefaults] setIsObscuring:YES];
+    @weakify(self);
     [[fireService.usersRef childByAutoId] setValue:[newUserModel toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
+        @strongify(self);
         NSString *userId = ref.key;
         newUserModel.userId = userId;
         [[NSUserDefaults standardUserDefaults] setUserModel:newUserModel];
+        [Amplitude setUserId:userId];
+        [Amplitude setUserProperties:[newUserModel toDictionary]];
         NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
         [self.navigationController pushFadeViewController:worldsViewController];
     }];

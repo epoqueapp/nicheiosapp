@@ -84,6 +84,7 @@ static NSString *libraryTitle = @"Library";
 }
 
 -(RACSignal *)createWorld:(WorldModel *)worldModel{
+    worldModel.passcode = [NSString generateRandomPIN:4];
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [fireService.worldsRef.childByAutoId setValue:[worldModel toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
             if(error){

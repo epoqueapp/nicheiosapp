@@ -20,6 +20,7 @@
         self.imageUrl = [dict objectForKey:@"imageUrl"];
         self.isPrivate = [[dict objectForKey:@"isPrivate"] boolValue];
         self.isDefault = [[dict objectForKey:@"isDefault"] boolValue];
+        self.passcode = dict[@"passcode"];
         self.moderatorUserIds = [dict objectForKey:@"moderatorUserIds"];
         if ([self.moderatorUserIds isKindOfClass:[NSNull class]]) {
             self.moderatorUserIds = @[];
@@ -28,7 +29,6 @@
         if ([self.memberUserIds isKindOfClass:[NSNull class]]) {
             self.memberUserIds = @[];
         }
-        
         self.favoritedUserIds = [dict objectForKey:@"favoritedUserIds"];
         if ([self.favoritedUserIds isKindOfClass:[NSNull class]] || self.favoritedUserIds == nil) {
             self.favoritedUserIds = @[];
@@ -52,6 +52,7 @@
         self.imageUrl = [dict objectForKey:@"imageUrl"];
         self.isPrivate = [[dict objectForKey:@"isPrivate"] boolValue];
         self.isDefault = [[dict objectForKey:@"isDefault"] boolValue];
+        self.passcode = dict[@"passcode"];
         self.moderatorUserIds = [dict objectForKey:@"moderatorUserIds"];
         if ([self.moderatorUserIds isKindOfClass:[NSNull class]] || self.moderatorUserIds == nil) {
             self.moderatorUserIds = @[];
@@ -79,6 +80,7 @@
         self.imageUrl = source[@"imageUrl"];
         self.isDefault = [source[@"isDefault"] boolValue];
         self.isPrivate = [source[@"isPrivate"] boolValue];
+        self.passcode = source[@"passcode"];
         self.memberUserIds = source[@"memberUserIds"];
         if ([self.memberUserIds isKindOfClass:[NSNull class]] || self.memberUserIds == nil) {
             self.memberUserIds = @[];

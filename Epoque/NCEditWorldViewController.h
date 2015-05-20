@@ -13,7 +13,7 @@
 
 @interface NCEditWorldViewController : UIViewController <FXFormControllerDelegate, NCRefreshDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
-@property (nonatomic, strong) WorldModel *worldModel;
+@property (nonatomic, copy) NSString *worldId;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) FXFormController *formController;
 @property (nonatomic, assign) id<NCRefreshDelegate> delegate;

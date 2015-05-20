@@ -9,7 +9,6 @@
 #import "NCFireService.h"
 #import <HexColors/HexColor.h>
 @implementation NCFireService{
-    CLLocationManager *locationManager;
     Firebase *rootRef;
     Firebase *worldsRef;
     Firebase *usersRef;
@@ -31,18 +30,8 @@
         rootRef = [[Firebase alloc]initWithUrl:@"https://niche.firebaseio.com"];
         worldsRef = [rootRef childByAppendingPath:@"worlds"];
         usersRef = [rootRef childByAppendingPath:@"users"];
-        self.lastKnownLocation = [[CLLocation alloc]initWithLatitude:0 longitude:0];
-        
-        locationManager = [[CLLocationManager alloc]init];
-        locationManager.delegate = self;
-        [locationManager requestWhenInUseAuthorization];
-        [locationManager startUpdatingLocation];
     }
     return self;
-}
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    self.lastKnownLocation = [locations objectAtIndex:0];
 }
 
 -(RACSignal *)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name spriteUrl:(NSString *)spriteUrl{
@@ -141,7 +130,11 @@
     }];
 }
 
--(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring{
+-(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring location:(CLLocation *)location{
+    
+    if(location == nil){
+        location = [[CLLocation alloc]initWithLatitude:37.773972 longitude:-122.431297];
+    }
     
     NSDictionary *json = @{
                            @"userId": myUserId,
@@ -152,7 +145,7 @@
                            @"messageImageUrl": imageUrl,
                            @"timestamp": kFirebaseServerValueTimestamp,
                            @"isObscuring": @(isObscuring),
-                           @"geo": [self.lastKnownLocation toGeoJsonWthObscurity:[NSUserDefaults standardUserDefaults].obscurity]
+                           @"geo": [location toGeoJsonWthObscurity:[NSUserDefaults standardUserDefaults].obscurity]
                            };
     
     // world-messages/worldId/messageId/messagedata

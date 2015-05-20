@@ -19,6 +19,7 @@
     NCUploadService *uploadService;
     NCFireService *fireService;
     BOOL shouldUpload;
+    WorldModel *worldModel;
 }
 
 static NSString *yesStopTitle = @"Yes, I want to stop";
@@ -36,28 +37,42 @@ static NSString *libraryTitle = @"Library";
     uploadService = [NCUploadService sharedInstance];
     fireService = [NCFireService sharedInstance];
     
-    NCEditWorldForm *form = [[NCEditWorldForm alloc]init];
-    
-    form.name = self.worldModel.name;
-    form.worldDescription = self.worldModel.detail;
-    form.isPrivate = self.worldModel.isPrivate;
-    
     @weakify(self);
-    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.worldModel.imageUrl] options:9 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-        
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+    self.tableView.alpha = 0;
+    [[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"worlds"] childByAppendingPath:self.worldId] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
-        if (image) {
-            form.emblemImage = image;
-        }
-        [self.tableView reloadData];
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.tableView.alpha = 1;
+        }];
+        
+        worldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
+        NCEditWorldForm *form = [[NCEditWorldForm alloc]init];
+        
+        form.name = worldModel.name;
+        form.worldDescription = worldModel.detail;
+        form.isPrivate = worldModel.isPrivate;
+        
+        
+        self.formController = [[FXFormController alloc]init];
+        self.formController.tableView = self.tableView;
+        self.formController.form = form;
+        self.tableView.separatorColor = [UIColor clearColor];
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.view.backgroundColor = [UIColor blackColor];
+        
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:worldModel.imageUrl] options:9 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+
+            if (image) {
+                form.emblemImage = image;
+            }
+            [self.tableView reloadData];
+        }];
+        
+        
     }];
-    self.formController = [[FXFormController alloc]init];
-    self.formController.tableView = self.tableView;
-    self.formController.form = form;
-    self.tableView.separatorColor = [UIColor clearColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.view.backgroundColor = [UIColor blackColor];
 }
 
 
@@ -127,19 +142,22 @@ static NSString *libraryTitle = @"Library";
     if (shouldUpload) {
         imageSignal = [uploadService uploadImage:form.emblemImage];
     }else{
-        imageSignal = [RACSignal return:self.worldModel.imageUrl];
+        imageSignal = [RACSignal return:worldModel.imageUrl];
     }
     
     [[imageSignal flattenMap:^RACStream *(NSString *value) {
         @strongify(self);
         WorldModel *worldModelToUpdate = [[WorldModel alloc]init];
-        worldModelToUpdate.worldId = [self.worldModel.worldId copy];
+        worldModelToUpdate.worldId = [worldModel.worldId copy];
         worldModelToUpdate.name = form.name;
         worldModelToUpdate.imageUrl = [value copy];
         worldModelToUpdate.detail = form.worldDescription;
         worldModelToUpdate.isPrivate = form.isPrivate;
-        worldModelToUpdate.isDefault = self.worldModel.isDefault;
-        
+        worldModelToUpdate.isDefault = worldModel.isDefault;
+        worldModelToUpdate.memberUserIds = worldModel.memberUserIds;
+        worldModelToUpdate.favoritedUserIds = worldModel.favoritedUserIds;
+        worldModelToUpdate.moderatorUserIds = worldModel.moderatorUserIds;
+        worldModelToUpdate.passcode = [NSString generateRandomPIN:4];
         return [self updateWorld:worldModelToUpdate];
     }] subscribeNext:^(id x) {
         @strongify(self);
@@ -153,9 +171,9 @@ static NSString *libraryTitle = @"Library";
     }];
 }
 
--(RACSignal *)updateWorld:(WorldModel *)worldModel{
+-(RACSignal *)updateWorld:(WorldModel *)worldModelToUpdate{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[fireService.worldsRef childByAppendingPath:worldModel.worldId] updateChildValues:[worldModel toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
+        [[fireService.worldsRef childByAppendingPath:worldModelToUpdate.worldId] updateChildValues:[worldModelToUpdate toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
             if (error) {
                 [subscriber sendError:error];
             }else{

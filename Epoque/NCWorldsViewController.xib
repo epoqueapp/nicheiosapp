@@ -7,9 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCWorldsViewController">
             <connections>
                 <outlet property="clockImageView" destination="Caa-Qj-s4D" id="5MJ-k5-nIS"/>
-                <outlet property="collectionView" destination="tol-jg-Ox8" id="l4i-re-9Mi"/>
                 <outlet property="hourImageView" destination="f0o-zM-Bxv" id="bIF-tw-veZ"/>
                 <outlet property="minuteImageView" destination="fxp-Kd-mx9" id="P9Q-wq-o2b"/>
+                <outlet property="tableView" destination="zQE-Mm-Top" id="Ibm-42-iFg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,19 +42,14 @@
                 <imageView userInteractionEnabled="NO" alpha="0.5499999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LG5-Fo-vma">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                 </imageView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tol-jg-Ox8">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-Mm-Top">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="5" id="J6J-Va-9ZI">
-                        <size key="itemSize" width="150" height="150"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
-                    </collectionViewFlowLayout>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="TKQ-Bf-fzd"/>
-                        <outlet property="delegate" destination="-1" id="4KD-5p-KTU"/>
+                        <outlet property="dataSource" destination="-1" id="KGV-cG-cif"/>
+                        <outlet property="delegate" destination="-1" id="4S9-8S-UeP"/>
                     </connections>
-                </collectionView>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -64,14 +59,14 @@
                 <constraint firstAttribute="centerX" secondItem="fxp-Kd-mx9" secondAttribute="centerX" id="Pm4-Ep-l8n"/>
                 <constraint firstAttribute="bottom" secondItem="LG5-Fo-vma" secondAttribute="bottom" id="QVG-cw-vV6"/>
                 <constraint firstAttribute="centerX" secondItem="Caa-Qj-s4D" secondAttribute="centerX" id="QgV-7C-Dmf"/>
-                <constraint firstItem="tol-jg-Ox8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="T56-zK-Dgf"/>
-                <constraint firstItem="tol-jg-Ox8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dsq-6c-8dS"/>
-                <constraint firstAttribute="bottom" secondItem="tol-jg-Ox8" secondAttribute="bottom" id="lIa-Lc-6Nn"/>
-                <constraint firstAttribute="trailing" secondItem="tol-jg-Ox8" secondAttribute="trailing" id="n1O-wW-5UE"/>
+                <constraint firstAttribute="bottom" secondItem="zQE-Mm-Top" secondAttribute="bottom" id="bru-Tf-3yn"/>
                 <constraint firstAttribute="centerY" secondItem="f0o-zM-Bxv" secondAttribute="centerY" id="nv8-4P-3Pk"/>
                 <constraint firstAttribute="trailing" secondItem="LG5-Fo-vma" secondAttribute="trailing" id="oFn-sO-v0N"/>
+                <constraint firstAttribute="trailing" secondItem="zQE-Mm-Top" secondAttribute="trailing" id="rr4-cN-T9k"/>
                 <constraint firstAttribute="centerY" secondItem="fxp-Kd-mx9" secondAttribute="centerY" id="sKQ-db-1no"/>
                 <constraint firstItem="LG5-Fo-vma" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vr5-hL-RmT"/>
+                <constraint firstItem="zQE-Mm-Top" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wFO-cc-Cdl"/>
+                <constraint firstItem="zQE-Mm-Top" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wYu-jv-oiX"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
         </view>

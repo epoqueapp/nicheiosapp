@@ -41,8 +41,7 @@
 		E34360FA1AD59EC500203D7D /* pencil_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34360F91AD59EC500203D7D /* pencil_icon@3x.png */; };
 		E34360FC1AD7B88100203D7D /* table_shout.caf in Resources */ = {isa = PBXBuildFile; fileRef = E34360FB1AD7B88100203D7D /* table_shout.caf */; };
 		E34361041AD878DD00203D7D /* purple_stars_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E34361031AD878DD00203D7D /* purple_stars_background.jpg */; };
-		E38176551ACC380000278DDE /* NCConversationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E38176531ACC380000278DDE /* NCConversationTableViewCell.m */; };
-		E38176561ACC380000278DDE /* NCConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E38176541ACC380000278DDE /* NCConversationTableViewCell.xib */; };
+		E359F6F81B0BFE0C00A9CDB7 /* lock_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */; };
 		E38176591ACC3BFC00278DDE /* ConversationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E38176581ACC3BFC00278DDE /* ConversationModel.m */; };
 		E38AB2211ADE29CC0003BA23 /* starry_outside.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E38AB2201ADE29CC0003BA23 /* starry_outside.jpg */; };
 		E38AB2231ADE2BA50003BA23 /* logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E38AB2221ADE2BA50003BA23 /* logo_white.png */; };
@@ -85,8 +84,6 @@
 		E3B638E01ABAC62C0045369B /* NCWorldsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638DE1ABAC62C0045369B /* NCWorldsViewController.m */; };
 		E3B638E11ABAC62C0045369B /* NCWorldsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B638DF1ABAC62C0045369B /* NCWorldsViewController.xib */; };
 		E3B638EA1ABACFC20045369B /* NCLoginForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638E91ABACFC20045369B /* NCLoginForm.m */; };
-		E3B638EF1ABBB6F00045369B /* NCWorldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638ED1ABBB6F00045369B /* NCWorldTableViewCell.m */; };
-		E3B638F01ABBB6F00045369B /* NCWorldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B638EE1ABBB6F00045369B /* NCWorldTableViewCell.xib */; };
 		E3B638F41ABBBA1D0045369B /* Trocchi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3B638F21ABBB9E20045369B /* Trocchi-Bold.otf */; };
 		E3B638F51ABBBA1D0045369B /* Trocchi.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3B638F31ABBB9E20045369B /* Trocchi.otf */; };
 		E3B638F91ABBC04F0045369B /* new-world-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B638F81ABBC04F0045369B /* new-world-icon@3x.png */; };
@@ -128,7 +125,6 @@
 		E3B6396E1ABDA4690045369B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6396D1ABDA4690045369B /* MessageModel.m */; };
 		E3B639711ABDAC690045369B /* NSDate+JavaScriptTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639701ABDAC690045369B /* NSDate+JavaScriptTimestamp.m */; };
 		E3B639741ABDD07F0045369B /* UIView+RotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639731ABDD07F0045369B /* UIView+RotateAnimation.m */; };
-		E3B639761ABDDBDB0045369B /* NCMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B639751ABDDBDB0045369B /* NCMessageTableViewCell.xib */; };
 		E3B639781ABEFF080045369B /* map_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639771ABEFF080045369B /* map_icon@3x.png */; };
 		E3B6397C1ABEFFF80045369B /* SOLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6397B1ABEFFF80045369B /* SOLabel.m */; };
 		E3B6397E1ABF01A90045369B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B6397D1ABF01A90045369B /* MapKit.framework */; };
@@ -150,8 +146,6 @@
 		E3B639B71AC9E44E0045369B /* options_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639B61AC9E44E0045369B /* options_button@3x.png */; };
 		E3B639B91ACA077F0045369B /* chat_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639B81ACA077F0045369B /* chat_icon@3x.png */; };
 		E3B639BB1ACA081E0045369B /* camera_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639BA1ACA081E0045369B /* camera_icon@3x.png */; };
-		E3B639C01ACA0B9C0045369B /* NCImageMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639BE1ACA0B9C0045369B /* NCImageMessageTableViewCell.m */; };
-		E3B639C11ACA0B9C0045369B /* NCImageMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B639BF1ACA0B9C0045369B /* NCImageMessageTableViewCell.xib */; };
 		E3B639C51ACA0E1A0045369B /* NSString+StringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639C41ACA0E1A0045369B /* NSString+StringAdditions.m */; };
 		E3B639C81ACA17F20045369B /* CLLocation+GeoJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639C71ACA17F20045369B /* CLLocation+GeoJson.m */; };
 		E3B639CC1ACA18DD0045369B /* UserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639CB1ACA18DD0045369B /* UserAnnotation.m */; };
@@ -168,6 +162,8 @@
 		E3BFCAE61ADE6919002CE6F9 /* blue_planet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3BFCAE51ADE6919002CE6F9 /* blue_planet.jpg */; };
 		E3BFCAE91AE09CF9002CE6F9 /* UITableView+RowAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */; };
 		E3BFCAEC1AE09E4C002CE6F9 /* UIColor+LovelyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */; };
+		E3DC7F311B0BEC8A00CD406F /* NCWorldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC7F2F1B0BEC8A00CD406F /* NCWorldTableViewCell.m */; };
+		E3DC7F321B0BEC8A00CD406F /* NCWorldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3DC7F301B0BEC8A00CD406F /* NCWorldTableViewCell.xib */; };
 		E3E9A0E41AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */; };
 		E3E9A0E61AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */; };
 		E3E9A0E91AFDBC3A00B0B6B8 /* heart_sprite_color.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */; };
@@ -178,6 +174,13 @@
 		E3F7D7321B04848A00432938 /* NCNameChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7301B04848A00432938 /* NCNameChoiceViewController.xib */; };
 		E3F7D7371B05D2F300432938 /* NCWorldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D7351B05D2F300432938 /* NCWorldCollectionViewCell.m */; };
 		E3F7D7381B05D2F300432938 /* NCWorldCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7361B05D2F300432938 /* NCWorldCollectionViewCell.xib */; };
+		E3F7D73B1B074BA900432938 /* back_arrow_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D73A1B074BA900432938 /* back_arrow_button@3x.png */; };
+		E3F7D73D1B074C5500432938 /* back_finger_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D73C1B074C5500432938 /* back_finger_button@3x.png */; };
+		E3F7D7411B08004B00432938 /* NCShareWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D7401B08004B00432938 /* NCShareWorldView.m */; };
+		E3F7D7431B08005B00432938 /* NCShareWorldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7421B08005B00432938 /* NCShareWorldView.xib */; };
+		E3F7D7481B096F1A00432938 /* NCUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D7461B096F1A00432938 /* NCUsersTableViewController.m */; };
+		E3F7D7491B096F1A00432938 /* NCUsersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7471B096F1A00432938 /* NCUsersTableViewController.xib */; };
+		E3F7D74B1B09729000432938 /* refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D74A1B09728F00432938 /* refresh_icon.png */; };
 		E3FAB1E61AD8F8130018BC07 /* auto_update_location_button_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */; };
 		E3FAB1E71AD8F8130018BC07 /* auto_update_location_button_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */; };
 		E3FAB1EC1AD922730018BC07 /* NCEditWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FAB1EA1AD922730018BC07 /* NCEditWorldViewController.m */; };
@@ -242,9 +245,7 @@
 		E34360F91AD59EC500203D7D /* pencil_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil_icon@3x.png"; sourceTree = "<group>"; };
 		E34360FB1AD7B88100203D7D /* table_shout.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = table_shout.caf; sourceTree = "<group>"; };
 		E34361031AD878DD00203D7D /* purple_stars_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purple_stars_background.jpg; sourceTree = "<group>"; };
-		E38176521ACC380000278DDE /* NCConversationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCConversationTableViewCell.h; sourceTree = "<group>"; };
-		E38176531ACC380000278DDE /* NCConversationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCConversationTableViewCell.m; sourceTree = "<group>"; };
-		E38176541ACC380000278DDE /* NCConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCConversationTableViewCell.xib; sourceTree = "<group>"; };
+		E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock_icon.png; sourceTree = "<group>"; };
 		E38176571ACC3BFC00278DDE /* ConversationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationModel.h; sourceTree = "<group>"; };
 		E38176581ACC3BFC00278DDE /* ConversationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationModel.m; sourceTree = "<group>"; };
 		E38AB2201ADE29CC0003BA23 /* starry_outside.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starry_outside.jpg; sourceTree = "<group>"; };
@@ -307,9 +308,6 @@
 		E3B638DF1ABAC62C0045369B /* NCWorldsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldsViewController.xib; sourceTree = "<group>"; };
 		E3B638E81ABACFC20045369B /* NCLoginForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCLoginForm.h; sourceTree = "<group>"; };
 		E3B638E91ABACFC20045369B /* NCLoginForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCLoginForm.m; sourceTree = "<group>"; };
-		E3B638EC1ABBB6F00045369B /* NCWorldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldTableViewCell.h; sourceTree = "<group>"; };
-		E3B638ED1ABBB6F00045369B /* NCWorldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldTableViewCell.m; sourceTree = "<group>"; };
-		E3B638EE1ABBB6F00045369B /* NCWorldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldTableViewCell.xib; sourceTree = "<group>"; };
 		E3B638F21ABBB9E20045369B /* Trocchi-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trocchi-Bold.otf"; sourceTree = "<group>"; };
 		E3B638F31ABBB9E20045369B /* Trocchi.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Trocchi.otf; sourceTree = "<group>"; };
 		E3B638F81ABBC04F0045369B /* new-world-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-world-icon@3x.png"; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 		E3B639701ABDAC690045369B /* NSDate+JavaScriptTimestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JavaScriptTimestamp.m"; sourceTree = "<group>"; };
 		E3B639721ABDD07F0045369B /* UIView+RotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RotateAnimation.h"; sourceTree = "<group>"; };
 		E3B639731ABDD07F0045369B /* UIView+RotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RotateAnimation.m"; sourceTree = "<group>"; };
-		E3B639751ABDDBDB0045369B /* NCMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCMessageTableViewCell.xib; sourceTree = "<group>"; };
 		E3B639771ABEFF080045369B /* map_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_icon@3x.png"; sourceTree = "<group>"; };
 		E3B6397A1ABEFFF80045369B /* SOLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLabel.h; sourceTree = "<group>"; };
 		E3B6397B1ABEFFF80045369B /* SOLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOLabel.m; sourceTree = "<group>"; };
@@ -400,9 +397,6 @@
 		E3B639B61AC9E44E0045369B /* options_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "options_button@3x.png"; sourceTree = "<group>"; };
 		E3B639B81ACA077F0045369B /* chat_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_icon@3x.png"; sourceTree = "<group>"; };
 		E3B639BA1ACA081E0045369B /* camera_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_icon@3x.png"; sourceTree = "<group>"; };
-		E3B639BD1ACA0B9C0045369B /* NCImageMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCImageMessageTableViewCell.h; sourceTree = "<group>"; };
-		E3B639BE1ACA0B9C0045369B /* NCImageMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCImageMessageTableViewCell.m; sourceTree = "<group>"; };
-		E3B639BF1ACA0B9C0045369B /* NCImageMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCImageMessageTableViewCell.xib; sourceTree = "<group>"; };
 		E3B639C31ACA0E1A0045369B /* NSString+StringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringAdditions.h"; sourceTree = "<group>"; };
 		E3B639C41ACA0E1A0045369B /* NSString+StringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringAdditions.m"; sourceTree = "<group>"; };
 		E3B639C61ACA17F20045369B /* CLLocation+GeoJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+GeoJson.h"; sourceTree = "<group>"; };
@@ -431,6 +425,9 @@
 		E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RowAnimations.m"; sourceTree = "<group>"; };
 		E3BFCAEA1AE09E4C002CE6F9 /* UIColor+LovelyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LovelyColors.h"; sourceTree = "<group>"; };
 		E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LovelyColors.m"; sourceTree = "<group>"; };
+		E3DC7F2E1B0BEC8A00CD406F /* NCWorldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldTableViewCell.h; sourceTree = "<group>"; };
+		E3DC7F2F1B0BEC8A00CD406F /* NCWorldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldTableViewCell.m; sourceTree = "<group>"; };
+		E3DC7F301B0BEC8A00CD406F /* NCWorldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldTableViewCell.xib; sourceTree = "<group>"; };
 		E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dark_grunge_texture@3x.jpg"; sourceTree = "<group>"; };
 		E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shout_bubble_blue_gradient@2x.png"; sourceTree = "<group>"; };
 		E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_sprite_color.png; sourceTree = "<group>"; };
@@ -445,6 +442,15 @@
 		E3F7D7341B05D2F300432938 /* NCWorldCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldCollectionViewCell.h; sourceTree = "<group>"; };
 		E3F7D7351B05D2F300432938 /* NCWorldCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldCollectionViewCell.m; sourceTree = "<group>"; };
 		E3F7D7361B05D2F300432938 /* NCWorldCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldCollectionViewCell.xib; sourceTree = "<group>"; };
+		E3F7D73A1B074BA900432938 /* back_arrow_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow_button@3x.png"; sourceTree = "<group>"; };
+		E3F7D73C1B074C5500432938 /* back_finger_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_finger_button@3x.png"; sourceTree = "<group>"; };
+		E3F7D73F1B08004B00432938 /* NCShareWorldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCShareWorldView.h; sourceTree = "<group>"; };
+		E3F7D7401B08004B00432938 /* NCShareWorldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCShareWorldView.m; sourceTree = "<group>"; };
+		E3F7D7421B08005B00432938 /* NCShareWorldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCShareWorldView.xib; sourceTree = "<group>"; };
+		E3F7D7451B096F1A00432938 /* NCUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCUsersTableViewController.h; sourceTree = "<group>"; };
+		E3F7D7461B096F1A00432938 /* NCUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCUsersTableViewController.m; sourceTree = "<group>"; };
+		E3F7D7471B096F1A00432938 /* NCUsersTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCUsersTableViewController.xib; sourceTree = "<group>"; };
+		E3F7D74A1B09728F00432938 /* refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_icon.png; sourceTree = "<group>"; };
 		E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auto_update_location_button_off@3x.png"; sourceTree = "<group>"; };
 		E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auto_update_location_button_on@3x.png"; sourceTree = "<group>"; };
 		E3FAB1E91AD922730018BC07 /* NCEditWorldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEditWorldViewController.h; sourceTree = "<group>"; };
@@ -532,16 +538,6 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
-		E38176511ACC37EC00278DDE /* ConversationTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				E38176521ACC380000278DDE /* NCConversationTableViewCell.h */,
-				E38176531ACC380000278DDE /* NCConversationTableViewCell.m */,
-				E38176541ACC380000278DDE /* NCConversationTableViewCell.xib */,
-			);
-			name = ConversationTableViewCell;
-			sourceTree = "<group>";
-		};
 		E3B638721ABAA7D30045369B = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +605,7 @@
 		E3B638A61ABAA88E0045369B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3F7D7441B096F0000432938 /* WorldUsersTableViewController */,
 				E3F7D72D1B04847900432938 /* NameChoiceViewController */,
 				E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */,
 				E30A158F1AD309A400463931 /* AboutViewController */,
@@ -684,11 +681,10 @@
 		E3B638BE1ABAB66E0045369B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E3F7D73E1B08003400432938 /* ShareWorldView */,
 				E3F7D7331B05D2D700432938 /* WorldCollectionViewCell */,
-				E38176511ACC37EC00278DDE /* ConversationTableViewCell */,
 				E3B63A601ACB193F0045369B /* UserTableViewCell */,
 				E3B639C91ACA18CC0045369B /* UserAnnotation */,
-				E3B639BC1ACA0B7E0045369B /* ImageMessageTableViewCell */,
 				E3B639931AC18B260045369B /* FormColorPickerCell */,
 				E3B639811AC16F8D0045369B /* LoadingView */,
 				E3B639791ABEFFE90045369B /* SOLabel */,
@@ -697,13 +693,13 @@
 				E3B6393A1ABC54B60045369B /* FormSubmitButtonCell */,
 				E3B639321ABC44840045369B /* FormImageCell */,
 				E3B6391E1ABC2D480045369B /* LeftMenuTableViewCell */,
-				E3B638EB1ABBB6CE0045369B /* WorldTableViewCell */,
 				E3B638CE1ABABB5D0045369B /* SpriteCollectionViewCell */,
 				E3B638CF1ABABB7B0045369B /* NCStarParticleSystem.scnp */,
 				E3B638D01ABABB7B0045369B /* star.png */,
 				E30DC0591B01AC7C000D6A30 /* NCHeartDelegate.h */,
 				E30DC05A1B01C7A3000D6A30 /* NCTableSpriteDelegate.h */,
 				E3F7D7271B01E6D900432938 /* NCMessageNameLabelDelegate.h */,
+				E3DC7F331B0BEC8F00CD406F /* WorldTableViewCell */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -764,13 +760,12 @@
 		E3B638CB1ABAB9D60045369B /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E30DC0571B0172BD000D6A30 /* splash_screen.png */,
-				E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */,
-				E3E9A0E81AFDBC3A00B0B6B8 /* heart_sprite_grey.png */,
-				E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */,
-				E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */,
+				E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */,
+				E3F7D74A1B09728F00432938 /* refresh_icon.png */,
 				E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */,
 				E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */,
+				E3F7D73A1B074BA900432938 /* back_arrow_button@3x.png */,
+				E3F7D73C1B074C5500432938 /* back_finger_button@3x.png */,
 				E3B639151ABC00B80045369B /* back_icon@3x.png */,
 				E3A614691AF2B5CA00579DAA /* bell_no_ring_icon@3x.png */,
 				E3A6146A1AF2B5CA00579DAA /* bell_ring_icon@3x.png */,
@@ -779,9 +774,12 @@
 				E3A6145D1AF1A23300579DAA /* center_me_button@2x.png */,
 				E3B639B81ACA077F0045369B /* chat_icon@3x.png */,
 				E3B6390C1ABBF61D0045369B /* close_icon@3x.png */,
+				E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */,
 				E34360F31AD51E6500203D7D /* flare_bg.jpg */,
 				E3B639A11AC5CD550045369B /* flare_grey@3x.png */,
 				E3B639651ABD8D190045369B /* flares */,
+				E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */,
+				E3E9A0E81AFDBC3A00B0B6B8 /* heart_sprite_grey.png */,
 				E3B639381ABC51960045369B /* image_placeholder@2x.png */,
 				E34360F71AD520F000203D7D /* key_icon@3x.png */,
 				E3A614621AF29C3600579DAA /* locate_me_button_off@2x.png */,
@@ -807,7 +805,9 @@
 				E3B639DF1ACA80120045369B /* saturn_icon@3x.png */,
 				E3B639DD1ACA7D680045369B /* search_icon@3x.png */,
 				E3A614681AF2B5CA00579DAA /* share_icon@3x.png */,
+				E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */,
 				E3B639D31ACA5BF30045369B /* shout_bubble_dark_gradient@2x.png */,
+				E30DC0571B0172BD000D6A30 /* splash_screen.png */,
 				E3A614851AF7ED7B00579DAA /* star_icon_full_large@3x.png */,
 				E3A614781AF5CE2600579DAA /* star_icon_full@3x.png */,
 				E3A614861AF7ED7B00579DAA /* star_icon_hollow_large@3x.png */,
@@ -862,16 +862,6 @@
 				E3A614831AF7EC7800579DAA /* NCWorldChatViewController+TableSetup.m */,
 			);
 			name = WorldsViewController;
-			sourceTree = "<group>";
-		};
-		E3B638EB1ABBB6CE0045369B /* WorldTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				E3B638EC1ABBB6F00045369B /* NCWorldTableViewCell.h */,
-				E3B638ED1ABBB6F00045369B /* NCWorldTableViewCell.m */,
-				E3B638EE1ABBB6F00045369B /* NCWorldTableViewCell.xib */,
-			);
-			name = WorldTableViewCell;
 			sourceTree = "<group>";
 		};
 		E3B638F11ABBB9D90045369B /* Fonts */ = {
@@ -996,7 +986,6 @@
 			children = (
 				E3B6395C1ABD88830045369B /* NCMessageTableViewCell.h */,
 				E3B6395D1ABD88830045369B /* NCMessageTableViewCell.m */,
-				E3B639751ABDDBDB0045369B /* NCMessageTableViewCell.xib */,
 			);
 			name = MessageTableViewCell;
 			sourceTree = "<group>";
@@ -1066,16 +1055,6 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		E3B639BC1ACA0B7E0045369B /* ImageMessageTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				E3B639BD1ACA0B9C0045369B /* NCImageMessageTableViewCell.h */,
-				E3B639BE1ACA0B9C0045369B /* NCImageMessageTableViewCell.m */,
-				E3B639BF1ACA0B9C0045369B /* NCImageMessageTableViewCell.xib */,
-			);
-			name = ImageMessageTableViewCell;
-			sourceTree = "<group>";
-		};
 		E3B639C21ACA0E080045369B /* String */ = {
 			isa = PBXGroup;
 			children = (
@@ -1126,6 +1105,16 @@
 			name = UserTableViewCell;
 			sourceTree = "<group>";
 		};
+		E3DC7F331B0BEC8F00CD406F /* WorldTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3DC7F2E1B0BEC8A00CD406F /* NCWorldTableViewCell.h */,
+				E3DC7F2F1B0BEC8A00CD406F /* NCWorldTableViewCell.m */,
+				E3DC7F301B0BEC8A00CD406F /* NCWorldTableViewCell.xib */,
+			);
+			name = WorldTableViewCell;
+			sourceTree = "<group>";
+		};
 		E3F7D72D1B04847900432938 /* NameChoiceViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1144,6 +1133,26 @@
 				E3F7D7361B05D2F300432938 /* NCWorldCollectionViewCell.xib */,
 			);
 			name = WorldCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		E3F7D73E1B08003400432938 /* ShareWorldView */ = {
+			isa = PBXGroup;
+			children = (
+				E3F7D73F1B08004B00432938 /* NCShareWorldView.h */,
+				E3F7D7401B08004B00432938 /* NCShareWorldView.m */,
+				E3F7D7421B08005B00432938 /* NCShareWorldView.xib */,
+			);
+			name = ShareWorldView;
+			sourceTree = "<group>";
+		};
+		E3F7D7441B096F0000432938 /* WorldUsersTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E3F7D7451B096F1A00432938 /* NCUsersTableViewController.h */,
+				E3F7D7461B096F1A00432938 /* NCUsersTableViewController.m */,
+				E3F7D7471B096F1A00432938 /* NCUsersTableViewController.xib */,
+			);
+			name = WorldUsersTableViewController;
 			sourceTree = "<group>";
 		};
 		E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */ = {
@@ -1259,6 +1268,7 @@
 			files = (
 				E3B63A591ACB01E60045369B /* NCFeedbackViewController.xib in Resources */,
 				E30A15C61AD4A60800463931 /* sent.wav in Resources */,
+				E3F7D73B1B074BA900432938 /* back_arrow_button@3x.png in Resources */,
 				E30A15A21AD3A67A00463931 /* placeholder.jpg in Resources */,
 				E30A15C91AD4A60800463931 /* Menu and Interface Sound 9.wav in Resources */,
 				E30A159D1AD3A3F800463931 /* shout.wav in Resources */,
@@ -1284,6 +1294,7 @@
 				E3B638AE1ABAA8B40045369B /* NCWelcomeViewController.xib in Resources */,
 				E3B6388F1ABAA7D30045369B /* LaunchScreen.xib in Resources */,
 				E3B639371ABC45EF0045369B /* NCFormImageCell.xib in Resources */,
+				E3F7D73D1B074C5500432938 /* back_finger_button@3x.png in Resources */,
 				E3B639641ABD8CAD0045369B /* lense_flare_15.png in Resources */,
 				E34360F81AD520F000203D7D /* key_icon@3x.png in Resources */,
 				E34361041AD878DD00203D7D /* purple_stars_background.jpg in Resources */,
@@ -1303,7 +1314,6 @@
 				E3B639B71AC9E44E0045369B /* options_button@3x.png in Resources */,
 				E3B638CD1ABAB9EF0045369B /* welcome_logo@3x.png in Resources */,
 				E30A15CC1AD4A60800463931 /* Menu and Interface Sound 6.wav in Resources */,
-				E3B638F01ABBB6F00045369B /* NCWorldTableViewCell.xib in Resources */,
 				E3B6393F1ABC54DA0045369B /* NCFormSubmitButtonCell.xib in Resources */,
 				E3FAB1ED1AD922730018BC07 /* NCEditWorldViewController.xib in Resources */,
 				E3B639161ABC00B80045369B /* back_icon@3x.png in Resources */,
@@ -1311,15 +1321,18 @@
 				E3B6394E1ABD73E40045369B /* NCFormSpriteCell.xib in Resources */,
 				E34360F41AD51E6500203D7D /* flare_bg.jpg in Resources */,
 				E3B639A21AC5CD550045369B /* flare_grey@3x.png in Resources */,
+				E3DC7F321B0BEC8A00CD406F /* NCWorldTableViewCell.xib in Resources */,
 				E3B639071ABBDE6C0045369B /* NCLeftMenuViewController.xib in Resources */,
 				E3E9A0E61AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png in Resources */,
-				E3B639761ABDDBDB0045369B /* NCMessageTableViewCell.xib in Resources */,
+				E3F7D7491B096F1A00432938 /* NCUsersTableViewController.xib in Resources */,
 				E3B639671ABD8D8F0045369B /* lense_flare_08.png in Resources */,
+				E359F6F81B0BFE0C00A9CDB7 /* lock_icon.png in Resources */,
 				E3A6145E1AF1A23300579DAA /* center_me_button@2x.png in Resources */,
 				E34360FA1AD59EC500203D7D /* pencil_icon@3x.png in Resources */,
 				E30A159B1AD3A22900463931 /* plate.png in Resources */,
 				E3B638C31ABAB6810045369B /* NCSpriteCollectionViewCell.xib in Resources */,
 				E3B639DE1ACA7D680045369B /* search_icon@3x.png in Resources */,
+				E3F7D74B1B09729000432938 /* refresh_icon.png in Resources */,
 				E3A614791AF5CE2600579DAA /* star_icon_full@3x.png in Resources */,
 				E30A15D01AD4A60800463931 /* Menu and Interface Sound 2.wav in Resources */,
 				E3B639861AC16FAC0045369B /* NCLoadingView.xib in Resources */,
@@ -1333,7 +1346,6 @@
 				E3B638F91ABBC04F0045369B /* new-world-icon@3x.png in Resources */,
 				E3B639D41ACA5BF30045369B /* shout_bubble_dark_gradient@2x.png in Resources */,
 				E3B6392C1ABC3AE60045369B /* ornate_hour_hand@2x.png in Resources */,
-				E38176561ACC380000278DDE /* NCConversationTableViewCell.xib in Resources */,
 				E3B6398B1AC171420045369B /* ornate_hour_hand_v2_white@2x.png in Resources */,
 				E30A15CA1AD4A60800463931 /* location_update.wav in Resources */,
 				E3A614881AF7ED7B00579DAA /* star_icon_hollow_large@3x.png in Resources */,
@@ -1347,7 +1359,6 @@
 				E30A15941AD30A3300463931 /* NCAboutViewController.xib in Resources */,
 				E30A15D11AD4A60800463931 /* success.wav in Resources */,
 				E3E9A0E91AFDBC3A00B0B6B8 /* heart_sprite_color.png in Resources */,
-				E3B639C11ACA0B9C0045369B /* NCImageMessageTableViewCell.xib in Resources */,
 				E30A15D31AD4A61700463931 /* proud.wav in Resources */,
 				E3BFCAE61ADE6919002CE6F9 /* blue_planet.jpg in Resources */,
 				E3A6146F1AF2B5CA00579DAA /* users_icon@3x.png in Resources */,
@@ -1358,6 +1369,7 @@
 				E3B639231ABC2D680045369B /* NCLeftMenuTableViewCell.xib in Resources */,
 				E30A15CE1AD4A60800463931 /* Menu and Interface Sound 4.wav in Resources */,
 				E38AB2231ADE2BA50003BA23 /* logo_white.png in Resources */,
+				E3F7D7431B08005B00432938 /* NCShareWorldView.xib in Resources */,
 				E30A15C41AD4A60700463931 /* Menu and Interface Sound 14.wav in Resources */,
 				E3B6399D1AC193130045369B /* NCFormColorCell.xib in Resources */,
 				E3F7D7321B04848A00432938 /* NCNameChoiceViewController.xib in Resources */,
@@ -1426,7 +1438,7 @@
 				E3B639221ABC2D680045369B /* NCLeftMenuTableViewCell.m in Sources */,
 				E3B639121ABBFE770045369B /* UIViewController+BarButtons.m in Sources */,
 				E3B638AD1ABAA8B40045369B /* NCWelcomeViewController.m in Sources */,
-				E3B639C01ACA0B9C0045369B /* NCImageMessageTableViewCell.m in Sources */,
+				E3F7D7411B08004B00432938 /* NCShareWorldView.m in Sources */,
 				E30A15801AD11A8300463931 /* UINavigationController+PushPop.m in Sources */,
 				E3B639531ABD83AA0045369B /* NCMapViewController.m in Sources */,
 				E3B6394C1ABD73C10045369B /* NCFormSpriteCell.m in Sources */,
@@ -1436,6 +1448,7 @@
 				E3A614801AF60D2900579DAA /* NCWorldService.m in Sources */,
 				E30A15931AD30A3300463931 /* NCAboutViewController.m in Sources */,
 				E3B639A01AC3AE500045369B /* UIColor+HexString.m in Sources */,
+				E3DC7F311B0BEC8A00CD406F /* NCWorldTableViewCell.m in Sources */,
 				E3B6397C1ABEFFF80045369B /* SOLabel.m in Sources */,
 				E3B638A91ABAA8A40045369B /* NCNavigationController.m in Sources */,
 				E3BFCAEC1AE09E4C002CE6F9 /* UIColor+LovelyColors.m in Sources */,
@@ -1461,15 +1474,14 @@
 				E3A614611AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.m in Sources */,
 				E3F7D7371B05D2F300432938 /* NCWorldCollectionViewCell.m in Sources */,
 				E3B6390B1ABBF4940045369B /* NCCreateWorldForm.m in Sources */,
-				E3B638EF1ABBB6F00045369B /* NCWorldTableViewCell.m in Sources */,
 				E3B639CC1ACA18DD0045369B /* UserAnnotation.m in Sources */,
+				E3F7D7481B096F1A00432938 /* NCUsersTableViewController.m in Sources */,
 				E3B6393D1ABC54CB0045369B /* NCFormSubmitButtonCell.m in Sources */,
 				E3B639C81ACA17F20045369B /* CLLocation+GeoJson.m in Sources */,
 				E3B639311ABC3FF40045369B /* NCUploadService.m in Sources */,
 				E30A15831AD1B33000463931 /* NCNumberHelper.m in Sources */,
 				E3B639CF1ACA20610045369B /* UserAnnotationView.m in Sources */,
 				E3B638B71ABAAA270045369B /* NCFireService.m in Sources */,
-				E38176551ACC380000278DDE /* NCConversationTableViewCell.m in Sources */,
 				E3B639841AC16FA10045369B /* NCLoadingView.m in Sources */,
 				E3B6399B1AC193010045369B /* NCFormColorCell.m in Sources */,
 				E3B6395F1ABD88830045369B /* NCMessageTableViewCell.m in Sources */,

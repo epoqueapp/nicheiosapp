@@ -2,9 +2,11 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Trocchi-Bold.otf">
+            <string>Trocchi-Bold</string>
             <string>Trocchi-Bold</string>
         </mutableArray>
         <mutableArray key="Trocchi.otf">
@@ -17,8 +19,11 @@
                 <outlet property="detailTextView" destination="2Pv-yA-Z0L" id="ft4-Wr-pVq"/>
                 <outlet property="emblemImageView" destination="N0Q-zy-2WX" id="ddp-0G-AIx"/>
                 <outlet property="favoriteButton" destination="Js3-Id-Chl" id="6NL-fs-BTm"/>
+                <outlet property="keyImageView" destination="fC6-By-yhx" id="FKG-Ju-Im6"/>
                 <outlet property="nameLabel" destination="US8-Nz-6cG" id="lWD-wa-T3o"/>
                 <outlet property="notificationButton" destination="zC3-Uf-hxQ" id="TuS-bN-LPC"/>
+                <outlet property="pinLabel" destination="fvV-nV-LEa" id="T1r-iz-YSm"/>
+                <outlet property="refreshPasscodeButton" destination="fEb-yQ-jok" id="rpZ-BC-NBH"/>
                 <outlet property="shareButton" destination="kpq-4J-PFu" id="JGV-pd-TR3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -61,7 +66,7 @@
                         <constraint firstAttribute="height" constant="66" id="fZQ-xX-bSu"/>
                     </constraints>
                     <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
-                    <state key="normal" image="bell_no_ring@3x.png">
+                    <state key="normal" image="bell_no_ring_icon@3x.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -90,16 +95,48 @@
                 <imageView userInteractionEnabled="NO" alpha="0.19999999999999968" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_planet.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9qU-Q6-cv7">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3434" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-nV-LEa">
+                    <rect key="frame" x="250" y="445" width="100" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="ZuT-2F-7lv"/>
+                        <constraint firstAttribute="width" constant="100" id="m3O-Qf-NT5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="36"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="key_icon@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="fC6-By-yhx">
+                    <rect key="frame" x="215" y="460" width="27" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="27" id="ATk-Ng-mMH"/>
+                        <constraint firstAttribute="width" secondItem="fC6-By-yhx" secondAttribute="height" multiplier="1:1" constant="-2" id="NWh-A4-QCw"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEb-yQ-jok">
+                    <rect key="frame" x="358" y="456" width="33" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="33" id="GZP-6e-sqC"/>
+                        <constraint firstAttribute="height" constant="33" id="RxB-1D-dUa"/>
+                    </constraints>
+                    <state key="normal" image="refresh_icon.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="US8-Nz-6cG" firstAttribute="top" secondItem="N0Q-zy-2WX" secondAttribute="bottom" constant="8" id="0ZD-EF-heT"/>
                 <constraint firstItem="2Pv-yA-Z0L" firstAttribute="top" secondItem="US8-Nz-6cG" secondAttribute="bottom" constant="8" id="0st-Pt-eUX"/>
+                <constraint firstItem="fvV-nV-LEa" firstAttribute="centerY" secondItem="fEb-yQ-jok" secondAttribute="centerY" constant="-4" id="5y3-EY-eRL"/>
                 <constraint firstItem="Js3-Id-Chl" firstAttribute="top" secondItem="9qU-Q6-cv7" secondAttribute="bottom" constant="-86" id="7wt-nu-DMX"/>
                 <constraint firstAttribute="centerX" secondItem="zC3-Uf-hxQ" secondAttribute="centerX" constant="-1" id="8tk-fv-cIp"/>
+                <constraint firstItem="zC3-Uf-hxQ" firstAttribute="top" secondItem="fvV-nV-LEa" secondAttribute="bottom" constant="22" id="9Eg-KG-cxC"/>
+                <constraint firstItem="fC6-By-yhx" firstAttribute="centerY" secondItem="fvV-nV-LEa" secondAttribute="centerY" constant="6" id="ATS-vi-1rL"/>
                 <constraint firstItem="9qU-Q6-cv7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="C5n-ey-OWg"/>
+                <constraint firstItem="fEb-yQ-jok" firstAttribute="leading" secondItem="fvV-nV-LEa" secondAttribute="trailing" constant="8" id="ECT-Bi-Q6H"/>
                 <constraint firstItem="zC3-Uf-hxQ" firstAttribute="leading" secondItem="kpq-4J-PFu" secondAttribute="trailing" constant="20" id="KEN-dV-vMc"/>
                 <constraint firstAttribute="bottom" secondItem="9qU-Q6-cv7" secondAttribute="bottom" id="KLD-Sj-XAd"/>
+                <constraint firstItem="fvV-nV-LEa" firstAttribute="leading" secondItem="fC6-By-yhx" secondAttribute="trailing" constant="8" id="MWR-Tu-Q7H"/>
                 <constraint firstItem="kpq-4J-PFu" firstAttribute="top" secondItem="9qU-Q6-cv7" secondAttribute="bottom" constant="-86" id="OHb-we-wp9"/>
                 <constraint firstItem="zC3-Uf-hxQ" firstAttribute="top" secondItem="9qU-Q6-cv7" secondAttribute="bottom" constant="-86" id="V66-7R-7oO"/>
                 <constraint firstItem="Js3-Id-Chl" firstAttribute="leading" secondItem="zC3-Uf-hxQ" secondAttribute="trailing" constant="20" id="Wuv-sO-yQN"/>
@@ -111,13 +148,16 @@
                 <constraint firstAttribute="trailing" secondItem="US8-Nz-6cG" secondAttribute="trailing" constant="8" id="pql-3r-acS"/>
                 <constraint firstAttribute="trailing" secondItem="9qU-Q6-cv7" secondAttribute="trailing" id="q39-zh-Qnh"/>
                 <constraint firstItem="N0Q-zy-2WX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="w8i-EB-n6a"/>
+                <constraint firstAttribute="centerX" secondItem="fvV-nV-LEa" secondAttribute="centerX" id="zE1-rx-ZGh"/>
             </constraints>
             <point key="canvasLocation" x="322" y="332"/>
         </view>
     </objects>
     <resources>
-        <image name="bell_no_ring@3x.png" width="256" height="256"/>
+        <image name="bell_no_ring_icon@3x.png" width="256" height="256"/>
         <image name="blue_planet.jpg" width="2560" height="1440"/>
+        <image name="key_icon@3x.png" width="66" height="66"/>
+        <image name="refresh_icon.png" width="256" height="256"/>
         <image name="share_icon@3x.png" width="256" height="256"/>
         <image name="star_icon_hollow_large@3x.png" width="256" height="256"/>
     </resources>

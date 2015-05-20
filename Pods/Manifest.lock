@@ -75,6 +75,7 @@ PODS:
   - Mantle/extobjc (1.5.4)
   - MarqueeLabel (2.2.3)
   - MBFaker (0.1.2)
+  - NYTPhotoViewer (0.1.2)
   - Reachability (3.2)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -115,6 +116,7 @@ DEPENDENCIES:
   - JSONModel
   - MarqueeLabel
   - MBFaker
+  - NYTPhotoViewer
   - ReactiveCocoa
   - RESideMenu
   - SDWebImage
@@ -144,6 +146,7 @@ SPEC CHECKSUMS:
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   MarqueeLabel: f03d12e3a1572893f78ecb22aa5dd774099c7208
   MBFaker: 856baf3a7153a474506114b1694c57b3bbeafbda
+  NYTPhotoViewer: 874a57dd833238b52ab2e8d1c827356c763626c3
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RESideMenu: f24c508404b49c667344c54aba7e590883533958

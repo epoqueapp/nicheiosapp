@@ -11,8 +11,10 @@
 #import "NCNavigationController.h"
 #import "NCWorldDetailViewController.h"
 #import "NCWorldChatViewController.h"
+#import "NCUsersTableViewController.h"
 #import "NCFireService.h"
 #import "WorldModel.h"
+#import "NCShareWorldView.h"
 @interface NCWorldDetailViewController ()
 
 @end
@@ -30,6 +32,7 @@ static NSString* const kLeaveWorldTitle = @"Leave World";
 static NSString* const kViewMembers = @"View Members";
 static NSString* const kTurnOnPush = @"Turn On Notifications";
 static NSString* const kTurnOffPush = @"Turn Off Notifications";
+static NSString* const kRefreshPasscode = @"Refresh";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpBackButton];
@@ -59,7 +62,24 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
         self.detailTextView.textColor = [UIColor whiteColor];
         
         NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+        NSString *myRole = [NSUserDefaults standardUserDefaults].userModel.role;
         self.isFavorite = [self.worldModel.favoritedUserIds containsObject:myUserId];
+        
+        self.keyImageView.hidden = !worldModel.isPrivate;
+        self.pinLabel.hidden = !worldModel.isPrivate;
+        self.pinLabel.text = worldModel.passcode;
+
+        BOOL isModerator = [self.worldModel.moderatorUserIds containsObject:myUserId] || [myRole isEqualToString:@"admin"];
+        
+        if(worldModel.isPrivate){
+            if (isModerator) {
+                self.refreshPasscodeButton.hidden = NO;
+            }else{
+                self.refreshPasscodeButton.hidden = YES;
+            }
+        }else{
+            self.refreshPasscodeButton.hidden = YES;
+        }
     }];
     self.emblemImageView.layer.cornerRadius = 3.0;
     self.emblemImageView.layer.masksToBounds = YES;
@@ -77,6 +97,9 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
     self.favoriteButton.layer.cornerRadius = self.favoriteButton.frame.size.height / 2;
     self.favoriteButton.backgroundColor = [UIColor colorWithHexString:@"#FD7400"];
     [self.favoriteButton addTarget:self action:@selector(favoriteButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.refreshPasscodeButton addTarget:self action:@selector(refreshPasscodeButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [RACObserve(self, isFavorite) subscribeNext:^(id x) {
         @strongify(self);
@@ -127,10 +150,19 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 }
 
 -(void)shareButtonDidClick:(id)sender{
-    NSString *string = @"";
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.epoqueapp.com/worlds/%@", self.worldId]];
+    NSString *string = [NSString stringWithFormat:@"I want you to join this world on Epoque."];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/app/epoque-a-living-world-atlas/id918925175"]];
+    NCShareWorldView *shareWorld = [NCShareWorldView generateView];
+    shareWorld.worldImageView.image = self.emblemImageView.image;
+    shareWorld.worldNameLabel.text = self.worldModel.name;
     
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc]initWithActivityItems:@[string, url] applicationActivities:nil];
+    
+    if (self.worldModel.isPrivate) {
+        [shareWorld setPINWithString:self.worldModel.passcode];
+    }
+    
+    UIImage *image = [shareWorld toImage];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc]initWithActivityItems:@[string, url, image] applicationActivities:nil];
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
@@ -145,7 +177,12 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
     }
 }
 
-- (void)didReceiveMemoryWarning {
+-(void)refreshPasscodeButtonDidClick:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Refresh the Passcode?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:kRefreshPasscode, nil];
+    [alert show];
+}
+
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -153,6 +190,7 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
 -(void)optionsButtonDidClick:(id)sender{
     UIActionSheet *actionSheet = [[UIActionSheet alloc]init];
     UserModel *userModel = [NSUserDefaults standardUserDefaults].userModel;
+    [actionSheet addButtonWithTitle:kViewMembers];
     if (self.worldModel == nil) {
         return;
     }
@@ -186,6 +224,11 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
         [Amplitude logEvent:@"Edit World Button Did Click" withEventProperties:@{@"worldId": self.worldId}];
         [self goToWorldEdit];
     }
+    
+    if ([title isEqualToString:kViewMembers]) {
+        [Amplitude logEvent:@"View Members Button Did Click" withEventProperties:@{@"worldId": self.worldId}];
+        [self gotToViewMembers];
+    }
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -204,6 +247,9 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
         // TODO:
         [self.navigationController goToWorldsController];
     }
+    if ([title isEqualToString:kRefreshPasscode]) {
+        [[[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"worlds"]childByAppendingPath:self.worldId] childByAppendingPath:@"passcode"] setValue:[NSString generateRandomPIN:4]];
+    }
 }
 
 -(void)goToChat{
@@ -217,9 +263,15 @@ static NSString* const kTurnOffPush = @"Turn Off Notifications";
     if ([self.worldModel.moderatorUserIds containsObject:myUserModel.userId] || [myUserModel.role isEqualToString:@"admin"]) {
         [Amplitude logEvent:@"Edit World Button Did Click" withEventProperties:@{@"worldId": self.worldId}];
         NCEditWorldViewController *editWorldViewController = [[NCEditWorldViewController alloc]init];
-        editWorldViewController.worldModel = self.worldModel;
+        editWorldViewController.worldId = self.worldModel.worldId;
         [self.navigationController pushRetroViewController:editWorldViewController];
     }
+}
+
+-(void)gotToViewMembers{
+    NCUsersTableViewController *usersViewController = [[NCUsersTableViewController alloc]init];
+    usersViewController.worldId = [self.worldId copy];
+    [self.navigationController pushRetroViewController:usersViewController];
 }
 
 @end

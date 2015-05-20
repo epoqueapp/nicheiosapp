@@ -26,5 +26,6 @@ pod 'CrittercismSDK'
 pod 'MBFaker'
 pod 'TPKeyboardAvoiding'
 pod 'Cloudinary'
+pod 'NYTPhotoViewer'
 end
 

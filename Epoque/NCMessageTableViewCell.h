@@ -10,20 +10,35 @@
 #import "SOLabel.h"
 #import "NCHeartDelegate.h"
 #import "NCTableSpriteDelegate.h"
-#import "NCMessageNameLabelDelegate.h"
+#import "MessageModel.h"
+
+#define kAvatarSize 32.0
+#define kMinimumHeight 90.0
+
+
+@protocol NCMessageTableViewCellDelegate <NSObject>
+
+@optional
+-(void)tappedSpriteImageView:(NSIndexPath *)indexPath;
+-(void)tappedUserNameLabel:(NSIndexPath *)indexPath;
+
+@end
+
 
 @interface NCMessageTableViewCell : UITableViewCell <TTTAttributedLabelDelegate>
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
-@property (nonatomic, weak) IBOutlet UIImageView *spriteImageView;
-@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
-@property (nonatomic, weak) IBOutlet TTTAttributedLabel *textMessageLabel;
-@property (nonatomic, weak) IBOutlet UILabel *timeLabel;
-@property (nonatomic, weak) IBOutlet UILabel *likeCountLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *heartImageView;
+@property (nonatomic, strong) UIImageView *spriteImageView;
+@property (nonatomic, strong) UILabel *userNameLabel;
+@property (nonatomic, strong) TTTAttributedLabel *textMessageLabel;
+@property (nonatomic, strong) UIImageView *attachmentImageView;
 
-@property (nonatomic, assign) id<NCHeartDelegate> heartDelegate;
-@property (nonatomic, assign) id<NCTableSpriteDelegate> tableSpriteDelegate;
-@property (nonatomic, assign) id<NCMessageNameLabelDelegate> messageNameLabelDelegate;
+@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *likeCountLabel;
+@property (nonatomic, strong) UIImageView *heartImageView;
+
+@property (nonatomic, assign) id<NCMessageTableViewCellDelegate> delegate;
+
+-(void)setMessageModel:(MessageModel *)messageModel;
 
 @end

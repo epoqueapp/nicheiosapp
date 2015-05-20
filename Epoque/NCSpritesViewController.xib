@@ -6,7 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCSpritesViewController">
             <connections>
-                <outlet property="clockImageView" destination="LoP-nd-VHu" id="hhS-Gj-FFq"/>
+                <outlet property="backgroundImageView" destination="UNq-7Z-6qm" id="TRs-mz-8T7"/>
+                <outlet property="clockImageView" destination="LoP-nd-VHu" id="9fY-yi-m3I"/>
                 <outlet property="collectionView" destination="coB-GS-Bmm" id="Eaz-Ne-YwD"/>
                 <outlet property="hourImageView" destination="Ups-bk-DK2" id="te1-tN-A4Y"/>
                 <outlet property="minuteImageView" destination="cKr-Ki-tQh" id="PUA-6J-aDc"/>
@@ -18,6 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UNq-7Z-6qm">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ornate-clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="LoP-nd-VHu">
                     <rect key="frame" x="150" y="150" width="300" height="300"/>
                     <constraints>
@@ -59,12 +63,16 @@
                 <constraint firstAttribute="bottom" secondItem="coB-GS-Bmm" secondAttribute="bottom" id="7S0-wt-DPh"/>
                 <constraint firstAttribute="centerY" secondItem="Ups-bk-DK2" secondAttribute="centerY" constant="0.5" id="BpM-Z3-aDm"/>
                 <constraint firstAttribute="centerX" secondItem="Ups-bk-DK2" secondAttribute="centerX" constant="-0.5" id="Cfy-hD-H5U"/>
+                <constraint firstItem="UNq-7Z-6qm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Kb5-Qx-S0L"/>
+                <constraint firstAttribute="trailing" secondItem="UNq-7Z-6qm" secondAttribute="trailing" id="Lfx-93-8MU"/>
                 <constraint firstItem="coB-GS-Bmm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pu4-6o-W74"/>
+                <constraint firstAttribute="bottom" secondItem="UNq-7Z-6qm" secondAttribute="bottom" id="RgL-6I-VDf"/>
                 <constraint firstAttribute="centerX" secondItem="cKr-Ki-tQh" secondAttribute="centerX" id="SkP-YH-igc"/>
                 <constraint firstAttribute="trailing" secondItem="coB-GS-Bmm" secondAttribute="trailing" id="ZDa-wY-Z84"/>
                 <constraint firstItem="coB-GS-Bmm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="a6z-UD-LnZ"/>
                 <constraint firstAttribute="centerY" secondItem="cKr-Ki-tQh" secondAttribute="centerY" id="bjC-wo-kGC"/>
                 <constraint firstAttribute="centerY" secondItem="LoP-nd-VHu" secondAttribute="centerY" id="dbS-qb-qg9"/>
+                <constraint firstItem="UNq-7Z-6qm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jRk-Ox-hIX"/>
             </constraints>
         </view>
     </objects>

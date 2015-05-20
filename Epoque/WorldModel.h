@@ -22,6 +22,7 @@
 @property (nonatomic, copy) NSString *imageUrl;
 @property (nonatomic, assign) BOOL isPrivate;
 @property (nonatomic, assign) BOOL isDefault;
+@property (nonatomic, copy) NSString *passcode;
 @property (nonatomic, strong) NSArray *memberUserIds;
 @property (nonatomic, strong) NSArray *moderatorUserIds;
 @property (nonatomic, strong) NSArray *favoritedUserIds;

@@ -31,16 +31,27 @@
     [self.textView resignFirstResponder];
     [Amplitude logEvent:@"Send Feedback Button Did Click"];
     [NCLoadingView showInView:self.view withTitleText:@"sending"];
-    [[userService sendFeedbackWithContent:self.textView.text] subscribeNext:^(id x) {
+    UserModel *myUserModel = [NSUserDefaults standardUserDefaults].userModel;
+    
+    NSDictionary *body = @{
+                           @"userId": myUserModel.userId,
+                           @"userName": myUserModel.name,
+                           @"userSpriteUrl": myUserModel.spriteUrl,
+                           @"timestamp": kFirebaseServerValueTimestamp,
+                           @"content": self.textView.text
+                           };
+    
+    [[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"user-feedbacks"] childByAutoId] setValue:body withCompletionBlock:^(NSError *error, Firebase *ref) {
         @strongify(self);
+        if (error) {
+            [NCLoadingView hideAllFromView:self.view];
+            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"We ran into an error sending your feedback!" duration:2.0];
+            return;
+        }
         [NCLoadingView hideAllFromView:self.view];
         [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Your feedback was sent! Thank you" duration:2.0];
-    } error:^(NSError *error) {
-        @strongify(self);
-        [NCLoadingView hideAllFromView:self.view];
-        [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"We ran into an error sending your feedback!" duration:2.0];
+        
     }];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated{

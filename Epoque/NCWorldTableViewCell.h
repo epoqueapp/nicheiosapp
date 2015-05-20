@@ -1,18 +1,22 @@
 //
 //  NCWorldTableViewCell.h
-//  Niche
+//  Epoque
 //
-//  Created by Maximilian Alexander on 3/19/15.
+//  Created by Maximilian Alexander on 5/19/15.
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <THLabel.h>
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
 @interface NCWorldTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UIImageView *emblemImageView;
-@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *detailLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *privateImageView;
-@property (nonatomic, weak) IBOutlet THLabel *memberCountLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *worldImageView;
+@property (nonatomic, weak) IBOutlet TTTAttributedLabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *starImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *keyImageView;
+
+@property (nonatomic, weak) IBOutlet UILabel *badgeLabel;
+
+@property (nonatomic, copy) NSString *worldId;
+
 @end

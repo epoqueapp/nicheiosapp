@@ -12,12 +12,9 @@
 #import "MessageModel.h"
 #import "WorldModel.h"
 #import "SubmitPrivateMessageModel.h"
-@interface NCFireService : NSObject <CLLocationManagerDelegate>
+@interface NCFireService : NSObject
 
 +(id)sharedInstance;
-
-@property (nonatomic, strong) CLLocation *lastKnownLocation;
-
 
 -(RACSignal *)createUserWithEmail:(NSString *)email password:(NSString *)password name:(NSString *)name spriteUrl:(NSString *)spriteUrl;
 -(RACSignal *)loginWithEmail:(NSString *)email password:(NSString *)password;
@@ -27,7 +24,7 @@
 -(RACSignal *)updateWorld:(WorldModel *)worldModel;
 -(RACSignal *)deleteWorld:(NSString *)worldId;
 
--(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring;
+-(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring location:(CLLocation *)location;
 
 -(RACSignal *)submitPrivateMessage:(SubmitPrivateMessageModel *)submitPrivateMessageModel;
 

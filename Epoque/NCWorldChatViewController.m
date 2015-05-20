@@ -10,7 +10,6 @@
 #import "NCNavigationController.h"
 #import "NCWorldChatViewController.h"
 #import "NCWorldDetailViewController.h"
-#import "NCImageMessageTableViewCell.h"
 #import "NCMessageTableViewCell.h"
 #import "NCFireService.h"
 #import "NCUploadService.h"
@@ -52,10 +51,10 @@
     UIImage *heartRedImage;
     NSString *userIdToBlock;
     NSString *userIdToReport;
+    CLLocationManager *locationManager;
 }
 
 static NSString *MessengerCellIdentifier = @"MessengerCell";
-static NSString *ImageMessageCellIdentifier = @"ImageMessageCell";
 static NSString *CameraTitle = @"Camera";
 static NSString *GalleryTitle = @"Gallery";
 static NSString *BlockUserTitle = @"Block User";
@@ -76,6 +75,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
             return @"latest";
         }];
         [self rac_liftSelector:@selector(setUpListeners:) withSignals:latest, nil];
+        [self rac_liftSelector:@selector(clearNotificationBadgesForThisWorld:) withSignals:latest, nil];
     }
     return self;
 }
@@ -155,8 +155,6 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
         @strongify(self);
         [self.tableView reloadData];
         initialAdds = NO;
-        NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
-        [[[[[fireService.rootRef childByAppendingPath:@"user-notification-badges"] childByAppendingPath:myUserId] childByAppendingPath:@"world-messages"] childByAppendingPath:self.worldId] setValue:@(0)];
     }];
     
     if (worldShoutsRef) {
@@ -182,13 +180,26 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     }
     shoutsChangedHandle = [worldShoutsRef observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
+        
         UserAnnotation *userAnno = [userAnnotations objectForKey:snapshot.key];
         if (userAnno) {
+            
+            NSString *originalMessageText = [userAnno.messageText copy];
+            NSString *originalImageUrl = [userAnno.messageImageUrl copy];
+            NSString *newMessageText = [snapshot.value objectForKey:@"messageText"];
+            NSString *newMessageImageUrl = [snapshot.value objectForKey:@"messageImageUrl"];
+
+            
             [userAnno upsertFromSnapshot:snapshot];
             UserAnnotationView *userAnnoView =  (UserAnnotationView *) [self.mapView viewForAnnotation:userAnno];
             if (userAnnoView) {
                 userAnnoView.userAnnotation = userAnno;
-                [userAnnoView animateRings];
+            }
+            if (![originalImageUrl isEqualToString:newMessageImageUrl]){
+                
+            }
+            if(![originalMessageText isEqualToString:newMessageText]) {
+                [self animateRingsForAnnotation:userAnno];
             }
         }
         else{
@@ -198,6 +209,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
             if ([userAnno.userId isEqualToString:[NSUserDefaults standardUserDefaults].userModel.userId]) {
                 [self.mapView zoomToLocation:userAnno.coordinate withSpan:0.05];
             }
+            [self animateRingsForAnnotation:userAnno];
         }
     }];
     if (worldPushBusRef) {
@@ -227,8 +239,14 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     [self.view setNeedsDisplay];
 }
 
+-(void)animateRingsForAnnotation:(UserAnnotation *)userAnnotation{
+    UserAnnotationView *userAnnoView =  (UserAnnotationView *) [self.mapView viewForAnnotation:userAnnotation];
+    if (userAnnoView) {
+        [userAnnoView animateRings];
+    }
+}
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
     [self setUpBackButtonWithWorldsDefault];
     self.mapView = [[MKMapView alloc]initWithFrame:self.view.bounds];
@@ -252,7 +270,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     [self.view addSubview:self.centerMeButton];
     
     self.updateLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 50, 30, 30)];
-    [self.updateLocationButton setImage:[UIImage imageNamed:@"locate_me_button"] forState:UIControlStateNormal];
+    [self.updateLocationButton setImage:[UIImage imageNamed:@"locate_me_button_off"] forState:UIControlStateNormal];
     [self.updateLocationButton addTarget:self action:@selector(updateLocationButtonDidClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.updateLocationButton];
     
@@ -276,8 +294,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     self.keyboardPanningEnabled = YES;
     self.inverted = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView registerNib:[UINib nibWithNibName:@"NCMessageTableViewCell" bundle:nil] forCellReuseIdentifier:MessengerCellIdentifier];
-    [self.tableView registerNib:[UINib nibWithNibName:@"NCImageMessageTableViewCell" bundle:nil] forCellReuseIdentifier:ImageMessageCellIdentifier];
+    [self.tableView registerClass:[NCMessageTableViewCell class] forCellReuseIdentifier:MessengerCellIdentifier];
     self.tableView.estimatedRowHeight = 90.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.allowsSelection = NO;
@@ -297,6 +314,11 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     [self.leftButton setImage:[UIImage imageNamed:@"camera_icon"] forState:UIControlStateNormal];
     self.tableView.hidden = [NSUserDefaults standardUserDefaults].worldMapEnabled;
     
+    locationManager = [[CLLocationManager alloc]init];
+    locationManager.delegate = self;
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+    
     @weakify(self);
     [RACObserve(self.tableView, hidden) subscribeNext:^(id x) {
         @strongify(self);
@@ -310,6 +332,18 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
             [mapToggleBarButton setImage:[UIImage imageNamed:@"map_icon"]];
             self.centerMeButton.hidden = YES;
             self.updateLocationButton.hidden = YES;
+        }
+    }];
+
+    
+    self.isAutoLocationUpdate = YES;
+    [RACObserve(self, isAutoLocationUpdate) subscribeNext:^(id x) {
+        @strongify(self);
+        BOOL isOn = [x boolValue];
+        if (isOn) {
+            [self.updateLocationButton setImage:[UIImage imageNamed:@"locate_me_button"] forState:UIControlStateNormal];
+        }else{
+            [self.updateLocationButton setImage:[UIImage imageNamed:@"locate_me_button_off"] forState:UIControlStateNormal];
         }
     }];
     
@@ -329,6 +363,18 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     self.mapView.frame = self.view.bounds;
 }
 
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    if (self.isAutoLocationUpdate == NO) {
+        return;
+    }
+    CLLocation *location = [locations objectAtIndex:0];
+    self.lastKnownLocation = location;
+    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    float obscurity = [NSUserDefaults standardUserDefaults].obscurity;
+    NSArray *geoJson = [location toGeoJsonWthObscurity:obscurity];
+    [[[[fireService worldShoutsRef:self.worldId] childByAppendingPath:myUserId] childByAppendingPath:@"geo"] setValue:geoJson];
+    [[[[fireService worldShoutsRef:self.worldId] childByAppendingPath:myUserId] childByAppendingPath:@"timestamp"] setValue:kFirebaseServerValueTimestamp];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.messages.count;
@@ -336,83 +382,10 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MessageModel *messageModel = [self.messages objectAtIndex:indexPath.row];
-
-    BOOL isMyMessage = [messageModel.userId isEqualToString:[NSUserDefaults standardUserDefaults].userModel.userId];
-    if (![NSString isStringEmpty:messageModel.messageText]) {
-        NCMessageTableViewCell *cell = (NCMessageTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:MessengerCellIdentifier];
-        cell.indexPath = indexPath;
-        cell.backgroundColor = [UIColor clearColor];
-        cell.userNameLabel.text = messageModel.userName;
-        cell.userNameLabel.textColor = [UIColor lightGrayColor];
-        cell.textMessageLabel.text = messageModel.messageText;
-        cell.textMessageLabel.textColor = [UIColor whiteColor];
-        
-        if (isMyMessage) {
-            cell.userNameLabel.textColor = [UIColor colorWithHexString:@"#51A3F2" alpha:1.0];
-            cell.textMessageLabel.backgroundColor = [UIColor lovelyBlueWithAlpha:0.1];
-        }else{
-            cell.textMessageLabel.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:0.5];
-        }
-        cell.textMessageLabel.textInsets = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
-        cell.textMessageLabel.layer.cornerRadius = 4.0f;
-        cell.textMessageLabel.layer.masksToBounds = YES;
-        cell.textMessageLabel.layer.borderColor = [UIColor darkGrayColor].CGColor;
-        cell.textMessageLabel.layer.borderWidth = 0.25f;
-        cell.textMessageLabel.delegate = self;
-        cell.timeLabel.textColor = [UIColor lightGrayColor];
-        cell.timeLabel.text = messageModel.timestamp.tableViewCellTimeString;
-        cell.indexPath = indexPath;
-        
-        cell.heartDelegate = self;
-        cell.tableSpriteDelegate = self;
-        cell.messageNameLabelDelegate = self;
-        if (messageModel.likedUserIds.count > 0) {
-            cell.heartImageView.image = heartRedImage;
-            cell.likeCountLabel.hidden = NO;
-            cell.likeCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)messageModel.likedUserIds.count];
-        }else{
-            cell.heartImageView.image = heartGreyImage;
-            cell.likeCountLabel.hidden = YES;
-        }
-        [cell.spriteImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.userSpriteUrl]];
-        return cell;
-    }
-    NCImageMessageTableViewCell *cell = (NCImageMessageTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:ImageMessageCellIdentifier];
+    NCMessageTableViewCell *cell = (NCMessageTableViewCell *)[tableView dequeueReusableCellWithIdentifier:MessengerCellIdentifier];
     cell.indexPath = indexPath;
-    cell.nameLabel.text = messageModel.userName;
-    cell.backgroundColor = [UIColor clearColor];
-    
-    if (isMyMessage) {
-        cell.nameLabel.textColor = [UIColor colorWithHexString:@"#51A3F2" alpha:1.0];
-    }else{
-        cell.nameLabel.textColor = [UIColor lightGrayColor];
-    }
-    
-    cell.timeLabel.textColor = [UIColor lightGrayColor];
-    cell.timeLabel.text = messageModel.timestamp.tableViewCellTimeString;
-    [cell.userImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.userSpriteUrl]];
-    cell.tableSpriteDelegate = self;
-    cell.heartDelegate = self;
-    cell.messageNameLabelDelegate = self;
-    
-    if (messageModel.likedUserIds.count > 0) {
-        cell.heartImageView.image = heartRedImage;
-        cell.likeCountLabel.hidden = NO;
-        cell.likeCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)messageModel.likedUserIds.count];
-    }else{
-        cell.heartImageView.image = heartGreyImage;
-        cell.likeCountLabel.hidden = YES;
-    }
-    
-    [cell.messageImageView sd_setImageWithURL:[NSURL URLWithString:messageModel.messageImageUrl] placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        cell.messageImageView.alpha = 1;
-        if (cacheType == SDImageCacheTypeNone) {
-            cell.messageImageView.alpha = 0;
-            [UIView animateWithDuration:0.10 animations:^{
-                cell.messageImageView.alpha = 1;
-            }];
-        }
-    }];
+    [cell setMessageModel:messageModel];
+    cell.delegate = self;
     return cell;
 }
 
@@ -420,21 +393,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     [[UIApplication sharedApplication] openURL:url];
 }
 
--(void)tappedHeart:(NSIndexPath *)indexPath{
-    MessageModel *messageModel = [self.messages objectAtIndex:indexPath.row];
-    [Amplitude logEvent:@"Message Heart Did Tap" withEventProperties:@{@"worldId": self.worldId, @"messageId": messageModel.messageId}];
-    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    BOOL iAlreadyLiked = [messageModel.likedUserIds containsObject:myUserId];
-    if (iAlreadyLiked) {
-        return;
-    }
-    NSMutableArray *likedArray = [messageModel.likedUserIds mutableCopy];
-    [likedArray addObject:myUserId];
-    [[[[[fireService.rootRef childByAppendingPath:@"world-shouts"] childByAppendingPath:self.worldId] childByAppendingPath:messageModel.userId] childByAppendingPath:@"likedUserIds"] setValue:likedArray];
-    [[[[[fireService.rootRef childByAppendingPath:@"world-messages"] childByAppendingPath:self.worldId] childByAppendingPath:messageModel.messageId] childByAppendingPath:@"likedUserIds"] setValue:likedArray];
-}
-
--(void)tappedSprite:(NSIndexPath *)indexPath{
+-(void)tappedSpriteImageView:(NSIndexPath *)indexPath{
     MessageModel *messageModel = [self.messages objectAtIndex:indexPath.row];
     [Amplitude logEvent:@"Message Sprite Did Tap" withEventProperties:@{@"worldId": self.worldId, @"messageId": messageModel.messageId}];
     NSString *userId = messageModel.userId;
@@ -445,7 +404,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     }
 }
 
--(void)tappedNameLabel:(NSIndexPath *)indexPath{
+-(void)tappedUserNameLabel:(NSIndexPath *)indexPath{
     MessageModel *messageModel = [self.messages objectAtIndex:indexPath.row];
     if ([messageModel.userId isEqualToString:[NSUserDefaults standardUserDefaults].userModel.userId]) {
         return;
@@ -480,7 +439,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     NSString *messageText = [self.textView.text copy];
     [Amplitude logEvent:@"Send Shout Did Click" withEventProperties:@{@"messageText": messageText}];
     BOOL isObscuring = [[NSUserDefaults standardUserDefaults] isObscuring];
-    [[fireService submitWorldMessage:self.worldId myUserId:userModel.userId mySpriteUrl:userModel.spriteUrl myName:userModel.name myUserImageUrl:userModel.imageUrl text:messageText imageUrl:@"" isObscuring:isObscuring] subscribeNext:^(id x) {
+    [[fireService submitWorldMessage:self.worldId myUserId:userModel.userId mySpriteUrl:userModel.spriteUrl myName:userModel.name myUserImageUrl:userModel.imageUrl text:messageText imageUrl:@"" isObscuring:isObscuring location:self.lastKnownLocation] subscribeNext:^(id x) {
 
     } error:^(NSError *error) {
         NSLog(@"Error submitting chat message %@", error);
@@ -499,7 +458,6 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
 -(void)scrollToTop{
     [self.tableView setContentOffset:CGPointZero animated:YES];
 }
-
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
@@ -544,7 +502,7 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
         @strongify(self);
         [Amplitude logEvent:@"Upload Image" withEventProperties:@{@"worldId": self.worldId}];
         UserModel *userModel = [NSUserDefaults standardUserDefaults].userModel;
-        return [fireService submitWorldMessage:self.worldId myUserId:userModel.userId mySpriteUrl:userModel.spriteUrl myName:userModel.name myUserImageUrl:userModel.imageUrl text:@"" imageUrl:value isObscuring:isObscuring];
+        return [fireService submitWorldMessage:self.worldId myUserId:userModel.userId mySpriteUrl:userModel.spriteUrl myName:userModel.name myUserImageUrl:userModel.imageUrl text:@"" imageUrl:value isObscuring:isObscuring location:self.lastKnownLocation];
     }] subscribeNext:^(id x) {
         @strongify(self);
         [NCLoadingView hideAllFromView:self.view];
@@ -605,8 +563,8 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
             MessageModel *messageModel = obj;
             if ([messageId isEqualToString:messageModel.messageId]) {
                 self.tableView.hidden = NO;
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]
-                                 atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+                [self attemptToScrollToIndexPath:indexPath];
                 *stop = YES;
             }
         }];
@@ -629,13 +587,43 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
 
 -(void)updateLocationButtonDidClick:(id)sender{
     [Amplitude logEvent:@"Update Location Button Did Click" withEventProperties:@{@"worldId": self.worldId}];
-    CLLocation *location = fireService.lastKnownLocation;
-    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    float obscurity = [NSUserDefaults standardUserDefaults].obscurity;
-    NSArray *geoJson = [location toGeoJsonWthObscurity:obscurity];
-    [[[[fireService worldShoutsRef:self.worldId] childByAppendingPath:myUserId] childByAppendingPath:@"geo"] setValue:geoJson];
-    [[[[fireService worldShoutsRef:self.worldId] childByAppendingPath:myUserId] childByAppendingPath:@"timestamp"] setValue:kFirebaseServerValueTimestamp];
-    [locationUpdateSound play];
+    self.isAutoLocationUpdate = !self.isAutoLocationUpdate;
+    if (self.isAutoLocationUpdate) {
+        NSString *message = @"Location Auto Update is Now ON";
+        [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:message duration:2.0];
+    }else{
+        NSString *message = @"Location Auto Update is Now OFF";
+        [CSNotificationView showInViewController:self tintColor:[UIColor darkGrayColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:message duration:2.0];
+    }
+}
+
+-(void)attemptToScrollToIndexPath:(NSIndexPath *)indexPath{
+    @try {
+        [self.tableView scrollToRowAtIndexPath:indexPath
+                              atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell) {
+            UIColor *originalBackgroundColor = [cell.backgroundColor copy];
+            
+            
+            [UIView animateWithDuration:1.0 animations:^{
+                cell.backgroundColor = [UIColor whiteColor];
+            }];
+            
+            [UIView animateWithDuration:0.5 delay:0.5 options:0 animations:^{
+                cell.backgroundColor = originalBackgroundColor;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
 }
 
 -(void)jiggleRandomUserAnnotation:(id)sender{
@@ -667,6 +655,12 @@ static NSString *ConfirmBlockUserTitle = @"Yes, Block";
     @finally {
         
     }
+}
+
+-(void)clearNotificationBadgesForThisWorld:(id)sender{
+    NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
+    [[[[[[[Firebase alloc] initWithUrl:kFirebaseRoot] childByAppendingPath:@"user-notification-badges"] childByAppendingPath:myUserId] childByAppendingPath:@"world-messages"] childByAppendingPath:self.worldId] setValue:@(0) withCompletionBlock:^(NSError *error, Firebase *ref) {
+    }];
 }
 
 @end

@@ -24,5 +24,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *clockImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *minuteImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *hourImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
 
 @end
