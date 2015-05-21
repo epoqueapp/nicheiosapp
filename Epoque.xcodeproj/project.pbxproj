@@ -162,6 +162,7 @@
 		E3BFCAE61ADE6919002CE6F9 /* blue_planet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3BFCAE51ADE6919002CE6F9 /* blue_planet.jpg */; };
 		E3BFCAE91AE09CF9002CE6F9 /* UITableView+RowAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */; };
 		E3BFCAEC1AE09E4C002CE6F9 /* UIColor+LovelyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */; };
+		E3C9123B1B0D905D00F6833A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C912391B0D905D00F6833A /* MapViewController.swift */; };
 		E3DC7F311B0BEC8A00CD406F /* NCWorldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC7F2F1B0BEC8A00CD406F /* NCWorldTableViewCell.m */; };
 		E3DC7F321B0BEC8A00CD406F /* NCWorldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3DC7F301B0BEC8A00CD406F /* NCWorldTableViewCell.xib */; };
 		E3E9A0E41AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */; };
@@ -425,6 +426,8 @@
 		E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RowAnimations.m"; sourceTree = "<group>"; };
 		E3BFCAEA1AE09E4C002CE6F9 /* UIColor+LovelyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LovelyColors.h"; sourceTree = "<group>"; };
 		E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LovelyColors.m"; sourceTree = "<group>"; };
+		E3C912381B0D905C00F6833A /* Epoque-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Epoque-Bridging-Header.h"; sourceTree = "<group>"; };
+		E3C912391B0D905D00F6833A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E3DC7F2E1B0BEC8A00CD406F /* NCWorldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldTableViewCell.h; sourceTree = "<group>"; };
 		E3DC7F2F1B0BEC8A00CD406F /* NCWorldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldTableViewCell.m; sourceTree = "<group>"; };
 		E3DC7F301B0BEC8A00CD406F /* NCWorldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldTableViewCell.xib; sourceTree = "<group>"; };
@@ -578,6 +581,7 @@
 		E3B6387E1ABAA7D30045369B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3C912381B0D905C00F6833A /* Epoque-Bridging-Header.h */,
 				E3B6387F1ABAA7D30045369B /* Info.plist */,
 				E3B638801ABAA7D30045369B /* main.m */,
 				E3B638A51ABAA84B0045369B /* NCPrefixHeader.pch */,
@@ -605,6 +609,7 @@
 		E3B638A61ABAA88E0045369B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3C912371B0D360800F6833A /* MapViewController */,
 				E3F7D7441B096F0000432938 /* WorldUsersTableViewController */,
 				E3F7D72D1B04847900432938 /* NameChoiceViewController */,
 				E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */,
@@ -1105,6 +1110,14 @@
 			name = UserTableViewCell;
 			sourceTree = "<group>";
 		};
+		E3C912371B0D360800F6833A /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E3C912391B0D905D00F6833A /* MapViewController.swift */,
+			);
+			name = MapViewController;
+			sourceTree = "<group>";
+		};
 		E3DC7F331B0BEC8F00CD406F /* WorldTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1478,6 +1491,7 @@
 				E3F7D7481B096F1A00432938 /* NCUsersTableViewController.m in Sources */,
 				E3B6393D1ABC54CB0045369B /* NCFormSubmitButtonCell.m in Sources */,
 				E3B639C81ACA17F20045369B /* CLLocation+GeoJson.m in Sources */,
+				E3C9123B1B0D905D00F6833A /* MapViewController.swift in Sources */,
 				E3B639311ABC3FF40045369B /* NCUploadService.m in Sources */,
 				E30A15831AD1B33000463931 /* NCNumberHelper.m in Sources */,
 				E3B639CF1ACA20610045369B /* UserAnnotationView.m in Sources */,
@@ -1613,6 +1627,7 @@
 			baseConfigurationReference = CAEE8942C6F4DEC22E33E0CF /* Pods-Epoque.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
@@ -1621,6 +1636,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Epoque;
 				PROVISIONING_PROFILE = "53de7a03-4efd-4028-9906-27ed2680da0a";
+				SWIFT_OBJC_BRIDGING_HEADER = "Epoque/Epoque-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1630,6 +1647,7 @@
 			baseConfigurationReference = 0B100824D6F037E68FB9F3D5 /* Pods-Epoque.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ZinkPulse LLC (G47H383S4Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZinkPulse LLC (G47H383S4Y)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
@@ -1638,6 +1656,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Epoque;
 				PROVISIONING_PROFILE = "b9bb36a2-26dc-4a1f-a06b-ee73829c7391";
+				SWIFT_OBJC_BRIDGING_HEADER = "Epoque/Epoque-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
