@@ -16,7 +16,6 @@
 #import "NCMapViewController.h"
 #import "NCWorldsMenuViewController.h"
 #import <RESideMenu/RESideMenu.h>
-#import <AWSCore/AWSCore.h>
 @interface AppDelegate ()
 
 @end

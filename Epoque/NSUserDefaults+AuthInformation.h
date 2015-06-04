@@ -19,7 +19,6 @@
 #define kNCIsLocationUpdateOn @"kNCIsLocationUpdateOn"
 #define kNCQuotes @"kNCQuotes"
 #define kNCCurrentWorldId @"kNCCurrentWorldId"
-#define kNCRemoteDeviceToken @"kNCRemoteDeviceToken"
 
 @interface NSUserDefaults (AuthInformation)
 
@@ -54,8 +53,5 @@
 
 -(void)setCurrentWorldId:(NSString *)worldId;
 -(NSString *)currentWorldId;
-
--(void)setRemoteDeviceToken:(NSString *)deviceToken;
--(NSString *)remoteDeviceToken;
 
 @end

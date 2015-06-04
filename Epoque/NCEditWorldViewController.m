@@ -189,7 +189,7 @@ static NSString *libraryTitle = @"Library";
         @strongify(self);
         [NCLoadingView hideAllFromView:self.view];
         [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Awesome! We updated your world's information" duration:2.0];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     } error:^(NSError *error) {
         @strongify(self);
         [NCLoadingView hideAllFromView:self.view];

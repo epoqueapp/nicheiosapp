@@ -20,7 +20,6 @@ pod "WYPopoverController"
 pod "Amplitude-iOS", "~> 2.4"
 pod "CSNotificationView"
 pod 'TTTAttributedLabel'
-pod 'AWSS3'
 pod 'HockeySDK'
 pod 'MBFaker'
 pod 'TPKeyboardAvoiding'

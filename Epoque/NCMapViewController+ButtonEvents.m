@@ -9,6 +9,7 @@
 #import "NCMapViewController+ButtonEvents.h"
 #import <RESideMenu/RESideMenu.h>
 #import "NCUsersTableViewController.h"
+#import "NCEditWorldViewController.h"
 #import "NCNavigationController.h"
 @implementation NCMapViewController (ButtonEvents)
 
@@ -69,7 +70,11 @@
     
     if (isModerator || isAdmin) {
         [alertController addAction:[UIAlertAction actionWithTitle:kEditWorldTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
+            @strongify(self);
+            NCEditWorldViewController *editWorldViewController = [[NCEditWorldViewController alloc]init];
+            editWorldViewController.worldId = [self.worldId copy];
+            NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:editWorldViewController];
+            [self presentViewController:navigationController animated:YES completion:nil];
         }]];
     }
     

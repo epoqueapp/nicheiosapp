@@ -48,7 +48,6 @@
     [self setObject:nil forKey:kNCDeviceToken];
     [self setObject:nil forKey:kNCObscurity];
     [self setObject:nil forKey:kNCCurrentWorldId];
-    [self setObject:nil forKey:kNCRemoteDeviceToken];
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
 }
 

@@ -24,8 +24,6 @@
 -(RACSignal *)updateWorld:(WorldModel *)worldModel;
 -(RACSignal *)deleteWorld:(NSString *)worldId;
 
--(RACSignal *)submitPrivateMessage:(SubmitPrivateMessageModel *)submitPrivateMessageModel;
-
 -(RACSignal *)registerUserId:(NSString *)userId deviceToken:(NSString *)deviceToken environment:(NSString *)environment;
 
 -(FAuthData *)authData;

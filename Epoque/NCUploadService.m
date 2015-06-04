@@ -8,7 +8,6 @@
 
 #import "NCUploadService.h"
 #import <AFNetworking/AFNetworking.h>
-#import <AWSS3.h>
 @implementation NCUploadService 
 
 +(id)sharedInstance{
