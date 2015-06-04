@@ -35,13 +35,14 @@ static NSString * const  kWorldTableViewCellIdentifier = @"kWorldTableViewCellId
     
     [self.navigationController setNavigationBarHidden:YES];
     
+    
     FQuery *worldsQuery = [[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"worlds"] queryOrderedByChild:@"isDefault"];
     @weakify(self);
     [worldsQuery observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
         WorldModel *worldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
         [self.worlds addObject:worldModel];
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.worlds.count -1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.worlds.count -1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     }];
     
     [worldsQuery observeEventType:FEventTypeChildChanged withBlock:^(FDataSnapshot *snapshot) {

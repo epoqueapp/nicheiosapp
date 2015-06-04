@@ -15,6 +15,4 @@
 -(void)pushRetroViewController:(UIViewController *)viewController;
 -(void)popRetroViewController;
 
--(void)goToWorldsController;
-
 @end

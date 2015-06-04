@@ -27,7 +27,6 @@
 -(void)setUpRemoveMeButton:(id)sender;
 -(void)setUpChatPreviewView:(id)sender;
 -(void)setUpLayout:(id)sender;
--(void)setUpRightButton:(id)sender;
 -(void)setUpLeftButton:(id)sender;
 
 @end

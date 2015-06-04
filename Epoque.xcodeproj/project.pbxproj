@@ -155,8 +155,6 @@
 		E3B6398A1AC171420045369B /* ornate_clock_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639871AC171420045369B /* ornate_clock_white@2x.png */; };
 		E3B6398B1AC171420045369B /* ornate_hour_hand_v2_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639881AC171420045369B /* ornate_hour_hand_v2_white@2x.png */; };
 		E3B6398C1AC171420045369B /* ornate_minute_hand_v2_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639891AC171420045369B /* ornate_minute_hand_v2_white@2x.png */; };
-		E3B639911AC17DCA0045369B /* NCWorldDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6398F1AC17DCA0045369B /* NCWorldDetailViewController.m */; };
-		E3B639921AC17DCA0045369B /* NCWorldDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B639901AC17DCA0045369B /* NCWorldDetailViewController.xib */; };
 		E3B6399B1AC193010045369B /* NCFormColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6399A1AC193010045369B /* NCFormColorCell.m */; };
 		E3B6399D1AC193130045369B /* NCFormColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B6399C1AC193130045369B /* NCFormColorCell.xib */; };
 		E3B639A01AC3AE500045369B /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6399F1AC3AE500045369B /* UIColor+HexString.m */; };
@@ -439,9 +437,6 @@
 		E3B639871AC171420045369B /* ornate_clock_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ornate_clock_white@2x.png"; sourceTree = "<group>"; };
 		E3B639881AC171420045369B /* ornate_hour_hand_v2_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ornate_hour_hand_v2_white@2x.png"; sourceTree = "<group>"; };
 		E3B639891AC171420045369B /* ornate_minute_hand_v2_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ornate_minute_hand_v2_white@2x.png"; sourceTree = "<group>"; };
-		E3B6398E1AC17DCA0045369B /* NCWorldDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldDetailViewController.h; sourceTree = "<group>"; };
-		E3B6398F1AC17DCA0045369B /* NCWorldDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldDetailViewController.m; sourceTree = "<group>"; };
-		E3B639901AC17DCA0045369B /* NCWorldDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldDetailViewController.xib; sourceTree = "<group>"; };
 		E3B639991AC193010045369B /* NCFormColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCFormColorCell.h; sourceTree = "<group>"; };
 		E3B6399A1AC193010045369B /* NCFormColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCFormColorCell.m; sourceTree = "<group>"; };
 		E3B6399C1AC193130045369B /* NCFormColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCFormColorCell.xib; sourceTree = "<group>"; };
@@ -693,7 +688,6 @@
 				E3B63A541ACB01D40045369B /* FeedbackViewController */,
 				E3B639D51ACA608D0045369B /* UserDetail */,
 				E3B639B41AC9D78D0045369B /* Protocols */,
-				E3B6398D1AC17DB90045369B /* WorldDetailViewController */,
 				E3B639551ABD85B10045369B /* WorldChatViewController */,
 				E3B6394F1ABD83870045369B /* MapViewController */,
 				E3B639181ABC21BE0045369B /* MyCharacterViewController */,
@@ -1132,16 +1126,6 @@
 			name = LoadingView;
 			sourceTree = "<group>";
 		};
-		E3B6398D1AC17DB90045369B /* WorldDetailViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E3B6398E1AC17DCA0045369B /* NCWorldDetailViewController.h */,
-				E3B6398F1AC17DCA0045369B /* NCWorldDetailViewController.m */,
-				E3B639901AC17DCA0045369B /* NCWorldDetailViewController.xib */,
-			);
-			name = WorldDetailViewController;
-			sourceTree = "<group>";
-		};
 		E3B639931AC18B260045369B /* FormColorPickerCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1413,7 +1397,6 @@
 				E3B639641ABD8CAD0045369B /* lense_flare_15.png in Resources */,
 				E34360F81AD520F000203D7D /* key_icon@3x.png in Resources */,
 				E3B638BC1ABAADF30045369B /* NCSpritesViewController.xib in Resources */,
-				E3B639921AC17DCA0045369B /* NCWorldDetailViewController.xib in Resources */,
 				E380A0AB1B2047B500B01723 /* chat_media_button@3x.png in Resources */,
 				E30A15CD1AD4A60800463931 /* Menu and Interface Sound 5.wav in Resources */,
 				E38AB2251ADE33D10003BA23 /* white_logo_stroke@3x.png in Resources */,
@@ -1590,7 +1573,6 @@
 				E3FAB1F01AD92A0D0018BC07 /* NCEditWorldForm.m in Sources */,
 				E380A08D1B2046DB00B01723 /* NCMapViewController+Utilities.m in Sources */,
 				E30A15861AD1CB0000463931 /* JSONValueTransformer+Color.m in Sources */,
-				E3B639911AC17DCA0045369B /* NCWorldDetailViewController.m in Sources */,
 				E3F7D72C1B047FD600432938 /* NSDate+Recency.m in Sources */,
 				E3B638841ABAA7D30045369B /* AppDelegate.m in Sources */,
 				E3B63A581ACB01E60045369B /* NCFeedbackViewController.m in Sources */,
