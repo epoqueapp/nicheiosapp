@@ -52,29 +52,44 @@
         return;
     }
     [self.textView resignFirstResponder];
+    @weakify(self);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
     NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
     BOOL isModerator = [self.worldModel.moderatorUserIds containsObject:myUserId];
+    BOOL isAdmin = [[NSUserDefaults standardUserDefaults].userModel.role isEqualToString:@"admin"];
     BOOL isFavorite = [self.worldModel.favoritedUserIds containsObject:myUserId];
-    BOOL isMember = [self.worldModel.favoritedUserIds containsObject:myUserId];
-    NSMutableArray *titles = [NSMutableArray array];
-    [titles addObject:kViewWorldDetailsTitle];
-    [titles addObject:kViewWorldUsersTitle];
+
+
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:kViewWorldUsersTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        @strongify(self);
+        [self openUsersTableViewController:self];
+    }]];
+    
+    if (isModerator || isAdmin) {
+        [alertController addAction:[UIAlertAction actionWithTitle:kEditWorldTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+        }]];
+    }
+    
     if (isFavorite) {
-        [titles addObject:kUnfavoriteWorldTitle];
+        [alertController addAction:[UIAlertAction actionWithTitle:kUnfavoriteWorldTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            @strongify(self);
+            [self handleFavoriting:self];
+        }]];
     }else{
-        [titles addObject:kFavoriteWorldTitle];
+        [alertController addAction:[UIAlertAction actionWithTitle:kFavoriteWorldTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            @strongify(self);
+            [self handleFavoriting:self];
+        }]];
     }
-    IBActionSheet *actionSheet = [[IBActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil, nil];
-    for (int i = 0; i < [titles count]; i++) {
-        NSString *title = [titles objectAtIndex:i];
-        [actionSheet addButtonWithTitle:title];
-        [actionSheet setButtonTextColor:[UIColor whiteColor] forButtonAtIndex:i];
-        [actionSheet setButtonBackgroundColor:[UIColor colorWithHexString:@"#141414"] forButtonAtIndex:i];
-    }
-    [actionSheet setButtonTextColor:[UIColor whiteColor]];
-    [actionSheet setButtonBackgroundColor:[UIColor colorWithHexString:@"#141414"]];
-    [actionSheet setFont:[UIFont fontWithName:kTrocchiBoldFontName size:17.0]];
-    [actionSheet showInView:self.view];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(void)mapButtonDidTap:(id)sender{
