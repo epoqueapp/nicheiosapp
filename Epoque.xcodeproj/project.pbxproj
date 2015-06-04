@@ -1668,6 +1668,89 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E380A0D21B204ACE00B01723 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "53de7a03-4efd-4028-9906-27ed2680da0a";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		E380A0D31B204ACE00B01723 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAEE8942C6F4DEC22E33E0CF /* Pods-Epoque.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
+				INFOPLIST_FILE = Epoque/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = Epoque;
+				PROVISIONING_PROFILE = "4d623852-a459-4d2f-9458-30e57ca1929c";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		E380A0D41B204ACE00B01723 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EpoqueTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = EpoqueTests;
+				PROVISIONING_PROFILE = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Epoque.app/Epoque";
+			};
+			name = Staging;
+		};
 		E3B6389C1ABAA7D30045369B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1762,7 +1845,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Epoque;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5f9f18d5-1c71-47d2-8134-bb36ff03afcc";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1772,14 +1855,14 @@
 			baseConfigurationReference = 0B100824D6F037E68FB9F3D5 /* Pods-Epoque.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
 				INFOPLIST_FILE = Epoque/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Epoque;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b9bb36a2-26dc-4a1f-a06b-ee73829c7391";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1831,6 +1914,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E3B6389C1ABAA7D30045369B /* Debug */,
+				E380A0D21B204ACE00B01723 /* Staging */,
 				E3B6389D1ABAA7D30045369B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1840,6 +1924,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E3B6389F1ABAA7D30045369B /* Debug */,
+				E380A0D31B204ACE00B01723 /* Staging */,
 				E3B638A01ABAA7D30045369B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1849,6 +1934,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E3B638A21ABAA7D30045369B /* Debug */,
+				E380A0D41B204ACE00B01723 /* Staging */,
 				E3B638A31ABAA7D30045369B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
