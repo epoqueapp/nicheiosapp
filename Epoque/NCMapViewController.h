@@ -36,7 +36,7 @@ static NSString *const kLeaveWorldTitle = @"Leave World";
 
 
 
-@interface NCMapViewController : SLKTextViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate ,NCMessageTableViewCellDelegate, IBActionSheetDelegate>
+@interface NCMapViewController : SLKTextViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NCMessageTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *userAnnotations;
 @property (nonatomic, strong) NSMutableArray *messages;

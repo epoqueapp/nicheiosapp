@@ -21,7 +21,6 @@
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
 #import <CSNotificationView/CSNotificationView.h>
 #import <Cloudinary/Cloudinary.h>
-#import <IBActionSheet/IBActionSheet.h>
 #import "UIViewController+BarButtons.h"
 #import "NSDate+JavaScriptTimestamp.h"
 #import "UIView+RotateAnimation.h"

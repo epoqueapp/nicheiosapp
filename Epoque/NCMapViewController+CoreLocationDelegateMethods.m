@@ -12,13 +12,11 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     self.lastKnownLocation = locations.firstObject;
-    
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:kNCIsLocationUpdateOn] boolValue] == NO) {
         return;
     }
-    
     NSString *userId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    [[[[self doesWorldShoutExist:self.worldId userId:userId] throttle:0.25] flattenMap:^RACStream *(id value) {
+    [[[self doesWorldShoutExist:self.worldId userId:userId] flattenMap:^RACStream *(id value) {
         return [self updateWorldShoutGeo:self.worldId userId:userId];
     }] subscribeNext:^(id x) {
     }];

@@ -40,7 +40,6 @@
 		E34360FA1AD59EC500203D7D /* pencil_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34360F91AD59EC500203D7D /* pencil_icon@3x.png */; };
 		E34360FC1AD7B88100203D7D /* table_shout.caf in Resources */ = {isa = PBXBuildFile; fileRef = E34360FB1AD7B88100203D7D /* table_shout.caf */; };
 		E359F6F81B0BFE0C00A9CDB7 /* lock_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */; };
-		E380A0871B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0791B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m */; };
 		E380A0881B2046DB00B01723 /* NCMapViewController+ButtonEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A07B1B2046DB00B01723 /* NCMapViewController+ButtonEvents.m */; };
 		E380A0891B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A07D1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.m */; };
 		E380A08A1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A07F1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m */; };
@@ -261,8 +260,6 @@
 		E34360F91AD59EC500203D7D /* pencil_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil_icon@3x.png"; sourceTree = "<group>"; };
 		E34360FB1AD7B88100203D7D /* table_shout.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = table_shout.caf; sourceTree = "<group>"; };
 		E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock_icon.png; sourceTree = "<group>"; };
-		E380A0781B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+AlertViewDelegateMethods.h"; sourceTree = "<group>"; };
-		E380A0791B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+AlertViewDelegateMethods.m"; sourceTree = "<group>"; };
 		E380A07A1B2046DB00B01723 /* NCMapViewController+ButtonEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+ButtonEvents.h"; sourceTree = "<group>"; };
 		E380A07B1B2046DB00B01723 /* NCMapViewController+ButtonEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+ButtonEvents.m"; sourceTree = "<group>"; };
 		E380A07C1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+CoreLocationDelegateMethods.h"; sourceTree = "<group>"; };
@@ -1069,8 +1066,6 @@
 		E3B6394F1ABD83870045369B /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E380A0781B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.h */,
-				E380A0791B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m */,
 				E380A07A1B2046DB00B01723 /* NCMapViewController+ButtonEvents.h */,
 				E380A07B1B2046DB00B01723 /* NCMapViewController+ButtonEvents.m */,
 				E380A07C1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.h */,
@@ -1557,7 +1552,6 @@
 				E380A08A1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m in Sources */,
 				E3B63A671ACB195F0045369B /* NCUserTableViewCell.m in Sources */,
 				E3B639D21ACA59A70045369B /* MKMapView+Utilities.m in Sources */,
-				E380A0871B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m in Sources */,
 				E3B638C71ABAB86F0045369B /* NSUserDefaults+AuthInformation.m in Sources */,
 				E3B639351ABC45D00045369B /* NCFormImageCell.m in Sources */,
 				E380A0C21B20482500B01723 /* NSArray+RandomMethods.m in Sources */,
