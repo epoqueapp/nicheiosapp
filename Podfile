@@ -27,6 +27,5 @@ pod 'TPKeyboardAvoiding'
 pod 'Cloudinary'
 pod 'NYTPhotoViewer'
 pod 'WEPopover'
-pod 'IBActionSheet'
 end
 

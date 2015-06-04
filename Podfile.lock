@@ -51,7 +51,6 @@ PODS:
   - GZIP (1.0.3)
   - HexColors (2.2.1)
   - HockeySDK (3.6.4)
-  - IBActionSheet (0.0.2)
   - JSONModel (1.0.2)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
@@ -95,7 +94,6 @@ DEPENDENCIES:
   - FXForms
   - HexColors
   - HockeySDK
-  - IBActionSheet
   - JSONModel
   - MarqueeLabel
   - MBFaker
@@ -125,7 +123,6 @@ SPEC CHECKSUMS:
   GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   HockeySDK: c07cdd580296737edcd0963e292c19885a53f563
-  IBActionSheet: 4028206b0561772c3674a339fb4a7265d55a6f8b
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   MarqueeLabel: f03d12e3a1572893f78ecb22aa5dd774099c7208

@@ -208,4 +208,23 @@
     [[[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"worlds"] childByAppendingPath:self.worldId] childByAppendingPath:@"favoritedUserIds"] setValue:favoritedUserIds.allObjects];
 }
 
+-(void)blockUser:(NSString *)userId{
+    [[NSUserDefaults standardUserDefaults] blockUserWithId:userId];
+    [CSNotificationView showInViewController:self tintColor:[UIColor blackColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Sorry for that experience. We're on it" duration:2.0];
+}
+
+-(void)unblockUser:(NSString *)userId{
+    [[NSUserDefaults standardUserDefaults] unblockUserId:userId];
+    [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"We unblocked this user" duration:2.0];
+}
+
+-(void)reportUser:(NSString *)userId{
+    [[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"user-reports"] childByAutoId] setValue:@{
+                                                                                                                   @"reporteeUserId": userId,
+                                                                                                                   @"reporterUserId": [NSUserDefaults standardUserDefaults].userModel.userId,
+                                                                                                                   @"timestamp": kFirebaseServerValueTimestamp
+                                                                                                                   }];
+    [CSNotificationView showInViewController:self tintColor:[UIColor blackColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Sorry for that experience. We're on it" duration:2.0];
+}
+
 @end

@@ -295,8 +295,6 @@
     [Amplitude logEvent:@"Message Name Did Tap" withEventProperties:@{@"worldId": self.worldId, @"messageId": messageModel.messageId, @"userId": messageModel.userId}];
     self.userIdToBlock = [messageModel.userId copy];
     self.userIdToReport = [messageModel.userId copy];
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:kBlockUserTitle otherButtonTitles:kReportUserTitle, nil];
-    [actionSheet showInView:self.view];
 }
 
 -(void)tappedAttachmentImageView:(NSIndexPath *)indexPath image:(UIImage *)image{
