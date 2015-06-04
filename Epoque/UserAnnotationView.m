@@ -17,13 +17,13 @@
         [self setupPlateImageView];
         [self setupSpriteImageView];
         [self setupShoutRings];
+        [self setUpCenterRing];
         [self setUpShoutBubbleAndLabel];
         [self setUpMediaBubble];
         @weakify(self);
         [RACObserve(self, userAnnotation) subscribeNext:^(UserAnnotation *userAnnotation) {
             @strongify(self);
             [self.spriteImageView sd_setImageWithURL:[NSURL URLWithString:userAnnotation.userSpriteUrl]];
-        
             if ([userAnnotation.userId isEqualToString:[NSUserDefaults standardUserDefaults].userModel.userId]) {
                 self.plateImageView.hidden = NO;
                 self.shoutBubbleImageView.image = [UIImage imageNamed:@"shout_bubble_blue_gradient"];
@@ -31,7 +31,6 @@
                 self.plateImageView.hidden = YES;
                 self.shoutBubbleImageView.image = [UIImage imageNamed:@"shout_bubble_dark_gradient"];
             }
-            
             NSString *messageText = userAnnotation.messageText;
             if (![NSString isStringEmpty:messageText] && ![self isOld:userAnnotation.timestamp]) {
                 NSString *formattedMessageText = [userAnnotation.messageText stringByAppendingString:@" "];
@@ -114,13 +113,23 @@
     [self addSubview:self.spriteImageView];
 }
 
+-(void)setUpCenterRing{
+    self.centerRing = [[UIView alloc]initWithFrame:self.frame];
+    self.centerRing.backgroundColor = [UIColor clearColor];
+    self.centerRing.layer.cornerRadius = 30.0;
+    self.centerRing.layer.borderColor = [UIColor blueColor].CGColor;
+    self.centerRing.layer.borderWidth = 1.5f;
+    self.centerRing.alpha = 0;
+    [self addSubview:self.centerRing];
+}
+
 -(void)setupShoutRings{
     self.shoutRings = [NSMutableArray array];
     for (int i = 0; i < 3; i++) {
         UIView *shoutRing = [[UIView alloc]initWithFrame:self.frame];
         shoutRing.backgroundColor = [UIColor clearColor];
         shoutRing.layer.cornerRadius = 30.0;
-        shoutRing.layer.borderColor = [UIColor darkGrayColor].CGColor;
+        shoutRing.layer.borderColor = [UIColor blueColor].CGColor;
         shoutRing.layer.borderWidth = 1.5f;
         shoutRing.alpha = 0;
         [self.shoutRings addObject:shoutRing];
@@ -150,6 +159,25 @@
 
 -(void)animateRings{
     [self animateRingsWithColor:[UIColor blackColor]];
+}
+
+-(void)animateCenterRing{
+    [self animateCenterRing:[UIColor blueColor]];
+}
+
+-(void)animateCenterRing:(UIColor *)color {
+    self.centerRing.layer.borderColor = color.CGColor;
+    self.centerRing.alpha = 1;
+        self.centerRing.transform = CGAffineTransformIdentity;
+    self.centerRing.transform = CGAffineTransformMakeScale(3, 3);
+
+    [UIView animateWithDuration:0.7 animations:^{
+        self.centerRing.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        self.centerRing.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.centerRing.transform = CGAffineTransformIdentity;
+        self.centerRing.alpha = 0;
+    }];
 }
 
 -(void)animateRingsWithColor:(UIColor *)color{

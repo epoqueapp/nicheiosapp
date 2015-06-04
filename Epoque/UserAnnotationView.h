@@ -19,6 +19,10 @@
 @property (nonatomic, strong) MarqueeLabel *shoutLabel;
 @property (nonatomic, strong) UIImageView *plateImageView;
 
+@property (nonatomic, strong) UIView *centerRing;
+
+-(void)animateCenterRing;
+-(void)animateCenterRing:(UIColor *)color;
 -(void)animateRings;
 -(void)animateRingsWithColor:(UIColor *)color;
 

@@ -21,7 +21,7 @@
 @optional
 -(void)tappedSpriteImageView:(NSIndexPath *)indexPath;
 -(void)tappedUserNameLabel:(NSIndexPath *)indexPath;
-
+-(void)tappedAttachmentImageView:(NSIndexPath *)indexPath image:(UIImage *)image;
 @end
 
 

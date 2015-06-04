@@ -11,6 +11,8 @@
 #import "NCFireService.h"
 #import "NCUserService.h"
 #import "NCSpritesViewController.h"
+#import "NCWelcomeViewController.h"
+#import "Firebase+AuthenticationExtensions.h"
 @interface NCMyCharacterViewController ()
 
 @end
@@ -47,8 +49,10 @@
     form.spriteUrl = userModel.spriteUrl;
     form.name = userModel.name;
     form.about = userModel.about;
-    form.isObscuring = [[NSUserDefaults standardUserDefaults] isObscuring];
     [self.tableView reloadData];
+    
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"options_button"] style:UIBarButtonItemStylePlain target:self action:@selector(optionsButtonDidClick:)];
 }
 
 -(void)spriteDidTap{
@@ -67,34 +71,69 @@
 
 -(void)submitButtonDidTap{
     NCMyCharacterForm *form = (NCMyCharacterForm *)self.formController.form;
-    userModel.name = form.name;
+    userModel.name = [form.name stringByReplacingOccurrencesOfString:@" " withString:@""];
     userModel.about = form.about;
     userModel.spriteUrl = form.spriteUrl;
-    userModel.imageUrl = @"";
     userModel.role = [NSUserDefaults standardUserDefaults].userModel.role;
-    
-    [[NSUserDefaults standardUserDefaults] setIsObscuring:form.isObscuring];
-    
     @weakify(self);
     [Amplitude logEvent:@"Update Me"];
     [NCLoadingView showInView:self.view withTitleText:@"Saving..."];
     
-    
     NSString *userId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    NSDictionary *dictionary = [userModel toDictionary];
-    [[fireService.usersRef childByAppendingPath:userId] updateChildValues:dictionary withCompletionBlock:^(NSError *error, Firebase *ref) {
+    userModel.userId = [userId copy];
+
+    [[[[[Firebase alloc]initWithUrl:kFirebaseRoot] rac_validateName:form.name] flattenMap:^RACStream *(id value) {
         @strongify(self);
-        if (error) {
-            [errorSoundEffect play];
-            [NCLoadingView hideAllFromView:self.view];
-            [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"We ran into an issue saving your info" duration:2.0];
-        }else{
-            [successSoundEffect play];
-            [NCLoadingView hideAllFromView:self.view];
-            [Amplitude logEvent:@"Update Me"];
-            [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Saved your information successfully! Thank you" duration:2.0];
+        return [self updateUserWithModel:userModel];
+    }] subscribeNext:^(id x) {
+        @strongify(self);
+        [NCLoadingView hideAllFromView:self.view];
+        [Amplitude logEvent:@"Update Me"];
+        [CSNotificationView showInViewController:self tintColor:[UIColor greenColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Saved your information successfully! Thank you" duration:2.0];
+        [successSoundEffect play];
+    } error:^(NSError *error) {
+        @strongify(self);
+        [errorSoundEffect play];
+        [NCLoadingView hideAllFromView:self.view];
+        
+        NSString *errorMessage = @"We ran into an issue saving your info";
+        if (error.code == kNCUserNameValidationErrorCode) {
+            errorMessage = @"Your username cannot be longer than 20 characters. It can have a combination of capital and lower case letters from A-Z, numbers 0-9, and an optional underscore.";
         }
+        if (error.code == kNCNameUnavailableCode) {
+            errorMessage = @"Someone already took this username...";
+        }
+        
+        [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:errorMessage duration:2.0];
     }];
+}
+
+-(RACSignal *)updateUserWithModel:(UserModel *)userModelToUpdate{
+    NSDictionary *dictionary = [userModel toDictionary];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[fireService.usersRef childByAppendingPath:userModelToUpdate.userId] updateChildValues:dictionary withCompletionBlock:^(NSError *error, Firebase *ref) {
+            if (error) {
+                [subscriber sendError:error];
+            }else{
+                [subscriber sendNext:ref];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
+}
+
+-(void)optionsButtonDidClick:(id)sender{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Logout?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Logout" otherButtonTitles:nil, nil];
+    [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:@"Logout"]) {
+        [[[Firebase alloc]initWithUrl:kFirebaseRoot] unauth];
+        [self.navigationController pushFadeViewController:[[NCWelcomeViewController alloc]init]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

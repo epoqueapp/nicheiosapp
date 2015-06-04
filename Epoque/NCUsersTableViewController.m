@@ -22,7 +22,7 @@ NSString *CellIdentifier = @"UserCell";
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"NCUserTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
     self.tableView.rowHeight = 72.0;
-    [self setUpBackButton];
+    [self setUpDismissButtonWithTarget:self selector:@selector(dismissButtonDidClick:) buttonSide:DismissButtonSideRight];
     users = [NSMutableArray array];
     @weakify(self);
     [[[[self getWorldById:self.worldId] doNext:^(WorldModel *x) {
@@ -37,7 +37,10 @@ NSString *CellIdentifier = @"UserCell";
         users = [x mutableCopy];
         [self.tableView reloadData];
     }];
-    
+}
+
+-(void)dismissButtonDidClick:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(RACSignal *)getWorldById:(NSString *)worldId{

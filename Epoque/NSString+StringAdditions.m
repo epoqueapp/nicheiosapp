@@ -32,4 +32,21 @@
     return s;
 }
 
++(NSString *)randomImageEmoji{
+    NSDictionary *imageEmoji = @{
+                                 @"\U0001F303": @"night with stars",
+                                 @"\U0001F320": @"shooting star",
+                                 @"\U0001F4F7": @"camera",
+                                 };
+    
+    NSArray *array = [imageEmoji allKeys];
+    int random = arc4random()%[array count];
+    NSString *key = [array objectAtIndex:random];
+    return [key copy];
+}
+
++(NSString *)speechBubbleEmoji{
+    return @"\U0001F4AC";
+}
+
 @end

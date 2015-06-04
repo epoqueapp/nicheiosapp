@@ -35,19 +35,50 @@
 		E30A15D31AD4A61700463931 /* proud.wav in Resources */ = {isa = PBXBuildFile; fileRef = E30A15D21AD4A61700463931 /* proud.wav */; };
 		E30A15DF1AD4DF8D00463931 /* SubmitPrivateMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E30A15DE1AD4DF8D00463931 /* SubmitPrivateMessageModel.m */; };
 		E30DC0581B0172BD000D6A30 /* splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = E30DC0571B0172BD000D6A30 /* splash_screen.png */; };
-		E34360F41AD51E6500203D7D /* flare_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E34360F31AD51E6500203D7D /* flare_bg.jpg */; };
 		E34360F61AD51F7700203D7D /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E34360F51AD51F7700203D7D /* stars.jpg */; };
 		E34360F81AD520F000203D7D /* key_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34360F71AD520F000203D7D /* key_icon@3x.png */; };
 		E34360FA1AD59EC500203D7D /* pencil_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34360F91AD59EC500203D7D /* pencil_icon@3x.png */; };
 		E34360FC1AD7B88100203D7D /* table_shout.caf in Resources */ = {isa = PBXBuildFile; fileRef = E34360FB1AD7B88100203D7D /* table_shout.caf */; };
-		E34361041AD878DD00203D7D /* purple_stars_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E34361031AD878DD00203D7D /* purple_stars_background.jpg */; };
 		E359F6F81B0BFE0C00A9CDB7 /* lock_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */; };
+		E380A0861B2046DB00B01723 /* NCMapViewController+ActionSheetDelegateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0771B2046DB00B01723 /* NCMapViewController+ActionSheetDelegateMethods.m */; };
+		E380A0871B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0791B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m */; };
+		E380A0881B2046DB00B01723 /* NCMapViewController+ButtonEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A07B1B2046DB00B01723 /* NCMapViewController+ButtonEvents.m */; };
+		E380A0891B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A07D1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.m */; };
+		E380A08A1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A07F1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m */; };
+		E380A08B1B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0811B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.m */; };
+		E380A08C1B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0831B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.m */; };
+		E380A08D1B2046DB00B01723 /* NCMapViewController+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0851B2046DB00B01723 /* NCMapViewController+Utilities.m */; };
+		E380A0901B20472300B01723 /* SendMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A08F1B20472300B01723 /* SendMessageModel.m */; };
+		E380A0951B20474900B01723 /* NCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0931B20474900B01723 /* NCLoginViewController.m */; };
+		E380A0961B20474900B01723 /* NCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E380A0941B20474900B01723 /* NCLoginViewController.xib */; };
+		E380A09D1B20477300B01723 /* NCWorldsMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0991B20477300B01723 /* NCWorldsMenuViewController.m */; };
+		E380A09E1B20477300B01723 /* NCWorldsMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E380A09A1B20477300B01723 /* NCWorldsMenuViewController.xib */; };
+		E380A09F1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A09C1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.m */; };
+		E380A0A21B20478F00B01723 /* NCAttachmentPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0A11B20478F00B01723 /* NCAttachmentPhoto.m */; };
+		E380A0A81B2047B500B01723 /* bell_button_not_ringing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0A31B2047B500B01723 /* bell_button_not_ringing@3x.png */; };
+		E380A0A91B2047B500B01723 /* bell_button_ringing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0A41B2047B500B01723 /* bell_button_ringing@3x.png */; };
+		E380A0AA1B2047B500B01723 /* center_me_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0A51B2047B500B01723 /* center_me_button@3x.png */; };
+		E380A0AB1B2047B500B01723 /* chat_media_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0A61B2047B500B01723 /* chat_media_button@3x.png */; };
+		E380A0AC1B2047B500B01723 /* delete_button_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0A71B2047B500B01723 /* delete_button_icon@3x.png */; };
+		E380A0AF1B2047C800B01723 /* Firebase+AuthenticationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0AE1B2047C800B01723 /* Firebase+AuthenticationExtensions.m */; };
+		E380A0B11B2047D000B01723 /* fire_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0B01B2047D000B01723 /* fire_icon@3x.png */; };
+		E380A0B41B2047D600B01723 /* key_icon_grey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0B21B2047D600B01723 /* key_icon_grey@3x.png */; };
+		E380A0B51B2047D600B01723 /* key_icon_purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0B31B2047D600B01723 /* key_icon_purple@3x.png */; };
+		E380A0B81B2047DC00B01723 /* map_search_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0B61B2047DC00B01723 /* map_search_button@3x.png */; };
+		E380A0B91B2047DC00B01723 /* menu_map_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0B71B2047DC00B01723 /* menu_map_button@3x.png */; };
+		E380A0BC1B2047E200B01723 /* location_update_button_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0BA1B2047E200B01723 /* location_update_button_off@3x.png */; };
+		E380A0BD1B2047E200B01723 /* location_update_button_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0BB1B2047E200B01723 /* location_update_button_on@3x.png */; };
+		E380A0BF1B20481000B01723 /* unlock_icon_purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0BE1B20481000B01723 /* unlock_icon_purple@3x.png */; };
+		E380A0C21B20482500B01723 /* NSArray+RandomMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0C11B20482500B01723 /* NSArray+RandomMethods.m */; };
+		E380A0C41B20484500B01723 /* map_button_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0C31B20484500B01723 /* map_button_icon@3x.png */; };
+		E380A0C71B20485500B01723 /* NCFormNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0C61B20485500B01723 /* NCFormNameCell.m */; };
+		E380A0CA1B20486300B01723 /* BlurbModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0C91B20486300B01723 /* BlurbModel.m */; };
+		E380A0CD1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0CC1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m */; };
+		E380A0D01B2048AC00B01723 /* sample_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0CE1B2048AC00B01723 /* sample_sprite.png */; };
+		E380A0D11B2048AC00B01723 /* table_button_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0CF1B2048AC00B01723 /* table_button_icon@3x.png */; };
 		E38176591ACC3BFC00278DDE /* ConversationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E38176581ACC3BFC00278DDE /* ConversationModel.m */; };
-		E38AB2211ADE29CC0003BA23 /* starry_outside.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E38AB2201ADE29CC0003BA23 /* starry_outside.jpg */; };
 		E38AB2231ADE2BA50003BA23 /* logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E38AB2221ADE2BA50003BA23 /* logo_white.png */; };
 		E38AB2251ADE33D10003BA23 /* white_logo_stroke@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38AB2241ADE33D10003BA23 /* white_logo_stroke@3x.png */; };
-		E3A6145E1AF1A23300579DAA /* center_me_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A6145D1AF1A23300579DAA /* center_me_button@2x.png */; };
-		E3A614611AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A614601AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.m */; };
 		E3A614641AF29C3600579DAA /* locate_me_button_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614621AF29C3600579DAA /* locate_me_button_off@2x.png */; };
 		E3A614651AF29C3600579DAA /* locate_me_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614631AF29C3600579DAA /* locate_me_button@2x.png */; };
 		E3A6146C1AF2B5CA00579DAA /* share_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614681AF2B5CA00579DAA /* share_icon@3x.png */; };
@@ -59,7 +90,6 @@
 		E3A614791AF5CE2600579DAA /* star_icon_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614781AF5CE2600579DAA /* star_icon_full@3x.png */; };
 		E3A6147D1AF5DA1900579DAA /* star_icon_hollow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A6147C1AF5DA1900579DAA /* star_icon_hollow@3x.png */; };
 		E3A614801AF60D2900579DAA /* NCWorldService.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A6147F1AF60D2900579DAA /* NCWorldService.m */; };
-		E3A614841AF7EC7800579DAA /* NCWorldChatViewController+TableSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A614831AF7EC7800579DAA /* NCWorldChatViewController+TableSetup.m */; };
 		E3A614871AF7ED7B00579DAA /* star_icon_full_large@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614851AF7ED7B00579DAA /* star_icon_full_large@3x.png */; };
 		E3A614881AF7ED7B00579DAA /* star_icon_hollow_large@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614861AF7ED7B00579DAA /* star_icon_hollow_large@3x.png */; };
 		E3B638811ABAA7D30045369B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638801ABAA7D30045369B /* main.m */; };
@@ -77,19 +107,14 @@
 		E3B638C21ABAB6810045369B /* NCSpriteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638C01ABAB6810045369B /* NCSpriteCollectionViewCell.m */; };
 		E3B638C31ABAB6810045369B /* NCSpriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B638C11ABAB6810045369B /* NCSpriteCollectionViewCell.xib */; };
 		E3B638C71ABAB86F0045369B /* NSUserDefaults+AuthInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638C61ABAB86F0045369B /* NSUserDefaults+AuthInformation.m */; };
-		E3B638CD1ABAB9EF0045369B /* welcome_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B638CC1ABAB9EF0045369B /* welcome_logo@3x.png */; };
 		E3B638D11ABABB7B0045369B /* NCStarParticleSystem.scnp in Resources */ = {isa = PBXBuildFile; fileRef = E3B638CF1ABABB7B0045369B /* NCStarParticleSystem.scnp */; };
 		E3B638D21ABABB7B0045369B /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B638D01ABABB7B0045369B /* star.png */; };
 		E3B638DB1ABAC0AA0045369B /* NCCreateUserForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638DA1ABAC0AA0045369B /* NCCreateUserForm.m */; };
-		E3B638E01ABAC62C0045369B /* NCWorldsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638DE1ABAC62C0045369B /* NCWorldsViewController.m */; };
-		E3B638E11ABAC62C0045369B /* NCWorldsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B638DF1ABAC62C0045369B /* NCWorldsViewController.xib */; };
 		E3B638EA1ABACFC20045369B /* NCLoginForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638E91ABACFC20045369B /* NCLoginForm.m */; };
 		E3B638F41ABBBA1D0045369B /* Trocchi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3B638F21ABBB9E20045369B /* Trocchi-Bold.otf */; };
 		E3B638F51ABBBA1D0045369B /* Trocchi.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3B638F31ABBB9E20045369B /* Trocchi.otf */; };
 		E3B638F91ABBC04F0045369B /* new-world-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B638F81ABBC04F0045369B /* new-world-icon@3x.png */; };
 		E3B638FB1ABBC0E00045369B /* plus_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B638FA1ABBC0E00045369B /* plus_icon@3x.png */; };
-		E3B639001ABBC12F0045369B /* NCCreateNewWorldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B638FE1ABBC12F0045369B /* NCCreateNewWorldViewController.m */; };
-		E3B639011ABBC12F0045369B /* NCCreateNewWorldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B638FF1ABBC12F0045369B /* NCCreateNewWorldViewController.xib */; };
 		E3B639061ABBDE6C0045369B /* NCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639041ABBDE6C0045369B /* NCLeftMenuViewController.m */; };
 		E3B639071ABBDE6C0045369B /* NCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B639051ABBDE6C0045369B /* NCLeftMenuViewController.xib */; };
 		E3B6390B1ABBF4940045369B /* NCCreateWorldForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6390A1ABBF4940045369B /* NCCreateWorldForm.m */; };
@@ -116,8 +141,6 @@
 		E3B6394C1ABD73C10045369B /* NCFormSpriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6394B1ABD73C10045369B /* NCFormSpriteCell.m */; };
 		E3B6394E1ABD73E40045369B /* NCFormSpriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B6394D1ABD73E40045369B /* NCFormSpriteCell.xib */; };
 		E3B639531ABD83AA0045369B /* NCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639511ABD83AA0045369B /* NCMapViewController.m */; };
-		E3B639541ABD83AA0045369B /* NCMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3B639521ABD83AA0045369B /* NCMapViewController.xib */; };
-		E3B639591ABD88170045369B /* NCWorldChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B639571ABD88170045369B /* NCWorldChatViewController.m */; };
 		E3B6395F1ABD88830045369B /* NCMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B6395D1ABD88830045369B /* NCMessageTableViewCell.m */; };
 		E3B639641ABD8CAD0045369B /* lense_flare_15.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639631ABD8CAD0045369B /* lense_flare_15.png */; };
 		E3B639671ABD8D8F0045369B /* lense_flare_08.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B639661ABD8D8F0045369B /* lense_flare_08.png */; };
@@ -162,19 +185,13 @@
 		E3BFCAE61ADE6919002CE6F9 /* blue_planet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3BFCAE51ADE6919002CE6F9 /* blue_planet.jpg */; };
 		E3BFCAE91AE09CF9002CE6F9 /* UITableView+RowAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */; };
 		E3BFCAEC1AE09E4C002CE6F9 /* UIColor+LovelyColors.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */; };
-		E3C9123B1B0D905D00F6833A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C912391B0D905D00F6833A /* MapViewController.swift */; };
 		E3DC7F311B0BEC8A00CD406F /* NCWorldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC7F2F1B0BEC8A00CD406F /* NCWorldTableViewCell.m */; };
 		E3DC7F321B0BEC8A00CD406F /* NCWorldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3DC7F301B0BEC8A00CD406F /* NCWorldTableViewCell.xib */; };
-		E3E9A0E41AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */; };
 		E3E9A0E61AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */; };
-		E3E9A0E91AFDBC3A00B0B6B8 /* heart_sprite_color.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */; };
-		E3E9A0EA1AFDBC3A00B0B6B8 /* heart_sprite_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E9A0E81AFDBC3A00B0B6B8 /* heart_sprite_grey.png */; };
 		E3F7D7291B047D1500432938 /* guitar_jingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7281B047D1500432938 /* guitar_jingle.mp3 */; };
 		E3F7D72C1B047FD600432938 /* NSDate+Recency.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D72B1B047FD600432938 /* NSDate+Recency.m */; };
 		E3F7D7311B04848A00432938 /* NCNameChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D72F1B04848A00432938 /* NCNameChoiceViewController.m */; };
 		E3F7D7321B04848A00432938 /* NCNameChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7301B04848A00432938 /* NCNameChoiceViewController.xib */; };
-		E3F7D7371B05D2F300432938 /* NCWorldCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D7351B05D2F300432938 /* NCWorldCollectionViewCell.m */; };
-		E3F7D7381B05D2F300432938 /* NCWorldCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D7361B05D2F300432938 /* NCWorldCollectionViewCell.xib */; };
 		E3F7D73B1B074BA900432938 /* back_arrow_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D73A1B074BA900432938 /* back_arrow_button@3x.png */; };
 		E3F7D73D1B074C5500432938 /* back_finger_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F7D73C1B074C5500432938 /* back_finger_button@3x.png */; };
 		E3F7D7411B08004B00432938 /* NCShareWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F7D7401B08004B00432938 /* NCShareWorldView.m */; };
@@ -240,19 +257,69 @@
 		E30DC0571B0172BD000D6A30 /* splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_screen.png; sourceTree = "<group>"; };
 		E30DC0591B01AC7C000D6A30 /* NCHeartDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCHeartDelegate.h; sourceTree = "<group>"; };
 		E30DC05A1B01C7A3000D6A30 /* NCTableSpriteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCTableSpriteDelegate.h; sourceTree = "<group>"; };
-		E34360F31AD51E6500203D7D /* flare_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flare_bg.jpg; sourceTree = "<group>"; };
 		E34360F51AD51F7700203D7D /* stars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stars.jpg; sourceTree = "<group>"; };
 		E34360F71AD520F000203D7D /* key_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon@3x.png"; sourceTree = "<group>"; };
 		E34360F91AD59EC500203D7D /* pencil_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil_icon@3x.png"; sourceTree = "<group>"; };
 		E34360FB1AD7B88100203D7D /* table_shout.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = table_shout.caf; sourceTree = "<group>"; };
-		E34361031AD878DD00203D7D /* purple_stars_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = purple_stars_background.jpg; sourceTree = "<group>"; };
 		E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock_icon.png; sourceTree = "<group>"; };
+		E380A0761B2046DB00B01723 /* NCMapViewController+ActionSheetDelegateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+ActionSheetDelegateMethods.h"; sourceTree = "<group>"; };
+		E380A0771B2046DB00B01723 /* NCMapViewController+ActionSheetDelegateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+ActionSheetDelegateMethods.m"; sourceTree = "<group>"; };
+		E380A0781B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+AlertViewDelegateMethods.h"; sourceTree = "<group>"; };
+		E380A0791B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+AlertViewDelegateMethods.m"; sourceTree = "<group>"; };
+		E380A07A1B2046DB00B01723 /* NCMapViewController+ButtonEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+ButtonEvents.h"; sourceTree = "<group>"; };
+		E380A07B1B2046DB00B01723 /* NCMapViewController+ButtonEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+ButtonEvents.m"; sourceTree = "<group>"; };
+		E380A07C1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+CoreLocationDelegateMethods.h"; sourceTree = "<group>"; };
+		E380A07D1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+CoreLocationDelegateMethods.m"; sourceTree = "<group>"; };
+		E380A07E1B2046DB00B01723 /* NCMapViewController+LayoutSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+LayoutSetup.h"; sourceTree = "<group>"; };
+		E380A07F1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+LayoutSetup.m"; sourceTree = "<group>"; };
+		E380A0801B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+MapDelegateMethods.h"; sourceTree = "<group>"; };
+		E380A0811B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+MapDelegateMethods.m"; sourceTree = "<group>"; };
+		E380A0821B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+UIImagePickerControllerDelegateMethods.h"; sourceTree = "<group>"; };
+		E380A0831B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+UIImagePickerControllerDelegateMethods.m"; sourceTree = "<group>"; };
+		E380A0841B2046DB00B01723 /* NCMapViewController+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+Utilities.h"; sourceTree = "<group>"; };
+		E380A0851B2046DB00B01723 /* NCMapViewController+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+Utilities.m"; sourceTree = "<group>"; };
+		E380A08E1B20472300B01723 /* SendMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageModel.h; sourceTree = "<group>"; };
+		E380A08F1B20472300B01723 /* SendMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageModel.m; sourceTree = "<group>"; };
+		E380A0921B20474900B01723 /* NCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCLoginViewController.h; sourceTree = "<group>"; };
+		E380A0931B20474900B01723 /* NCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCLoginViewController.m; sourceTree = "<group>"; };
+		E380A0941B20474900B01723 /* NCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCLoginViewController.xib; sourceTree = "<group>"; };
+		E380A0981B20477300B01723 /* NCWorldsMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldsMenuViewController.h; sourceTree = "<group>"; };
+		E380A0991B20477300B01723 /* NCWorldsMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldsMenuViewController.m; sourceTree = "<group>"; };
+		E380A09A1B20477300B01723 /* NCWorldsMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldsMenuViewController.xib; sourceTree = "<group>"; };
+		E380A09B1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWorldsMenuViewController+EntryEvents.h"; sourceTree = "<group>"; };
+		E380A09C1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCWorldsMenuViewController+EntryEvents.m"; sourceTree = "<group>"; };
+		E380A0A01B20478F00B01723 /* NCAttachmentPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCAttachmentPhoto.h; sourceTree = "<group>"; };
+		E380A0A11B20478F00B01723 /* NCAttachmentPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCAttachmentPhoto.m; sourceTree = "<group>"; };
+		E380A0A31B2047B500B01723 /* bell_button_not_ringing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bell_button_not_ringing@3x.png"; sourceTree = "<group>"; };
+		E380A0A41B2047B500B01723 /* bell_button_ringing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bell_button_ringing@3x.png"; sourceTree = "<group>"; };
+		E380A0A51B2047B500B01723 /* center_me_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "center_me_button@3x.png"; sourceTree = "<group>"; };
+		E380A0A61B2047B500B01723 /* chat_media_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_media_button@3x.png"; sourceTree = "<group>"; };
+		E380A0A71B2047B500B01723 /* delete_button_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_button_icon@3x.png"; sourceTree = "<group>"; };
+		E380A0AD1B2047C800B01723 /* Firebase+AuthenticationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Firebase+AuthenticationExtensions.h"; sourceTree = "<group>"; };
+		E380A0AE1B2047C800B01723 /* Firebase+AuthenticationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Firebase+AuthenticationExtensions.m"; sourceTree = "<group>"; };
+		E380A0B01B2047D000B01723 /* fire_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fire_icon@3x.png"; sourceTree = "<group>"; };
+		E380A0B21B2047D600B01723 /* key_icon_grey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon_grey@3x.png"; sourceTree = "<group>"; };
+		E380A0B31B2047D600B01723 /* key_icon_purple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "key_icon_purple@3x.png"; sourceTree = "<group>"; };
+		E380A0B61B2047DC00B01723 /* map_search_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_search_button@3x.png"; sourceTree = "<group>"; };
+		E380A0B71B2047DC00B01723 /* menu_map_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_map_button@3x.png"; sourceTree = "<group>"; };
+		E380A0BA1B2047E200B01723 /* location_update_button_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_update_button_off@3x.png"; sourceTree = "<group>"; };
+		E380A0BB1B2047E200B01723 /* location_update_button_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_update_button_on@3x.png"; sourceTree = "<group>"; };
+		E380A0BE1B20481000B01723 /* unlock_icon_purple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock_icon_purple@3x.png"; sourceTree = "<group>"; };
+		E380A0C01B20482500B01723 /* NSArray+RandomMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+RandomMethods.h"; sourceTree = "<group>"; };
+		E380A0C11B20482500B01723 /* NSArray+RandomMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+RandomMethods.m"; sourceTree = "<group>"; };
+		E380A0C31B20484500B01723 /* map_button_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_button_icon@3x.png"; sourceTree = "<group>"; };
+		E380A0C51B20485500B01723 /* NCFormNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCFormNameCell.h; sourceTree = "<group>"; };
+		E380A0C61B20485500B01723 /* NCFormNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCFormNameCell.m; sourceTree = "<group>"; };
+		E380A0C81B20486300B01723 /* BlurbModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurbModel.h; sourceTree = "<group>"; };
+		E380A0C91B20486300B01723 /* BlurbModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurbModel.m; sourceTree = "<group>"; };
+		E380A0CB1B20488300B01723 /* RESideMenu+CustomSetContentMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RESideMenu+CustomSetContentMethods.h"; sourceTree = "<group>"; };
+		E380A0CC1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RESideMenu+CustomSetContentMethods.m"; sourceTree = "<group>"; };
+		E380A0CE1B2048AC00B01723 /* sample_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_sprite.png; sourceTree = "<group>"; };
+		E380A0CF1B2048AC00B01723 /* table_button_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table_button_icon@3x.png"; sourceTree = "<group>"; };
 		E38176571ACC3BFC00278DDE /* ConversationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationModel.h; sourceTree = "<group>"; };
 		E38176581ACC3BFC00278DDE /* ConversationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationModel.m; sourceTree = "<group>"; };
-		E38AB2201ADE29CC0003BA23 /* starry_outside.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = starry_outside.jpg; sourceTree = "<group>"; };
 		E38AB2221ADE2BA50003BA23 /* logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_white.png; sourceTree = "<group>"; };
 		E38AB2241ADE33D10003BA23 /* white_logo_stroke@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_logo_stroke@3x.png"; sourceTree = "<group>"; };
-		E3A6145D1AF1A23300579DAA /* center_me_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "center_me_button@2x.png"; sourceTree = "<group>"; };
 		E3A6145F1AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWorldChatViewController+CenterMeButton.h"; sourceTree = "<group>"; };
 		E3A614601AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCWorldChatViewController+CenterMeButton.m"; sourceTree = "<group>"; };
 		E3A614621AF29C3600579DAA /* locate_me_button_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate_me_button_off@2x.png"; sourceTree = "<group>"; };
@@ -299,7 +366,6 @@
 		E3B638C11ABAB6810045369B /* NCSpriteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCSpriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		E3B638C51ABAB86F0045369B /* NSUserDefaults+AuthInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+AuthInformation.h"; sourceTree = "<group>"; };
 		E3B638C61ABAB86F0045369B /* NSUserDefaults+AuthInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+AuthInformation.m"; sourceTree = "<group>"; };
-		E3B638CC1ABAB9EF0045369B /* welcome_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_logo@3x.png"; sourceTree = "<group>"; };
 		E3B638CF1ABABB7B0045369B /* NCStarParticleSystem.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = NCStarParticleSystem.scnp; sourceTree = "<group>"; };
 		E3B638D01ABABB7B0045369B /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		E3B638D91ABAC0AA0045369B /* NCCreateUserForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCCreateUserForm.h; sourceTree = "<group>"; };
@@ -354,7 +420,6 @@
 		E3B6394D1ABD73E40045369B /* NCFormSpriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCFormSpriteCell.xib; sourceTree = "<group>"; };
 		E3B639501ABD83AA0045369B /* NCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMapViewController.h; sourceTree = "<group>"; };
 		E3B639511ABD83AA0045369B /* NCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCMapViewController.m; sourceTree = "<group>"; };
-		E3B639521ABD83AA0045369B /* NCMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCMapViewController.xib; sourceTree = "<group>"; };
 		E3B639561ABD88170045369B /* NCWorldChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldChatViewController.h; sourceTree = "<group>"; };
 		E3B639571ABD88170045369B /* NCWorldChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldChatViewController.m; sourceTree = "<group>"; };
 		E3B6395C1ABD88830045369B /* NCMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMessageTableViewCell.h; sourceTree = "<group>"; };
@@ -426,15 +491,10 @@
 		E3BFCAE81AE09CF9002CE6F9 /* UITableView+RowAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RowAnimations.m"; sourceTree = "<group>"; };
 		E3BFCAEA1AE09E4C002CE6F9 /* UIColor+LovelyColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LovelyColors.h"; sourceTree = "<group>"; };
 		E3BFCAEB1AE09E4C002CE6F9 /* UIColor+LovelyColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LovelyColors.m"; sourceTree = "<group>"; };
-		E3C912381B0D905C00F6833A /* Epoque-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Epoque-Bridging-Header.h"; sourceTree = "<group>"; };
-		E3C912391B0D905D00F6833A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E3DC7F2E1B0BEC8A00CD406F /* NCWorldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWorldTableViewCell.h; sourceTree = "<group>"; };
 		E3DC7F2F1B0BEC8A00CD406F /* NCWorldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWorldTableViewCell.m; sourceTree = "<group>"; };
 		E3DC7F301B0BEC8A00CD406F /* NCWorldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCWorldTableViewCell.xib; sourceTree = "<group>"; };
-		E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dark_grunge_texture@3x.jpg"; sourceTree = "<group>"; };
 		E3E9A0E51AFAC9AF00B0B6B8 /* shout_bubble_blue_gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shout_bubble_blue_gradient@2x.png"; sourceTree = "<group>"; };
-		E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_sprite_color.png; sourceTree = "<group>"; };
-		E3E9A0E81AFDBC3A00B0B6B8 /* heart_sprite_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_sprite_grey.png; sourceTree = "<group>"; };
 		E3F7D7271B01E6D900432938 /* NCMessageNameLabelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCMessageNameLabelDelegate.h; sourceTree = "<group>"; };
 		E3F7D7281B047D1500432938 /* guitar_jingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = guitar_jingle.mp3; sourceTree = "<group>"; };
 		E3F7D72A1B047FD600432938 /* NSDate+Recency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Recency.h"; sourceTree = "<group>"; };
@@ -541,6 +601,28 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
+		E380A0911B20473400B01723 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E380A0921B20474900B01723 /* NCLoginViewController.h */,
+				E380A0931B20474900B01723 /* NCLoginViewController.m */,
+				E380A0941B20474900B01723 /* NCLoginViewController.xib */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		E380A0971B20475600B01723 /* WorldsMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E380A0981B20477300B01723 /* NCWorldsMenuViewController.h */,
+				E380A0991B20477300B01723 /* NCWorldsMenuViewController.m */,
+				E380A09A1B20477300B01723 /* NCWorldsMenuViewController.xib */,
+				E380A09B1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.h */,
+				E380A09C1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.m */,
+			);
+			name = WorldsMenuViewController;
+			sourceTree = "<group>";
+		};
 		E3B638721ABAA7D30045369B = {
 			isa = PBXGroup;
 			children = (
@@ -581,7 +663,6 @@
 		E3B6387E1ABAA7D30045369B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E3C912381B0D905C00F6833A /* Epoque-Bridging-Header.h */,
 				E3B6387F1ABAA7D30045369B /* Info.plist */,
 				E3B638801ABAA7D30045369B /* main.m */,
 				E3B638A51ABAA84B0045369B /* NCPrefixHeader.pch */,
@@ -609,7 +690,8 @@
 		E3B638A61ABAA88E0045369B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E3C912371B0D360800F6833A /* MapViewController */,
+				E380A0971B20475600B01723 /* WorldsMenuViewController */,
+				E380A0911B20473400B01723 /* LoginViewController */,
 				E3F7D7441B096F0000432938 /* WorldUsersTableViewController */,
 				E3F7D72D1B04847900432938 /* NameChoiceViewController */,
 				E3FAB1E81AD9223E0018BC07 /* EditWorldViewController */,
@@ -712,6 +794,12 @@
 		E3B638C41ABAB85A0045369B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E380A0CB1B20488300B01723 /* RESideMenu+CustomSetContentMethods.h */,
+				E380A0CC1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m */,
+				E380A0C01B20482500B01723 /* NSArray+RandomMethods.h */,
+				E380A0C11B20482500B01723 /* NSArray+RandomMethods.m */,
+				E380A0AD1B2047C800B01723 /* Firebase+AuthenticationExtensions.h */,
+				E380A0AE1B2047C800B01723 /* Firebase+AuthenticationExtensions.m */,
 				E30A157D1AD11A6E00463931 /* PushPop */,
 				E3B639C21ACA0E080045369B /* String */,
 				E3B638C51ABAB86F0045369B /* NSUserDefaults+AuthInformation.h */,
@@ -765,6 +853,22 @@
 		E3B638CB1ABAB9D60045369B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E380A0CE1B2048AC00B01723 /* sample_sprite.png */,
+				E380A0CF1B2048AC00B01723 /* table_button_icon@3x.png */,
+				E380A0C31B20484500B01723 /* map_button_icon@3x.png */,
+				E380A0BE1B20481000B01723 /* unlock_icon_purple@3x.png */,
+				E380A0BA1B2047E200B01723 /* location_update_button_off@3x.png */,
+				E380A0BB1B2047E200B01723 /* location_update_button_on@3x.png */,
+				E380A0B61B2047DC00B01723 /* map_search_button@3x.png */,
+				E380A0B71B2047DC00B01723 /* menu_map_button@3x.png */,
+				E380A0B21B2047D600B01723 /* key_icon_grey@3x.png */,
+				E380A0B31B2047D600B01723 /* key_icon_purple@3x.png */,
+				E380A0B01B2047D000B01723 /* fire_icon@3x.png */,
+				E380A0A31B2047B500B01723 /* bell_button_not_ringing@3x.png */,
+				E380A0A41B2047B500B01723 /* bell_button_ringing@3x.png */,
+				E380A0A51B2047B500B01723 /* center_me_button@3x.png */,
+				E380A0A61B2047B500B01723 /* chat_media_button@3x.png */,
+				E380A0A71B2047B500B01723 /* delete_button_icon@3x.png */,
 				E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */,
 				E3F7D74A1B09728F00432938 /* refresh_icon.png */,
 				E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */,
@@ -776,15 +880,10 @@
 				E3A6146A1AF2B5CA00579DAA /* bell_ring_icon@3x.png */,
 				E3BFCAE51ADE6919002CE6F9 /* blue_planet.jpg */,
 				E3B639BA1ACA081E0045369B /* camera_icon@3x.png */,
-				E3A6145D1AF1A23300579DAA /* center_me_button@2x.png */,
 				E3B639B81ACA077F0045369B /* chat_icon@3x.png */,
 				E3B6390C1ABBF61D0045369B /* close_icon@3x.png */,
-				E3E9A0E31AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg */,
-				E34360F31AD51E6500203D7D /* flare_bg.jpg */,
 				E3B639A11AC5CD550045369B /* flare_grey@3x.png */,
 				E3B639651ABD8D190045369B /* flares */,
-				E3E9A0E71AFDBC3A00B0B6B8 /* heart_sprite_color.png */,
-				E3E9A0E81AFDBC3A00B0B6B8 /* heart_sprite_grey.png */,
 				E3B639381ABC51960045369B /* image_placeholder@2x.png */,
 				E34360F71AD520F000203D7D /* key_icon@3x.png */,
 				E3A614621AF29C3600579DAA /* locate_me_button_off@2x.png */,
@@ -806,7 +905,6 @@
 				E30A15A11AD3A67A00463931 /* placeholder.jpg */,
 				E30A159A1AD3A22900463931 /* plate.png */,
 				E3B638FA1ABBC0E00045369B /* plus_icon@3x.png */,
-				E34361031AD878DD00203D7D /* purple_stars_background.jpg */,
 				E3B639DF1ACA80120045369B /* saturn_icon@3x.png */,
 				E3B639DD1ACA7D680045369B /* search_icon@3x.png */,
 				E3A614681AF2B5CA00579DAA /* share_icon@3x.png */,
@@ -818,12 +916,10 @@
 				E3A614861AF7ED7B00579DAA /* star_icon_hollow_large@3x.png */,
 				E3A6147C1AF5DA1900579DAA /* star_icon_hollow@3x.png */,
 				E3B639B21AC9CC2C0045369B /* star_icon@3x.png */,
-				E38AB2201ADE29CC0003BA23 /* starry_outside.jpg */,
 				E34360F51AD51F7700203D7D /* stars.jpg */,
 				E3FAB1F41ADC7DB70018BC07 /* user_options@3x.png */,
 				E3A614701AF2B6B800579DAA /* users_cluster_icon@3x.png */,
 				E3A6146B1AF2B5CA00579DAA /* users_icon@3x.png */,
-				E3B638CC1ABAB9EF0045369B /* welcome_logo@3x.png */,
 				E3B639441ABD6FF90045369B /* welcome.png */,
 				E38AB2241ADE33D10003BA23 /* white_logo_stroke@3x.png */,
 			);
@@ -843,6 +939,8 @@
 		E3B638D81ABAC08A0045369B /* Forms */ = {
 			isa = PBXGroup;
 			children = (
+				E380A0C51B20485500B01723 /* NCFormNameCell.h */,
+				E380A0C61B20485500B01723 /* NCFormNameCell.m */,
 				E3B638D91ABAC0AA0045369B /* NCCreateUserForm.h */,
 				E3B638DA1ABAC0AA0045369B /* NCCreateUserForm.m */,
 				E3B638E81ABACFC20045369B /* NCLoginForm.h */,
@@ -941,6 +1039,12 @@
 		E3B639401ABD172B0045369B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E380A0C81B20486300B01723 /* BlurbModel.h */,
+				E380A0C91B20486300B01723 /* BlurbModel.m */,
+				E380A0A01B20478F00B01723 /* NCAttachmentPhoto.h */,
+				E380A0A11B20478F00B01723 /* NCAttachmentPhoto.m */,
+				E380A08E1B20472300B01723 /* SendMessageModel.h */,
+				E380A08F1B20472300B01723 /* SendMessageModel.m */,
 				E3B639411ABD173C0045369B /* WorldModel.h */,
 				E3B639421ABD173C0045369B /* WorldModel.m */,
 				E3B639691ABDA3AC0045369B /* UserModel.h */,
@@ -968,9 +1072,24 @@
 		E3B6394F1ABD83870045369B /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E380A0761B2046DB00B01723 /* NCMapViewController+ActionSheetDelegateMethods.h */,
+				E380A0771B2046DB00B01723 /* NCMapViewController+ActionSheetDelegateMethods.m */,
+				E380A0781B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.h */,
+				E380A0791B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m */,
+				E380A07A1B2046DB00B01723 /* NCMapViewController+ButtonEvents.h */,
+				E380A07B1B2046DB00B01723 /* NCMapViewController+ButtonEvents.m */,
+				E380A07C1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.h */,
+				E380A07D1B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.m */,
+				E380A07E1B2046DB00B01723 /* NCMapViewController+LayoutSetup.h */,
+				E380A07F1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m */,
+				E380A0801B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.h */,
+				E380A0811B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.m */,
+				E380A0821B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.h */,
+				E380A0831B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.m */,
+				E380A0841B2046DB00B01723 /* NCMapViewController+Utilities.h */,
+				E380A0851B2046DB00B01723 /* NCMapViewController+Utilities.m */,
 				E3B639501ABD83AA0045369B /* NCMapViewController.h */,
 				E3B639511ABD83AA0045369B /* NCMapViewController.m */,
-				E3B639521ABD83AA0045369B /* NCMapViewController.xib */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -1108,14 +1227,6 @@
 				E3B63A661ACB195F0045369B /* NCUserTableViewCell.xib */,
 			);
 			name = UserTableViewCell;
-			sourceTree = "<group>";
-		};
-		E3C912371B0D360800F6833A /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E3C912391B0D905D00F6833A /* MapViewController.swift */,
-			);
-			name = MapViewController;
 			sourceTree = "<group>";
 		};
 		E3DC7F331B0BEC8F00CD406F /* WorldTableViewCell */ = {
@@ -1283,9 +1394,10 @@
 				E30A15C61AD4A60800463931 /* sent.wav in Resources */,
 				E3F7D73B1B074BA900432938 /* back_arrow_button@3x.png in Resources */,
 				E30A15A21AD3A67A00463931 /* placeholder.jpg in Resources */,
+				E380A0B11B2047D000B01723 /* fire_icon@3x.png in Resources */,
+				E380A0B41B2047D600B01723 /* key_icon_grey@3x.png in Resources */,
 				E30A15C91AD4A60800463931 /* Menu and Interface Sound 9.wav in Resources */,
 				E30A159D1AD3A3F800463931 /* shout.wav in Resources */,
-				E38AB2211ADE29CC0003BA23 /* starry_outside.jpg in Resources */,
 				E30A15C81AD4A60800463931 /* failure.wav in Resources */,
 				E3B639801ABF36100045369B /* welcome.mp4 in Resources */,
 				E30A15CF1AD4A60800463931 /* Menu and Interface Sound 3.wav in Resources */,
@@ -1295,12 +1407,12 @@
 				E34360FC1AD7B88100203D7D /* table_shout.caf in Resources */,
 				E30A15C71AD4A60800463931 /* table_shout.wav in Resources */,
 				E3B6390D1ABBF61D0045369B /* close_icon@3x.png in Resources */,
-				E3B639541ABD83AA0045369B /* NCMapViewController.xib in Resources */,
 				E3B6392A1ABC3AD80045369B /* ornate-clock@2x.png in Resources */,
+				E380A0A91B2047B500B01723 /* bell_button_ringing@3x.png in Resources */,
 				E3B638F51ABBBA1D0045369B /* Trocchi.otf in Resources */,
+				E380A0AA1B2047B500B01723 /* center_me_button@3x.png in Resources */,
 				E3B6391D1ABC21D00045369B /* NCMyCharacterViewController.xib in Resources */,
 				E3B639141ABC00360045369B /* menu_icon@3x.png in Resources */,
-				E3B639011ABBC12F0045369B /* NCCreateNewWorldViewController.xib in Resources */,
 				E30DC0581B0172BD000D6A30 /* splash_screen.png in Resources */,
 				E3B63A681ACB195F0045369B /* NCUserTableViewCell.xib in Resources */,
 				E3A614871AF7ED7B00579DAA /* star_icon_full_large@3x.png in Resources */,
@@ -1310,11 +1422,10 @@
 				E3F7D73D1B074C5500432938 /* back_finger_button@3x.png in Resources */,
 				E3B639641ABD8CAD0045369B /* lense_flare_15.png in Resources */,
 				E34360F81AD520F000203D7D /* key_icon@3x.png in Resources */,
-				E34361041AD878DD00203D7D /* purple_stars_background.jpg in Resources */,
 				E3B638BC1ABAADF30045369B /* NCSpritesViewController.xib in Resources */,
 				E3B639921AC17DCA0045369B /* NCWorldDetailViewController.xib in Resources */,
+				E380A0AB1B2047B500B01723 /* chat_media_button@3x.png in Resources */,
 				E30A15CD1AD4A60800463931 /* Menu and Interface Sound 5.wav in Resources */,
-				E3E9A0E41AF9F07C00B0B6B8 /* dark_grunge_texture@3x.jpg in Resources */,
 				E38AB2251ADE33D10003BA23 /* white_logo_stroke@3x.png in Resources */,
 				E30A15C51AD4A60700463931 /* Menu and Interface Sound 13.wav in Resources */,
 				E3F7D7291B047D1500432938 /* guitar_jingle.mp3 in Resources */,
@@ -1323,16 +1434,17 @@
 				E3B6398C1AC171420045369B /* ornate_minute_hand_v2_white@2x.png in Resources */,
 				E3FAB1F51ADC7DB70018BC07 /* user_options@3x.png in Resources */,
 				E3B639E01ACA80120045369B /* saturn_icon@3x.png in Resources */,
-				E3F7D7381B05D2F300432938 /* NCWorldCollectionViewCell.xib in Resources */,
 				E3B639B71AC9E44E0045369B /* options_button@3x.png in Resources */,
-				E3B638CD1ABAB9EF0045369B /* welcome_logo@3x.png in Resources */,
+				E380A0BC1B2047E200B01723 /* location_update_button_off@3x.png in Resources */,
 				E30A15CC1AD4A60800463931 /* Menu and Interface Sound 6.wav in Resources */,
 				E3B6393F1ABC54DA0045369B /* NCFormSubmitButtonCell.xib in Resources */,
+				E380A0BF1B20481000B01723 /* unlock_icon_purple@3x.png in Resources */,
 				E3FAB1ED1AD922730018BC07 /* NCEditWorldViewController.xib in Resources */,
+				E380A09E1B20477300B01723 /* NCWorldsMenuViewController.xib in Resources */,
 				E3B639161ABC00B80045369B /* back_icon@3x.png in Resources */,
+				E380A0B91B2047DC00B01723 /* menu_map_button@3x.png in Resources */,
 				E3A6146E1AF2B5CA00579DAA /* bell_ring_icon@3x.png in Resources */,
 				E3B6394E1ABD73E40045369B /* NCFormSpriteCell.xib in Resources */,
-				E34360F41AD51E6500203D7D /* flare_bg.jpg in Resources */,
 				E3B639A21AC5CD550045369B /* flare_grey@3x.png in Resources */,
 				E3DC7F321B0BEC8A00CD406F /* NCWorldTableViewCell.xib in Resources */,
 				E3B639071ABBDE6C0045369B /* NCLeftMenuViewController.xib in Resources */,
@@ -1340,16 +1452,18 @@
 				E3F7D7491B096F1A00432938 /* NCUsersTableViewController.xib in Resources */,
 				E3B639671ABD8D8F0045369B /* lense_flare_08.png in Resources */,
 				E359F6F81B0BFE0C00A9CDB7 /* lock_icon.png in Resources */,
-				E3A6145E1AF1A23300579DAA /* center_me_button@2x.png in Resources */,
 				E34360FA1AD59EC500203D7D /* pencil_icon@3x.png in Resources */,
 				E30A159B1AD3A22900463931 /* plate.png in Resources */,
+				E380A0B51B2047D600B01723 /* key_icon_purple@3x.png in Resources */,
 				E3B638C31ABAB6810045369B /* NCSpriteCollectionViewCell.xib in Resources */,
 				E3B639DE1ACA7D680045369B /* search_icon@3x.png in Resources */,
 				E3F7D74B1B09729000432938 /* refresh_icon.png in Resources */,
+				E380A0A81B2047B500B01723 /* bell_button_not_ringing@3x.png in Resources */,
 				E3A614791AF5CE2600579DAA /* star_icon_full@3x.png in Resources */,
 				E30A15D01AD4A60800463931 /* Menu and Interface Sound 2.wav in Resources */,
 				E3B639861AC16FAC0045369B /* NCLoadingView.xib in Resources */,
 				E3B63A531ACAEAB90045369B /* media_bubble@3x.png in Resources */,
+				E380A0AC1B2047B500B01723 /* delete_button_icon@3x.png in Resources */,
 				E3FAB1E61AD8F8130018BC07 /* auto_update_location_button_off@3x.png in Resources */,
 				E3A614651AF29C3600579DAA /* locate_me_button@2x.png in Resources */,
 				E3B639391ABC51960045369B /* image_placeholder@2x.png in Resources */,
@@ -1359,28 +1473,32 @@
 				E3B638F91ABBC04F0045369B /* new-world-icon@3x.png in Resources */,
 				E3B639D41ACA5BF30045369B /* shout_bubble_dark_gradient@2x.png in Resources */,
 				E3B6392C1ABC3AE60045369B /* ornate_hour_hand@2x.png in Resources */,
+				E380A0BD1B2047E200B01723 /* location_update_button_on@3x.png in Resources */,
+				E380A0D01B2048AC00B01723 /* sample_sprite.png in Resources */,
 				E3B6398B1AC171420045369B /* ornate_hour_hand_v2_white@2x.png in Resources */,
 				E30A15CA1AD4A60800463931 /* location_update.wav in Resources */,
+				E380A0D11B2048AC00B01723 /* table_button_icon@3x.png in Resources */,
 				E3A614881AF7ED7B00579DAA /* star_icon_hollow_large@3x.png in Resources */,
 				E3B6392E1ABC3AF70045369B /* ornate_minute_hand@2x.png in Resources */,
 				E3FAB1E71AD8F8130018BC07 /* auto_update_location_button_on@3x.png in Resources */,
 				E3B639B31AC9CC2C0045369B /* star_icon@3x.png in Resources */,
+				E380A0C41B20484500B01723 /* map_button_icon@3x.png in Resources */,
 				E30A15CB1AD4A60800463931 /* Menu and Interface Sound 7.wav in Resources */,
 				E3B639B91ACA077F0045369B /* chat_icon@3x.png in Resources */,
 				E3B639781ABEFF080045369B /* map_icon@3x.png in Resources */,
 				E3A614731AF54D7600579DAA /* outline_logo@3x.png in Resources */,
 				E30A15941AD30A3300463931 /* NCAboutViewController.xib in Resources */,
 				E30A15D11AD4A60800463931 /* success.wav in Resources */,
-				E3E9A0E91AFDBC3A00B0B6B8 /* heart_sprite_color.png in Resources */,
 				E30A15D31AD4A61700463931 /* proud.wav in Resources */,
 				E3BFCAE61ADE6919002CE6F9 /* blue_planet.jpg in Resources */,
 				E3A6146F1AF2B5CA00579DAA /* users_icon@3x.png in Resources */,
 				E3A614641AF29C3600579DAA /* locate_me_button_off@2x.png in Resources */,
 				E3A614711AF2B6B800579DAA /* users_cluster_icon@3x.png in Resources */,
 				E3B638D11ABABB7B0045369B /* NCStarParticleSystem.scnp in Resources */,
-				E3B638E11ABAC62C0045369B /* NCWorldsViewController.xib in Resources */,
+				E380A0B81B2047DC00B01723 /* map_search_button@3x.png in Resources */,
 				E3B639231ABC2D680045369B /* NCLeftMenuTableViewCell.xib in Resources */,
 				E30A15CE1AD4A60800463931 /* Menu and Interface Sound 4.wav in Resources */,
+				E380A0961B20474900B01723 /* NCLoginViewController.xib in Resources */,
 				E38AB2231ADE2BA50003BA23 /* logo_white.png in Resources */,
 				E3F7D7431B08005B00432938 /* NCShareWorldView.xib in Resources */,
 				E30A15C41AD4A60700463931 /* Menu and Interface Sound 14.wav in Resources */,
@@ -1388,7 +1506,6 @@
 				E3F7D7321B04848A00432938 /* NCNameChoiceViewController.xib in Resources */,
 				E34360F61AD51F7700203D7D /* stars.jpg in Resources */,
 				E3B6388C1ABAA7D30045369B /* Images.xcassets in Resources */,
-				E3E9A0EA1AFDBC3A00B0B6B8 /* heart_sprite_grey.png in Resources */,
 				E3B6398A1AC171420045369B /* ornate_clock_white@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1442,22 +1559,28 @@
 			files = (
 				E3B639711ABDAC690045369B /* NSDate+JavaScriptTimestamp.m in Sources */,
 				E3B638DB1ABAC0AA0045369B /* NCCreateUserForm.m in Sources */,
+				E380A08A1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m in Sources */,
 				E3B63A671ACB195F0045369B /* NCUserTableViewCell.m in Sources */,
 				E3B639D21ACA59A70045369B /* MKMapView+Utilities.m in Sources */,
+				E380A0871B2046DB00B01723 /* NCMapViewController+AlertViewDelegateMethods.m in Sources */,
 				E3B638C71ABAB86F0045369B /* NSUserDefaults+AuthInformation.m in Sources */,
 				E3B639351ABC45D00045369B /* NCFormImageCell.m in Sources */,
+				E380A0C21B20482500B01723 /* NSArray+RandomMethods.m in Sources */,
 				E3B639C51ACA0E1A0045369B /* NSString+StringAdditions.m in Sources */,
-				E3B639001ABBC12F0045369B /* NCCreateNewWorldViewController.m in Sources */,
+				E380A08B1B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.m in Sources */,
 				E3B639221ABC2D680045369B /* NCLeftMenuTableViewCell.m in Sources */,
 				E3B639121ABBFE770045369B /* UIViewController+BarButtons.m in Sources */,
 				E3B638AD1ABAA8B40045369B /* NCWelcomeViewController.m in Sources */,
 				E3F7D7411B08004B00432938 /* NCShareWorldView.m in Sources */,
+				E380A0881B2046DB00B01723 /* NCMapViewController+ButtonEvents.m in Sources */,
 				E30A15801AD11A8300463931 /* UINavigationController+PushPop.m in Sources */,
 				E3B639531ABD83AA0045369B /* NCMapViewController.m in Sources */,
+				E380A0951B20474900B01723 /* NCLoginViewController.m in Sources */,
 				E3B6394C1ABD73C10045369B /* NCFormSpriteCell.m in Sources */,
 				E3B639431ABD173C0045369B /* WorldModel.m in Sources */,
 				E3B638BB1ABAADF30045369B /* NCSpritesViewController.m in Sources */,
 				E3B639B11AC9C3CC0045369B /* WorldResultsModel.m in Sources */,
+				E380A0AF1B2047C800B01723 /* Firebase+AuthenticationExtensions.m in Sources */,
 				E3A614801AF60D2900579DAA /* NCWorldService.m in Sources */,
 				E30A15931AD30A3300463931 /* NCAboutViewController.m in Sources */,
 				E3B639A01AC3AE500045369B /* UIColor+HexString.m in Sources */,
@@ -1468,39 +1591,44 @@
 				E3B639481ABD71890045369B /* NCMyCharacterForm.m in Sources */,
 				E3B639741ABDD07F0045369B /* UIView+RotateAnimation.m in Sources */,
 				E3FAB1EC1AD922730018BC07 /* NCEditWorldViewController.m in Sources */,
-				E3B639591ABD88170045369B /* NCWorldChatViewController.m in Sources */,
 				E3B639AE1AC9AC480045369B /* NCUserService.m in Sources */,
 				E3B6396B1ABDA3AC0045369B /* UserModel.m in Sources */,
 				E3B639061ABBDE6C0045369B /* NCLeftMenuViewController.m in Sources */,
+				E380A08C1B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.m in Sources */,
 				E30A15A01AD3A40700463931 /* NCSoundEffect.m in Sources */,
+				E380A09F1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.m in Sources */,
+				E380A09D1B20477300B01723 /* NCWorldsMenuViewController.m in Sources */,
 				E3FAB1F01AD92A0D0018BC07 /* NCEditWorldForm.m in Sources */,
+				E380A08D1B2046DB00B01723 /* NCMapViewController+Utilities.m in Sources */,
 				E30A15861AD1CB0000463931 /* JSONValueTransformer+Color.m in Sources */,
-				E3A614841AF7EC7800579DAA /* NCWorldChatViewController+TableSetup.m in Sources */,
 				E3B639911AC17DCA0045369B /* NCWorldDetailViewController.m in Sources */,
 				E3F7D72C1B047FD600432938 /* NSDate+Recency.m in Sources */,
-				E3B638E01ABAC62C0045369B /* NCWorldsViewController.m in Sources */,
 				E3B638841ABAA7D30045369B /* AppDelegate.m in Sources */,
 				E3B63A581ACB01E60045369B /* NCFeedbackViewController.m in Sources */,
 				E3B638B41ABAA8E20045369B /* EPSpriteService.m in Sources */,
+				E380A0891B2046DB00B01723 /* NCMapViewController+CoreLocationDelegateMethods.m in Sources */,
 				E38176591ACC3BFC00278DDE /* ConversationModel.m in Sources */,
 				E3BFCAE91AE09CF9002CE6F9 /* UITableView+RowAnimations.m in Sources */,
-				E3A614611AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.m in Sources */,
-				E3F7D7371B05D2F300432938 /* NCWorldCollectionViewCell.m in Sources */,
 				E3B6390B1ABBF4940045369B /* NCCreateWorldForm.m in Sources */,
+				E380A0CA1B20486300B01723 /* BlurbModel.m in Sources */,
 				E3B639CC1ACA18DD0045369B /* UserAnnotation.m in Sources */,
 				E3F7D7481B096F1A00432938 /* NCUsersTableViewController.m in Sources */,
 				E3B6393D1ABC54CB0045369B /* NCFormSubmitButtonCell.m in Sources */,
 				E3B639C81ACA17F20045369B /* CLLocation+GeoJson.m in Sources */,
-				E3C9123B1B0D905D00F6833A /* MapViewController.swift in Sources */,
 				E3B639311ABC3FF40045369B /* NCUploadService.m in Sources */,
+				E380A0861B2046DB00B01723 /* NCMapViewController+ActionSheetDelegateMethods.m in Sources */,
 				E30A15831AD1B33000463931 /* NCNumberHelper.m in Sources */,
+				E380A0CD1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m in Sources */,
 				E3B639CF1ACA20610045369B /* UserAnnotationView.m in Sources */,
+				E380A0A21B20478F00B01723 /* NCAttachmentPhoto.m in Sources */,
 				E3B638B71ABAAA270045369B /* NCFireService.m in Sources */,
 				E3B639841AC16FA10045369B /* NCLoadingView.m in Sources */,
 				E3B6399B1AC193010045369B /* NCFormColorCell.m in Sources */,
+				E380A0901B20472300B01723 /* SendMessageModel.m in Sources */,
 				E3B6395F1ABD88830045369B /* NCMessageTableViewCell.m in Sources */,
 				E3B638EA1ABACFC20045369B /* NCLoginForm.m in Sources */,
 				E3B638C21ABAB6810045369B /* NCSpriteCollectionViewCell.m in Sources */,
+				E380A0C71B20485500B01723 /* NCFormNameCell.m in Sources */,
 				E3FAB1F31ADB31B50018BC07 /* PrivateMessageModel.m in Sources */,
 				E30A15DF1AD4DF8D00463931 /* SubmitPrivateMessageModel.m in Sources */,
 				E3F7D7311B04848A00432938 /* NCNameChoiceViewController.m in Sources */,
@@ -1627,17 +1755,14 @@
 			baseConfigurationReference = CAEE8942C6F4DEC22E33E0CF /* Pods-Epoque.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
 				INFOPLIST_FILE = Epoque/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Epoque;
-				PROVISIONING_PROFILE = "53de7a03-4efd-4028-9906-27ed2680da0a";
-				SWIFT_OBJC_BRIDGING_HEADER = "Epoque/Epoque-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1647,16 +1772,14 @@
 			baseConfigurationReference = 0B100824D6F037E68FB9F3D5 /* Pods-Epoque.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ZinkPulse LLC (G47H383S4Y)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZinkPulse LLC (G47H383S4Y)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
 				INFOPLIST_FILE = Epoque/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Epoque;
-				PROVISIONING_PROFILE = "b9bb36a2-26dc-4a1f-a06b-ee73829c7391";
-				SWIFT_OBJC_BRIDGING_HEADER = "Epoque/Epoque-Bridging-Header.h";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

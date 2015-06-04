@@ -14,5 +14,5 @@
 @property (nonatomic, copy) NSString *spriteUrl;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *about;
-@property (nonatomic, assign) BOOL isObscuring;
+/*@property (nonatomic, assign) BOOL isObscuring;*/
 @end

@@ -7,8 +7,10 @@
 //
 
 #import "NCNameChoiceViewController.h"
-#import "NCWorldsViewController.h"
-
+#import "Firebase+AuthenticationExtensions.h"
+#import "NCLoginViewController.h"
+#import "NCMapViewController.h"
+#import "NCCreateUserForm.h"
 #import "NCFireService.h"
 #import <MBFaker/MBFaker.h>
 @interface NCNameChoiceViewController ()
@@ -23,47 +25,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     fireService = [NCFireService sharedInstance];
-    self.spriteImageView.userInteractionEnabled = YES;
-    self.spriteImageView.layer.magnificationFilter = kCAFilterNearest;
-    UITapGestureRecognizer *spriteTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goToSprites:)];
-    [self.spriteImageView addGestureRecognizer:spriteTapGesture];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorColor = [UIColor clearColor];
+    NCCreateUserForm *form = [[NCCreateUserForm alloc] init];
+    form.spriteUrl = self.spriteUrl;
+    self.formController = [[FXFormController alloc] init];
+    self.formController.tableView = self.tableView;
+    self.formController.delegate = self;
+    self.formController.form = form;
     
-    self.nameTextField.backgroundColor = [UIColor colorWithHexString:@"#51A3F2" alpha:0.4];
-    self.nameTextField.layer.cornerRadius = 4.0;
-    self.nameTextField.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.nameTextField.layer.masksToBounds = YES;
-    self.nameTextField.text = [MBFakerName name];
-    self.nameTextField.textColor = [UIColor whiteColor];
-    self.nameTextField.delegate = self;
-    self.nameTextField.returnKeyType = UIReturnKeyGo;
-    self.nameTextField.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.nameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.nameTextField.textAlignment = NSTextAlignmentCenter;
-    
-    [self.scrollView setContentOffset: CGPointMake(0, self.scrollView.contentOffset.y)];
-    self.scrollView.directionalLockEnabled = YES;
-    
-    @weakify(self);
-    [RACObserve(self, spriteUrl) subscribeNext:^(id x) {
-        @strongify(self);
-        [self.spriteImageView sd_setImageWithURL:[NSURL URLWithString:x]];
-    }];
+    [self.loginButton addTarget:self action:@selector(loginButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self.nameTextField becomeFirstResponder];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == self.nameTextField) {
-        [self submit];
-        return NO;
-    }
-    return YES;
+-(void)loginButtonDidTap:(id)sender{
+    NCLoginViewController *loginViewController = [[NCLoginViewController alloc]init];
+    [self.navigationController pushFadeViewController:loginViewController];
 }
 
--(void)goToSprites:(id)sender{
+-(void)spriteDidTap{
     NCSpritesViewController *spritesViewController = [[NCSpritesViewController alloc]init];
     spritesViewController.delegate = self;
     [self presentViewController:spritesViewController animated:YES completion:nil];
@@ -76,27 +60,76 @@
 
 -(void)didSelectSpriteFromModal:(NSString *)spriteUrl{
     self.spriteUrl = [spriteUrl copy];
+    ((NCCreateUserForm *)self.formController.form).spriteUrl = spriteUrl;
+    [self.tableView reloadData];
 }
 
--(void)submit{
-    UserModel *newUserModel = [[UserModel alloc]init];
-    newUserModel.name = self.nameTextField.text;
-    newUserModel.email = @"";
-    newUserModel.imageUrl = @"";
-    newUserModel.spriteUrl = self.spriteUrl;
-    newUserModel.role = @"normal";
-    newUserModel.about = @"";
-    [[NSUserDefaults standardUserDefaults] setIsObscuring:YES];
+-(RACSignal *)addMarketingSignupWithEmail:(NSString *)email{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"marketing-signups"] childByAutoId] setValue:@{@"email": email, @"referral": @"ios", @"timestamp": kFirebaseServerValueTimestamp} withCompletionBlock:^(NSError *error, Firebase *ref) {
+            if (error) {
+                [subscriber sendNext:error];
+            }else{
+                [subscriber sendNext:email];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
+}
+
+
+
+-(void)submitButtonDidTap{
+    NCCreateUserForm *form = (NCCreateUserForm *)self.formController.form;
+    if (!form.isValid) {
+        [[[UIAlertView alloc]initWithTitle:nil message:@"I know you're excited. \U0001F613 Don't cheat. Fill everything out." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil] show];
+        return;
+    }
     @weakify(self);
-    [[fireService.usersRef childByAutoId] setValue:[newUserModel toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
+    [NCLoadingView showInView:self.view];
+    
+    NSString *email = form.email;
+    NSString *name = [form.name stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *password = form.password;
+    
+    
+    Firebase *ref = [[Firebase alloc]initWithUrl:kFirebaseRoot];
+    
+    [[[[ref rac_validateName:name] flattenMap:^RACStream *(id value) {
+        return [ref rac_createUserWithEmail:email password:password name:name about:@"" spriteUrl:form.spriteUrl role:@"normal"];
+    }] flattenMap:^RACStream *(id value) {
+        return [self addMarketingSignupWithEmail:form.email];
+    }] subscribeNext:^(id x) {
         @strongify(self);
-        NSString *userId = ref.key;
-        newUserModel.userId = userId;
-        [[NSUserDefaults standardUserDefaults] setUserModel:newUserModel];
-        [Amplitude setUserId:userId];
-        [Amplitude setUserProperties:[newUserModel toDictionary]];
-        NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
-        [self.navigationController pushFadeViewController:worldsViewController];
+        [NCLoadingView hideAllFromView:self.view];
+        NCMapViewController *mapViewController = [[NCMapViewController alloc]init];
+        mapViewController.worldId = kOpenWorldTitle;
+        [self.navigationController pushFadeViewController:mapViewController];
+    } error:^(NSError *error) {
+        @strongify(self);
+        [NCLoadingView hideAllFromView:self.view];
+        NSString *errorMessage = @"We ran into an error creating your user!";
+        switch(error.code) {
+            case FAuthenticationErrorEmailTaken:
+                errorMessage = @"This email is already taken. Try Logging in?";
+                break;
+            case FAuthenticationErrorInvalidEmail:
+                errorMessage = @"Your email wasn't in the right format. Check carefully!";
+                break;
+            case FAuthenticationErrorInvalidPassword:
+                errorMessage = @"Your password wasn't in the right format. Check carefully!";
+                break;
+            case kNCUserNameValidationErrorCode:
+                errorMessage = @"Your username cannot be longer than 20 characters. It can have a combination of capital and lower case letters from A-Z, numbers 0-9, and an optional underscore.";
+                break;
+            case kNCNameUnavailableCode:
+                errorMessage = @"Someone already took this username...";
+                break;
+            default:
+                break;
+        }
+        [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:errorMessage duration:2.0];
     }];
 }
 

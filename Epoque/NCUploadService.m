@@ -20,27 +20,6 @@
     return _sharedObject;
 }
 
-
-/*-(RACSignal *)uploadImage:(UIImage *)image{
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.3);
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        NSString *postUrl = @"https://forwardme.herokuapp.com/api/images/upload";
-        AFHTTPRequestOperation *operation = [manager POST:postUrl parameters:@{} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-            [formData appendPartWithFileData:imageData name:@"image" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
-        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSString *imageUrl = [responseObject objectForKey:@"imageUrl"];
-            [subscriber sendNext:imageUrl];
-            [subscriber sendCompleted];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:error];
-        }];
-        return [RACDisposable disposableWithBlock:^{
-            [operation cancel];
-        }];
-    }];
-}*/
-
 -(RACSignal *)uploadImage:(UIImage *)image{
     CLCloudinary *cloudinary = [[CLCloudinary alloc] init];
     [cloudinary.config setValue:@"zinkpulse" forKey:@"cloud_name"];

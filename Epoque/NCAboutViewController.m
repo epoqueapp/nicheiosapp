@@ -14,6 +14,7 @@
 
 @implementation NCAboutViewController{
     NCSoundEffect *soundEffect;
+    NSTimer *timer;
 }
 
 - (void)viewDidLoad {
@@ -47,6 +48,44 @@
     self.versionAndBuildLabel.text = [NSString stringWithFormat:@"Version: %@ Build :%@", version, build];
     self.backgroundImageView.alpha = 0;
     [self addShadows];
+    
+    self.quotesLabel.textColor = [UIColor whiteColor];
+    self.quotesLabel.font = [UIFont fontWithName:kTrocchiBoldFontName size:16.0];
+    self.quotesLabel.strokeColor = [UIColor blackColor];
+    self.quotesLabel.strokeSize = 1.5;
+    self.quotesLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *randomQuote = [NSUserDefaults standardUserDefaults].randomQuote;
+    NSString *content = [randomQuote objectForKey:@"content"];
+    NSString *author = [randomQuote objectForKey:@"author"];
+    self.quotesLabel.text = [NSString stringWithFormat:@"%@ ~ %@", content, author];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(changeQuote:) userInfo:nil repeats:YES];
+}
+
+-(void)changeQuote:(id)sender{
+    self.quotesLabel.alpha = 1;
+    @weakify(self);
+    [UIView animateWithDuration:2.0 animations:^{
+        @strongify(self);
+        self.quotesLabel.alpha = 0;
+    }completion:^(BOOL finished) {
+        @strongify(self);
+        
+        if (finished) {
+            NSDictionary *randomQuote = [NSUserDefaults standardUserDefaults].randomQuote;
+            NSString *content = [randomQuote objectForKey:@"content"];
+            NSString *author = [randomQuote objectForKey:@"author"];
+            self.quotesLabel.text = [NSString stringWithFormat:@"%@ \n ~ %@", content, author];
+        }
+        
+    }];
+    
+    [UIView animateWithDuration:2.0 delay:2.0 options:0 animations:^{
+        @strongify(self);
+        self.quotesLabel.alpha = 1;
+    } completion:^(BOOL finished){
+        
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -67,7 +106,6 @@
         }
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

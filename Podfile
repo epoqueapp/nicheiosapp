@@ -7,7 +7,6 @@ pod "ReactiveCocoa"
 pod "AFNetworking"
 pod "AFNetworking-RACExtensions"
 pod "Firebase"
-pod "Geofire"
 pod "SDWebImage"
 pod "FXForms"
 pod "RESideMenu"
@@ -17,15 +16,17 @@ pod "ColorPopover"
 pod "JSONModel"
 pod "HexColors"
 pod "MarqueeLabel"
-pod "Facebook-iOS-SDK"
+pod "WYPopoverController"
 pod "Amplitude-iOS", "~> 2.4"
 pod "CSNotificationView"
 pod 'TTTAttributedLabel'
 pod 'AWSS3'
-pod 'CrittercismSDK'
+pod 'HockeySDK'
 pod 'MBFaker'
 pod 'TPKeyboardAvoiding'
 pod 'Cloudinary'
 pod 'NYTPhotoViewer'
+pod 'WEPopover'
+pod 'IBActionSheet'
 end
 

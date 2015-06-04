@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCSpritesViewController">
@@ -11,6 +11,7 @@
                 <outlet property="collectionView" destination="coB-GS-Bmm" id="Eaz-Ne-YwD"/>
                 <outlet property="hourImageView" destination="Ups-bk-DK2" id="te1-tN-A4Y"/>
                 <outlet property="minuteImageView" destination="cKr-Ki-tQh" id="PUA-6J-aDc"/>
+                <outlet property="quoteLabel" destination="eOS-e7-jSD" id="fCz-dk-a0W"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,6 +44,15 @@
                         <constraint firstAttribute="height" constant="251" id="zJM-c5-WfW"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOS-e7-jSD" customClass="THLabel">
+                    <rect key="frame" x="43" y="219" width="515" height="161"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="161" id="cIg-8a-5Rg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="coB-GS-Bmm">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="15" id="hlm-AS-C76">
@@ -60,6 +70,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="LoP-nd-VHu" secondAttribute="centerX" id="2th-Yt-R6H"/>
+                <constraint firstItem="eOS-e7-jSD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="43" id="5Tb-iS-UM6"/>
                 <constraint firstAttribute="bottom" secondItem="coB-GS-Bmm" secondAttribute="bottom" id="7S0-wt-DPh"/>
                 <constraint firstAttribute="centerY" secondItem="Ups-bk-DK2" secondAttribute="centerY" constant="0.5" id="BpM-Z3-aDm"/>
                 <constraint firstAttribute="centerX" secondItem="Ups-bk-DK2" secondAttribute="centerX" constant="-0.5" id="Cfy-hD-H5U"/>
@@ -70,9 +81,12 @@
                 <constraint firstAttribute="centerX" secondItem="cKr-Ki-tQh" secondAttribute="centerX" id="SkP-YH-igc"/>
                 <constraint firstAttribute="trailing" secondItem="coB-GS-Bmm" secondAttribute="trailing" id="ZDa-wY-Z84"/>
                 <constraint firstItem="coB-GS-Bmm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="a6z-UD-LnZ"/>
+                <constraint firstAttribute="trailing" secondItem="eOS-e7-jSD" secondAttribute="trailing" constant="42" id="apc-iX-2PW"/>
                 <constraint firstAttribute="centerY" secondItem="cKr-Ki-tQh" secondAttribute="centerY" id="bjC-wo-kGC"/>
                 <constraint firstAttribute="centerY" secondItem="LoP-nd-VHu" secondAttribute="centerY" id="dbS-qb-qg9"/>
                 <constraint firstItem="UNq-7Z-6qm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jRk-Ox-hIX"/>
+                <constraint firstAttribute="centerY" secondItem="eOS-e7-jSD" secondAttribute="centerY" constant="0.5" id="o3g-H5-vxK"/>
+                <constraint firstAttribute="centerX" secondItem="eOS-e7-jSD" secondAttribute="centerX" constant="-0.5" id="yVq-Zx-RjZ"/>
             </constraints>
         </view>
     </objects>

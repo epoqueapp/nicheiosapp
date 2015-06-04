@@ -24,7 +24,7 @@
 -(RACSignal *)updateWorld:(WorldModel *)worldModel;
 -(RACSignal *)deleteWorld:(NSString *)worldId;
 
--(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring location:(CLLocation *)location;
+-(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring location:(CLLocation *)location;
 
 -(RACSignal *)submitPrivateMessage:(SubmitPrivateMessageModel *)submitPrivateMessageModel;
 

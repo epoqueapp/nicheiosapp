@@ -16,6 +16,10 @@
 #define kNCBlockedUserIds @"kNCBlockedUserIds"
 #define kNCIsObscuring @"kNCIsObscuring"
 #define kNCIsFavoriteMode @"kNCIsFavoriteMode"
+#define kNCIsLocationUpdateOn @"kNCIsLocationUpdateOn"
+#define kNCQuotes @"kNCQuotes"
+#define kNCCurrentWorldId @"kNCCurrentWorldId"
+#define kNCRemoteDeviceToken @"kNCRemoteDeviceToken"
 
 @interface NSUserDefaults (AuthInformation)
 
@@ -33,9 +37,6 @@
 -(void)setDeviceToken:(NSString *)deviceToken;
 -(NSString *)deviceToken;
 
--(void)setObscurity:(float)obscurity;
--(float)obscurity;
-
 -(void)blockUserWithId:(NSString *)userId;
 -(void)unblockUserId:(NSString *)userId;
 -(NSArray *)blockedUserIds;
@@ -46,4 +47,15 @@
 
 -(BOOL)isFavoriteMode;
 -(void)setIsFavoriteMode:(BOOL)isFavoriteMode;
+
+-(void)setQuotes:(NSArray *)quoteObjects;
+-(NSArray *)quotes;
+-(NSDictionary *)randomQuote;
+
+-(void)setCurrentWorldId:(NSString *)worldId;
+-(NSString *)currentWorldId;
+
+-(void)setRemoteDeviceToken:(NSString *)deviceToken;
+-(NSString *)remoteDeviceToken;
+
 @end

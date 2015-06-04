@@ -11,6 +11,23 @@
 @implementation WorldModel
 
 
+-(id)init{
+    self = [super init];
+    if (self) {
+        self.worldId = nil;
+        self.name = @"Our New World";
+        self.detail = @"A place where we can join in to help others";
+        self.imageUrl = @"";
+        self.passcode = [NSString generateRandomPIN:4];
+        self.isDefault = NO;
+        self.isPrivate = NO;
+        self.memberUserIds = @[];
+        self.moderatorUserIds = @[];
+        self.favoritedUserIds = @[];
+    }
+    return self;
+}
+
 -(id)initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err{
     self = [super init];
     if (self) {

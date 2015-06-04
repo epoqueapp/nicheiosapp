@@ -30,48 +30,70 @@ static NSString *libraryTitle = @"Library";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setUpBackButton];
+    [self setUpDismissButtonWithTarget:self selector:@selector(dismissMe:)];
     self.title = @"EDIT WORLD";
     shouldUpload = NO;
     
     uploadService = [NCUploadService sharedInstance];
     fireService = [NCFireService sharedInstance];
     
+    self.formController = [[FXFormController alloc]init];
+    self.formController.tableView = self.tableView;
+    self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#141414"];
+    
+    if (self.worldId == nil) {
+        self.title = @"CREATE A WORLD";
+        [self setUpAsANewWorld];
+    }else{
+        self.title = @"EDIT WORLD";
+        [self setUpListener];
+    }
+}
+
+-(void)dismissMe:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)setUpAsANewWorld {
+    worldModel = [[WorldModel alloc]init];
+    NCEditWorldForm *form = [[NCEditWorldForm alloc]init];
+    form.name = worldModel.name;
+    form.worldDescription = worldModel.detail;
+    form.isPrivate = worldModel.isPrivate;
+    self.formController.form = form;
+}
+
+-(void)setUpListener{
     @weakify(self);
     self.tableView.alpha = 0;
     [[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"worlds"] childByAppendingPath:self.worldId] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
-        
         [UIView animateWithDuration:0.25 animations:^{
             self.tableView.alpha = 1;
         }];
+        if (snapshot.value == [NSNull null]) {
+            worldModel = [[WorldModel alloc]init];
+        }else{
+            worldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
+        }
         
-        worldModel = [[WorldModel alloc]initWithSnapshot:snapshot];
         NCEditWorldForm *form = [[NCEditWorldForm alloc]init];
-        
         form.name = worldModel.name;
         form.worldDescription = worldModel.detail;
         form.isPrivate = worldModel.isPrivate;
-        
-        
-        self.formController = [[FXFormController alloc]init];
-        self.formController.tableView = self.tableView;
         self.formController.form = form;
-        self.tableView.separatorColor = [UIColor clearColor];
-        self.tableView.backgroundColor = [UIColor clearColor];
-        self.view.backgroundColor = [UIColor blackColor];
+
         
         [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:worldModel.imageUrl] options:9 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-
             if (image) {
                 form.emblemImage = image;
             }
             [self.tableView reloadData];
         }];
-        
-        
     }];
 }
 
@@ -158,6 +180,10 @@ static NSString *libraryTitle = @"Library";
         worldModelToUpdate.favoritedUserIds = worldModel.favoritedUserIds;
         worldModelToUpdate.moderatorUserIds = worldModel.moderatorUserIds;
         worldModelToUpdate.passcode = [NSString generateRandomPIN:4];
+        
+        if (self.worldId == nil) {
+            return [self createWorld:worldModelToUpdate];
+        }
         return [self updateWorld:worldModelToUpdate];
     }] subscribeNext:^(id x) {
         @strongify(self);
@@ -170,6 +196,21 @@ static NSString *libraryTitle = @"Library";
         [CSNotificationView showInViewController:self tintColor:[UIColor redColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:@"Yuck. We ran into an issue updating your world's information." duration:2.0];
     }];
 }
+
+-(RACSignal *)createWorld:(WorldModel *)worldModelToCreate {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[[[[Firebase alloc]initWithUrl:kFirebaseRoot]childByAppendingPath:@"worlds"] childByAutoId] setValue:[worldModelToCreate toDictionary] withCompletionBlock:^(NSError *error, Firebase *ref) {
+            if (error) {
+                [subscriber sendError:error];
+            }else{
+                [subscriber sendNext:ref];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
+}
+
 
 -(RACSignal *)updateWorld:(WorldModel *)worldModelToUpdate{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

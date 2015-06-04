@@ -15,6 +15,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *visitWebsiteButton;
 @property (nonatomic, weak) IBOutlet UILabel *versionAndBuildLabel;
 
+@property (nonatomic, weak) IBOutlet THLabel *quotesLabel;
+
 @property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
 
 @end

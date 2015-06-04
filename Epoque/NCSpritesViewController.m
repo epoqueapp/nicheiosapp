@@ -9,7 +9,7 @@
 #import "NCSpritesViewController.h"
 #import "EPSpriteService.h"
 #import "NCSpriteCollectionViewCell.h"
-#import "NCWorldsViewController.h"
+#import "NCMapViewController.h"
 #import "NCFireService.h"
 #import "NCNameChoiceViewController.h"
 @interface NCSpritesViewController ()
@@ -35,8 +35,19 @@ static NSString* const CellIdentifier = @"Cell";
     
     self.view.backgroundColor = [UIColor blackColor];
     self.collectionView.backgroundColor = [UIColor clearColor];
+    
+    self.quoteLabel.textColor = [UIColor whiteColor];
+    self.quoteLabel.font = [UIFont fontWithName:kTrocchiBoldFontName size:16.0];
+    self.quoteLabel.strokeColor = [UIColor blackColor];
+    self.quoteLabel.strokeSize = 1.5;
+    self.quoteLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *randomQuote = [NSUserDefaults standardUserDefaults].randomQuote;
+    NSString *content = [randomQuote objectForKey:@"content"];
+    NSString *author = [randomQuote objectForKey:@"author"];
+    self.quoteLabel.text = [NSString stringWithFormat:@"%@ ~ %@", content, author];
+    
     @weakify(self);
-    [[[spritesService getSprites] retry:100] subscribeNext:^(id x) {
+    [[[[spritesService getSprites] retry:100] delay:1.0] subscribeNext:^(id x) {
         @strongify(self);
         maleSprites = [x objectForKey:@"male"];
         femaleSprites = [x objectForKey:@"female"];
@@ -77,6 +88,7 @@ static NSString* const CellIdentifier = @"Cell";
         self.hourImageView.alpha = 0.0;
         self.minuteImageView.alpha = 0;
         self.clockImageView.alpha = 0;
+        self.quoteLabel.alpha = 0;
     }];
 }
 

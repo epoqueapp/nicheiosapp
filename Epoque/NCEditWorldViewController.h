@@ -11,7 +11,7 @@
 #import "NCRefreshDelegate.h"
 #import "WorldModel.h"
 
-@interface NCEditWorldViewController : UIViewController <FXFormControllerDelegate, NCRefreshDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface NCEditWorldViewController : UIViewController <FXFormControllerDelegate, NCRefreshDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, copy) NSString *worldId;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;

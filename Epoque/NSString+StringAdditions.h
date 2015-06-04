@@ -14,4 +14,8 @@
 
 +(NSString *)generateRandomPIN:(NSInteger)places;
 
++(NSString *)randomImageEmoji;
+
++(NSString *)speechBubbleEmoji;
+
 @end

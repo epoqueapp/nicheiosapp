@@ -11,10 +11,11 @@
 
 @interface NCCreateUserForm : NSObject <FXForm>
 
+@property (nonatomic, copy) NSString *spriteUrl;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) BOOL isPrivate;
 
+-(BOOL)isValid;
 
 @end

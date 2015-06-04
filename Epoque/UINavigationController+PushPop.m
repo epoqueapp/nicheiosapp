@@ -7,7 +7,6 @@
 //
 
 #import "UINavigationController+PushPop.h"
-#import "NCWorldsViewController.h"
 @implementation UINavigationController (PushPop)
 
 -(void)pushFadeViewController:(UIViewController *)controller{
@@ -64,16 +63,6 @@
     [self popViewControllerAnimated:NO];
 }
 
-- (void)goToWorldsController{
-    NSArray *viewControllers = [self viewControllers];
-    for (int i = 0; i < [viewControllers count]; i++){
-        id obj = [viewControllers objectAtIndex:i];
-        if ([obj isKindOfClass:[NCWorldsViewController class]]){
-            [self popToViewController:obj animated:YES];
-            return;
-        }
-    }
-}
 
 
 @end

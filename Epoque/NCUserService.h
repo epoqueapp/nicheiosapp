@@ -15,6 +15,7 @@
 +(id)sharedInstance;
 
 
+
 -(RACSignal *)updateMe:(UserModel *)userModel;
 -(RACSignal *)sendFeedbackWithContent:(NSString *)content;
 

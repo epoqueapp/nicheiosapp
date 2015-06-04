@@ -6,11 +6,9 @@
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 
-#import "NCWorldsViewController.h"
 #import "NCEditWorldViewController.h"
 #import "NCNavigationController.h"
 #import "NCWorldDetailViewController.h"
-#import "NCWorldChatViewController.h"
 #import "NCUsersTableViewController.h"
 #import "NCFireService.h"
 #import "WorldModel.h"
@@ -250,12 +248,6 @@ static NSString* const kRefreshPasscode = @"Refresh";
     if ([title isEqualToString:kRefreshPasscode]) {
         [[[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"worlds"]childByAppendingPath:self.worldId] childByAppendingPath:@"passcode"] setValue:[NSString generateRandomPIN:4]];
     }
-}
-
--(void)goToChat{
-    NCWorldChatViewController *chatViewController = [[NCWorldChatViewController alloc]init];
-    chatViewController.worldId = [self.worldId copy];
-    [self.navigationController pushViewController:chatViewController animated:YES];
 }
 
 -(void)goToWorldEdit{

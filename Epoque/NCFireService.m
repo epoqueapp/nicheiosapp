@@ -27,7 +27,7 @@
 -(id)init{
     self = [super init];
     if (self) {
-        rootRef = [[Firebase alloc]initWithUrl:@"https://niche.firebaseio.com"];
+        rootRef = [[Firebase alloc]initWithUrl:kFirebaseRoot];
         worldsRef = [rootRef childByAppendingPath:@"worlds"];
         usersRef = [rootRef childByAppendingPath:@"users"];
     }
@@ -130,109 +130,10 @@
     }];
 }
 
--(RACSignal *)submitWorldMessage:(NSString *)worldId myUserId:(NSString *)myUserId mySpriteUrl:(NSString *)mySpriteUrl myName:(NSString *)myName myUserImageUrl:(NSString *)myUserImageUrl text:(NSString *)text imageUrl:(NSString *)imageUrl isObscuring:(BOOL)isObscuring location:(CLLocation *)location{
-    
-    if(location == nil){
-        location = [[CLLocation alloc]initWithLatitude:37.773972 longitude:-122.431297];
-    }
-    
-    NSDictionary *json = @{
-                           @"userId": myUserId,
-                           @"userSpriteUrl": mySpriteUrl,
-                           @"userName": myName,
-                           @"userImageUrl": myUserImageUrl,
-                           @"messageText": text,
-                           @"messageImageUrl": imageUrl,
-                           @"timestamp": kFirebaseServerValueTimestamp,
-                           @"isObscuring": @(isObscuring),
-                           @"geo": [location toGeoJsonWthObscurity:[NSUserDefaults standardUserDefaults].obscurity]
-                           };
-    
-    // world-messages/worldId/messageId/messagedata
-    RACSignal *chatSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[self worldMessagesRef:worldId] childByAutoId] setValue:json withCompletionBlock:^(NSError *error, Firebase *ref) {
-            if (error) {
-                [subscriber sendError:error];
-            }else{
-                [subscriber sendNext:ref.key];
-                [subscriber sendCompleted];
-            }
-        }];
-        return nil;
-    }];
-    
-    RACSignal *fullMessageSignal = [chatSignal flattenMap:^RACStream *(NSString *messageId) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            NSMutableDictionary *mutableJson = [json mutableCopy];
-            [mutableJson setObject:messageId forKey:@"messageId"];
-            [[[self worldShoutsRef:worldId] childByAppendingPath:myUserId] setValue:mutableJson withCompletionBlock:^(NSError *error, Firebase *ref) {
-                if (error) {
-                    [subscriber sendError:error];
-                }else{
-                    [subscriber sendNext:ref];
-                    [subscriber sendCompleted];
-                }
-            }];
-            return nil;
-        }];
-    }];
-    
-    RACSignal *worldPushNote = [self submitWorldPushNoteWithWorldId:worldId userId:myUserId userName:myName messageText:text messageImageUrl:imageUrl];
-    return [RACSignal combineLatest:@[fullMessageSignal, worldPushNote]];
-}
-
--(RACSignal *)submitPrivateMessage:(SubmitPrivateMessageModel *)submitPrivateMessageModel{
-    RACSignal *submitToMyInbox = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[[self.rootRef childByAppendingPath:@"user-private-messages"] childByAppendingPath:submitPrivateMessageModel.myUserId] childByAppendingPath:submitPrivateMessageModel.toUserId] setValue:submitPrivateMessageModel.toDictionary withCompletionBlock:^(NSError *error, Firebase *ref) {
-            if (error) {
-                [subscriber sendError:error];
-            }else{
-                [subscriber sendNext:nil];
-                [subscriber sendCompleted];
-            }
-        }];
-        return nil;
-    }];
-    RACSignal *submitToOtherInbox = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[[self.rootRef childByAppendingPath:@"user-private-messages"] childByAppendingPath:submitPrivateMessageModel.toUserId] childByAppendingPath:submitPrivateMessageModel.myUserId] setValue:submitPrivateMessageModel.toDictionary withCompletionBlock:^(NSError *error, Firebase *ref) {
-            if (error) {
-                [subscriber sendError:error];
-            }else{
-                [subscriber sendNext:nil];
-                [subscriber sendCompleted];
-            }
-        }];
-        return nil;
-    }];
-    RACSignal *submitToMyConversations = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[[self.rootRef childByAppendingPath:@"user-conversations"] childByAppendingPath:submitPrivateMessageModel.myUserId] childByAppendingPath:submitPrivateMessageModel.toUserId] setValue:submitPrivateMessageModel.toDictionary withCompletionBlock:^(NSError *error, Firebase *ref) {
-            if (error) {
-                [subscriber sendError:error];
-            }else{
-                [subscriber sendNext:nil];
-                [subscriber sendCompleted];
-            }
-        }];
-        return nil;
-    }];
-    RACSignal *submitToOtherConversations = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[[self.rootRef childByAppendingPath:@"user-conversations"] childByAppendingPath:submitPrivateMessageModel.toUserId] childByAppendingPath:submitPrivateMessageModel.myUserId] setValue:submitPrivateMessageModel.toDictionary withCompletionBlock:^(NSError *error, Firebase *ref) {
-            if (error) {
-                [subscriber sendError:error];
-            }else{
-                [subscriber sendNext:nil];
-                [subscriber sendCompleted];
-            }
-        }];
-        return nil;
-    }];
-    return [RACSignal combineLatest:@[submitToMyInbox, submitToOtherInbox, submitToMyConversations, submitToOtherConversations]];
-}
-
 
 -(RACSignal *)registerUserId:(NSString *)userId deviceToken:(NSString *)deviceToken environment:(NSString *)environment{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[self.rootRef childByAppendingPath:@"apple-devices"] childByAppendingPath:userId] setValue:@{@"deviceToken": deviceToken, @"environment": environment} withCompletionBlock:^(NSError *error, Firebase *ref) {
+        [[[self.rootRef childByAppendingPath:@"listeners"] childByAppendingPath:userId] setValue:@{@"deviceToken": deviceToken, @"environment": environment, @"deviceType": @"ios"} withCompletionBlock:^(NSError *error, Firebase *ref) {
             if(error){
                 [subscriber sendError:error];
             }
@@ -243,21 +144,6 @@
         }];
         return nil;
     }];
-}
-
-
--(RACSignal *)submitWorldPushNoteWithWorldId:(NSString *)worldId userId:(NSString *)userId userName:(NSString *)userName messageText:(NSString *)messageText messageImageUrl:(NSString *)messageImageUrl{
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            [[[rootRef childByAppendingPath:@"worlds-push-bus"] childByAppendingPath:worldId] setValue:@{@"userId": userId, @"userName": userName, @"messageText": messageText, @"messageImageUrl": messageImageUrl} withCompletionBlock:^(NSError *error, Firebase *ref) {
-                if (error) {
-                    [subscriber sendError:error];
-                }else{
-                    [subscriber sendNext:nil];
-                    [subscriber sendCompleted];
-                }
-            }];
-            return nil;
-        }];
 }
 
 -(RACSignal *)logout{

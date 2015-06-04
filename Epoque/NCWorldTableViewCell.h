@@ -2,21 +2,21 @@
 //  NCWorldTableViewCell.h
 //  Epoque
 //
-//  Created by Maximilian Alexander on 5/19/15.
+//  Created by Maximilian Alexander on 5/25/15.
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <TTTAttributedLabel/TTTAttributedLabel.h>
+#import "WorldModel.h"
 @interface NCWorldTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIImageView *worldImageView;
-@property (nonatomic, weak) IBOutlet TTTAttributedLabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *starImageView;
-@property (nonatomic, weak) IBOutlet UIImageView *keyImageView;
+@property (nonatomic, weak) IBOutlet UILabel *worldNameLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *firstIconImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *secondIconImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *thirdIconImageView;
 
-@property (nonatomic, weak) IBOutlet UILabel *badgeLabel;
+-(void)setWorldModel:(WorldModel *)worldModel;
 
-@property (nonatomic, copy) NSString *worldId;
 
 @end

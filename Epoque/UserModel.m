@@ -18,7 +18,6 @@
         self.about = [dataSnapShot.value objectForKey:@"about"];
         self.email = [dataSnapShot.value objectForKey:@"email"];
         self.spriteUrl = [dataSnapShot.value objectForKey:@"spriteUrl"];
-        self.imageUrl = [dataSnapShot.value objectForKey:@"imageUrl"];
         self.role = [dataSnapShot.value objectForKey:@"role"];
     }
     return self;
@@ -29,7 +28,6 @@
     if (self) {
         self.userId = [dict objectForKey:@"userId"];
         self.email = [dict objectForKey:@"email"];
-        self.imageUrl = [dict objectForKey:@"imageUrl"];
         self.spriteUrl = [dict objectForKey:@"spriteUrl"];
         self.name = [dict objectForKey:@"name"];
         self.about = [dict objectForKey:@"about"];

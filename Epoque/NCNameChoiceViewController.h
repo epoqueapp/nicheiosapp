@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <FXForms/FXForms.h>
 #import "NCSpritesViewController.h"
-@interface NCNameChoiceViewController : UIViewController <NCSpritesViewControllerDelegate, UITextFieldDelegate>
+@interface NCNameChoiceViewController : UIViewController <NCSpritesViewControllerDelegate, FXFormControllerDelegate>
 
 @property (nonatomic, copy) NSString *spriteUrl;
 
-@property (nonatomic, weak) IBOutlet UIImageView *spriteImageView;
-@property (nonatomic, weak) IBOutlet UITextField *nameTextField;
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) FXFormController *formController;
 
+@property (nonatomic, weak) IBOutlet UIButton *loginButton;
 
 @end

@@ -10,8 +10,7 @@
 #import <FXForms.h>
 
 @interface NCLoginForm : NSObject <FXForm>
-
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
-
+-(BOOL)isValid;
 @end

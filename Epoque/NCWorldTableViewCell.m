@@ -2,67 +2,93 @@
 //  NCWorldTableViewCell.m
 //  Epoque
 //
-//  Created by Maximilian Alexander on 5/19/15.
+//  Created by Maximilian Alexander on 5/25/15.
 //  Copyright (c) 2015 Epoque. All rights reserved.
 //
 
 #import "NCWorldTableViewCell.h"
 
 @implementation NCWorldTableViewCell{
-    FirebaseHandle handle;
-    Firebase *ref;
+    RACDisposable *worldDisposable;
 }
 
 - (void)awakeFromNib {
-    // Initialization code
-    self.nameLabel.font = [UIFont fontWithName:kTrocchiBoldFontName size:14.0];
-    self.nameLabel.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:0.7];
-    self.nameLabel.textColor = [UIColor whiteColor];
-    self.nameLabel.textInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    self.nameLabel.layer.cornerRadius = 3.0f;
-    self.nameLabel.layer.masksToBounds = YES;
-    
-    
-    self.worldImageView.layer.masksToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
     
-    self.worldImageView.layer.cornerRadius = 3.0f;
     self.worldImageView.layer.masksToBounds = YES;
+    self.worldImageView.layer.cornerRadius = self.worldImageView.frame.size.width / 2.0;
+    self.worldImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.worldImageView.layer.borderWidth = 1.5;
     
-    self.badgeLabel.backgroundColor = [UIColor redColor];
-    self.badgeLabel.textColor = [UIColor whiteColor];
-    self.badgeLabel.layer.cornerRadius = self.badgeLabel.frame.size.width / 2.0;
-    self.badgeLabel.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.badgeLabel.layer.borderWidth = 0.5f;
-    self.badgeLabel.layer.masksToBounds = YES;
+    self.worldNameLabel.textColor = [UIColor lightGrayColor];
+}
+
+
+-(void)prepareForReuse{
+    self.firstIconImageView.image = nil;
+    self.secondIconImageView.image = nil;
+    self.thirdIconImageView.image = nil;
+    [worldDisposable dispose];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    // Configure the view for the selected state
 }
 
--(void)setWorldId:(NSString *)worldId{
-    _worldId = worldId;
-    if (handle) {
-        [ref removeObserverWithHandle:handle];
-    }
+-(void)setWorldModel:(WorldModel *)worldModel{
+    [self.worldImageView sd_setImageWithURL:[NSURL URLWithString:worldModel.imageUrl]];
+    self.worldNameLabel.text = worldModel.name;
+    
     NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    ref = [[[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"user-notification-badges"] childByAppendingPath:myUserId] childByAppendingPath:@"world-messages"] childByAppendingPath:worldId];
+    NSMutableArray *iconImages = [NSMutableArray array];
+    
+    BOOL isDefault = worldModel.isDefault;
+    if (isDefault) {
+        [iconImages addObject:[UIImage imageNamed:@"fire_icon"]];
+    }
+    
+    BOOL isFavorite = [worldModel.favoritedUserIds containsObject:myUserId];
+    if (isFavorite) {
+        [iconImages addObject:[UIImage imageNamed:@"star_icon"]];
+    }
+    
+    BOOL isPrivateAndUnauthorized = ![worldModel.memberUserIds containsObject:myUserId] && worldModel.isPrivate;
+    BOOL isPrivateAndAuthorized = [worldModel.memberUserIds containsObject:myUserId] && worldModel.isPrivate;
+    if(isPrivateAndAuthorized){
+        [iconImages addObject:[UIImage imageNamed:@"unlock_icon_purple"]];
+    }
+    if(isPrivateAndUnauthorized){
+        [iconImages addObject:[UIImage imageNamed:@"key_icon_purple"]];
+    }
+    
+    for (int i = 0; i < iconImages.count; i++) {
+        UIImage *image = [iconImages objectAtIndex:i];
+        
+        
+        if (i == 0) {
+            self.firstIconImageView.image = image;
+        }
+        if (i == 1) {
+            self.secondIconImageView.image = image;
+        }
+        if (i == 2) {
+            self.thirdIconImageView.image = image;
+        }
+    }
+    [worldDisposable dispose];
     @weakify(self);
-    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+    worldDisposable = [[[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCCurrentWorldId] map:^id(id value) {
+        return @([value isEqualToString:worldModel.worldId.copy]);
+    }] subscribeNext:^(id x) {
         @strongify(self);
-        if (![snapshot.value isKindOfClass:[NSNull class]]) {
-            NSInteger count = [snapshot.value integerValue];
-            self.badgeLabel.text = [snapshot.value stringValue];
-            if (count <= 0) {
-                self.badgeLabel.hidden = YES;
-            }else{
-                self.badgeLabel.hidden = NO;
-            }
+        if ([x boolValue]) {
+            self.backgroundColor = [UIColor colorWithHexString:@"#3D3D3D"];
         }else{
-            self.badgeLabel.hidden = YES;
+            self.backgroundColor = [UIColor clearColor];
         }
     }];
+    
 }
 
 @end

@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        //self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor clearColor];
         [self configureSubviews];
@@ -51,20 +51,21 @@
                               @"leading": @10,
                               @"attachmentImageViewSize": @(300),
                               };
+
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leading-[spriteImageView(spriteImageViewWidth)]" options:0 metrics:metrics views:views]];
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leading-[spriteImageView(spriteImageViewWidth)]-trailing-[userNameLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leading-[spriteImageView(spriteImageViewWidth)]-trailing-[textMessageLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-leading-[spriteImageView(spriteImageViewWidth)]-trailing-[attachmentImageView]-trailing-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[spriteImageView]-trailing-[userNameLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[spriteImageView]-trailing-[textMessageLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[spriteImageView]-trailing-[attachmentImageView]-trailing-|" options:0 metrics:metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[timeLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
     
-    
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-leading-[userNameLabel]-leading-[textMessageLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
-    
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[timeLabel]-leading-[textMessageLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
-    
+
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-leading-[userNameLabel]" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[userNameLabel]-leading-[textMessageLabel(>=0)]-trailing-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[timeLabel]" options:0 metrics:metrics views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[spriteImageView]" options:0 metrics:metrics views:views]];
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[userNameLabel]-leading-[attachmentImageView(>=0,<=attachmentImageViewSize)]-trailing-|" options:0 metrics:metrics views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[userNameLabel]-leading-[attachmentImageView(>=0,<=attachmentImageViewSize)]-trailing-|" options:0 metrics:metrics views:views]];
     
     
 }
@@ -162,13 +163,26 @@
     if (!_attachmentImageView) {
         _attachmentImageView = [UIImageView new];
         _attachmentImageView.translatesAutoresizingMaskIntoConstraints = NO;
-        _attachmentImageView.userInteractionEnabled = NO;
+        _attachmentImageView.userInteractionEnabled = YES;
         _attachmentImageView.backgroundColor = [UIColor clearColor];
         _attachmentImageView.contentMode = UIViewContentModeScaleAspectFill;
         _attachmentImageView.layer.cornerRadius = 4.0;
         _attachmentImageView.layer.masksToBounds = YES;
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tappedAttachmentImageView:)];
+        [_attachmentImageView addGestureRecognizer:tapGesture];
     }
     return _attachmentImageView;
+}
+
+-(void)tappedAttachmentImageView:(id)sender{
+    if ([self.delegate respondsToSelector:@selector(tappedAttachmentImageView:image:)]) {
+        UIImage *image = self.attachmentImageView.image;
+        if (image == nil) {
+            return;
+        }
+        [self.delegate tappedAttachmentImageView:self.indexPath image:image];
+    }
 }
 
 -(void)setMessageModel:(MessageModel *)messageModel{

@@ -19,9 +19,6 @@
 }
 
 -(void)setUserModel:(UserModel *)userModel{
-    if (userModel.imageUrl == nil) {
-        userModel.imageUrl = @"";
-    }
     NSDictionary *userDictionary = [userModel toDictionary];
     [self setObject:userDictionary forKey:kNCUserModel];
     [Amplitude setUserId:userModel.userId];
@@ -50,6 +47,8 @@
     [self setObject:nil forKey:kNCUserModel];
     [self setObject:nil forKey:kNCDeviceToken];
     [self setObject:nil forKey:kNCObscurity];
+    [self setObject:nil forKey:kNCCurrentWorldId];
+    [self setObject:nil forKey:kNCRemoteDeviceToken];
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
 }
 
@@ -59,14 +58,6 @@
 
 -(NSString *)deviceToken{
     return [self objectForKey:kNCDeviceToken];
-}
-
--(void)setObscurity:(float)obscurity{
-    return [self setObject:@(obscurity) forKey:kNCObscurity];
-}
-
--(float)obscurity{
-    return [[self objectForKey:kNCObscurity] floatValue];
 }
 
 -(void)blockUserWithId:(NSString *)userId{
@@ -113,5 +104,44 @@
 -(void)setIsFavoriteMode:(BOOL)isFavoriteMode{
     [self setObject:@(isFavoriteMode) forKey:kNCIsFavoriteMode];
 }
+
+-(void)setQuotes:(NSArray *)quoteObjects{
+    [self setObject:quoteObjects forKey:kNCQuotes];
+}
+
+-(NSArray *)quotes{
+    NSArray *retrievedQuotes = [self objectForKey:kNCQuotes];
+    if (retrievedQuotes == nil) {
+        return @[];
+    }
+    return retrievedQuotes;
+}
+
+-(NSDictionary *)randomQuote{
+    NSArray *fetchedQuotes = [self quotes];
+    if ([fetchedQuotes count] == 0) {
+        return @{
+                 @"content": @"Don't be shy.",
+                 @"author": @"Epoque Team",
+                 @"likeCount": @43,
+                 @"timestamp": [NSDate javascriptTimestampNow]
+                 };
+    }
+    return [fetchedQuotes randomObject];
+}
+
+-(void)setCurrentWorldId:(NSString *)worldId{
+    [self setObject:worldId forKey:kNCCurrentWorldId];
+}
+
+-(NSString *)currentWorldId {
+    NSString *wId = [self objectForKey:kNCCurrentWorldId];
+    if(wId == nil){
+        return @"open-world";
+    }else{
+        return wId;
+    }
+}
+
 
 @end

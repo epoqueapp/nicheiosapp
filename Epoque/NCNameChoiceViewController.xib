@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Trocchi-Bold.otf">
-            <string>Trocchi-Bold</string>
+        <mutableArray key="Trocchi.otf">
+            <string>Trocchi</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NCNameChoiceViewController">
             <connections>
-                <outlet property="nameTextField" destination="RbL-F0-fHc" id="aFJ-Ob-EJe"/>
-                <outlet property="scrollView" destination="ICz-Vv-cUM" id="Uoy-vO-NUv"/>
-                <outlet property="spriteImageView" destination="dJC-s4-He5" id="Ltf-wd-Xgz"/>
+                <outlet property="loginButton" destination="HFs-7K-Oor" id="zSE-bN-WF2"/>
+                <outlet property="tableView" destination="fN3-0X-JyH" id="bOJ-y2-NWU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,50 +21,32 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICz-Vv-cUM" customClass="TPKeyboardAvoidingScrollView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbL-F0-fHc">
-                            <rect key="frame" x="184" y="374" width="232" height="39"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="39" id="YoD-eL-MbF"/>
-                                <constraint firstAttribute="width" constant="232" id="khH-0H-NGs"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dJC-s4-He5">
-                            <rect key="frame" x="276" y="263" width="49" height="73"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="dJC-s4-He5" secondAttribute="height" multiplier="63:94" id="o2S-R9-WlW"/>
-                            </constraints>
-                        </imageView>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="RbL-F0-fHc" firstAttribute="top" secondItem="dJC-s4-He5" secondAttribute="bottom" constant="38" id="5N2-on-Ddb"/>
-                        <constraint firstItem="RbL-F0-fHc" firstAttribute="top" secondItem="dJC-s4-He5" secondAttribute="bottom" constant="38" id="HDc-vJ-pv6"/>
-                        <constraint firstAttribute="trailing" secondItem="dJC-s4-He5" secondAttribute="trailing" constant="275" id="Jsb-6e-6Ky"/>
-                        <constraint firstItem="dJC-s4-He5" firstAttribute="centerY" secondItem="ICz-Vv-cUM" secondAttribute="centerY" id="LXU-bz-hGO"/>
-                        <constraint firstItem="RbL-F0-fHc" firstAttribute="top" secondItem="dJC-s4-He5" secondAttribute="bottom" constant="38" id="Rof-MY-vXH"/>
-                        <constraint firstItem="dJC-s4-He5" firstAttribute="leading" secondItem="ICz-Vv-cUM" secondAttribute="leading" constant="276" id="Ty7-Sv-kCb"/>
-                        <constraint firstAttribute="trailing" secondItem="RbL-F0-fHc" secondAttribute="trailing" constant="184" id="WEg-xD-CFh"/>
-                        <constraint firstAttribute="bottom" secondItem="RbL-F0-fHc" secondAttribute="bottom" constant="187" id="XAp-bd-adm"/>
-                        <constraint firstItem="dJC-s4-He5" firstAttribute="centerX" secondItem="ICz-Vv-cUM" secondAttribute="centerX" id="Ywe-TH-fPk"/>
-                        <constraint firstItem="RbL-F0-fHc" firstAttribute="centerX" secondItem="ICz-Vv-cUM" secondAttribute="centerX" id="a3I-aB-ZfT"/>
-                        <constraint firstItem="dJC-s4-He5" firstAttribute="leading" secondItem="ICz-Vv-cUM" secondAttribute="leading" constant="276" id="b9F-YM-nmD"/>
-                        <constraint firstAttribute="bottom" secondItem="dJC-s4-He5" secondAttribute="bottom" constant="264" id="btE-9p-yra"/>
-                        <constraint firstItem="dJC-s4-He5" firstAttribute="centerX" secondItem="RbL-F0-fHc" secondAttribute="centerX" id="fUv-WH-KnN"/>
-                        <constraint firstItem="RbL-F0-fHc" firstAttribute="centerX" secondItem="dJC-s4-He5" secondAttribute="centerX" id="jjl-My-OCo"/>
-                        <constraint firstItem="dJC-s4-He5" firstAttribute="top" secondItem="ICz-Vv-cUM" secondAttribute="top" constant="263" id="joC-pv-cKx"/>
-                        <constraint firstItem="RbL-F0-fHc" firstAttribute="top" secondItem="ICz-Vv-cUM" secondAttribute="top" constant="374" id="ovC-MX-frz"/>
-                        <constraint firstItem="dJC-s4-He5" firstAttribute="top" secondItem="ICz-Vv-cUM" secondAttribute="top" constant="263" id="wWf-XN-ziM"/>
-                    </constraints>
-                </scrollView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fN3-0X-JyH">
+                    <rect key="frame" x="20" y="20" width="560" height="520"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="delegate" destination="i5M-Pr-FkT" id="g9g-Vy-Rc3"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFs-7K-Oor">
+                    <rect key="frame" x="20" y="562" width="560" height="30"/>
+                    <fontDescription key="fontDescription" name="Trocchi" family="Trocchi" pointSize="15"/>
+                    <state key="normal" title="Login With An Existing Account">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="ICz-Vv-cUM" secondAttribute="centerY" id="GsQ-50-kaa"/>
-                <constraint firstAttribute="centerX" secondItem="ICz-Vv-cUM" secondAttribute="centerX" id="P8n-8J-aG9"/>
+                <constraint firstAttribute="bottom" secondItem="HFs-7K-Oor" secondAttribute="bottom" constant="8" id="1uu-nv-ZwA"/>
+                <constraint firstAttribute="bottom" secondItem="fN3-0X-JyH" secondAttribute="bottom" constant="60" id="9TK-E8-UuG"/>
+                <constraint firstAttribute="trailing" secondItem="fN3-0X-JyH" secondAttribute="trailing" constant="20" id="Dr5-bX-myB"/>
+                <constraint firstItem="fN3-0X-JyH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="SNC-ex-6H3"/>
+                <constraint firstAttribute="trailing" secondItem="HFs-7K-Oor" secondAttribute="trailing" constant="20" id="TNN-fv-0x0"/>
+                <constraint firstItem="HFs-7K-Oor" firstAttribute="top" secondItem="fN3-0X-JyH" secondAttribute="bottom" constant="22" id="htU-X4-yMr"/>
+                <constraint firstItem="fN3-0X-JyH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="od0-OM-ChL"/>
+                <constraint firstItem="HFs-7K-Oor" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pGo-Zx-1f7"/>
             </constraints>
         </view>
     </objects>

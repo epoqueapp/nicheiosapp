@@ -17,7 +17,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *about;
 @property (nonatomic, strong) NSString *spriteUrl;
-@property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *role;
 
 -(id)initWithSnapshot:(FDataSnapshot *)dataSnapShot;

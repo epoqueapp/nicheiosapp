@@ -45,30 +45,13 @@ PODS:
   - Cloudinary (1.0.13)
   - ColorPopover (0.0.1):
     - WEPopover (~> 0.0.1)
-  - CrittercismSDK (5.2.0)
   - CSNotificationView (0.5.4)
-  - Facebook-iOS-SDK (4.0.1):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit (= 4.0.1)
-    - Facebook-iOS-SDK/LoginKit (= 4.0.1)
-    - Facebook-iOS-SDK/ShareKit (= 4.0.1)
-  - Facebook-iOS-SDK/CoreKit (4.0.1):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit/no-arc (= 4.0.1)
-  - Facebook-iOS-SDK/CoreKit/no-arc (4.0.1):
-    - Bolts (~> 1.0)
-  - Facebook-iOS-SDK/LoginKit (4.0.1):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit
-  - Facebook-iOS-SDK/ShareKit (4.0.1):
-    - Bolts (~> 1.0)
-    - Facebook-iOS-SDK/CoreKit
   - Firebase (2.2.1)
   - FXForms (1.2.12)
-  - GeoFire (1.1.0):
-    - Firebase (~> 2.1)
   - GZIP (1.0.3)
   - HexColors (2.2.1)
+  - HockeySDK (3.6.4)
+  - IBActionSheet (0.0.2)
   - JSONModel (1.0.2)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
@@ -97,6 +80,7 @@ PODS:
   - TTTAttributedLabel (1.13.3)
   - UICKeyChainStore (2.0.4)
   - WEPopover (0.0.1)
+  - WYPopoverController (0.3.8)
   - XMLDictionary (1.4)
 
 DEPENDENCIES:
@@ -106,13 +90,12 @@ DEPENDENCIES:
   - AWSS3
   - Cloudinary
   - ColorPopover
-  - CrittercismSDK
   - CSNotificationView
-  - Facebook-iOS-SDK
   - Firebase
   - FXForms
-  - Geofire
   - HexColors
+  - HockeySDK
+  - IBActionSheet
   - JSONModel
   - MarqueeLabel
   - MBFaker
@@ -124,6 +107,8 @@ DEPENDENCIES:
   - THLabel
   - TPKeyboardAvoiding
   - TTTAttributedLabel
+  - WEPopover
+  - WYPopoverController
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
@@ -134,14 +119,13 @@ SPEC CHECKSUMS:
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   Cloudinary: cd8a4af5a9ac72fc7c3e3a19b9393a35f9e900e6
   ColorPopover: 2281090e666a120ba96c2d732b30463d2bb649a6
-  CrittercismSDK: a8f09d8f1d9fea3bc0714a954a079062c5c9d914
   CSNotificationView: 0792f5220163c2befaf1a9716aa3d5a7d6bd4fb1
-  Facebook-iOS-SDK: 6d05532c97e9c542f8d87f94b7f6ee217493d00b
   Firebase: a3d54b42f090ca275b22dcdf103b8ab6ac6f353c
   FXForms: b6a78bac9f6b597ce704e34ac7c1ce9ff628b1d5
-  GeoFire: 1a6f2cbcd66507b9756b86d99ecb035d99497c89
   GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  HockeySDK: c07cdd580296737edcd0963e292c19885a53f563
+  IBActionSheet: 4028206b0561772c3674a339fb4a7265d55a6f8b
   JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   MarqueeLabel: f03d12e3a1572893f78ecb22aa5dd774099c7208
@@ -158,6 +142,7 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
   UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
   WEPopover: beca88ef86b633b34d78fc5b6e2c2fe90e651d7a
+  WYPopoverController: dda54780e1bef186464ae5a10ab9b4998c279e89
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.2

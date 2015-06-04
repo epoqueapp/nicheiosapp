@@ -7,13 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import <HockeySDK/HockeySDK.h>
 #import "NCFireService.h"
 #import "NCUserService.h"
-#import "NCWorldsViewController.h"
 #import "NCWelcomeViewController.h"
 #import "NCNavigationController.h"
 #import "NCLeftMenuViewController.h"
-#import "NCWorldChatViewController.h"
+#import "NCMapViewController.h"
+#import "NCWorldsMenuViewController.h"
 #import <RESideMenu/RESideMenu.h>
 #import <AWSCore/AWSCore.h>
 @interface AppDelegate ()
@@ -22,46 +23,54 @@
 
 @implementation AppDelegate{
     NCFireService *fireService;
-    NCSoundEffect *privateMessageSoundEffect;
 }
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [Crittercism enableWithAppID: @"552cb5038172e25e679068ce"];
-    [Amplitude initializeApiKey:@"fc2d3b020cdd10d12d3ee14c1d7c7a59"];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"HockeyAppIdentifier"]];
+    // Configure the SDK in here only!
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+    [Amplitude initializeApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"AmplitudeApiKey"]];
     fireService = [NCFireService sharedInstance];
-    privateMessageSoundEffect = [[NCSoundEffect alloc]initWithSoundNamed:@"table_shout.wav"];
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     self.mapView = [[MKMapView alloc]init];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
     [self submitDeviceToken];
     [self observeUserChange];
+    [self observeQuoteChange];
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     NCNavigationController  *navigationController = [self navigationControllerFromPush:userInfo];
     NCLeftMenuViewController *leftMenuViewController = [[NCLeftMenuViewController alloc] init];
-    RESideMenu *sideMenuViewController = [[RESideMenu alloc]initWithContentViewController:navigationController leftMenuViewController:leftMenuViewController rightMenuViewController:nil];
+    NCNavigationController *rightMenuViewController = [[NCNavigationController alloc]initWithRootViewController: [[NCWorldsMenuViewController alloc]init]];
+    
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc]initWithContentViewController:navigationController leftMenuViewController:leftMenuViewController rightMenuViewController:rightMenuViewController];
+    sideMenuViewController.panFromEdge = NO;
+    sideMenuViewController.panGestureEnabled = NO;
     self.window.rootViewController = sideMenuViewController;
     [self.window makeKeyAndVisible];
     application.applicationIconBadgeNumber = 0;
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
+    
+    NSLog(@"Running Build Configuration: %@", [AppDelegate buildConfiguration]);
+    return YES;
 }
 
 -(void)submitDeviceToken{
     RACSignal *userModel = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCUserModel];
     RACSignal *deviceToken = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCDeviceToken];
+    NSString *buildConfiguration = [AppDelegate buildConfiguration];
     
-    [[[[[RACSignal combineLatest:@[userModel, deviceToken] reduce:^id(NSDictionary *userDictionary, NSString *deviceToken){
+    [[[[[[RACSignal combineLatest:@[userModel, deviceToken] reduce:^id(NSDictionary *userDictionary, NSString *deviceToken){
         NSString *userId = userDictionary[@"userId"];
         return RACTuplePack(userId, deviceToken);
     }] filter:^BOOL(RACTuple *tuple) {
         NSString *userId = tuple.first;
         NSString *deviceToken = tuple.second;
         return userId != nil && deviceToken != nil;
+    }] doNext:^(RACTuple *tuple) {
+        
     }] flattenMap:^RACStream *(RACTuple *tuple) {
-        return [[NCFireService sharedInstance] registerUserId:tuple.first deviceToken:tuple.second environment:kNCAPSEnvironment];
+        return [[NCFireService sharedInstance] registerUserId:tuple.first deviceToken:tuple.second environment:buildConfiguration];
     }] retry:500] subscribeNext:^(id x) {
         NSLog(@"Successfully registered the device token to the remote service");
     } error:^(NSError *error) {
@@ -83,6 +92,27 @@
             [Amplitude setUserProperties:[newUserModel toDictionary]];
         }
     }];
+    
+    [[[Firebase alloc]initWithUrl:kFirebaseRoot] observeAuthEventWithBlock:^(FAuthData *authData) {
+        if (authData) {
+            
+        }else{
+            [[NSUserDefaults standardUserDefaults] clearAuthInformation];
+        }
+    }];
+}
+
+-(void)observeQuoteChange{
+    [[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"quotes"] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if ([snapshot.value isKindOfClass:[NSNull class]]) {
+            return;
+        }
+        NSMutableArray *quoteObjects = [NSMutableArray array];
+        for (id key in snapshot.value) {
+            [quoteObjects addObject:[snapshot.value objectForKey:key]];
+        }
+        [[NSUserDefaults standardUserDefaults] setQuotes:quoteObjects];
+    }];
 }
 
 -(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
@@ -93,8 +123,8 @@
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSString * tokenAsString = [[[deviceToken description]
-                                                      stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]]
-                                                     stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                 stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]]
+                                stringByReplacingOccurrencesOfString:@" " withString:@""];
     [[NSUserDefaults standardUserDefaults] setDeviceToken:tokenAsString];
 }
 
@@ -105,43 +135,30 @@
 }
 
 -(NCNavigationController *)navigationControllerFromPush:(NSDictionary *)userInfo{
-    if ([NSUserDefaults standardUserDefaults].userModel == nil) {
-        return [[NCNavigationController alloc]initWithRootViewController:[[NCWelcomeViewController alloc] init]];
+    FAuthData *authData = [[Firebase alloc]initWithUrl:kFirebaseRoot].authData;
+    if (authData != nil) {
+        NSString *worldId = [NSUserDefaults standardUserDefaults].currentWorldId;
+        if ([[userInfo objectForKey:@"pushType"] isEqualToString:@"worldMessage"]) {
+            worldId = [userInfo objectForKey:@"worldId"];
+            [[NSUserDefaults standardUserDefaults] setCurrentWorldId:worldId];
+        }
+        NCMapViewController *mapViewController = [[NCMapViewController alloc]initWithWorldId:worldId];
+        return [[NCNavigationController alloc]initWithRootViewController:mapViewController];
     }
-    NSString *pushType = userInfo[@"pushType"];
-    if ([pushType isEqualToString:@"world"]) {
-        NSString *worldId = userInfo[@"worldId"];
-        [Amplitude logEvent:@"Reacted To Push Notification" withEventProperties:@{@"pushType":pushType, @"worldId": worldId}];
-        NCWorldChatViewController *worldChatViewController = [NCWorldChatViewController sharedInstance];
-        worldChatViewController.worldId = worldId;
-        NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
-        NCNavigationController *navigationController = [[NCNavigationController alloc]init];
-        [navigationController setViewControllers:@[worldsViewController, worldChatViewController]];
-        return navigationController;
-    }else{
-        NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
-        NCNavigationController *navigationController = [[NCNavigationController alloc]init];
-        [navigationController setViewControllers:@[worldsViewController]];
-        return navigationController;
-    }
+    return [[NCNavigationController alloc]initWithRootViewController:[[NCWelcomeViewController alloc] init]];
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    application.applicationIconBadgeNumber = 0;
     if ( application.applicationState == UIApplicationStateActive ){
-    }else{
-        //app was brought from the background to the foreground
-        NSString *pushType = userInfo[@"pushType"];
-        if ([pushType isEqualToString:@"world"]) {
-            NSString *worldId = userInfo[@"worldId"];
-            [Amplitude logEvent:@"Reacted To Push Notification" withEventProperties:@{@"pushType":pushType, @"worldId": worldId}];
-            NCWorldChatViewController *worldChatViewController = [NCWorldChatViewController sharedInstance];
-            worldChatViewController.worldId = worldId;
-            NCWorldsViewController *worldsViewController = [[NCWorldsViewController alloc]init];
-            NCNavigationController *navigationController = [[NCNavigationController alloc]init];
-            [navigationController setViewControllers:@[worldsViewController, worldChatViewController]];
-            [((RESideMenu *)self.window.rootViewController) setContentViewController:navigationController];
-        }
+        return;
     }
+    FAuthData *authData = [[Firebase alloc]initWithUrl:kFirebaseRoot].authData;
+    if (authData != nil) {
+        NCNavigationController *navController = [self navigationControllerFromPush:userInfo];
+        [((RESideMenu *)self.window.rootViewController) customSetContentViewController:navController];
+    }
+    
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -160,8 +177,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
-    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -170,10 +185,11 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+    return YES;
+}
+
++(NSString *)buildConfiguration{
+    return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"BuildConfiguration"] lowercaseString];
 }
 
 @end

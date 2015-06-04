@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Trocchi-Bold.otf">
@@ -12,74 +13,75 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="eQ8-v0-ios" customClass="NCLoadingView">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z4-40-Q8A">
-                    <rect key="frame" x="8" y="121" width="184" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="dqY-sY-HvH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="16"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hst-95-EKf">
-                    <rect key="frame" x="50" y="13" width="100" height="100"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4g-an-6xG">
+                    <rect key="frame" x="105" y="6" width="90" height="90"/>
                     <subviews>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="ornate_minute_hand_v2_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="9ww-tq-HaY">
-                            <rect key="frame" x="20" y="20" width="60" height="60"/>
+                            <rect key="frame" x="15" y="15" width="60" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="ZCY-rB-YFQ"/>
                                 <constraint firstAttribute="height" constant="60" id="ael-vn-cN2"/>
                             </constraints>
                         </imageView>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="ornate_hour_hand_v2_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cxu-Vz-I13">
-                            <rect key="frame" x="10" y="10" width="80" height="80"/>
+                            <rect key="frame" x="10" y="10" width="70" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="80" id="B9s-Ck-Dgv"/>
-                                <constraint firstAttribute="width" constant="80" id="Ute-VO-Gir"/>
+                                <constraint firstAttribute="height" constant="70" id="B9s-Ck-Dgv"/>
+                                <constraint firstAttribute="width" constant="70" id="Ute-VO-Gir"/>
                             </constraints>
                         </imageView>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="ornate_clock_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="442-ie-dG9">
-                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="1eH-kP-Pcg"/>
-                                <constraint firstAttribute="height" constant="100" id="dIe-qr-kaw"/>
+                                <constraint firstAttribute="width" constant="90" id="1eH-kP-Pcg"/>
+                                <constraint firstAttribute="height" constant="90" id="dIe-qr-kaw"/>
                             </constraints>
                         </imageView>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="3n6-2K-occ"/>
-                        <constraint firstAttribute="centerY" secondItem="442-ie-dG9" secondAttribute="centerY" id="42J-vi-wTK"/>
-                        <constraint firstAttribute="centerX" secondItem="9ww-tq-HaY" secondAttribute="centerX" id="5ed-93-Pvu"/>
-                        <constraint firstAttribute="width" constant="100" id="8i2-k2-6bB"/>
-                        <constraint firstAttribute="centerY" secondItem="9ww-tq-HaY" secondAttribute="centerY" id="AdE-v1-Ixp"/>
-                        <constraint firstAttribute="centerX" secondItem="442-ie-dG9" secondAttribute="centerX" id="KE2-5W-oX7"/>
-                        <constraint firstAttribute="centerX" secondItem="Cxu-Vz-I13" secondAttribute="centerX" id="azs-y3-z63"/>
-                        <constraint firstAttribute="centerY" secondItem="Cxu-Vz-I13" secondAttribute="centerY" id="q0F-lr-10Q"/>
+                        <constraint firstItem="442-ie-dG9" firstAttribute="centerX" secondItem="9ww-tq-HaY" secondAttribute="centerX" id="DuJ-kq-psJ"/>
+                        <constraint firstItem="442-ie-dG9" firstAttribute="centerX" secondItem="Cxu-Vz-I13" secondAttribute="centerX" id="NC6-Es-TON"/>
+                        <constraint firstAttribute="centerX" secondItem="442-ie-dG9" secondAttribute="centerX" id="Uq2-Ca-8cN"/>
+                        <constraint firstItem="442-ie-dG9" firstAttribute="centerY" secondItem="Cxu-Vz-I13" secondAttribute="centerY" id="che-Gv-rrP"/>
+                        <constraint firstAttribute="width" secondItem="R4g-an-6xG" secondAttribute="height" multiplier="1:1" id="lya-jx-2qw"/>
+                        <constraint firstItem="442-ie-dG9" firstAttribute="centerY" secondItem="9ww-tq-HaY" secondAttribute="centerY" id="pHX-EK-NfC"/>
+                        <constraint firstAttribute="centerY" secondItem="442-ie-dG9" secondAttribute="centerY" id="tIG-40-b8P"/>
+                        <constraint firstAttribute="width" constant="90" id="xun-zD-kgT"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waJ-46-0HT" customClass="THLabel">
+                    <rect key="frame" x="8" y="8" width="284" height="84"/>
+                    <fontDescription key="fontDescription" name="Trocchi-Bold" family="Trocchi" pointSize="20"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.64000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="hst-95-EKf" firstAttribute="top" secondItem="eQ8-v0-ios" secondAttribute="top" constant="13" id="32u-r2-f3x"/>
-                <constraint firstAttribute="centerX" secondItem="hst-95-EKf" secondAttribute="centerX" id="DBj-fl-q5p"/>
-                <constraint firstItem="3z4-40-Q8A" firstAttribute="leading" secondItem="eQ8-v0-ios" secondAttribute="leading" constant="8" id="E6U-D3-BjQ"/>
-                <constraint firstItem="3z4-40-Q8A" firstAttribute="top" secondItem="hst-95-EKf" secondAttribute="bottom" constant="8" id="I9S-1V-alh"/>
-                <constraint firstAttribute="trailing" secondItem="3z4-40-Q8A" secondAttribute="trailing" constant="8" id="a0S-Cg-Zhv"/>
+                <constraint firstAttribute="centerX" secondItem="waJ-46-0HT" secondAttribute="centerX" id="7ce-fq-ieV"/>
+                <constraint firstAttribute="trailing" secondItem="waJ-46-0HT" secondAttribute="trailing" constant="8" id="9wH-n4-Xps"/>
+                <constraint firstAttribute="centerX" secondItem="R4g-an-6xG" secondAttribute="centerX" id="Iek-q6-cWn"/>
+                <constraint firstAttribute="centerY" secondItem="R4g-an-6xG" secondAttribute="centerY" constant="-0.5" id="MUX-ds-LEY"/>
+                <constraint firstItem="waJ-46-0HT" firstAttribute="leading" secondItem="eQ8-v0-ios" secondAttribute="leading" constant="8" id="by0-kt-Lzr"/>
+                <constraint firstAttribute="centerY" secondItem="waJ-46-0HT" secondAttribute="centerY" id="qiJ-Bi-b0H"/>
+                <constraint firstItem="waJ-46-0HT" firstAttribute="top" secondItem="eQ8-v0-ios" secondAttribute="top" constant="8" id="ud8-FO-u9L"/>
+                <constraint firstAttribute="bottom" secondItem="waJ-46-0HT" secondAttribute="bottom" constant="8" id="y3J-Fi-PnL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="clockHolderView" destination="hst-95-EKf" id="OFX-B6-vC1"/>
+                <outlet property="clockHolderView" destination="R4g-an-6xG" id="wnF-e3-sVY"/>
+                <outlet property="clockImageView" destination="442-ie-dG9" id="YLF-7e-AJ0"/>
                 <outlet property="hourHandImageView" destination="Cxu-Vz-I13" id="UNy-7r-ZKx"/>
-                <outlet property="loadingLabel" destination="3z4-40-Q8A" id="CS0-xN-gWB"/>
+                <outlet property="loadingLabel" destination="waJ-46-0HT" id="ryG-aF-EyN"/>
                 <outlet property="minuteHandImageView" destination="9ww-tq-HaY" id="d5i-qB-biz"/>
             </connections>
-            <point key="canvasLocation" x="351" y="424"/>
+            <point key="canvasLocation" x="441" y="408.5"/>
         </view>
     </objects>
     <resources>

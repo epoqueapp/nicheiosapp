@@ -7,7 +7,6 @@
 //
 
 #import "NCLeftMenuViewController.h"
-#import "NCWorldsViewController.h"
 #import "NCWelcomeViewController.h"
 #import "NCFeedbackViewController.h"
 #import "NCMapViewController.h"
@@ -16,7 +15,7 @@
 #import "NCLeftMenuTableViewCell.h"
 #import "NCFireService.h"
 #import "NCAboutViewController.h"
-#import <FBSDKLoginKit/FBSDKLoginButton.h>
+#import "NCMapViewController.h"
 @interface NCLeftMenuViewController ()
 
 @end
@@ -65,7 +64,7 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
 }
 
 -(void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController{
-    mutableArray = [NSMutableArray arrayWithObjects:@"WORLDS",  @"MY CHARACTER", @"ABOUT", @"FEEDBACK", nil];
+    mutableArray = [NSMutableArray arrayWithObjects:@"WORLD MAP",  @"MY CHARACTER", @"ABOUT", @"FEEDBACK", nil];
     [self.tableView reloadData];
 }
 
@@ -105,33 +104,33 @@ NSString* MenuCellIdentifier = @"MenuCellIdentifier";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *menuTitle = [mutableArray objectAtIndex:indexPath.row];
-    if ([menuTitle isEqualToString:@"WORLDS"]) {
-        [Amplitude logEvent:@"Worlds Menu Item Did Click"];
-        NCWorldsViewController *worldViewController = [[NCWorldsViewController alloc]init];
-        NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:worldViewController];
-        [self.sideMenuViewController setContentViewController:navController];
+    if ([menuTitle isEqualToString:@"WORLD MAP"]) {
+        [Amplitude logEvent:@"World Map Menu Item Did Click"];
+        NSString *worldId = [[[NSUserDefaults standardUserDefaults] currentWorldId] copy];
+        NCMapViewController *mapViewController = [[NCMapViewController alloc]initWithWorldId:worldId];
+        NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:mapViewController];
+        [self.sideMenuViewController customSetContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
     if ([menuTitle isEqualToString:@"MY CHARACTER"]) {
         [Amplitude logEvent:@"My Character Menu Item Did Click"];
         NCMyCharacterViewController *myCharacterViewController = [[NCMyCharacterViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:myCharacterViewController];
-        [self.sideMenuViewController setContentViewController:navController];
+        [self.sideMenuViewController customSetContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
     if ([menuTitle isEqualToString:@"ABOUT"]) {
         [Amplitude logEvent:@"About Menu Item Did Click"];
         NCAboutViewController *aboutViewController = [[NCAboutViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:aboutViewController];
-        [self.sideMenuViewController setContentViewController:navController];
+        [self.sideMenuViewController customSetContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
-    
     if ([menuTitle isEqualToString:@"FEEDBACK"]) {
         [Amplitude logEvent:@"Feedback Menu Item Did Click"];
         NCFeedbackViewController *feedbackViewController = [[NCFeedbackViewController alloc]init];
         NCNavigationController *navController = [[NCNavigationController alloc]initWithRootViewController:feedbackViewController];
-        [self.sideMenuViewController setContentViewController:navController];
+        [self.sideMenuViewController customSetContentViewController:navController];
         [self.sideMenuViewController hideMenuViewController];
     }
 }

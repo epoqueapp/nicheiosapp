@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    DismissButtonSideLeft,
+    DismissButtonSideRight
+} DismissButtonSide;
+
 @interface UIViewController (BarButtons)
 
 -(void)setUpMenuButton;
 -(void)setUpBackButton;
--(void)setUpBackButtonWithWorldsDefault;
+-(void)setUpDismissButtonWithTarget:(id)target selector:(SEL)selector;
+-(void)setUpDismissButtonWithTarget:(id)target selector:(SEL)selector buttonSide:(DismissButtonSide)side;
 
 @end

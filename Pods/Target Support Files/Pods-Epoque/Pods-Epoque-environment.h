@@ -108,47 +108,11 @@
 #define COCOAPODS_VERSION_MINOR_ColorPopover 0
 #define COCOAPODS_VERSION_PATCH_ColorPopover 1
 
-// CrittercismSDK
-#define COCOAPODS_POD_AVAILABLE_CrittercismSDK
-#define COCOAPODS_VERSION_MAJOR_CrittercismSDK 5
-#define COCOAPODS_VERSION_MINOR_CrittercismSDK 2
-#define COCOAPODS_VERSION_PATCH_CrittercismSDK 0
-
 // FXForms
 #define COCOAPODS_POD_AVAILABLE_FXForms
 #define COCOAPODS_VERSION_MAJOR_FXForms 1
 #define COCOAPODS_VERSION_MINOR_FXForms 2
 #define COCOAPODS_VERSION_PATCH_FXForms 12
-
-// Facebook-iOS-SDK
-#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
-#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK 4
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 0
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 1
-
-// Facebook-iOS-SDK/CoreKit
-#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK_CoreKit
-#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK_CoreKit 4
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK_CoreKit 0
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK_CoreKit 1
-
-// Facebook-iOS-SDK/CoreKit/no-arc
-#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK_CoreKit_no_arc
-#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK_CoreKit_no_arc 4
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK_CoreKit_no_arc 0
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK_CoreKit_no_arc 1
-
-// Facebook-iOS-SDK/LoginKit
-#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK_LoginKit
-#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK_LoginKit 4
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK_LoginKit 0
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK_LoginKit 1
-
-// Facebook-iOS-SDK/ShareKit
-#define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK_ShareKit
-#define COCOAPODS_VERSION_MAJOR_Facebook_iOS_SDK_ShareKit 4
-#define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK_ShareKit 0
-#define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK_ShareKit 1
 
 // Firebase
 #define COCOAPODS_POD_AVAILABLE_Firebase
@@ -162,17 +126,23 @@
 #define COCOAPODS_VERSION_MINOR_GZIP 0
 #define COCOAPODS_VERSION_PATCH_GZIP 3
 
-// Geofire
-#define COCOAPODS_POD_AVAILABLE_Geofire
-#define COCOAPODS_VERSION_MAJOR_Geofire 1
-#define COCOAPODS_VERSION_MINOR_Geofire 1
-#define COCOAPODS_VERSION_PATCH_Geofire 0
-
 // HexColors
 #define COCOAPODS_POD_AVAILABLE_HexColors
 #define COCOAPODS_VERSION_MAJOR_HexColors 2
 #define COCOAPODS_VERSION_MINOR_HexColors 2
 #define COCOAPODS_VERSION_PATCH_HexColors 1
+
+// HockeySDK
+#define COCOAPODS_POD_AVAILABLE_HockeySDK
+#define COCOAPODS_VERSION_MAJOR_HockeySDK 3
+#define COCOAPODS_VERSION_MINOR_HockeySDK 6
+#define COCOAPODS_VERSION_PATCH_HockeySDK 4
+
+// IBActionSheet
+#define COCOAPODS_POD_AVAILABLE_IBActionSheet
+#define COCOAPODS_VERSION_MAJOR_IBActionSheet 0
+#define COCOAPODS_VERSION_MINOR_IBActionSheet 0
+#define COCOAPODS_VERSION_PATCH_IBActionSheet 2
 
 // JSONModel
 #define COCOAPODS_POD_AVAILABLE_JSONModel
@@ -305,6 +275,12 @@
 #define COCOAPODS_VERSION_MAJOR_WEPopover 0
 #define COCOAPODS_VERSION_MINOR_WEPopover 0
 #define COCOAPODS_VERSION_PATCH_WEPopover 1
+
+// WYPopoverController
+#define COCOAPODS_POD_AVAILABLE_WYPopoverController
+#define COCOAPODS_VERSION_MAJOR_WYPopoverController 0
+#define COCOAPODS_VERSION_MINOR_WYPopoverController 3
+#define COCOAPODS_VERSION_PATCH_WYPopoverController 8
 
 // XMLDictionary
 #define COCOAPODS_POD_AVAILABLE_XMLDictionary
