@@ -40,19 +40,10 @@
              };
 }
 
--(NSDictionary *)isObscuringField{
-    return @{
-             FXFormFieldTitle: @"Obscure My Location?",
-             @"textLabel.font": [UIFont fontWithName:kTrocchiBoldFontName size:18.0],
-             @"textLabel.textColor": [UIColor lightGrayColor],
-             @"backgroundColor": [UIColor clearColor]
-             };
-}
-
 -(NSArray *)extraFields{
     return @[
              @{
-                 FXFormFieldTitle: @"Update Character",
+                 FXFormFieldTitle: @"Save Information",
                  FXFormFieldCell: [NCFormSubmitButtonCell class],
                  FXFormFieldAction: @"submitButtonDidTap",
                  @"backgroundColor": [UIColor clearColor]

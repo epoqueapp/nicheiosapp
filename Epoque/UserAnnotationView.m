@@ -52,9 +52,6 @@
             if ([self isStale:userAnnotation.timestamp]) {
                 self.layer.opacity = 0.5;
             }
-            /*if([self isAncient:userAnnotation.timestamp]){
-                self.layer.opacity = 0;
-            }*/
             if ([self isFresh:userAnnotation.timestamp]) {
                 self.layer.opacity = 1;
             }

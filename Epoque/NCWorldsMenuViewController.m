@@ -77,6 +77,11 @@ static NSString * const  kWorldTableViewCellIdentifier = @"kWorldTableViewCellId
     item.hidesBackButton = YES;
     
     [self.customNavbar pushNavigationItem:item animated:NO];
+    
+    [[[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCUserModel] skip:1] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

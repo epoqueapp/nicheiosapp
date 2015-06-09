@@ -133,7 +133,7 @@
 
 -(RACSignal *)registerUserId:(NSString *)userId deviceToken:(NSString *)deviceToken environment:(NSString *)environment{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[[self.rootRef childByAppendingPath:@"listeners"] childByAppendingPath:userId] setValue:@{@"deviceToken": deviceToken, @"environment": environment, @"deviceType": @"ios"} withCompletionBlock:^(NSError *error, Firebase *ref) {
+        [[[self.rootRef childByAppendingPath:@"devices"] childByAppendingPath:userId] setValue:@{@"deviceToken": deviceToken, @"environment": environment, @"deviceType": @"ios"} withCompletionBlock:^(NSError *error, Firebase *ref) {
             if(error){
                 [subscriber sendError:error];
             }

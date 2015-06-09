@@ -74,9 +74,18 @@
 		E380A0CD1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0CC1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m */; };
 		E380A0D01B2048AC00B01723 /* sample_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0CE1B2048AC00B01723 /* sample_sprite.png */; };
 		E380A0D11B2048AC00B01723 /* table_button_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E380A0CF1B2048AC00B01723 /* table_button_icon@3x.png */; };
+		E380A0D71B21018200B01723 /* NCBlurbForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0D61B21018200B01723 /* NCBlurbForm.m */; };
+		E380A0DB1B21157000B01723 /* BlurbAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0DA1B21157000B01723 /* BlurbAnnotation.m */; };
+		E380A0DE1B21173100B01723 /* BlurbAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0DD1B21173100B01723 /* BlurbAnnotationView.m */; };
+		E380A0E31B211C7100B01723 /* NCEditBlurbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0E11B211C7100B01723 /* NCEditBlurbViewController.m */; };
+		E380A0E41B211C7100B01723 /* NCEditBlurbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E380A0E21B211C7100B01723 /* NCEditBlurbViewController.xib */; };
+		E380A0E71B22DA7B00B01723 /* NCMapViewController+BlurbListeners.m in Sources */ = {isa = PBXBuildFile; fileRef = E380A0E61B22DA7B00B01723 /* NCMapViewController+BlurbListeners.m */; };
 		E38176591ACC3BFC00278DDE /* ConversationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E38176581ACC3BFC00278DDE /* ConversationModel.m */; };
 		E38AB2231ADE2BA50003BA23 /* logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = E38AB2221ADE2BA50003BA23 /* logo_white.png */; };
 		E38AB2251ADE33D10003BA23 /* white_logo_stroke@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38AB2241ADE33D10003BA23 /* white_logo_stroke@3x.png */; };
+		E39F82911B2631D80032874E /* NCBlurbDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E39F828F1B2631D80032874E /* NCBlurbDetailViewController.m */; };
+		E39F82921B2631D80032874E /* NCBlurbDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39F82901B2631D80032874E /* NCBlurbDetailViewController.xib */; };
+		E39F82961B2665220032874E /* NCBlurbService.m in Sources */ = {isa = PBXBuildFile; fileRef = E39F82951B2665220032874E /* NCBlurbService.m */; };
 		E3A614641AF29C3600579DAA /* locate_me_button_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614621AF29C3600579DAA /* locate_me_button_off@2x.png */; };
 		E3A614651AF29C3600579DAA /* locate_me_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614631AF29C3600579DAA /* locate_me_button@2x.png */; };
 		E3A6146C1AF2B5CA00579DAA /* share_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A614681AF2B5CA00579DAA /* share_icon@3x.png */; };
@@ -308,10 +317,26 @@
 		E380A0CC1B20488300B01723 /* RESideMenu+CustomSetContentMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RESideMenu+CustomSetContentMethods.m"; sourceTree = "<group>"; };
 		E380A0CE1B2048AC00B01723 /* sample_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_sprite.png; sourceTree = "<group>"; };
 		E380A0CF1B2048AC00B01723 /* table_button_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table_button_icon@3x.png"; sourceTree = "<group>"; };
+		E380A0D51B21018200B01723 /* NCBlurbForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCBlurbForm.h; sourceTree = "<group>"; };
+		E380A0D61B21018200B01723 /* NCBlurbForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCBlurbForm.m; sourceTree = "<group>"; };
+		E380A0D91B21157000B01723 /* BlurbAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurbAnnotation.h; sourceTree = "<group>"; };
+		E380A0DA1B21157000B01723 /* BlurbAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurbAnnotation.m; sourceTree = "<group>"; };
+		E380A0DC1B21173100B01723 /* BlurbAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurbAnnotationView.h; sourceTree = "<group>"; };
+		E380A0DD1B21173100B01723 /* BlurbAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurbAnnotationView.m; sourceTree = "<group>"; };
+		E380A0E01B211C7100B01723 /* NCEditBlurbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCEditBlurbViewController.h; sourceTree = "<group>"; };
+		E380A0E11B211C7100B01723 /* NCEditBlurbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCEditBlurbViewController.m; sourceTree = "<group>"; };
+		E380A0E21B211C7100B01723 /* NCEditBlurbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCEditBlurbViewController.xib; sourceTree = "<group>"; };
+		E380A0E51B22DA7B00B01723 /* NCMapViewController+BlurbListeners.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCMapViewController+BlurbListeners.h"; sourceTree = "<group>"; };
+		E380A0E61B22DA7B00B01723 /* NCMapViewController+BlurbListeners.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCMapViewController+BlurbListeners.m"; sourceTree = "<group>"; };
 		E38176571ACC3BFC00278DDE /* ConversationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationModel.h; sourceTree = "<group>"; };
 		E38176581ACC3BFC00278DDE /* ConversationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationModel.m; sourceTree = "<group>"; };
 		E38AB2221ADE2BA50003BA23 /* logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_white.png; sourceTree = "<group>"; };
 		E38AB2241ADE33D10003BA23 /* white_logo_stroke@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_logo_stroke@3x.png"; sourceTree = "<group>"; };
+		E39F828E1B2631D80032874E /* NCBlurbDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCBlurbDetailViewController.h; sourceTree = "<group>"; };
+		E39F828F1B2631D80032874E /* NCBlurbDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCBlurbDetailViewController.m; sourceTree = "<group>"; };
+		E39F82901B2631D80032874E /* NCBlurbDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NCBlurbDetailViewController.xib; sourceTree = "<group>"; };
+		E39F82941B2665220032874E /* NCBlurbService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCBlurbService.h; sourceTree = "<group>"; };
+		E39F82951B2665220032874E /* NCBlurbService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCBlurbService.m; sourceTree = "<group>"; };
 		E3A6145F1AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWorldChatViewController+CenterMeButton.h"; sourceTree = "<group>"; };
 		E3A614601AF1A27600579DAA /* NCWorldChatViewController+CenterMeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCWorldChatViewController+CenterMeButton.m"; sourceTree = "<group>"; };
 		E3A614621AF29C3600579DAA /* locate_me_button_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locate_me_button_off@2x.png"; sourceTree = "<group>"; };
@@ -612,6 +637,46 @@
 			name = WorldsMenuViewController;
 			sourceTree = "<group>";
 		};
+		E380A0D81B21156100B01723 /* BlurbAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				E380A0D91B21157000B01723 /* BlurbAnnotation.h */,
+				E380A0DA1B21157000B01723 /* BlurbAnnotation.m */,
+				E380A0DC1B21173100B01723 /* BlurbAnnotationView.h */,
+				E380A0DD1B21173100B01723 /* BlurbAnnotationView.m */,
+			);
+			name = BlurbAnnotation;
+			sourceTree = "<group>";
+		};
+		E380A0DF1B211C5A00B01723 /* EditBlurbViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E380A0E01B211C7100B01723 /* NCEditBlurbViewController.h */,
+				E380A0E11B211C7100B01723 /* NCEditBlurbViewController.m */,
+				E380A0E21B211C7100B01723 /* NCEditBlurbViewController.xib */,
+			);
+			name = EditBlurbViewController;
+			sourceTree = "<group>";
+		};
+		E39F828D1B26319D0032874E /* BlurbDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E39F828E1B2631D80032874E /* NCBlurbDetailViewController.h */,
+				E39F828F1B2631D80032874E /* NCBlurbDetailViewController.m */,
+				E39F82901B2631D80032874E /* NCBlurbDetailViewController.xib */,
+			);
+			name = BlurbDetailViewController;
+			sourceTree = "<group>";
+		};
+		E39F82931B2665170032874E /* BlurbService */ = {
+			isa = PBXGroup;
+			children = (
+				E39F82941B2665220032874E /* NCBlurbService.h */,
+				E39F82951B2665220032874E /* NCBlurbService.m */,
+			);
+			name = BlurbService;
+			sourceTree = "<group>";
+		};
 		E3B638721ABAA7D30045369B = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +744,8 @@
 		E3B638A61ABAA88E0045369B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E39F828D1B26319D0032874E /* BlurbDetailViewController */,
+				E380A0DF1B211C5A00B01723 /* EditBlurbViewController */,
 				E380A0971B20475600B01723 /* WorldsMenuViewController */,
 				E380A0911B20473400B01723 /* LoginViewController */,
 				E3F7D7441B096F0000432938 /* WorldUsersTableViewController */,
@@ -723,6 +790,7 @@
 		E3B638B11ABAA8C60045369B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E39F82931B2665170032874E /* BlurbService */,
 				E3B639AB1AC9AC3C0045369B /* UserService */,
 				E3B639401ABD172B0045369B /* Models */,
 				E3B638B21ABAA8E20045369B /* EPSpriteService.h */,
@@ -756,6 +824,7 @@
 		E3B638BE1ABAB66E0045369B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E380A0D81B21156100B01723 /* BlurbAnnotation */,
 				E3F7D73E1B08003400432938 /* ShareWorldView */,
 				E3F7D7331B05D2D700432938 /* WorldCollectionViewCell */,
 				E3B63A601ACB193F0045369B /* UserTableViewCell */,
@@ -841,45 +910,41 @@
 		E3B638CB1ABAB9D60045369B /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E380A0CE1B2048AC00B01723 /* sample_sprite.png */,
-				E380A0CF1B2048AC00B01723 /* table_button_icon@3x.png */,
-				E380A0C31B20484500B01723 /* map_button_icon@3x.png */,
-				E380A0BE1B20481000B01723 /* unlock_icon_purple@3x.png */,
-				E380A0BA1B2047E200B01723 /* location_update_button_off@3x.png */,
-				E380A0BB1B2047E200B01723 /* location_update_button_on@3x.png */,
-				E380A0B61B2047DC00B01723 /* map_search_button@3x.png */,
-				E380A0B71B2047DC00B01723 /* menu_map_button@3x.png */,
-				E380A0B21B2047D600B01723 /* key_icon_grey@3x.png */,
-				E380A0B31B2047D600B01723 /* key_icon_purple@3x.png */,
-				E380A0B01B2047D000B01723 /* fire_icon@3x.png */,
-				E380A0A31B2047B500B01723 /* bell_button_not_ringing@3x.png */,
-				E380A0A41B2047B500B01723 /* bell_button_ringing@3x.png */,
-				E380A0A51B2047B500B01723 /* center_me_button@3x.png */,
-				E380A0A61B2047B500B01723 /* chat_media_button@3x.png */,
-				E380A0A71B2047B500B01723 /* delete_button_icon@3x.png */,
-				E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */,
-				E3F7D74A1B09728F00432938 /* refresh_icon.png */,
 				E3FAB1E41AD8F8130018BC07 /* auto_update_location_button_off@3x.png */,
 				E3FAB1E51AD8F8130018BC07 /* auto_update_location_button_on@3x.png */,
 				E3F7D73A1B074BA900432938 /* back_arrow_button@3x.png */,
 				E3F7D73C1B074C5500432938 /* back_finger_button@3x.png */,
 				E3B639151ABC00B80045369B /* back_icon@3x.png */,
+				E380A0A31B2047B500B01723 /* bell_button_not_ringing@3x.png */,
+				E380A0A41B2047B500B01723 /* bell_button_ringing@3x.png */,
 				E3A614691AF2B5CA00579DAA /* bell_no_ring_icon@3x.png */,
 				E3A6146A1AF2B5CA00579DAA /* bell_ring_icon@3x.png */,
 				E3BFCAE51ADE6919002CE6F9 /* blue_planet.jpg */,
 				E3B639BA1ACA081E0045369B /* camera_icon@3x.png */,
+				E380A0A51B2047B500B01723 /* center_me_button@3x.png */,
 				E3B639B81ACA077F0045369B /* chat_icon@3x.png */,
+				E380A0A61B2047B500B01723 /* chat_media_button@3x.png */,
 				E3B6390C1ABBF61D0045369B /* close_icon@3x.png */,
+				E380A0A71B2047B500B01723 /* delete_button_icon@3x.png */,
+				E380A0B01B2047D000B01723 /* fire_icon@3x.png */,
 				E3B639A11AC5CD550045369B /* flare_grey@3x.png */,
 				E3B639651ABD8D190045369B /* flares */,
 				E3B639381ABC51960045369B /* image_placeholder@2x.png */,
+				E380A0B21B2047D600B01723 /* key_icon_grey@3x.png */,
+				E380A0B31B2047D600B01723 /* key_icon_purple@3x.png */,
 				E34360F71AD520F000203D7D /* key_icon@3x.png */,
 				E3A614621AF29C3600579DAA /* locate_me_button_off@2x.png */,
 				E3A614631AF29C3600579DAA /* locate_me_button@2x.png */,
+				E380A0BA1B2047E200B01723 /* location_update_button_off@3x.png */,
+				E380A0BB1B2047E200B01723 /* location_update_button_on@3x.png */,
+				E359F6F71B0BFE0C00A9CDB7 /* lock_icon.png */,
 				E38AB2221ADE2BA50003BA23 /* logo_white.png */,
+				E380A0C31B20484500B01723 /* map_button_icon@3x.png */,
 				E3B639771ABEFF080045369B /* map_icon@3x.png */,
+				E380A0B61B2047DC00B01723 /* map_search_button@3x.png */,
 				E3B63A521ACAEAB90045369B /* media_bubble@3x.png */,
 				E3B639131ABC00360045369B /* menu_icon@3x.png */,
+				E380A0B71B2047DC00B01723 /* menu_map_button@3x.png */,
 				E3B638F81ABBC04F0045369B /* new-world-icon@3x.png */,
 				E3B639B61AC9E44E0045369B /* options_button@3x.png */,
 				E3B639871AC171420045369B /* ornate_clock_white@2x.png */,
@@ -893,6 +958,8 @@
 				E30A15A11AD3A67A00463931 /* placeholder.jpg */,
 				E30A159A1AD3A22900463931 /* plate.png */,
 				E3B638FA1ABBC0E00045369B /* plus_icon@3x.png */,
+				E3F7D74A1B09728F00432938 /* refresh_icon.png */,
+				E380A0CE1B2048AC00B01723 /* sample_sprite.png */,
 				E3B639DF1ACA80120045369B /* saturn_icon@3x.png */,
 				E3B639DD1ACA7D680045369B /* search_icon@3x.png */,
 				E3A614681AF2B5CA00579DAA /* share_icon@3x.png */,
@@ -905,6 +972,8 @@
 				E3A6147C1AF5DA1900579DAA /* star_icon_hollow@3x.png */,
 				E3B639B21AC9CC2C0045369B /* star_icon@3x.png */,
 				E34360F51AD51F7700203D7D /* stars.jpg */,
+				E380A0CF1B2048AC00B01723 /* table_button_icon@3x.png */,
+				E380A0BE1B20481000B01723 /* unlock_icon_purple@3x.png */,
 				E3FAB1F41ADC7DB70018BC07 /* user_options@3x.png */,
 				E3A614701AF2B6B800579DAA /* users_cluster_icon@3x.png */,
 				E3A6146B1AF2B5CA00579DAA /* users_icon@3x.png */,
@@ -939,6 +1008,8 @@
 				E3B639471ABD71890045369B /* NCMyCharacterForm.m */,
 				E3FAB1EE1AD92A0D0018BC07 /* NCEditWorldForm.h */,
 				E3FAB1EF1AD92A0D0018BC07 /* NCEditWorldForm.m */,
+				E380A0D51B21018200B01723 /* NCBlurbForm.h */,
+				E380A0D61B21018200B01723 /* NCBlurbForm.m */,
 			);
 			name = Forms;
 			sourceTree = "<group>";
@@ -1074,6 +1145,8 @@
 				E380A0851B2046DB00B01723 /* NCMapViewController+Utilities.m */,
 				E3B639501ABD83AA0045369B /* NCMapViewController.h */,
 				E3B639511ABD83AA0045369B /* NCMapViewController.m */,
+				E380A0E51B22DA7B00B01723 /* NCMapViewController+BlurbListeners.h */,
+				E380A0E61B22DA7B00B01723 /* NCMapViewController+BlurbListeners.m */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -1374,6 +1447,7 @@
 				E30A159D1AD3A3F800463931 /* shout.wav in Resources */,
 				E30A15C81AD4A60800463931 /* failure.wav in Resources */,
 				E3B639801ABF36100045369B /* welcome.mp4 in Resources */,
+				E39F82921B2631D80032874E /* NCBlurbDetailViewController.xib in Resources */,
 				E30A15CF1AD4A60800463931 /* Menu and Interface Sound 3.wav in Resources */,
 				E3B639451ABD6FF90045369B /* welcome.png in Resources */,
 				E3B638F41ABBBA1D0045369B /* Trocchi-Bold.otf in Resources */,
@@ -1433,6 +1507,7 @@
 				E3F7D74B1B09729000432938 /* refresh_icon.png in Resources */,
 				E380A0A81B2047B500B01723 /* bell_button_not_ringing@3x.png in Resources */,
 				E3A614791AF5CE2600579DAA /* star_icon_full@3x.png in Resources */,
+				E380A0E41B211C7100B01723 /* NCEditBlurbViewController.xib in Resources */,
 				E30A15D01AD4A60800463931 /* Menu and Interface Sound 2.wav in Resources */,
 				E3B639861AC16FAC0045369B /* NCLoadingView.xib in Resources */,
 				E3B63A531ACAEAB90045369B /* media_bubble@3x.png in Resources */,
@@ -1532,11 +1607,13 @@
 			files = (
 				E3B639711ABDAC690045369B /* NSDate+JavaScriptTimestamp.m in Sources */,
 				E3B638DB1ABAC0AA0045369B /* NCCreateUserForm.m in Sources */,
+				E39F82961B2665220032874E /* NCBlurbService.m in Sources */,
 				E380A08A1B2046DB00B01723 /* NCMapViewController+LayoutSetup.m in Sources */,
 				E3B63A671ACB195F0045369B /* NCUserTableViewCell.m in Sources */,
 				E3B639D21ACA59A70045369B /* MKMapView+Utilities.m in Sources */,
 				E3B638C71ABAB86F0045369B /* NSUserDefaults+AuthInformation.m in Sources */,
 				E3B639351ABC45D00045369B /* NCFormImageCell.m in Sources */,
+				E380A0DB1B21157000B01723 /* BlurbAnnotation.m in Sources */,
 				E380A0C21B20482500B01723 /* NSArray+RandomMethods.m in Sources */,
 				E3B639C51ACA0E1A0045369B /* NSString+StringAdditions.m in Sources */,
 				E380A08B1B2046DB00B01723 /* NCMapViewController+MapDelegateMethods.m in Sources */,
@@ -1545,6 +1622,7 @@
 				E3B638AD1ABAA8B40045369B /* NCWelcomeViewController.m in Sources */,
 				E3F7D7411B08004B00432938 /* NCShareWorldView.m in Sources */,
 				E380A0881B2046DB00B01723 /* NCMapViewController+ButtonEvents.m in Sources */,
+				E380A0E31B211C7100B01723 /* NCEditBlurbViewController.m in Sources */,
 				E30A15801AD11A8300463931 /* UINavigationController+PushPop.m in Sources */,
 				E3B639531ABD83AA0045369B /* NCMapViewController.m in Sources */,
 				E380A0951B20474900B01723 /* NCLoginViewController.m in Sources */,
@@ -1566,9 +1644,12 @@
 				E3B639AE1AC9AC480045369B /* NCUserService.m in Sources */,
 				E3B6396B1ABDA3AC0045369B /* UserModel.m in Sources */,
 				E3B639061ABBDE6C0045369B /* NCLeftMenuViewController.m in Sources */,
+				E380A0D71B21018200B01723 /* NCBlurbForm.m in Sources */,
 				E380A08C1B2046DB00B01723 /* NCMapViewController+UIImagePickerControllerDelegateMethods.m in Sources */,
+				E380A0E71B22DA7B00B01723 /* NCMapViewController+BlurbListeners.m in Sources */,
 				E30A15A01AD3A40700463931 /* NCSoundEffect.m in Sources */,
 				E380A09F1B20477300B01723 /* NCWorldsMenuViewController+EntryEvents.m in Sources */,
+				E39F82911B2631D80032874E /* NCBlurbDetailViewController.m in Sources */,
 				E380A09D1B20477300B01723 /* NCWorldsMenuViewController.m in Sources */,
 				E3FAB1F01AD92A0D0018BC07 /* NCEditWorldForm.m in Sources */,
 				E380A08D1B2046DB00B01723 /* NCMapViewController+Utilities.m in Sources */,
@@ -1595,6 +1676,7 @@
 				E3B639841AC16FA10045369B /* NCLoadingView.m in Sources */,
 				E3B6399B1AC193010045369B /* NCFormColorCell.m in Sources */,
 				E380A0901B20472300B01723 /* SendMessageModel.m in Sources */,
+				E380A0DE1B21173100B01723 /* BlurbAnnotationView.m in Sources */,
 				E3B6395F1ABD88830045369B /* NCMessageTableViewCell.m in Sources */,
 				E3B638EA1ABACFC20045369B /* NCLoginForm.m in Sources */,
 				E3B638C21ABAB6810045369B /* NCSpriteCollectionViewCell.m in Sources */,
@@ -1655,8 +1737,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maximilian Alexander (N5BPU6R2DK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ZinkPulse LLC (G47H383S4Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ZinkPulse LLC (G47H383S4Y)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1687,8 +1769,8 @@
 			baseConfigurationReference = CAEE8942C6F4DEC22E33E0CF /* Pods-Epoque.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
 				INFOPLIST_FILE = Epoque/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1808,8 +1890,8 @@
 			baseConfigurationReference = CAEE8942C6F4DEC22E33E0CF /* Pods-Epoque.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
 				INFOPLIST_FILE = Epoque/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1825,8 +1907,8 @@
 			baseConfigurationReference = 0B100824D6F037E68FB9F3D5 /* Pods-Epoque.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Epoque/NCPrefixheader.pch";
 				INFOPLIST_FILE = Epoque/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

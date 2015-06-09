@@ -87,6 +87,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "WEPopover/popoverBg.png"
   install_resource "WEPopover/popoverBg@2x.png"
   install_resource "WEPopover/popoverBgSimple.png"
+  install_resource "XLForm/XLForm/XLForm.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/CSNotificationView.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/HockeySDKResources.bundle"
 fi
@@ -120,6 +121,7 @@ if [[ "$CONFIGURATION" == "Staging" ]]; then
   install_resource "WEPopover/popoverBg.png"
   install_resource "WEPopover/popoverBg@2x.png"
   install_resource "WEPopover/popoverBgSimple.png"
+  install_resource "XLForm/XLForm/XLForm.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/CSNotificationView.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/HockeySDKResources.bundle"
 fi
@@ -153,6 +155,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "WEPopover/popoverBg.png"
   install_resource "WEPopover/popoverBg@2x.png"
   install_resource "WEPopover/popoverBgSimple.png"
+  install_resource "XLForm/XLForm/XLForm.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/CSNotificationView.bundle"
   install_resource "${BUILT_PRODUCTS_DIR}/HockeySDKResources.bundle"
 fi

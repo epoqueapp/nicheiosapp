@@ -29,7 +29,6 @@
 
 -(void)bellButtonButtonDidTap:(id)sender{
     NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
-    NSString *deviceToken = [NSUserDefaults standardUserDefaults].deviceToken;
     Firebase *path = [[[[[Firebase alloc]initWithUrl:kFirebaseRoot] childByAppendingPath:@"world-listeners"] childByAppendingPath:self.worldId] childByAppendingPath:myUserId];
     if (self.isListening) {
         //remove
@@ -38,11 +37,7 @@
         [CSNotificationView showInViewController:self tintColor:[UIColor blackColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:message duration:2.0];
     }else{
         //add
-        [path setValue:@{
-                         @"deviceType": @"ios",
-                         @"deviceToken": deviceToken,
-                         @"environment": [AppDelegate buildConfiguration]
-                         }];
+        [path setValue:myUserId];
         NSString *message = @"Turning ON push notification for this world";
         [CSNotificationView showInViewController:self tintColor:[UIColor blueColor] font:[UIFont fontWithName:kTrocchiFontName size:16.0] textAlignment:NSTextAlignmentLeft image:nil message:message duration:2.0];
     }
@@ -61,8 +56,6 @@
     BOOL isAdmin = [[NSUserDefaults standardUserDefaults].userModel.role isEqualToString:@"admin"];
     BOOL isFavorite = [self.worldModel.favoritedUserIds containsObject:myUserId];
 
-
-    
     [alertController addAction:[UIAlertAction actionWithTitle:kViewWorldUsersTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         @strongify(self);
         [self openUsersTableViewController:self];

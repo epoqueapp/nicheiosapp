@@ -10,54 +10,54 @@
 #define COCOAPODS_POD_AVAILABLE_AFNetworking
 #define COCOAPODS_VERSION_MAJOR_AFNetworking 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking 5
-#define COCOAPODS_VERSION_PATCH_AFNetworking 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking 4
 
 // AFNetworking-RACExtensions
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_RACExtensions
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_RACExtensions 0
 #define COCOAPODS_VERSION_MINOR_AFNetworking_RACExtensions 1
-#define COCOAPODS_VERSION_PATCH_AFNetworking_RACExtensions 6
+#define COCOAPODS_VERSION_PATCH_AFNetworking_RACExtensions 8
 
 // AFNetworking/NSURLConnection
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_NSURLConnection
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_NSURLConnection 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_NSURLConnection 5
-#define COCOAPODS_VERSION_PATCH_AFNetworking_NSURLConnection 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking_NSURLConnection 4
 
 // AFNetworking/NSURLSession
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_NSURLSession
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_NSURLSession 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_NSURLSession 5
-#define COCOAPODS_VERSION_PATCH_AFNetworking_NSURLSession 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking_NSURLSession 4
 
 // AFNetworking/Reachability
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_Reachability
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_Reachability 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_Reachability 5
-#define COCOAPODS_VERSION_PATCH_AFNetworking_Reachability 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking_Reachability 4
 
 // AFNetworking/Security
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_Security
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_Security 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_Security 5
-#define COCOAPODS_VERSION_PATCH_AFNetworking_Security 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking_Security 4
 
 // AFNetworking/Serialization
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_Serialization
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_Serialization 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_Serialization 5
-#define COCOAPODS_VERSION_PATCH_AFNetworking_Serialization 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking_Serialization 4
 
 // AFNetworking/UIKit
 #define COCOAPODS_POD_AVAILABLE_AFNetworking_UIKit
 #define COCOAPODS_VERSION_MAJOR_AFNetworking_UIKit 2
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
-#define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 3
+#define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
 // Amplitude-iOS
 #define COCOAPODS_POD_AVAILABLE_Amplitude_iOS
 #define COCOAPODS_VERSION_MAJOR_Amplitude_iOS 2
-#define COCOAPODS_VERSION_MINOR_Amplitude_iOS 4
+#define COCOAPODS_VERSION_MINOR_Amplitude_iOS 5
 #define COCOAPODS_VERSION_PATCH_Amplitude_iOS 0
 
 // CSNotificationView
@@ -87,7 +87,7 @@
 // Firebase
 #define COCOAPODS_POD_AVAILABLE_Firebase
 #define COCOAPODS_VERSION_MAJOR_Firebase 2
-#define COCOAPODS_VERSION_MINOR_Firebase 2
+#define COCOAPODS_VERSION_MINOR_Firebase 3
 #define COCOAPODS_VERSION_PATCH_Firebase 1
 
 // HexColors
@@ -105,8 +105,8 @@
 // JSONModel
 #define COCOAPODS_POD_AVAILABLE_JSONModel
 #define COCOAPODS_VERSION_MAJOR_JSONModel 1
-#define COCOAPODS_VERSION_MINOR_JSONModel 0
-#define COCOAPODS_VERSION_PATCH_JSONModel 2
+#define COCOAPODS_VERSION_MINOR_JSONModel 1
+#define COCOAPODS_VERSION_PATCH_JSONModel 0
 
 // MBFaker
 #define COCOAPODS_POD_AVAILABLE_MBFaker
@@ -118,7 +118,7 @@
 #define COCOAPODS_POD_AVAILABLE_MarqueeLabel
 #define COCOAPODS_VERSION_MAJOR_MarqueeLabel 2
 #define COCOAPODS_VERSION_MINOR_MarqueeLabel 2
-#define COCOAPODS_VERSION_PATCH_MarqueeLabel 3
+#define COCOAPODS_VERSION_PATCH_MarqueeLabel 4
 
 // NYTPhotoViewer
 #define COCOAPODS_POD_AVAILABLE_NYTPhotoViewer
@@ -209,4 +209,10 @@
 #define COCOAPODS_VERSION_MAJOR_WYPopoverController 0
 #define COCOAPODS_VERSION_MINOR_WYPopoverController 3
 #define COCOAPODS_VERSION_PATCH_WYPopoverController 8
+
+// XLForm
+#define COCOAPODS_POD_AVAILABLE_XLForm
+#define COCOAPODS_VERSION_MAJOR_XLForm 2
+#define COCOAPODS_VERSION_MINOR_XLForm 2
+#define COCOAPODS_VERSION_PATCH_XLForm 0
 

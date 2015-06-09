@@ -21,8 +21,8 @@
 -(void)setUserModel:(UserModel *)userModel{
     NSDictionary *userDictionary = [userModel toDictionary];
     [self setObject:userDictionary forKey:kNCUserModel];
-    [Amplitude setUserId:userModel.userId];
-    [Amplitude setUserProperties:userDictionary];
+    [[Amplitude instance] setUserId:userModel.userId];
+    [[Amplitude instance] setUserProperties:userDictionary];
 }
 
 -(UserModel *)userModel{

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "UserAnnotationView.h"
+#import "BlurbAnnotationView.h"
 #import "SLKTextViewController.h"
 #import "WorldModel.h"
 #import "SendMessageModel.h"
@@ -18,6 +19,7 @@
 #import <NYTPhotoViewer/NYTPhotosViewController.h>
 #import <WYPopoverController/WYPopoverController.h>
 #import "NCAttachmentPhoto.h"
+
 static NSString *const kCameraTitle = @"Camera";
 static NSString *const kGalleryTitle = @"Gallery";
 static NSString *const kPlaceTitle = @"Plop A Place";
@@ -39,6 +41,7 @@ static NSString *const kLeaveWorldTitle = @"Leave World";
 @interface NCMapViewController : SLKTextViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NCMessageTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary *userAnnotations;
+@property (nonatomic, strong) NSMutableDictionary *blurbAnnotations;
 @property (nonatomic, strong) NSMutableArray *messages;
 
 @property (nonatomic, strong) MKMapView *mapView;
@@ -80,6 +83,8 @@ static NSString *const kLeaveWorldTitle = @"Leave World";
 -(void)sendMessage:(SendMessageModel *)sendMessageModel;
 
 -(void)clearMap;
+
+-(void)showImageModalWithUrl:(NSString *)url;
 
 -(id)initWithWorldId:(NSString *)worldId;
 

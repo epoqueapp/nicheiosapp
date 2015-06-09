@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FXForms/FXForms.h>
 #import "NCSpritesViewController.h"
-@interface NCMyCharacterViewController : UIViewController <FXFormControllerDelegate, UIAlertViewDelegate, NCSpritesViewControllerDelegate, UIActionSheetDelegate>
+@interface NCMyCharacterViewController : UIViewController <FXFormControllerDelegate, NCSpritesViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) FXFormController *formController;

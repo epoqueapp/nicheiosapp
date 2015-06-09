@@ -11,6 +11,7 @@
 #import "NCMapViewController+Utilities.h"
 #import "NCFireService.h"
 #import "NCMessageTableViewCell.h"
+#import "NCMapViewController+BlurbListeners.h"
 @interface NCMapViewController ()
 
 @end
@@ -37,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.userAnnotations = [NSMutableDictionary dictionary];
+    self.blurbAnnotations = [NSMutableDictionary dictionary];
     self.messages = [NSMutableArray array];
     
     NSDate *hoursAgo12 = [[NSDate date] dateByAddingTimeInterval:-3600*12];
@@ -69,7 +71,7 @@
     [self setUpMapButton:self];
     [self setUpTableView:self];
     [self setUpLayout:self];
-
+    [self setUpBlurbListeners:self];
     
     self.lastKnownLocation = [[CLLocation alloc]initWithLatitude:0 longitude:0];
     self.locationManager = [[CLLocationManager alloc]init];
@@ -230,8 +232,7 @@
     [worldListeners observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         @strongify(self);
         if (snapshot.value != [NSNull null]) {
-            NSDictionary *values = snapshot.value;
-            NSArray *userIds = [values allKeys];
+            NSArray *userIds = snapshot.value;
             NSString *myUserId = [NSUserDefaults standardUserDefaults].userModel.userId;
             self.isListening = [userIds containsObject:myUserId];
         }else{
@@ -298,11 +299,23 @@
 }
 
 -(void)tappedAttachmentImageView:(NSIndexPath *)indexPath image:(UIImage *)image{
-    NCAttachmentPhoto *attachmentPhoto = [[NCAttachmentPhoto alloc]init];
     MessageModel *messageModel = [self.messages objectAtIndex:indexPath.row];
+    [self showImageModalWithUrl:messageModel.messageImageUrl];
+}
+
+-(void)showImageModalWithUrl:(NSString *)url{
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (error) {
+            [self showImage:[UIImage imageNamed:@"placeholder"]];
+        }else{
+            [self showImage:image];
+        }
+    }];
+}
+
+-(void)showImage:(UIImage *)image{
+    NCAttachmentPhoto *attachmentPhoto = [[NCAttachmentPhoto alloc]init];
     attachmentPhoto.image = image;
-    attachmentPhoto.attributedCaptionTitle = [[NSAttributedString alloc]initWithString:messageModel.userName];
-    
     NYTPhotosViewController *photosViewController = [[NYTPhotosViewController alloc] initWithPhotos:@[attachmentPhoto]];
     [self presentViewController:photosViewController animated:YES completion:nil];
 }

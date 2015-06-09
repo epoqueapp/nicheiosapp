@@ -22,7 +22,19 @@
 }
 
 -(RACSignal *)getSprites{
-    return [[[AFHTTPRequestOperationManager alloc]init] rac_GET:@"https://prod.epoquecore.com/sprites" parameters:@{}];
+    
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        AFHTTPRequestOperation *operation = [[[AFHTTPRequestOperationManager alloc]init] GET:@"https://prod.epoquecore.com/sprites" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [subscriber sendNext:error];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [operation cancel];
+        }];
+    }];
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "NCSpritesViewController.h"
 #import "NCWelcomeViewController.h"
 #import "Firebase+AuthenticationExtensions.h"
+#import "AppDelegate.h"
 @interface NCMyCharacterViewController ()
 
 @end
@@ -124,16 +125,15 @@
 }
 
 -(void)optionsButtonDidClick:(id)sender{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Logout?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Logout" otherButtonTitles:nil, nil];
-    [actionSheet showInView:self.view];
-}
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-    if ([title isEqualToString:@"Logout"]) {
-        [[[Firebase alloc]initWithUrl:kFirebaseRoot] unauth];
-        [self.navigationController pushFadeViewController:[[NCWelcomeViewController alloc]init]];
-    }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Logout" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [((AppDelegate *)[UIApplication sharedApplication].delegate) logout];
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

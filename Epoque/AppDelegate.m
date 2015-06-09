@@ -24,17 +24,29 @@
     NCFireService *fireService;
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UIUserNotificationType types = UIUserNotificationTypeBadge |
+    UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    
+    UIUserNotificationSettings *mySettings =
+    [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    [application registerForRemoteNotifications];
+
+    [Firebase defaultConfig].persistenceEnabled = YES;
+    
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"HockeyAppIdentifier"]];
     // Configure the SDK in here only!
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-    [Amplitude initializeApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"AmplitudeApiKey"]];
+    
+    [[Amplitude instance] initializeApiKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"AmplitudeApiKey"]];
+
     fireService = [NCFireService sharedInstance];
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    self.mapView = [[MKMapView alloc]init];
     [self submitDeviceToken];
     [self observeUserChange];
     [self observeQuoteChange];
@@ -55,26 +67,28 @@
 }
 
 -(void)submitDeviceToken{
-    RACSignal *userModel = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCUserModel];
-    RACSignal *deviceToken = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCDeviceToken];
+    RACSignal *userModel = [[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCUserModel] filter:^BOOL(id value) {
+        return value != nil;
+    }];
+    RACSignal *deviceToken = [[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:kNCDeviceToken] filter:^BOOL(id value) {
+        return value != nil;
+    }];
     NSString *buildConfiguration = [AppDelegate buildConfiguration];
-    
-    [[[[[[RACSignal combineLatest:@[userModel, deviceToken] reduce:^id(NSDictionary *userDictionary, NSString *deviceToken){
+
+    [[[[RACSignal combineLatest:@[userModel, deviceToken] reduce:^id(NSDictionary *userDictionary, NSString *deviceToken){
         NSString *userId = userDictionary[@"userId"];
-        return RACTuplePack(userId, deviceToken);
-    }] filter:^BOOL(RACTuple *tuple) {
-        NSString *userId = tuple.first;
-        NSString *deviceToken = tuple.second;
-        return userId != nil && deviceToken != nil;
-    }] doNext:^(RACTuple *tuple) {
-        
-    }] flattenMap:^RACStream *(RACTuple *tuple) {
-        return [[NCFireService sharedInstance] registerUserId:tuple.first deviceToken:tuple.second environment:buildConfiguration];
+        return @{
+                 @"userId": userId, @"deviceToken": deviceToken
+                 };
+    }] flattenMap:^RACStream *(NSDictionary *result) {
+        NSString *userId = [result objectForKey:@"userId"];
+        NSString *deviceToken = [result objectForKey:@"deviceToken"];
+        return [[NCFireService sharedInstance] registerUserId:userId deviceToken:deviceToken environment:buildConfiguration];
     }] retry:500] subscribeNext:^(id x) {
         NSLog(@"Successfully registered the device token to the remote service");
     } error:^(NSError *error) {
         NSLog(@"There was an error registering the device token with the service: %@", [error localizedDescription]);
-    }];;
+    }];
 }
 
 -(void)observeUserChange{
@@ -89,14 +103,6 @@
             [[NSUserDefaults standardUserDefaults] setUserModel:newUserModel];
             [Amplitude setUserId:newUserModel.userId];
             [Amplitude setUserProperties:[newUserModel toDictionary]];
-        }
-    }];
-    
-    [[[Firebase alloc]initWithUrl:kFirebaseRoot] observeAuthEventWithBlock:^(FAuthData *authData) {
-        if (authData) {
-            
-        }else{
-            [[NSUserDefaults standardUserDefaults] clearAuthInformation];
         }
     }];
 }
@@ -135,16 +141,19 @@
 
 -(NCNavigationController *)navigationControllerFromPush:(NSDictionary *)userInfo{
     FAuthData *authData = [[Firebase alloc]initWithUrl:kFirebaseRoot].authData;
-    if (authData != nil) {
-        NSString *worldId = [NSUserDefaults standardUserDefaults].currentWorldId;
-        if ([[userInfo objectForKey:@"pushType"] isEqualToString:@"worldMessage"]) {
-            worldId = [userInfo objectForKey:@"worldId"];
-            [[NSUserDefaults standardUserDefaults] setCurrentWorldId:worldId];
-        }
-        NCMapViewController *mapViewController = [[NCMapViewController alloc]initWithWorldId:worldId];
-        return [[NCNavigationController alloc]initWithRootViewController:mapViewController];
+    UserModel *userModel = [NSUserDefaults standardUserDefaults].userModel;
+    if (authData == nil || userModel == nil) {
+        [[NSUserDefaults standardUserDefaults] clearAuthInformation];
+        return [[NCNavigationController alloc]initWithRootViewController:[[NCWelcomeViewController alloc] init]];
     }
-    return [[NCNavigationController alloc]initWithRootViewController:[[NCWelcomeViewController alloc] init]];
+    NSString *worldId = [NSUserDefaults standardUserDefaults].currentWorldId;
+    if ([[userInfo objectForKey:@"pushType"] isEqualToString:@"worldMessage"]) {
+        worldId = [userInfo objectForKey:@"worldId"];
+        [[NSUserDefaults standardUserDefaults] setCurrentWorldId:worldId];
+    }
+    NCMapViewController *mapViewController = [[NCMapViewController alloc]initWithWorldId:worldId];
+    return [[NCNavigationController alloc]initWithRootViewController:mapViewController];
+
 }
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
@@ -189,6 +198,15 @@
 
 +(NSString *)buildConfiguration{
     return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"BuildConfiguration"] lowercaseString];
+}
+
+-(void)logout{
+    Firebase *rootRef = [[Firebase alloc]initWithUrl:kFirebaseRoot];
+    [[[rootRef childByAppendingPath:@"devices"] childByAppendingPath:rootRef.authData.uid] removeValue];
+    [[NSUserDefaults standardUserDefaults] clearAuthInformation];
+    [rootRef unauth];
+    NCNavigationController *navigationController = [[NCNavigationController alloc]initWithRootViewController:[[NCWelcomeViewController alloc] init]];
+    [((RESideMenu *)self.window.rootViewController) customSetContentViewController:navigationController];
 }
 
 @end
